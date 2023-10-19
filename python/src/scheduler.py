@@ -27,7 +27,11 @@ for instance in root.findall(".//Instance"):
     # Example: To access specific data from 'Times'
     for time in times.findall("Time"):
         # Access time-related data as needed
-        print(time.findall(".//Day || .//Week || .//TimeGroup"))
+        # print(time.find("Day").__bool__())
+        print(bool([1, 2, 3]))
+        print(bool(time.find("Day")))
+        print(type(time.find("Day")))
+        print("2eqdqe") if [1, 2, 3] else print("dwc")
 
     # Example: To access specific data from 'Resources'
     for resource in resources.findall("Resource"):
@@ -57,3 +61,7 @@ for solution_group in root.findall(".//SolutionGroup"):
 
         # Print or process data as necessary
         pass
+
+
+# Interesting find during implementation
+# https://stackoverflow.com/questions/20129996/why-does-boolxml-etree-elementtree-element-evaluate-to-false

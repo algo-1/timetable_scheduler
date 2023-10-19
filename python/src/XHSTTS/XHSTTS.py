@@ -1,7 +1,11 @@
 from collections import namedtuple
 import xml.etree.ElementTree as ET
 
-from utils import Cost
+# Hack, TODO sort out modules properly! (virtual env? Add to path?)
+try:
+    from .utils import Cost
+except:
+    from utils import Cost
 
 
 class XHSTTSInstance:
@@ -15,9 +19,26 @@ class XHSTTSInstance:
     ]
     Time = namedtuple("Time", ["Name", "TimeGroupReferences"])
     TimeGroup = namedtuple("TimeGroup", ["Name", "Type"])
+    EventGroup = namedtuple("EventGroup", ["Name", "Type"])
     ResourceGroup = namedtuple("ResourceGroup", ["Name", "ResourceTypeReference"])
     Resource = namedtuple(
         "Resource", ["Name", "ResourceTypeReference", "ResourceGroupReferences"]
+    )
+    Event = namedtuple(
+        "Event",
+        [
+            "Name",
+            "Duration",
+            "Workload",
+            "PreAssignedTimeReferences",
+            "Resources",  # of type EventResource
+            "ResourceGroupReferences",
+            "CourseReference",
+            "EventGroupReferences",
+        ],
+    )
+    EventResource = namedtuple(
+        "EventResource", ["Reference", "Role", "ResourceTypeReference", "Workload"]
     )
 
     def __init__(self, XMLInstance, XMLInstanceSolutions):
@@ -26,13 +47,14 @@ class XHSTTSInstance:
         self.ResourceTypes = {}
         self.ResourceGroups = {}
         self.Resources = {}
+        self.Events = {}
         self._parse_times(XMLInstance.find("Times"))
         self._parse_resources(XMLInstance.find("Resources"))
         self._parse_events(XMLInstance.find("Events"))
         self._parse_constraints(XMLInstance.find("Constraints"))
 
     def get_events(self):
-        return self.events
+        return self.Events
 
     def get_times(self):
         return self.Times
@@ -109,7 +131,67 @@ class XHSTTSInstance:
         }
 
     def _parse_events(self, XMLEvents: ET.Element):
-        pass
+        XMLEventGroups = XMLEvents.find("EventGroups")
+        self.EventGroups = {
+            XMLEventGroup.attrib["Id"]: XHSTTSInstance.EventGroup(
+                Name=XMLEventGroup.find("Name").text,
+                Type=XMLEventGroup.tag,
+            )
+            for XMLEventGroup in (
+                XMLEventGroups.findall("Course") + XMLEventGroups.findall("EventGroup")
+            )
+        }
+
+        self.Events = {
+            XMLEvent.attrib["Id"]: XHSTTSInstance.Event(
+                Name=XMLEvent.find("Name").text,
+                Duration=int(XMLEvent.find("Duration").text),
+                Workload=int(XMLEvent.find("Workload").text)
+                if XMLEvent.find("Workload") is not None
+                else None,
+                PreAssignedTimeReferences=XMLEvent.find("Time").attrib["Reference"]
+                if XMLEvent.find("Time") is not None
+                else None,
+                Resources=[
+                    XHSTTSInstance.EventResource(
+                        Reference=XMLResource.attrib.get(
+                            "Reference"
+                        ),  # can be None in which case the solver is expected to assign a resource to the event and in this case the Role and ResourceType are compulsory
+                        Role=XMLResource.find("Role").text
+                        if XMLResource.find("Role") is not None
+                        else None,
+                        ResourceTypeReference=XMLResource.find("ResourceType").attrib[
+                            "Reference"
+                        ]
+                        if XMLResource.find("ResourceType") is not None
+                        else None,
+                        Workload=int(XMLResource.find("Workload"))
+                        if XMLResource.find("Workload") is not None
+                        else None,
+                    )
+                    for XMLResource in XMLEvent.find("Resources").findall("Resource")
+                ],
+                ResourceGroupReferences=[
+                    XMLResourceGroup.attrib["Reference"]
+                    for XMLResourceGroup in XMLEvent.find("ResourceGroups").findall(
+                        "ResourceGroup"
+                    )
+                ]
+                if XMLEvent.find("ResourceGroups") is not None
+                else [],  # every resource in the resource group is to be preassigned to the event, however spec may change as was intended to be used for student sectioning
+                # TODO: do any datasets use this?
+                CourseReference=XMLEvent.find("Course").attrib["Reference"]
+                if XMLEvent.find("Course") is not None
+                else None,
+                EventGroupReferences=[
+                    XMLEventGroup.attrib["Reference"]
+                    for XMLEventGroup in XMLEvent.find("EventGroups").findall(
+                        "EventGroup"
+                    )
+                ],
+            )
+            for XMLEvent in XMLEvents.findall("Event")
+        }
 
     def _parse_constraints(self, XMLConstraints: ET.Element):
         pass
@@ -149,9 +231,13 @@ class XHSTTS:
 
 if __name__ == "__main__":
     first_instance = XHSTTS(
-        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/SpainSchool.xml"
+        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/BrazilInstance3.xml"
     ).get_first_instance()
     # print(first_instance.get_times())
-    print(first_instance.get_resources())
-    print(first_instance.ResourceTypes)
-    print(first_instance.ResourceGroups)
+    # print(first_instance.get_resources())
+    # print(first_instance.ResourceTypes)
+    # print(first_instance.ResourceGroups)
+
+    from pprint import pp
+
+    pp(list(first_instance.get_events().items())[:5])
