@@ -1,7 +1,7 @@
 from collections import namedtuple
 import xml.etree.ElementTree as ET
 
-from utils import Cost, cost
+from utils import Cost
 
 
 class XHSTTSInstance:
