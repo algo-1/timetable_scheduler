@@ -1,5 +1,6 @@
 from enum import Enum, auto
 from pathlib import Path
+from collections import namedtuple
 
 
 class Cost_Function_Type(Enum):
@@ -31,6 +32,8 @@ def cost(deviation: int, constraint_weight: int, cost_type: Cost_Function_Type):
     """
     return constraint_weight * cost_function(deviation, cost_type)
 
+
+Cost = namedtuple("Cost", ["Infeasibility_Value", "Objective_Value"])
 
 if __name__ == "__main__":
     pass

@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
 # Define the path to your XHSTTS dataset XML file
-xml_file_path = "data/EnglandStPaul.xml"
+xml_file_path = "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/ArtificialAbramson15.xml"
 
 # Parse the XML file
 tree = ET.parse(xml_file_path)
@@ -27,7 +27,7 @@ for instance in root.findall(".//Instance"):
     # Example: To access specific data from 'Times'
     for time in times.findall("Time"):
         # Access time-related data as needed
-        pass
+        print(time.findall(".//Day || .//Week || .//TimeGroup"))
 
     # Example: To access specific data from 'Resources'
     for resource in resources.findall("Resource"):

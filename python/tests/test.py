@@ -2,7 +2,7 @@
 
 import pytest
 from pathlib import Path
-from src.XHSTTS.XHSTTS import XHSTTS
+from python.src.XHSTTS.XHSTTS import XHSTTS
 
 base_dir = Path(__file__).parent.parent.parent
 
