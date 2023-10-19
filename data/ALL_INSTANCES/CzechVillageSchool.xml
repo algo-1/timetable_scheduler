@@ -1,0 +1,4277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HighSchoolTimetableArchive>
+  <Instances>
+    <Instance Id="CzechVillageSchool">
+      <MetaData>
+        <Name>Czech republic village school</Name>
+        <Contributor>Martin Klemsa, Skolaris Software, Brno, Czech republic</Contributor>
+        <Date>2018-10-08</Date>
+        <Country>Czech republic</Country>
+        <Description>Created by Skolaris - Timetable Creation And Optimisation Software (http://skolaris.net)</Description>
+      </MetaData>
+      <Times>
+        <TimeGroups>
+          <Day Id="0">
+            <Name>Pondělí</Name>
+          </Day>
+          <Day Id="1">
+            <Name>Úterý</Name>
+          </Day>
+          <Day Id="2">
+            <Name>Středa</Name>
+          </Day>
+          <Day Id="3">
+            <Name>Čtvrtek</Name>
+          </Day>
+          <Day Id="4">
+            <Name>Pátek</Name>
+          </Day>
+        </TimeGroups>
+        <Time Id="0_0">
+          <Name>1.</Name>
+          <Day Reference="0" />
+        </Time>
+        <Time Id="0_1">
+          <Name>2.</Name>
+          <Day Reference="0" />
+        </Time>
+        <Time Id="0_2">
+          <Name>3.</Name>
+          <Day Reference="0" />
+        </Time>
+        <Time Id="0_3">
+          <Name>4.</Name>
+          <Day Reference="0" />
+        </Time>
+        <Time Id="0_4">
+          <Name>5.</Name>
+          <Day Reference="0" />
+        </Time>
+        <Time Id="0_5">
+          <Name>6.</Name>
+          <Day Reference="0" />
+        </Time>
+        <Time Id="1_0">
+          <Name>1.</Name>
+          <Day Reference="1" />
+        </Time>
+        <Time Id="1_1">
+          <Name>2.</Name>
+          <Day Reference="1" />
+        </Time>
+        <Time Id="1_2">
+          <Name>3.</Name>
+          <Day Reference="1" />
+        </Time>
+        <Time Id="1_3">
+          <Name>4.</Name>
+          <Day Reference="1" />
+        </Time>
+        <Time Id="1_4">
+          <Name>5.</Name>
+          <Day Reference="1" />
+        </Time>
+        <Time Id="1_5">
+          <Name>6.</Name>
+          <Day Reference="1" />
+        </Time>
+        <Time Id="2_0">
+          <Name>1.</Name>
+          <Day Reference="2" />
+        </Time>
+        <Time Id="2_1">
+          <Name>2.</Name>
+          <Day Reference="2" />
+        </Time>
+        <Time Id="2_2">
+          <Name>3.</Name>
+          <Day Reference="2" />
+        </Time>
+        <Time Id="2_3">
+          <Name>4.</Name>
+          <Day Reference="2" />
+        </Time>
+        <Time Id="2_4">
+          <Name>5.</Name>
+          <Day Reference="2" />
+        </Time>
+        <Time Id="2_5">
+          <Name>6.</Name>
+          <Day Reference="2" />
+        </Time>
+        <Time Id="3_0">
+          <Name>1.</Name>
+          <Day Reference="3" />
+        </Time>
+        <Time Id="3_1">
+          <Name>2.</Name>
+          <Day Reference="3" />
+        </Time>
+        <Time Id="3_2">
+          <Name>3.</Name>
+          <Day Reference="3" />
+        </Time>
+        <Time Id="3_3">
+          <Name>4.</Name>
+          <Day Reference="3" />
+        </Time>
+        <Time Id="3_4">
+          <Name>5.</Name>
+          <Day Reference="3" />
+        </Time>
+        <Time Id="3_5">
+          <Name>6.</Name>
+          <Day Reference="3" />
+        </Time>
+        <Time Id="4_0">
+          <Name>1.</Name>
+          <Day Reference="4" />
+        </Time>
+        <Time Id="4_1">
+          <Name>2.</Name>
+          <Day Reference="4" />
+        </Time>
+        <Time Id="4_2">
+          <Name>3.</Name>
+          <Day Reference="4" />
+        </Time>
+        <Time Id="4_3">
+          <Name>4.</Name>
+          <Day Reference="4" />
+        </Time>
+        <Time Id="4_4">
+          <Name>5.</Name>
+          <Day Reference="4" />
+        </Time>
+        <Time Id="4_5">
+          <Name>6.</Name>
+          <Day Reference="4" />
+        </Time>
+      </Times>
+      <Resources>
+        <ResourceTypes>
+          <ResourceType Id="Class">
+            <Name>Class</Name>
+          </ResourceType>
+          <ResourceType Id="Teacher">
+            <Name>Teacher</Name>
+          </ResourceType>
+        </ResourceTypes>
+        <ResourceGroups>
+          <ResourceGroup Id="Classes">
+            <Name>AllClasses</Name>
+            <ResourceType Reference="Class" />
+          </ResourceGroup>
+          <ResourceGroup Id="Teachers">
+            <Name>AllTeachers</Name>
+            <ResourceType Reference="Teacher" />
+          </ResourceGroup>
+        </ResourceGroups>
+        <Resource Id="C_I.">
+          <Name>I.</Name>
+          <ResourceType Reference="Class" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Classes" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="C_II.">
+          <Name>II.</Name>
+          <ResourceType Reference="Class" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Classes" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="C_II. - Lu">
+          <Name>II. - Lu</Name>
+          <ResourceType Reference="Class" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Classes" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="C_III.">
+          <Name>III.</Name>
+          <ResourceType Reference="Class" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Classes" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="C_IV.">
+          <Name>IV.</Name>
+          <ResourceType Reference="Class" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Classes" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="C_IV. - Be">
+          <Name>IV. - Be</Name>
+          <ResourceType Reference="Class" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Classes" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_BO">
+          <Name>BO</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_KA">
+          <Name>KA</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_KK">
+          <Name>KK</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_ST">
+          <Name>ST</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_SV">
+          <Name>SV</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_UH">
+          <Name>UH</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_V-Vv">
+          <Name>V-Vv</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+        <Resource Id="T_ZA">
+          <Name>ZA</Name>
+          <ResourceType Reference="Teacher" />
+          <ResourceGroups>
+            <ResourceGroup Reference="Teachers" />
+          </ResourceGroups>
+        </Resource>
+      </Resources>
+      <Events>
+        <EventGroups>
+          <Course Id="B_1672785">
+            <Name>1. třída_ČJ</Name>
+          </Course>
+          <Course Id="B_1672786">
+            <Name>1. třída_M</Name>
+          </Course>
+          <Course Id="B_1672790">
+            <Name>4.5._HV</Name>
+          </Course>
+          <Course Id="B_1672791">
+            <Name>1.2.3._HV</Name>
+          </Course>
+          <Course Id="B_1672792">
+            <Name>1.2.3._PRV</Name>
+          </Course>
+          <Course Id="B_1672794">
+            <Name>2.3._ČJ</Name>
+          </Course>
+          <Course Id="B_1672795">
+            <Name>2.3._M</Name>
+          </Course>
+          <Course Id="B_1672799">
+            <Name>4.5._PŘ</Name>
+          </Course>
+          <Course Id="B_1672800">
+            <Name>4.5._VL</Name>
+          </Course>
+          <Course Id="B_1672804">
+            <Name>3. třída_AJ</Name>
+          </Course>
+          <Course Id="B_1672806">
+            <Name>3.4.5.B_INF</Name>
+          </Course>
+          <Course Id="B_1672808">
+            <Name>1.2.3._N</Name>
+          </Course>
+          <Course Id="B_1672809">
+            <Name>2.L_ČJ</Name>
+          </Course>
+          <Course Id="B_1672810">
+            <Name>2.3.L_M</Name>
+          </Course>
+          <Course Id="B_1672811">
+            <Name>2.3.L_ČJ</Name>
+          </Course>
+          <Course Id="B_1672812">
+            <Name>4.5.B_ČJ</Name>
+          </Course>
+          <Course Id="B_1672813">
+            <Name>4.5.B_M</Name>
+          </Course>
+          <Course Id="B_1672814">
+            <Name>4.5.B_AJ</Name>
+          </Course>
+          <Course Id="B_1672816">
+            <Name>Lukáš_ČJ</Name>
+          </Course>
+          <Course Id="B_1672817">
+            <Name>CDB_PČ</Name>
+          </Course>
+          <Course Id="B_1672818">
+            <Name>CDB_TV</Name>
+          </Course>
+          <Course Id="B_1672819">
+            <Name>CDB_VV</Name>
+          </Course>
+          <Course Id="B_1672820">
+            <Name>4.5.B_VV</Name>
+          </Course>
+          <Course Id="B_1672821">
+            <Name>Beáta_PRV</Name>
+          </Course>
+          <Course Id="B_1672822">
+            <Name>Lukáš_PRV</Name>
+          </Course>
+          <Course Id="B_1672823">
+            <Name>Beáta_HV</Name>
+          </Course>
+          <EventGroup Id="Events">
+            <Name>AllEvents</Name>
+          </EventGroup>
+        </EventGroups>
+        <Event Id="E_1672836" Color="#ffee58">
+          <Name>E_1672836</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672837" Color="#ffee58">
+          <Name>E_1672837</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672838" Color="#ffee58">
+          <Name>E_1672838</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672839" Color="#ffee58">
+          <Name>E_1672839</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672840" Color="#ffee58">
+          <Name>E_1672840</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672841" Color="#ffee58">
+          <Name>E_1672841</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672842" Color="#ffee58">
+          <Name>E_1672842</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672843" Color="#ffee58">
+          <Name>E_1672843</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672785" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672844" Color="#3f51b5">
+          <Name>E_1672844</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672786" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672845" Color="#3f51b5">
+          <Name>E_1672845</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672786" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672846" Color="#3f51b5">
+          <Name>E_1672846</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672786" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672847" Color="#3f51b5">
+          <Name>E_1672847</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672786" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672848" Color="#3f51b5">
+          <Name>E_1672848</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672786" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672849" Color="#efd5d5">
+          <Name>E_1672849</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672792" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672850" Color="#3f51b5">
+          <Name>E_1672850</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672795" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672851" Color="#ffee58">
+          <Name>E_1672851</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672852" Color="#ffee58">
+          <Name>E_1672852</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672853" Color="#ffee58">
+          <Name>E_1672853</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672854" Color="#aed14b">
+          <Name>E_1672854</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672799" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672855" Color="#d31654">
+          <Name>E_1672855</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672800" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672856" Color="#d31654">
+          <Name>E_1672856</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672800" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672857" Color="#aed14b">
+          <Name>E_1672857</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672799" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672858" Color="#29b6f6">
+          <Name>E_1672858</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672804" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672859" Color="#29b6f6">
+          <Name>E_1672859</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672804" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672860" Color="#29b6f6">
+          <Name>E_1672860</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672804" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672861" Color="#1200a7">
+          <Name>E_1672861</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672806" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672862" Color="#efd5d5">
+          <Name>E_1672862</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672792" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672863" Color="#ed6a09">
+          <Name>E_1672863</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672790" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672864" Color="#ffee58">
+          <Name>E_1672864</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672809" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672865" Color="#3f51b5">
+          <Name>E_1672865</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672810" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672866" Color="#3f51b5">
+          <Name>E_1672866</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672810" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672867" Color="#3f51b5">
+          <Name>E_1672867</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672810" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672868" Color="#3f51b5">
+          <Name>E_1672868</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672810" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672869" Color="#ffee58">
+          <Name>E_1672869</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672870" Color="#ffee58">
+          <Name>E_1672870</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672871" Color="#ffee58">
+          <Name>E_1672871</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672872" Color="#ffee58">
+          <Name>E_1672872</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672873" Color="#ffee58">
+          <Name>E_1672873</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672874" Color="#ffee58">
+          <Name>E_1672874</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672875" Color="#3f51b5">
+          <Name>E_1672875</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672813" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672876" Color="#3f51b5">
+          <Name>E_1672876</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672813" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672877" Color="#3f51b5">
+          <Name>E_1672877</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672813" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672878" Color="#3f51b5">
+          <Name>E_1672878</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672813" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672879" Color="#3f51b5">
+          <Name>E_1672879</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672813" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672880" Color="#29b6f6">
+          <Name>E_1672880</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672814" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672881" Color="#29b6f6">
+          <Name>E_1672881</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672814" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672882" Color="#29b6f6">
+          <Name>E_1672882</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672814" />
+          <Resources>
+            <Resource Reference="T_BO">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672883" Color="#ffee58">
+          <Name>E_1672883</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672816" />
+          <Resources>
+            <Resource Reference="T_KK">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672884" Color="#ffee58">
+          <Name>E_1672884</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672885" Color="#780e83">
+          <Name>E_1672885</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672817" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class2</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class3</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class4</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672886" Color="#cf04ec">
+          <Name>E_1672886</Name>
+          <Duration>2</Duration>
+          <Course Reference="B_1672818" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class2</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class3</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class4</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672887" Color="#1b5e20">
+          <Name>E_1672887</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672819" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_V-Vv">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher2</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class2</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class3</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class4</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672888" Color="#1b5e20">
+          <Name>E_1672888</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672820" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_V-Vv">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher2</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672889" Color="#efd5d5">
+          <Name>E_1672889</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672821" />
+          <Resources>
+            <Resource Reference="T_ZA">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672890" Color="#efd5d5">
+          <Name>E_1672890</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672821" />
+          <Resources>
+            <Resource Reference="T_ZA">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672891" Color="#efd5d5">
+          <Name>E_1672891</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672821" />
+          <Resources>
+            <Resource Reference="T_ZA">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672892" Color="#ffee58">
+          <Name>E_1672892</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672809" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672893" Color="#ed6a09">
+          <Name>E_1672893</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672791" />
+          <Resources>
+            <Resource Reference="T_ST">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672894" Color="#efd5d5">
+          <Name>E_1672894</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672822" />
+          <Resources>
+            <Resource Reference="T_KK">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672895" Color="#ffee58">
+          <Name>E_1672895</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672816" />
+          <Resources>
+            <Resource Reference="T_KK">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672896" Color="#ffee58">
+          <Name>E_1672896</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672897" Color="#ffee58">
+          <Name>E_1672897</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672898" Color="#ffee58">
+          <Name>E_1672898</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672811" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_KK">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II. - Lu">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672899" Color="#ffee58">
+          <Name>E_1672899</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672794" />
+          <Resources>
+            <Resource Reference="T_UH">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672900" Color="#ed6a09">
+          <Name>E_1672900</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672823" />
+          <Resources>
+            <Resource Reference="T_ZA">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class0</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672901" Color="#ffee58">
+          <Name>E_1672901</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672812" />
+          <Resources>
+            <Resource Reference="T_SV">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="T_ZA">
+              <Role>Teacher1</Role>
+            </Resource>
+            <Resource Reference="C_IV.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_IV. - Be">
+              <Role>Class1</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+        <Event Id="E_1672902" Color="#fab7b6">
+          <Name>E_1672902</Name>
+          <Duration>1</Duration>
+          <Course Reference="B_1672808" />
+          <Resources>
+            <Resource Reference="T_KA">
+              <Role>Teacher0</Role>
+            </Resource>
+            <Resource Reference="C_I.">
+              <Role>Class0</Role>
+            </Resource>
+            <Resource Reference="C_III.">
+              <Role>Class1</Role>
+            </Resource>
+            <Resource Reference="C_II.">
+              <Role>Class2</Role>
+            </Resource>
+          </Resources>
+          <EventGroups>
+            <EventGroup Reference="Events" />
+          </EventGroups>
+        </Event>
+      </Events>
+      <Constraints>
+        <AssignTimeConstraint Id="AssignTimes">
+          <Name>AssignTimes</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <EventGroups>
+              <EventGroup Reference="Events" />
+            </EventGroups>
+          </AppliesTo>
+        </AssignTimeConstraint>
+        <SplitEventsConstraint Id="DoNotSplitEvents">
+          <Name>DoNotSplitEvents</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <EventGroups>
+              <EventGroup Reference="Events" />
+            </EventGroups>
+          </AppliesTo>
+          <MinimumDuration>1</MinimumDuration>
+          <MaximumDuration>999</MaximumDuration>
+          <MinimumAmount>1</MinimumAmount>
+          <MaximumAmount>1</MaximumAmount>
+        </SplitEventsConstraint>
+        <PreferTimesConstraint Id="RequireTimes_M_M_1">
+          <Name>RequireTimes_M_M_1</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Events>
+              <Event Reference="E_1672844" />
+              <Event Reference="E_1672845" />
+              <Event Reference="E_1672846" />
+              <Event Reference="E_1672847" />
+              <Event Reference="E_1672848" />
+              <Event Reference="E_1672850" />
+              <Event Reference="E_1672865" />
+              <Event Reference="E_1672866" />
+              <Event Reference="E_1672867" />
+              <Event Reference="E_1672868" />
+              <Event Reference="E_1672875" />
+              <Event Reference="E_1672876" />
+              <Event Reference="E_1672877" />
+              <Event Reference="E_1672878" />
+              <Event Reference="E_1672879" />
+            </Events>
+          </AppliesTo>
+          <Times>
+            <Time Reference="0_0" />
+            <Time Reference="0_1" />
+            <Time Reference="0_2" />
+            <Time Reference="0_3" />
+            <Time Reference="0_4" />
+            <Time Reference="1_0" />
+            <Time Reference="1_1" />
+            <Time Reference="1_2" />
+            <Time Reference="1_3" />
+            <Time Reference="1_4" />
+            <Time Reference="2_0" />
+            <Time Reference="2_1" />
+            <Time Reference="2_2" />
+            <Time Reference="2_3" />
+            <Time Reference="2_4" />
+            <Time Reference="3_0" />
+            <Time Reference="3_1" />
+            <Time Reference="3_2" />
+            <Time Reference="3_3" />
+            <Time Reference="3_4" />
+            <Time Reference="4_0" />
+            <Time Reference="4_1" />
+            <Time Reference="4_2" />
+            <Time Reference="4_3" />
+            <Time Reference="4_4" />
+          </Times>
+        </PreferTimesConstraint>
+        <PreferTimesConstraint Id="PreferTimes_M_M_1">
+          <Name>PreferTimes_M_M_1</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Events>
+              <Event Reference="E_1672844" />
+              <Event Reference="E_1672845" />
+              <Event Reference="E_1672846" />
+              <Event Reference="E_1672847" />
+              <Event Reference="E_1672848" />
+              <Event Reference="E_1672850" />
+              <Event Reference="E_1672865" />
+              <Event Reference="E_1672866" />
+              <Event Reference="E_1672867" />
+              <Event Reference="E_1672868" />
+              <Event Reference="E_1672875" />
+              <Event Reference="E_1672876" />
+              <Event Reference="E_1672877" />
+              <Event Reference="E_1672878" />
+              <Event Reference="E_1672879" />
+            </Events>
+          </AppliesTo>
+          <Times>
+            <Time Reference="0_0" />
+            <Time Reference="0_1" />
+            <Time Reference="0_2" />
+            <Time Reference="1_0" />
+            <Time Reference="1_1" />
+            <Time Reference="1_2" />
+            <Time Reference="2_0" />
+            <Time Reference="2_1" />
+            <Time Reference="2_2" />
+            <Time Reference="3_0" />
+            <Time Reference="3_1" />
+            <Time Reference="3_2" />
+            <Time Reference="4_0" />
+            <Time Reference="4_1" />
+            <Time Reference="4_2" />
+          </Times>
+        </PreferTimesConstraint>
+        <PreferTimesConstraint Id="RequireTimes_M_TV_2">
+          <Name>RequireTimes_M_TV_2</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Events>
+              <Event Reference="E_1672886" />
+            </Events>
+          </AppliesTo>
+          <Times>
+            <Time Reference="0_2" />
+            <Time Reference="0_3" />
+            <Time Reference="0_4" />
+            <Time Reference="1_0" />
+            <Time Reference="1_1" />
+            <Time Reference="1_2" />
+            <Time Reference="1_3" />
+            <Time Reference="1_4" />
+            <Time Reference="2_0" />
+            <Time Reference="2_1" />
+            <Time Reference="2_2" />
+            <Time Reference="2_3" />
+            <Time Reference="2_4" />
+            <Time Reference="3_0" />
+            <Time Reference="3_1" />
+            <Time Reference="3_2" />
+            <Time Reference="3_3" />
+            <Time Reference="3_4" />
+            <Time Reference="4_0" />
+            <Time Reference="4_1" />
+            <Time Reference="4_2" />
+            <Time Reference="4_3" />
+            <Time Reference="4_4" />
+          </Times>
+        </PreferTimesConstraint>
+        <PreferTimesConstraint Id="PreferTimes_M_TV_2">
+          <Name>PreferTimes_M_TV_2</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Events>
+              <Event Reference="E_1672886" />
+            </Events>
+          </AppliesTo>
+          <Times>
+            <Time Reference="1_0" />
+            <Time Reference="1_1" />
+            <Time Reference="1_2" />
+            <Time Reference="1_3" />
+            <Time Reference="1_4" />
+            <Time Reference="2_0" />
+            <Time Reference="2_1" />
+            <Time Reference="2_2" />
+            <Time Reference="2_3" />
+            <Time Reference="2_4" />
+            <Time Reference="3_0" />
+            <Time Reference="3_1" />
+            <Time Reference="3_2" />
+            <Time Reference="3_3" />
+            <Time Reference="3_4" />
+          </Times>
+        </PreferTimesConstraint>
+        <SpreadEventsConstraint Id="SpreadCourses_0_1_PerDay">
+          <Name>SpreadCourses_0_1_PerDay</Name>
+          <Required>false</Required>
+          <Weight>5</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <EventGroups>
+              <EventGroup Reference="B_1672786" />
+              <EventGroup Reference="B_1672792" />
+              <EventGroup Reference="B_1672799" />
+              <EventGroup Reference="B_1672800" />
+              <EventGroup Reference="B_1672804" />
+              <EventGroup Reference="B_1672809" />
+              <EventGroup Reference="B_1672810" />
+              <EventGroup Reference="B_1672813" />
+              <EventGroup Reference="B_1672814" />
+              <EventGroup Reference="B_1672816" />
+              <EventGroup Reference="B_1672821" />
+            </EventGroups>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0">
+              <Minimum>0</Minimum>
+              <Maximum>1</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="1">
+              <Minimum>0</Minimum>
+              <Maximum>1</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="2">
+              <Minimum>0</Minimum>
+              <Maximum>1</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="3">
+              <Minimum>0</Minimum>
+              <Maximum>1</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="4">
+              <Minimum>0</Minimum>
+              <Maximum>1</Maximum>
+            </TimeGroup>
+          </TimeGroups>
+        </SpreadEventsConstraint>
+        <SpreadEventsConstraint Id="SpreadCourses_1_2_PerDay">
+          <Name>SpreadCourses_1_2_PerDay</Name>
+          <Required>false</Required>
+          <Weight>5</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <EventGroups>
+              <EventGroup Reference="B_1672785" />
+              <EventGroup Reference="B_1672794" />
+              <EventGroup Reference="B_1672812" />
+            </EventGroups>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0">
+              <Minimum>1</Minimum>
+              <Maximum>2</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="1">
+              <Minimum>1</Minimum>
+              <Maximum>2</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="2">
+              <Minimum>1</Minimum>
+              <Maximum>2</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="3">
+              <Minimum>1</Minimum>
+              <Maximum>2</Maximum>
+            </TimeGroup>
+            <TimeGroup Reference="4">
+              <Minimum>1</Minimum>
+              <Maximum>2</Maximum>
+            </TimeGroup>
+          </TimeGroups>
+        </SpreadEventsConstraint>
+        <AvoidClashesConstraint Id="AvoidClashes">
+          <Name>AvoidClashes</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <ResourceGroups>
+              <ResourceGroup Reference="Classes" />
+              <ResourceGroup Reference="Teachers" />
+            </ResourceGroups>
+          </AppliesTo>
+        </AvoidClashesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidUnavailable_C_I.">
+          <Name>AvoidUnavailable_C_I.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_I." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="3_5" />
+            <Time Reference="2_5" />
+            <Time Reference="1_5" />
+            <Time Reference="0_5" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidPartiallyAvailable_C_I.">
+          <Name>AvoidPartiallyAvailable_C_I.</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_I." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_4" />
+            <Time Reference="3_4" />
+            <Time Reference="2_4" />
+            <Time Reference="1_4" />
+            <Time Reference="0_4" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidUnavailable_C_II.">
+          <Name>AvoidUnavailable_C_II.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="3_5" />
+            <Time Reference="2_5" />
+            <Time Reference="1_5" />
+            <Time Reference="0_5" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidPartiallyAvailable_C_II.">
+          <Name>AvoidPartiallyAvailable_C_II.</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_4" />
+            <Time Reference="3_4" />
+            <Time Reference="2_4" />
+            <Time Reference="1_4" />
+            <Time Reference="0_4" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidUnavailable_C_III.">
+          <Name>AvoidUnavailable_C_III.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_III." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="3_5" />
+            <Time Reference="2_5" />
+            <Time Reference="1_5" />
+            <Time Reference="0_5" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidPartiallyAvailable_C_IV.">
+          <Name>AvoidPartiallyAvailable_C_IV.</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_IV." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="3_5" />
+            <Time Reference="2_5" />
+            <Time Reference="1_5" />
+            <Time Reference="0_5" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidPartiallyAvailable_C_II. - Lu">
+          <Name>AvoidPartiallyAvailable_C_II. - Lu</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II. - Lu" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="3_5" />
+            <Time Reference="2_5" />
+            <Time Reference="1_5" />
+            <Time Reference="0_5" />
+            <Time Reference="4_4" />
+            <Time Reference="3_4" />
+            <Time Reference="2_4" />
+            <Time Reference="1_4" />
+            <Time Reference="0_4" />
+            <Time Reference="4_3" />
+            <Time Reference="3_3" />
+            <Time Reference="2_3" />
+            <Time Reference="1_3" />
+            <Time Reference="0_3" />
+            <Time Reference="4_0" />
+            <Time Reference="3_0" />
+            <Time Reference="2_0" />
+            <Time Reference="1_0" />
+            <Time Reference="0_0" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidUnavailable_C_IV. - Be">
+          <Name>AvoidUnavailable_C_IV. - Be</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_IV. - Be" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="3_5" />
+            <Time Reference="2_5" />
+            <Time Reference="1_5" />
+            <Time Reference="0_5" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <AvoidUnavailableTimesConstraint Id="AvoidUnavailable_T_SV">
+          <Name>AvoidUnavailable_T_SV</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_SV" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups />
+          <Times>
+            <Time Reference="4_5" />
+            <Time Reference="4_4" />
+            <Time Reference="4_3" />
+            <Time Reference="4_2" />
+            <Time Reference="4_1" />
+            <Time Reference="4_0" />
+          </Times>
+        </AvoidUnavailableTimesConstraint>
+        <LimitIdleTimesConstraint Id="NoClassGroupGaps">
+          <Name>NoClassGroupGaps</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <ResourceGroups>
+              <ResourceGroup Reference="Classes" />
+            </ResourceGroups>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>0</Minimum>
+          <Maximum>0</Maximum>
+        </LimitIdleTimesConstraint>
+        <LimitIdleTimesConstraint Id="LimitTeacherGaps">
+          <Name>LimitTeacherGaps</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <ResourceGroups>
+              <ResourceGroup Reference="Teachers" />
+            </ResourceGroups>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>0</Minimum>
+          <Maximum>0</Maximum>
+        </LimitIdleTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_C_I.">
+          <Name>ClusterBusy_C_I.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_I." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>5</Minimum>
+          <Maximum>5</Maximum>
+        </ClusterBusyTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_C_II.">
+          <Name>ClusterBusy_C_II.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>5</Minimum>
+          <Maximum>5</Maximum>
+        </ClusterBusyTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_C_III.">
+          <Name>ClusterBusy_C_III.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_III." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>5</Minimum>
+          <Maximum>5</Maximum>
+        </ClusterBusyTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_C_IV.">
+          <Name>ClusterBusy_C_IV.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_IV." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>5</Minimum>
+          <Maximum>5</Maximum>
+        </ClusterBusyTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_C_II. - Lu">
+          <Name>ClusterBusy_C_II. - Lu</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II. - Lu" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>5</Minimum>
+          <Maximum>5</Maximum>
+        </ClusterBusyTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_C_IV. - Be">
+          <Name>ClusterBusy_C_IV. - Be</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_IV. - Be" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>5</Minimum>
+          <Maximum>5</Maximum>
+        </ClusterBusyTimesConstraint>
+        <ClusterBusyTimesConstraint Id="ClusterBusy_T_V-Vv">
+          <Name>ClusterBusy_T_V-Vv</Name>
+          <Required>false</Required>
+          <Weight>2</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_V-Vv" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>0</Minimum>
+          <Maximum>1</Maximum>
+        </ClusterBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_C_I.">
+          <Name>LimitBusy_C_I.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_I." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>4</Minimum>
+          <Maximum>6</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_C_II.">
+          <Name>LimitBusy_C_II.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>4</Minimum>
+          <Maximum>6</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_C_III.">
+          <Name>LimitBusy_C_III.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_III." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>4</Minimum>
+          <Maximum>6</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_C_IV.">
+          <Name>LimitBusy_C_IV.</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_IV." />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>4</Minimum>
+          <Maximum>7</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_C_II. - Lu">
+          <Name>LimitBusy_C_II. - Lu</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_II. - Lu" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>2</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_C_IV. - Be">
+          <Name>LimitBusy_C_IV. - Be</Name>
+          <Required>true</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="C_IV. - Be" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>4</Minimum>
+          <Maximum>6</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_ST">
+          <Name>LimitBusy_T_ST</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_ST" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>8</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_UH">
+          <Name>LimitBusy_T_UH</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_UH" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>8</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_SV">
+          <Name>LimitBusy_T_SV</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_SV" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>8</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_BO">
+          <Name>LimitBusy_T_BO</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_BO" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>8</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_V-Vv">
+          <Name>LimitBusy_T_V-Vv</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_V-Vv" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>0</Minimum>
+          <Maximum>2</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_KA">
+          <Name>LimitBusy_T_KA</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_KA" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>1</Minimum>
+          <Maximum>8</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_KK">
+          <Name>LimitBusy_T_KK</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_KK" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>2</Maximum>
+        </LimitBusyTimesConstraint>
+        <LimitBusyTimesConstraint Id="LimitBusy_T_ZA">
+          <Name>LimitBusy_T_ZA</Name>
+          <Required>false</Required>
+          <Weight>1</Weight>
+          <CostFunction>Linear</CostFunction>
+          <AppliesTo>
+            <Resources>
+              <Resource Reference="T_ZA" />
+            </Resources>
+          </AppliesTo>
+          <TimeGroups>
+            <TimeGroup Reference="0" />
+            <TimeGroup Reference="1" />
+            <TimeGroup Reference="2" />
+            <TimeGroup Reference="3" />
+            <TimeGroup Reference="4" />
+          </TimeGroups>
+          <Minimum>2</Minimum>
+          <Maximum>8</Maximum>
+        </LimitBusyTimesConstraint>
+      </Constraints>
+    </Instance>
+  </Instances>
+  <SolutionGroups>
+    <SolutionGroup Id="Skolaris_2018-10-08">
+      <MetaData>
+        <Contributor>Martin Klemsa, Skolaris Software, Brno, Czech republic</Contributor>
+        <Date>2018-10-08</Date>
+        <Description>Created by Skolaris - Timetable Creation And Optimisation Software (http://skolaris.net)</Description>
+      </MetaData>
+      <Solution Reference="CzechVillageSchool">
+        <Events>
+          <Event Reference="E_1672836">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+          </Event>
+          <Event Reference="E_1672837">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+          </Event>
+          <Event Reference="E_1672838">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+          </Event>
+          <Event Reference="E_1672839">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+          </Event>
+          <Event Reference="E_1672840">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+          </Event>
+          <Event Reference="E_1672841">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+          </Event>
+          <Event Reference="E_1672842">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+          </Event>
+          <Event Reference="E_1672843">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+          </Event>
+          <Event Reference="E_1672844">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+          </Event>
+          <Event Reference="E_1672845">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+          </Event>
+          <Event Reference="E_1672846">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+          </Event>
+          <Event Reference="E_1672847">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+          </Event>
+          <Event Reference="E_1672848">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+          </Event>
+          <Event Reference="E_1672849">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+          </Event>
+          <Event Reference="E_1672850">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+          </Event>
+          <Event Reference="E_1672851">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+          </Event>
+          <Event Reference="E_1672852">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+          </Event>
+          <Event Reference="E_1672853">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+          </Event>
+          <Event Reference="E_1672854">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+          </Event>
+          <Event Reference="E_1672855">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+          </Event>
+          <Event Reference="E_1672856">
+            <Duration>1</Duration>
+            <Time Reference="0_5" />
+          </Event>
+          <Event Reference="E_1672857">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+          </Event>
+          <Event Reference="E_1672858">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+          </Event>
+          <Event Reference="E_1672859">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+          </Event>
+          <Event Reference="E_1672860">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+          </Event>
+          <Event Reference="E_1672861">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+          </Event>
+          <Event Reference="E_1672862">
+            <Duration>1</Duration>
+            <Time Reference="1_0" />
+          </Event>
+          <Event Reference="E_1672863">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+          </Event>
+          <Event Reference="E_1672864">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+          </Event>
+          <Event Reference="E_1672865">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+          </Event>
+          <Event Reference="E_1672866">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+          </Event>
+          <Event Reference="E_1672867">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+          </Event>
+          <Event Reference="E_1672868">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+          </Event>
+          <Event Reference="E_1672869">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+          </Event>
+          <Event Reference="E_1672870">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+          </Event>
+          <Event Reference="E_1672871">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+          </Event>
+          <Event Reference="E_1672872">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+          </Event>
+          <Event Reference="E_1672873">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+          </Event>
+          <Event Reference="E_1672874">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+          </Event>
+          <Event Reference="E_1672875">
+            <Duration>1</Duration>
+            <Time Reference="1_0" />
+          </Event>
+          <Event Reference="E_1672876">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+          </Event>
+          <Event Reference="E_1672877">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+          </Event>
+          <Event Reference="E_1672878">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+          </Event>
+          <Event Reference="E_1672879">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+          </Event>
+          <Event Reference="E_1672880">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+          </Event>
+          <Event Reference="E_1672881">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+          </Event>
+          <Event Reference="E_1672882">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+          </Event>
+          <Event Reference="E_1672883">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+          </Event>
+          <Event Reference="E_1672884">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+          </Event>
+          <Event Reference="E_1672885">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+          </Event>
+          <Event Reference="E_1672886">
+            <Duration>2</Duration>
+            <Time Reference="2_0" />
+          </Event>
+          <Event Reference="E_1672887">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+          </Event>
+          <Event Reference="E_1672888">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+          </Event>
+          <Event Reference="E_1672889">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+          </Event>
+          <Event Reference="E_1672890">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+          </Event>
+          <Event Reference="E_1672891">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+          </Event>
+          <Event Reference="E_1672892">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+          </Event>
+          <Event Reference="E_1672893">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+          </Event>
+          <Event Reference="E_1672894">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+          </Event>
+          <Event Reference="E_1672895">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+          </Event>
+          <Event Reference="E_1672896">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+          </Event>
+          <Event Reference="E_1672897">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+          </Event>
+          <Event Reference="E_1672898">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+          </Event>
+          <Event Reference="E_1672899">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+          </Event>
+          <Event Reference="E_1672900">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+          </Event>
+          <Event Reference="E_1672901">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+          </Event>
+          <Event Reference="E_1672902">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+          </Event>
+        </Events>
+      </Solution>
+    </SolutionGroup>
+	<SolutionGroup Id="Dudek Timetables 2022 option 1">
+   <MetaData>
+      <Contributor>Wieslaw Dudek, Dudek Timetables Software, Cracow, Poland</Contributor>
+      <Date>2022-08-31</Date>
+      <Description>Generated by "Dudek Timetables" School Timetable Generator: https://school-timetable.edu.pl/en/home.html</Description>
+   </MetaData>
+   <Solution Reference="CzechVillageSchool">
+      <Events>
+         <Event Reference="E_1672862">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672842">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672839">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672872">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672867">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672837">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672897">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672902">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672857">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672900">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672855">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672898">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672885">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672850">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672840">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672875">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672890">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672895">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672865">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672861">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672851">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672873">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672884">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672864">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672894">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672889">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672854">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672879">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672871">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672852">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672877">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672847">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672882">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672892">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672887">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672893">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672883">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672886">
+            <Duration>2</Duration>
+            <Time Reference="2_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672860">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672880">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672870">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672845">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672858">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672896">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672848">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672863">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672891">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672868">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672866">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672881">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672838">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672888">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672876">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672878">
+            <Duration>1</Duration>
+            <Time Reference="1_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672853">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672843">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672836">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672856">
+            <Duration>1</Duration>
+            <Time Reference="0_5" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672874">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672901">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672846">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672841">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672844">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672849">
+            <Duration>1</Duration>
+            <Time Reference="1_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672859">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672899">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672869">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+      </Events>
+   </Solution>
+</SolutionGroup>
+<SolutionGroup Id="Dudek Timetables 2022 option 2">
+   <MetaData>
+      <Contributor>Wieslaw Dudek, Dudek Timetables Software, Cracow, Poland</Contributor>
+      <Date>2022-09-05</Date>
+      <Description>Generated by "Dudek Timetables" School Timetable Generator: https://school-timetable.edu.pl/en/home.html</Description>
+   </MetaData>
+   <Solution Reference="CzechVillageSchool">
+      <Events>
+         <Event Reference="E_1672842">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672897">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672852">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672862">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672872">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672902">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672837">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672855">
+            <Duration>1</Duration>
+            <Time Reference="2_5" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672900">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672886">
+            <Duration>2</Duration>
+            <Time Reference="1_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672885">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672840">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672865">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672870">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672896">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672851">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672853">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672861">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672876">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672878">
+            <Duration>1</Duration>
+            <Time Reference="2_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672843">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672874">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672894">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672854">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672841">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672869">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672889">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672849">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672890">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672887">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672880">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672877">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672847">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672892">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672882">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672867">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672857">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672893">
+            <Duration>1</Duration>
+            <Time Reference="2_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672883">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672898">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672850">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672860">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672875">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672845">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672895">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672868">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672871">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672838">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672863">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672888">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672848">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672881">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672891">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672858">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672866">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672873">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672864">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672856">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672844">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672846">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672884">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672836">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672901">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672859">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672899">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672839">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672879">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+      </Events>
+   </Solution>
+</SolutionGroup>
+<SolutionGroup Id="Dudek Timetables 2022 option 3">
+   <MetaData>
+      <Contributor>Wieslaw Dudek, Dudek Timetables Software, Cracow, Poland</Contributor>
+      <Date>2022-09-06</Date>
+      <Description>Generated by "Dudek Timetables" School Timetable Generator: https://school-timetable.edu.pl/en/home.html</Description>
+   </MetaData>
+   <Solution Reference="CzechVillageSchool">
+      <Events>
+         <Event Reference="E_1672852">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672862">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672897">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672842">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672882">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672857">
+            <Duration>1</Duration>
+            <Time Reference="3_5" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672877">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672847">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672845">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672883">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672900">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672875">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672886">
+            <Duration>2</Duration>
+            <Time Reference="1_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672898">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672860">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672895">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672880">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672840">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672870">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672885">
+            <Duration>1</Duration>
+            <Time Reference="2_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672896">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672843">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672871">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672851">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672878">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672838">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672876">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672846">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672854">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672844">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672894">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672891">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672869">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672841">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672899">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672839">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672890">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672867">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672887">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672850">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672837">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672892">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672902">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672872">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672893">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672855">
+            <Duration>1</Duration>
+            <Time Reference="1_5" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672865">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672881">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672861">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672888">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672863">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672848">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672868">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672858">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672866">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672853">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672873">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672874">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672864">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672879">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672901">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672884">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672856">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672836">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672889">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672849">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672859">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+      </Events>
+   </Solution>
+</SolutionGroup>
+<SolutionGroup Id="Dudek Timetables 2022 option 4">
+   <MetaData>
+      <Contributor>Wieslaw Dudek, Dudek Timetables Software, Cracow, Poland</Contributor>
+      <Date>2022-09-07</Date>
+      <Description>Generated by "Dudek Timetables" School Timetable Generator: https://school-timetable.edu.pl/en/home.html</Description>
+   </MetaData>
+   <Solution Reference="CzechVillageSchool">
+      <Events>
+         <Event Reference="E_1672839">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672887">
+            <Duration>1</Duration>
+            <Time Reference="3_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672867">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672862">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672872">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672882">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672893">
+            <Duration>1</Duration>
+            <Time Reference="1_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672852">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672897">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672855">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672885">
+            <Duration>1</Duration>
+            <Time Reference="4_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672900">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672898">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672850">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672875">
+            <Duration>1</Duration>
+            <Time Reference="4_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672860">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672865">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672848">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672881">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672888">
+            <Duration>1</Duration>
+            <Time Reference="3_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672891">
+            <Duration>1</Duration>
+            <Time Reference="4_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672866">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672876">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672856">
+            <Duration>1</Duration>
+            <Time Reference="3_5" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672846">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672854">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672899">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672890">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672842">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672902">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672877">
+            <Duration>1</Duration>
+            <Time Reference="0_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672847">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672857">
+            <Duration>1</Duration>
+            <Time Reference="4_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672892">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672837">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672883">
+            <Duration>1</Duration>
+            <Time Reference="2_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672886">
+            <Duration>2</Duration>
+            <Time Reference="2_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672895">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672870">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672840">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672880">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672845">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672868">
+            <Duration>1</Duration>
+            <Time Reference="4_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672871">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672858">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672861">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672838">
+            <Duration>1</Duration>
+            <Time Reference="3_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672851">
+            <Duration>1</Duration>
+            <Time Reference="1_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672896">
+            <Duration>1</Duration>
+            <Time Reference="0_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672878">
+            <Duration>1</Duration>
+            <Time Reference="1_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672853">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672873">
+            <Duration>1</Duration>
+            <Time Reference="2_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672863">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672843">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672894">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672884">
+            <Duration>1</Duration>
+            <Time Reference="2_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672874">
+            <Duration>1</Duration>
+            <Time Reference="1_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672836">
+            <Duration>1</Duration>
+            <Time Reference="0_3" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672901">
+            <Duration>1</Duration>
+            <Time Reference="1_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672844">
+            <Duration>1</Duration>
+            <Time Reference="0_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672864">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672879">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672869">
+            <Duration>1</Duration>
+            <Time Reference="3_0" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672859">
+            <Duration>1</Duration>
+            <Time Reference="2_4" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672841">
+            <Duration>1</Duration>
+            <Time Reference="0_1" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672849">
+            <Duration>1</Duration>
+            <Time Reference="3_2" />
+            <Resources />
+         </Event>
+         <Event Reference="E_1672889">
+            <Duration>1</Duration>
+            <Time Reference="1_4" />
+            <Resources />
+         </Event>
+      </Events>
+   </Solution>
+</SolutionGroup>
+  </SolutionGroups>
+</HighSchoolTimetableArchive>
