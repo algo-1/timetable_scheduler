@@ -32,9 +32,5 @@ def cost(deviation: int, constraint_weight: int, cost_type: Cost_Function_Type):
     return constraint_weight * cost_function(deviation, cost_type)
 
 
-def parse_xhtts(filename: Path | str):
-    pass
-
-
 if __name__ == "__main__":
     pass
