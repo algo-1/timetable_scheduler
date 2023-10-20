@@ -10,12 +10,12 @@ data_dir = base_dir.joinpath(Path("data"))
 
 
 @pytest.fixture
-def artificial_abrahamson_15_dataset_path():
-    return data_dir.joinpath("ALL_INSTANCES/ArtificialAbramson15.xml")
+def artificial_abrahamson_15_dataset():
+    return XHSTTS(data_dir.joinpath("ALL_INSTANCES/ArtificialAbramson15.xml"))
 
 
-def test_artificial_abrahamson_15_dataset(artificial_abrahamson_15_dataset_path):
-    dataset = XHSTTS(artificial_abrahamson_15_dataset_path)
+def test_artificial_abrahamson_15_dataset(artificial_abrahamson_15_dataset):
+    dataset = artificial_abrahamson_15_dataset
     instance = dataset.get_first_instance()
 
     num_events = len(instance.get_events())
@@ -38,7 +38,7 @@ def test_artificial_abrahamson_15_dataset(artificial_abrahamson_15_dataset_path)
     assert num_events == 450
     assert num_times == 30
     assert num_resources == 15 + 15 + 15
-    # assert num_constraints == 2
+    assert num_constraints == 2
     assert num_solutions == 2
     assert num_events_in_first_solution == 450
     assert (
