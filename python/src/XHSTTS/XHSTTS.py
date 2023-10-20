@@ -303,18 +303,18 @@ if __name__ == "__main__":
 
     print(list(map(get_event_number, first_instance.get_solutions()[1])))
 
-    zero_to_450 = {x for x in range(1, 450 + 1)}
+    one_to_450 = {x for x in range(1, 450 + 1)}
 
     print(
         "solution 0",
         len(list(map(get_event_number, first_instance.get_solutions()[0]))),
-        zero_to_450 - set(map(get_event_number, first_instance.get_solutions()[0])),
+        one_to_450 - set(map(get_event_number, first_instance.get_solutions()[0])),
     )
 
     print(
         "solution 1",
         len(list(map(get_event_number, first_instance.get_solutions()[1]))),
-        zero_to_450 - set(map(get_event_number, first_instance.get_solutions()[1])),
+        one_to_450 - set(map(get_event_number, first_instance.get_solutions()[1])),
     )
 
     path = (
