@@ -213,7 +213,37 @@ class XHSTTSInstance:
         }
 
     def _parse_constraints(self, XMLConstraints: ET.Element):
-        pass
+        for XMLConstraint in XMLConstraints.findall("*"):
+            if XMLConstraint.tag == "AssignResourceConstraint":
+                pass
+            elif XMLConstraint.tag == "SplitEventsConstraint":
+                pass
+            elif XMLConstraint.tag == "DistributeSplitEventsConstraint":
+                pass
+            elif XMLConstraint.tag == "PreferResourcesConstraint":
+                pass
+            elif XMLConstraint.tag == "PreferTimesConstraint":
+                pass
+            elif XMLConstraint.tag == "AvoidSplitAssignmentsConstraint":
+                pass
+            elif XMLConstraint.tag == "SpreadEventsConstraint":
+                pass
+            elif XMLConstraint.tag == "LinkEventsConstraint":
+                pass
+            elif XMLConstraint.tag == "OrderEventsConstraint":
+                pass
+            elif XMLConstraint.tag == "AvoidClashesConstraint":
+                pass
+            elif XMLConstraint.tag == "AvoidUnavailableTimesConstraint":
+                pass
+            elif XMLConstraint.tag == "LimitIdleTimesConstraint":
+                pass
+            elif XMLConstraint.tag == "ClusterBusyTimesConstraint":
+                pass
+            elif XMLConstraint.tag == "LimitBusyTimesConstraint":
+                pass
+            elif XMLConstraint.tag == "LimitWorkloadConstraint":
+                pass
 
     def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
@@ -332,3 +362,4 @@ if __name__ == "__main__":
     print(first_instance.get_resources())
     print(first_instance.ResourceTypes)
     print(first_instance.ResourceGroups)
+    print(first_instance.get_constraints())
