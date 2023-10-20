@@ -31,7 +31,7 @@ class XHSTTSInstance:
             "Duration",
             "Workload",
             "PreAssignedTimeReferences",
-            "Resources",  # of type EventResource
+            "Resources",  # List of EventResource
             "ResourceGroupReferences",
             "CourseReference",
             "EventGroupReferences",
@@ -40,18 +40,35 @@ class XHSTTSInstance:
     EventResource = namedtuple(
         "EventResource", ["Reference", "Role", "ResourceTypeReference", "Workload"]
     )
+    SolutionEvent = namedtuple(
+        "SolutionEvent",
+        [
+            "InstanceEventReference",
+            "Duration",
+            "TimeReference",
+            "Resources",  # List of SolutionEventResource
+        ],
+    )
+    SolutionEventResource = namedtuple("SolutionEventResource", ["Reference", "Role"])
 
-    def __init__(self, XMLInstance, XMLInstanceSolutions):
+    def __init__(self, XMLInstance: ET.Element, XMLSolutions: list[ET.Element]):
+        """
+        XMLInstance : The XHSTTS XML representation of the Instance.\n
+        XMLSolutions : List of all solutions in the dataset that reference the XMLInstance.
+        """
         self.TimeGroups = {}
         self.Times = {}
         self.ResourceTypes = {}
         self.ResourceGroups = {}
         self.Resources = {}
         self.Events = {}
+        self.Constraints = {}
+        self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
         self._parse_resources(XMLInstance.find("Resources"))
         self._parse_events(XMLInstance.find("Events"))
         self._parse_constraints(XMLInstance.find("Constraints"))
+        self._parse_solutions(XMLSolutions)
 
     def get_events(self):
         return self.Events
@@ -63,10 +80,10 @@ class XHSTTSInstance:
         return self.Resources
 
     def get_constraints(self):
-        return self.constraints
+        return self.Constraints
 
     def get_solutions(self):
-        return self.solutions
+        return self.Solutions
 
     def _parse_times(self, XMLTimes: ET.Element):
         XMLTimesGroups = XMLTimes.find("TimeGroups")
@@ -165,7 +182,7 @@ class XHSTTSInstance:
                         ]
                         if XMLResource.find("ResourceType") is not None
                         else None,
-                        Workload=int(XMLResource.find("Workload"))
+                        Workload=int(XMLResource.find("Workload").text)
                         if XMLResource.find("Workload") is not None
                         else None,
                     )
@@ -188,13 +205,44 @@ class XHSTTSInstance:
                     for XMLEventGroup in XMLEvent.find("EventGroups").findall(
                         "EventGroup"
                     )
-                ],
+                ]
+                if XMLEvent.find("EventGroups") is not None
+                else [],
             )
             for XMLEvent in XMLEvents.findall("Event")
         }
 
-    def _parse_constraints(self, XMLConstraints: ET.Element):
+    def _parse_constraints(self, XMLConstraints: list[ET.Element]):
         pass
+
+    def _parse_solutions(self, XMLSolutions: ET.Element):
+        for XMLSolution in XMLSolutions:
+            solution_events = XMLSolution.find("Events").findall("Event")
+            self.Solutions.append(
+                [
+                    XHSTTSInstance.SolutionEvent(
+                        InstanceEventReference=XMLSolutionEvent.attrib["Reference"],
+                        Duration=int(XMLSolutionEvent.find("Duration").text)
+                        if XMLSolutionEvent.find("Duration") is not None
+                        else None,
+                        TimeReference=XMLSolutionEvent.find("Time").attrib["Reference"]
+                        if XMLSolutionEvent.find("Time")
+                        else None,
+                        Resources=[
+                            XHSTTSInstance.SolutionEventResource(
+                                XMLSolutionResource.attrib["Reference"],
+                                XMLSolutionResource.find("Role").text,
+                            )
+                            for XMLSolutionResource in XMLSolutionEvent.find(
+                                "Resources"
+                            ).findall("Resource")
+                        ]
+                        if XMLSolutionEvent.find("Resources") is not None
+                        else [],
+                    )
+                    for XMLSolutionEvent in solution_events
+                ]
+            )
 
     @staticmethod
     def get_cost(solution, constraint):
@@ -231,13 +279,56 @@ class XHSTTS:
 
 if __name__ == "__main__":
     first_instance = XHSTTS(
-        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/BrazilInstance3.xml"
+        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/ArtificialAbramson15.xml"
     ).get_first_instance()
-    # print(first_instance.get_times())
-    # print(first_instance.get_resources())
-    # print(first_instance.ResourceTypes)
-    # print(first_instance.ResourceGroups)
 
     from pprint import pp
 
     pp(list(first_instance.get_events().items())[:5])
+
+    pp(first_instance.get_solutions()[1])
+
+    import re
+
+    def get_event_number(event):
+        event_str = str(event)
+        pattern = r"Event_C(\d+)_\d+"
+        match = re.search(pattern, event_str)
+
+        if match:
+            number = match.group(1)
+            return int(number)
+        else:
+            raise Exception(f"Number not found in the event. Event = {event_str}")
+
+    print(list(map(get_event_number, first_instance.get_solutions()[1])))
+
+    zero_to_450 = {x for x in range(1, 450 + 1)}
+
+    print(
+        "solution 0",
+        len(list(map(get_event_number, first_instance.get_solutions()[0]))),
+        zero_to_450 - set(map(get_event_number, first_instance.get_solutions()[0])),
+    )
+
+    print(
+        "solution 1",
+        len(list(map(get_event_number, first_instance.get_solutions()[1]))),
+        zero_to_450 - set(map(get_event_number, first_instance.get_solutions()[1])),
+    )
+
+    path = (
+        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/BrazilInstance3.xml"
+    )
+
+    # path = (
+    #     "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/AustraliaBGHS98.xml"
+    # )
+
+    # path = "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/ArtificialSudoku4x4.xml"
+
+    first_instance = XHSTTS(path).get_first_instance()
+    print(first_instance.get_times())
+    print(first_instance.get_resources())
+    print(first_instance.ResourceTypes)
+    print(first_instance.ResourceGroups)
