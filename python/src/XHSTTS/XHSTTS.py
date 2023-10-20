@@ -212,10 +212,10 @@ class XHSTTSInstance:
             for XMLEvent in XMLEvents.findall("Event")
         }
 
-    def _parse_constraints(self, XMLConstraints: list[ET.Element]):
+    def _parse_constraints(self, XMLConstraints: ET.Element):
         pass
 
-    def _parse_solutions(self, XMLSolutions: ET.Element):
+    def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
             solution_events = XMLSolution.find("Events").findall("Event")
             self.Solutions.append(
