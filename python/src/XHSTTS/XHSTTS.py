@@ -1,11 +1,137 @@
 from collections import namedtuple
+from inspect import isclass
 import xml.etree.ElementTree as ET
+from abc import ABC, abstractmethod
 
-# Hack, TODO sort out modules properly! (virtual env? Add to path?)
+# Hack, TODO sort out modules properly! (virtual env? Add to path? setup.py?)
 try:
-    from .utils import Cost
+    from .utils import Cost, Cost_Function_Type, cost_function_to_enum
 except:
-    from utils import Cost
+    from utils import Cost, Cost_Function_Type, cost_function_to_enum
+
+
+class Constraint(ABC):
+    def __init__(self, name: str, required: str, weight: int, cost_function: str):
+        self.name: str = name
+        self.required: bool = required == "true"
+        self.weight = weight
+        self.cost_function: Cost_Function_Type = cost_function_to_enum(cost_function)
+
+    @staticmethod
+    @abstractmethod
+    def evaluate():
+        pass
+
+    def is_required(self):
+        return self.required
+
+    def get_name(self):
+        return self.name
+
+    def get_cost_function(self):
+        return self.get_cost_function
+
+    def get_weight(self):
+        return self.weight
+
+
+class AssignTimeConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class AssignResourceConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class PreferResourcesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class AvoidClashesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class SplitEventsConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class DistributeSplitEventsConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class PreferTimesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class SpreadEventsConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class AvoidUnavailableTimesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class LimitIdleTimesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
+
+
+class ClusterBusyTimesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element):
+        pass
+
+    @staticmethod
+    def evaluate():
+        pass
 
 
 class XHSTTSInstance:
@@ -62,7 +188,8 @@ class XHSTTSInstance:
         self.ResourceGroups = {}
         self.Resources = {}
         self.Events = {}
-        self.Constraints = {}
+        self.EventGroups = {}
+        self.Constraints = []
         self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
         self._parse_resources(XMLInstance.find("Resources"))
@@ -214,36 +341,16 @@ class XHSTTSInstance:
 
     def _parse_constraints(self, XMLConstraints: ET.Element):
         for XMLConstraint in XMLConstraints.findall("*"):
-            if XMLConstraint.tag == "AssignResourceConstraint":
-                pass
-            elif XMLConstraint.tag == "SplitEventsConstraint":
-                pass
-            elif XMLConstraint.tag == "DistributeSplitEventsConstraint":
-                pass
-            elif XMLConstraint.tag == "PreferResourcesConstraint":
-                pass
-            elif XMLConstraint.tag == "PreferTimesConstraint":
-                pass
-            elif XMLConstraint.tag == "AvoidSplitAssignmentsConstraint":
-                pass
-            elif XMLConstraint.tag == "SpreadEventsConstraint":
-                pass
-            elif XMLConstraint.tag == "LinkEventsConstraint":
-                pass
-            elif XMLConstraint.tag == "OrderEventsConstraint":
-                pass
-            elif XMLConstraint.tag == "AvoidClashesConstraint":
-                pass
-            elif XMLConstraint.tag == "AvoidUnavailableTimesConstraint":
-                pass
-            elif XMLConstraint.tag == "LimitIdleTimesConstraint":
-                pass
-            elif XMLConstraint.tag == "ClusterBusyTimesConstraint":
-                pass
-            elif XMLConstraint.tag == "LimitBusyTimesConstraint":
-                pass
-            elif XMLConstraint.tag == "LimitWorkloadConstraint":
-                pass
+            class_name = XMLConstraint.tag
+            try:
+                constraint_class = globals()[class_name]
+                assert callable(constraint_class) and isclass(
+                    constraint_class
+                ), f"{class_name} is not a valid class"
+                constraint_instance = constraint_class(XMLConstraint)
+                self.Constraints.append(constraint_instance)
+            except:
+                raise Exception(f"Unrecognized constraint: {class_name}")
 
     def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
@@ -275,11 +382,11 @@ class XHSTTSInstance:
             )
 
     @staticmethod
-    def get_cost(solution, constraint):
-        return
+    def get_cost(solution, constraint: Constraint):
+        return constraint.evaluate(solution)
 
     @staticmethod
-    def evaluate_solution(solution, constraints):
+    def evaluate_solution(solution, constraints: list[Constraint]):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
         for constraint in constraints:
@@ -289,7 +396,11 @@ class XHSTTSInstance:
             else:
                 cost.Objective_Value += value
 
-        return Cost
+        return cost
+
+    # TODO
+    def add_solution():
+        pass
 
 
 class XHSTTS:

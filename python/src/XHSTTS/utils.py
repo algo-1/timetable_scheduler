@@ -25,6 +25,17 @@ def cost_function(deviation: int, cost_type: Cost_Function_Type):
         )
 
 
+def cost_function_to_enum(cost_function: str):
+    if cost_function == "Linear":
+        return Cost_Function_Type.Linear
+    elif cost_function == "Quadratic":
+        return Cost_Function_Type.Quadratic
+    elif cost_function == "Step":
+        return Cost_Function_Type.Step
+    else:
+        raise Exception("Invalid cost_function")
+
+
 def cost(deviation: int, constraint_weight: int, cost_type: Cost_Function_Type):
     """
     deviation : is non-negative.\n

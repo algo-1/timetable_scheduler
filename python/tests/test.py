@@ -16,7 +16,7 @@ def artificial_abrahamson_15_dataset():
 
 def test_artificial_abrahamson_15_dataset(artificial_abrahamson_15_dataset):
     dataset = artificial_abrahamson_15_dataset
-    instance = dataset.get_first_instance()
+    instance: XHSTTSInstance = dataset.get_first_instance()
 
     num_events = len(instance.get_events())
     num_times = len(instance.get_times())
