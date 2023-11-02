@@ -247,22 +247,21 @@ class XHSTTSInstance:
         if XMLTimesGroups:
             self.TimeGroups = self._parse_TimeGroups(XMLTimesGroups)
 
-            XMLTimeList = XMLTimes.findall("Time")
-
-            for XMLTime in XMLTimeList:
-                time_Id = XMLTime.attrib["Id"]
-                Name = XMLTime.find("Name").text
-                TimeGroup_references = [
-                    element.attrib["Reference"]
-                    for element in (
-                        XMLTime.findall(".//Day")
-                        + XMLTime.findall(".//Week")
-                        + XMLTime.findall(".//TimeGroup")
-                    )
-                ]
-                self.Times[time_Id] = XHSTTSInstance.Time(
-                    Name=Name, TimeGroupReferences=TimeGroup_references
+        XMLTimeList = XMLTimes.findall("Time")
+        for XMLTime in XMLTimeList:
+            time_Id = XMLTime.attrib["Id"]
+            Name = XMLTime.find("Name").text
+            TimeGroup_references = [
+                element.attrib["Reference"]
+                for element in (
+                    XMLTime.findall(".//Day")
+                    + XMLTime.findall(".//Week")
+                    + XMLTime.findall(".//TimeGroup")
                 )
+            ]
+            self.Times[time_Id] = XHSTTSInstance.Time(
+                Name=Name, TimeGroupReferences=TimeGroup_references
+            )
 
     def _parse_TimeGroups(self, XMLTimeGroups: ET.Element):
         return {
