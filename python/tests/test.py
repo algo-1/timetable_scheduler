@@ -28,12 +28,8 @@ def test_artificial_abrahamson_15_dataset(artificial_abrahamson_15_dataset):
     num_events_in_first_solution = len(instance.get_solutions()[0])
     num_events_in_second_solution = len(instance.get_solutions()[1])
 
-    cost1 = instance.evaluate_solution(
-        instance.get_solutions()[0], instance.get_constraints()
-    )
-    cost2 = instance.evaluate_solution(
-        instance.get_solutions()[1], instance.get_constraints()
-    )
+    cost1 = instance.evaluate_solution(instance.get_solutions()[0])
+    cost2 = instance.evaluate_solution(instance.get_solutions()[1])
 
     assert num_events == 450
     assert num_times == 30

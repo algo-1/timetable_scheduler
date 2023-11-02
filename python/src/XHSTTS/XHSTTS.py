@@ -1,13 +1,15 @@
+from __future__ import annotations
 from collections import namedtuple
 from inspect import isclass
 import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 
+
 # Hack, TODO sort out modules properly! (virtual env? Add to path? setup.py?)
 try:
-    from .utils import Cost, Cost_Function_Type, cost_function_to_enum
+    from .utils import Cost, Cost_Function_Type, cost_function_to_enum, cost_function
 except:
-    from utils import Cost, Cost_Function_Type, cost_function_to_enum
+    from utils import Cost, Cost_Function_Type, cost_function_to_enum, cost_function
 
 
 class Constraint(ABC):
@@ -18,9 +20,10 @@ class Constraint(ABC):
         self.cost_function: Cost_Function_Type = cost_function_to_enum(
             XMLConstraint.find("CostFunction")
         )
+        # TODO - handle appliesTo- create self.events & self.resources
 
     @abstractmethod
-    def evaluate(solution):
+    def evaluate(self, solution: list[XHSTTSInstance.SolutionEvent]):
         pass
 
     def is_required(self):
@@ -38,25 +41,62 @@ class Constraint(ABC):
 
 class AssignTimeConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
-    def evaluate(solution):
-        pass
+    def evaluate(self, solution):
+        deviation = 0
+        for event in self.events:
+            if not event.PreAssignedTimeReference:
+                for solution_event in solution:
+                    deviation += (
+                        (
+                            solution_event.Duration
+                            if solution_event.Duration
+                            else event.Duration
+                        )
+                        if not solution_event.TimeReference
+                        else 0
+                    )
+        return cost_function(deviation, self.cost_function)
 
 
 class AssignResourceConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
+        self.role = XMLConstraint.find("Role").text
 
-    def evaluate(solution):
-        pass
+    def isAssigned(
+        self, solution_event_resources: list[XHSTTSInstance.SolutionEventResource]
+    ):
+        for _, role in solution_event_resources:
+            if role == self.role:
+                return True
+        return False
+
+    def evaluate(self, solution):
+        deviation = 0
+        for event in self.events:
+            for resource in event.Resources:
+                if not resource.Reference and resource.Role == self.role:
+                    for solution_event in solution:
+                        deviation += (
+                            (
+                                solution_event.Duration
+                                if solution_event.Duration
+                                else event.Duration
+                            )
+                            if not self.isAssigned(solution_event.Resources)
+                            else 0
+                        )
+
+        return cost_function(deviation, self.cost_function)
 
 
 class PreferResourcesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -64,7 +104,7 @@ class AvoidClashesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -72,7 +112,7 @@ class SplitEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -80,7 +120,7 @@ class DistributeSplitEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -88,7 +128,7 @@ class PreferTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -96,7 +136,7 @@ class SpreadEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -104,7 +144,7 @@ class AvoidUnavailableTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -112,7 +152,7 @@ class LimitIdleTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -120,7 +160,7 @@ class ClusterBusyTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    def evaluate():
+    def evaluate(self, solution):
         pass
 
 
@@ -146,7 +186,7 @@ class XHSTTSInstance:
             "Name",
             "Duration",
             "Workload",
-            "PreAssignedTimeReferences",
+            "PreAssignedTimeReference",
             "Resources",  # List of EventResource
             "ResourceGroupReferences",
             "CourseReference",
@@ -179,7 +219,7 @@ class XHSTTSInstance:
         self.Resources = {}
         self.Events = {}
         self.EventGroups = {}
-        self.Constraints = []
+        self.Constraints: list[Constraint] = []
         self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
         self._parse_resources(XMLInstance.find("Resources"))
@@ -283,7 +323,7 @@ class XHSTTSInstance:
                 Workload=int(XMLEvent.find("Workload").text)
                 if XMLEvent.find("Workload") is not None
                 else None,
-                PreAssignedTimeReferences=XMLEvent.find("Time").attrib["Reference"]
+                PreAssignedTimeReference=XMLEvent.find("Time").attrib["Reference"]
                 if XMLEvent.find("Time") is not None
                 else None,
                 Resources=[
@@ -371,14 +411,14 @@ class XHSTTSInstance:
                 ]
             )
 
-    def get_cost(solution, constraint: Constraint):
+    def get_cost(self, solution, constraint: Constraint):
         return constraint.evaluate(solution)
 
-    def evaluate_solution(solution, constraints: list[Constraint]):
+    def evaluate_solution(self, solution: list[SolutionEvent]):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
-        for constraint in constraints:
-            value = XHSTTSInstance.get_cost(solution, constraint)
+        for constraint in self.Constraints:
+            value = self.get_cost(solution, constraint)
             if constraint.is_required():
                 cost.Infeasibility_Value += value
             else:
