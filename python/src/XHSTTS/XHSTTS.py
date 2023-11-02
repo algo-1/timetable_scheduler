@@ -11,11 +11,13 @@ except:
 
 
 class Constraint(ABC):
-    def __init__(self, name: str, required: str, weight: int, cost_function: str):
-        self.name: str = name
-        self.required: bool = required == "true"
-        self.weight = weight
-        self.cost_function: Cost_Function_Type = cost_function_to_enum(cost_function)
+    def __init__(self, XMLConstraint: ET.Element):
+        self.name: str = XMLConstraint.find("Name").text
+        self.required: bool = XMLConstraint.find("Required").text == "true"
+        self.weight = int(XMLConstraint.find("Weight").text)
+        self.cost_function: Cost_Function_Type = cost_function_to_enum(
+            XMLConstraint.find("CostFunction")
+        )
 
     @staticmethod
     @abstractmethod
@@ -46,7 +48,7 @@ class AssignTimeConstraint(Constraint):
 
 class AssignResourceConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -55,7 +57,7 @@ class AssignResourceConstraint(Constraint):
 
 class PreferResourcesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -64,7 +66,7 @@ class PreferResourcesConstraint(Constraint):
 
 class AvoidClashesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -73,7 +75,7 @@ class AvoidClashesConstraint(Constraint):
 
 class SplitEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -82,7 +84,7 @@ class SplitEventsConstraint(Constraint):
 
 class DistributeSplitEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -91,7 +93,7 @@ class DistributeSplitEventsConstraint(Constraint):
 
 class PreferTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -100,7 +102,7 @@ class PreferTimesConstraint(Constraint):
 
 class SpreadEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -109,7 +111,7 @@ class SpreadEventsConstraint(Constraint):
 
 class AvoidUnavailableTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -118,7 +120,7 @@ class AvoidUnavailableTimesConstraint(Constraint):
 
 class LimitIdleTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
@@ -127,7 +129,7 @@ class LimitIdleTimesConstraint(Constraint):
 
 class ClusterBusyTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
-        pass
+        super().__init__(XMLConstraint)
 
     @staticmethod
     def evaluate():
