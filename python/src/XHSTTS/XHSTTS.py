@@ -19,9 +19,8 @@ class Constraint(ABC):
             XMLConstraint.find("CostFunction")
         )
 
-    @staticmethod
     @abstractmethod
-    def evaluate():
+    def evaluate(solution):
         pass
 
     def is_required(self):
@@ -41,8 +40,7 @@ class AssignTimeConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         pass
 
-    @staticmethod
-    def evaluate():
+    def evaluate(solution):
         pass
 
 
@@ -50,8 +48,7 @@ class AssignResourceConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
-    def evaluate():
+    def evaluate(solution):
         pass
 
 
@@ -59,7 +56,6 @@ class PreferResourcesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -68,7 +64,6 @@ class AvoidClashesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -77,7 +72,6 @@ class SplitEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -86,7 +80,6 @@ class DistributeSplitEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -95,7 +88,6 @@ class PreferTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -104,7 +96,6 @@ class SpreadEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -113,7 +104,6 @@ class AvoidUnavailableTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -122,7 +112,6 @@ class LimitIdleTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -131,7 +120,6 @@ class ClusterBusyTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element):
         super().__init__(XMLConstraint)
 
-    @staticmethod
     def evaluate():
         pass
 
@@ -383,11 +371,9 @@ class XHSTTSInstance:
                 ]
             )
 
-    @staticmethod
     def get_cost(solution, constraint: Constraint):
         return constraint.evaluate(solution)
 
-    @staticmethod
     def evaluate_solution(solution, constraints: list[Constraint]):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 

@@ -28,10 +28,10 @@ def test_artificial_abrahamson_15_dataset(artificial_abrahamson_15_dataset):
     num_events_in_first_solution = len(instance.get_solutions()[0])
     num_events_in_second_solution = len(instance.get_solutions()[1])
 
-    cost1 = XHSTTSInstance.evaluate_solution(
+    cost1 = instance.evaluate_solution(
         instance.get_solutions()[0], instance.get_constraints()
     )
-    cost2 = XHSTTSInstance.evaluate_solution(
+    cost2 = instance.evaluate_solution(
         instance.get_solutions()[1], instance.get_constraints()
     )
 
