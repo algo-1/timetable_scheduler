@@ -55,7 +55,7 @@ if __name__ == "__main__":
         sol_events.extend(random_split(event))
 
     # assign time and resources randomly anywhere necessary
-    result = list(map(assign_random_resources, map(assign_random_times, sol_events)))
+    result = list(assign_random_resources(assign_random_times(sol_events)))
 
     evaluation = instance.evaluate_solution(instance.create_solution(result))
 
