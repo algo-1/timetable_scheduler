@@ -32,7 +32,6 @@ class Constraint(ABC):
         self.instance_event_groups = instance_event_groups
         self.instance_events = instance_events
         self._parse_applies_to(XMLConstraint.find("AppliesTo"))
-        print("wtwhwe", self.events)
 
     @abstractmethod
     def evaluate(self, solution: list[XHSTTSInstance.SolutionEvent]) -> int:
@@ -72,11 +71,6 @@ class Constraint(ABC):
         XMLEventGroups = XMLAppliesTo.find("EventGroups")
         if XMLEventGroups:
             for XMLEventGroup in XMLEventGroups.findall("EventGroup"):
-                print(
-                    "eqdf",
-                    XMLEventGroup.attrib["Reference"],
-                    self.instance_event_groups.keys(),
-                )
                 self.events.extend(
                     self.instance_event_groups[XMLEventGroup.attrib["Reference"]]
                 )
@@ -97,8 +91,6 @@ class AssignTimeConstraint(Constraint):
 
     def evaluate(self, solution):
         deviation = 0
-        print("eventsss", len(self.events))
-        print(len(solution))
         for event in self.events:
             if not event.PreAssignedTimeReference:
                 seen = False
