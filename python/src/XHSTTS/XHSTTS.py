@@ -1,5 +1,5 @@
 from __future__ import annotations
-from collections import namedtuple
+from collections import defaultdict, namedtuple
 from inspect import isclass
 import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
@@ -13,17 +13,29 @@ except:
 
 
 class Constraint(ABC):
-    def __init__(self, XMLConstraint: ET.Element):
+    def __init__(
+        self,
+        XMLConstraint: ET.Element,
+        instance_resource_groups,
+        instance_event_groups,
+        instance_events,
+    ):
         self.name: str = XMLConstraint.find("Name").text
         self.required: bool = XMLConstraint.find("Required").text == "true"
         self.weight = int(XMLConstraint.find("Weight").text)
         self.cost_function: Cost_Function_Type = cost_function_to_enum(
-            XMLConstraint.find("CostFunction")
+            XMLConstraint.find("CostFunction").text
         )
-        # TODO - handle appliesTo- create self.events & self.resources
+        self.resource_references = []
+        self.instance_resource_groups = instance_resource_groups
+        self.events = []
+        self.instance_event_groups = instance_event_groups
+        self.instance_events = instance_events
+        self._parse_applies_to(XMLConstraint.find("AppliesTo"))
+        print("wtwhwe", self.events)
 
     @abstractmethod
-    def evaluate(self, solution: list[XHSTTSInstance.SolutionEvent]):
+    def evaluate(self, solution: list[XHSTTSInstance.SolutionEvent]) -> int:
         pass
 
     def is_required(self):
@@ -38,34 +50,76 @@ class Constraint(ABC):
     def get_weight(self):
         return self.weight
 
+    def _parse_applies_to(self, XMLAppliesTo: ET.Element):
+        XMLResourceGroups = XMLAppliesTo.find("ResourceGroups")
+        if XMLResourceGroups:
+            for XMLResourceGroup in XMLResourceGroups.findall("ResourceGroup"):
+                group_reference = XMLResourceGroup.attrib["Reference"]
+                self.resource_references.extend(
+                    list(
+                        map(
+                            lambda x: x.Reference,
+                            self.instance_resource_groups[group_reference],
+                        )
+                    )
+                )
+
+        XMLResources = XMLAppliesTo.find("Resources")
+        if XMLResources:
+            for XMLResource in XMLResources:
+                self.resource_references.append(XMLResource.attrib["Reference"])
+
+        XMLEventGroups = XMLAppliesTo.find("EventGroups")
+        if XMLEventGroups:
+            for XMLEventGroup in XMLEventGroups.findall("EventGroup"):
+                print(
+                    "eqdf",
+                    XMLEventGroup.attrib["Reference"],
+                    self.instance_event_groups.keys(),
+                )
+                self.events.extend(
+                    self.instance_event_groups[XMLEventGroup.attrib["Reference"]]
+                )
+
+        XMLEvents = XMLAppliesTo.find("Events")
+        if XMLEvents:
+            for XMLEvent in XMLEvents:
+                self.events.append(self.instance_events[XMLEvent.attrib["Reference"]])
+
+        XMLEventPairs = XMLAppliesTo.find("EventPairs")
+        if XMLEventPairs:
+            raise Exception("Not implemented yet")  # TODO
+
 
 class AssignTimeConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         deviation = 0
+        print("eventsss", len(self.events))
+        print(len(solution))
         for event in self.events:
             if not event.PreAssignedTimeReference:
+                seen = False
                 for solution_event in solution:
-                    deviation += (
-                        (
-                            solution_event.Duration
-                            if solution_event.Duration
-                            else event.Duration
-                        )
-                        if not solution_event.TimeReference
-                        else 0
-                    )
+                    if solution_event.InstanceEventReference == event.Reference:
+                        seen = True
+                        if not solution_event.TimeReference:
+                            print("wtf", solution_event)
+                            deviation += solution_event.Duration
+                if not seen:
+                    deviation += event.Duration
+
         return cost_function(deviation, self.cost_function)
 
 
 class AssignResourceConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
         self.role = XMLConstraint.find("Role").text
 
-    def isAssigned(
+    def is_assigned(
         self, solution_event_resources: list[XHSTTSInstance.SolutionEventResource]
     ):
         for _, role in solution_event_resources:
@@ -80,12 +134,9 @@ class AssignResourceConstraint(Constraint):
                 if not resource.Reference and resource.Role == self.role:
                     for solution_event in solution:
                         deviation += (
-                            (
-                                solution_event.Duration
-                                if solution_event.Duration
-                                else event.Duration
-                            )
-                            if not self.isAssigned(solution_event.Resources)
+                            solution_event.Duration
+                            if solution_event.InstanceEventReference == event.Reference
+                            and (not self.is_assigned(solution_event.Resources))
                             else 0
                         )
 
@@ -93,78 +144,144 @@ class AssignResourceConstraint(Constraint):
 
 
 class PreferResourcesConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.role = XMLConstraint.find("Role").text
+        self.preferred_resources = set()
+        self._parse_preferred_resources(XMLConstraint)
+
+    def is_assigned(
+        self, solution_event_resources: list[XHSTTSInstance.SolutionEventResource]
+    ):
+        for _, role in solution_event_resources:
+            if role == self.role:
+                return True
+        return False
+
+    def is_preferred(
+        self, solution_event_resources: list[XHSTTSInstance.SolutionEventResource]
+    ):
+        for reference, _ in solution_event_resources:
+            if reference in self.preferred_resources:
+                return True
+        return False
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for event in self.events:
+            for resource in event.Resources:
+                if not resource.Reference and resource.Role == self.role:
+                    for solution_event in solution:
+                        deviation += (
+                            solution_event.Duration
+                            if solution_event.InstanceEventReference == event.Reference
+                            and self.is_assigned(solution_event.Resources)
+                            and (not self.is_preferred(solution_event.Resources))
+                            else 0
+                        )
+
+        return cost_function(deviation, self.cost_function)
+
+    def _parse_preferred_resources(self, XMLConstraint: ET.Element):
+        XMLResourceGroups = XMLConstraint.find("ResourceGroups")
+        if XMLResourceGroups:
+            for XMLResourceGroup in XMLResourceGroups.findall("ResourceGroup"):
+                resource_group_ref = XMLResourceGroup.attrib["Reference"]
+                for resource in self.instance_resource_groups[resource_group_ref]:
+                    self.preferred_resources.add(resource.Reference)
+
+        XMLResources = XMLConstraint.find("Resources")
+        if XMLResources:
+            for XMLResource in XMLResources.findall("Resource"):
+                self.preferred_resources.add(XMLResource.attrib["Reference"])
 
 
 class AvoidClashesConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
+
+    def hasResource(
+        self,
+        resource_reference,
+        solution_event_resources: list[XHSTTSInstance.SolutionEventResource],
+    ):
+        for reference, _ in solution_event_resources:
+            if reference == resource_reference:
+                return True
+        return False
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for resource_ref in self.resource_references:
+            times = set()
+            for solution_event in solution:
+                if self.hasResource(resource_ref, solution_event.Resources):
+                    if solution_event.TimeReference in times:
+                        deviation += 1
+                    else:
+                        times.add(solution_event.TimeReference)
+
+        return cost_function(deviation, self.cost_function)
 
 
 class SplitEventsConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class DistributeSplitEventsConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class PreferTimesConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class SpreadEventsConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class AvoidUnavailableTimesConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class LimitIdleTimesConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class ClusterBusyTimesConstraint(Constraint):
-    def __init__(self, XMLConstraint: ET.Element):
-        super().__init__(XMLConstraint)
+    def __init__(self, *args):
+        super().__init__(*args)
 
     def evaluate(self, solution):
         pass
 
 
 class XHSTTSInstance:
+    # TODO - remove redundant constants & convert named tuples to dataclasses
     TIME_GROUP_NAMES = ["TimeGroup", "Day", "Week"]
     EVENT_GROUP_NAMES = ["EventGroup", "Course"]
     CONSTRAINT_NAMES = [
@@ -178,11 +295,13 @@ class XHSTTSInstance:
     EventGroup = namedtuple("EventGroup", ["Name", "Type"])
     ResourceGroup = namedtuple("ResourceGroup", ["Name", "ResourceTypeReference"])
     Resource = namedtuple(
-        "Resource", ["Name", "ResourceTypeReference", "ResourceGroupReferences"]
+        "Resource",
+        ["Reference", "Name", "ResourceTypeReference", "ResourceGroupReferences"],
     )
     Event = namedtuple(
         "Event",
         [
+            "Reference",
             "Name",
             "Duration",
             "Workload",
@@ -219,13 +338,23 @@ class XHSTTSInstance:
         self.Resources = {}
         self.Events = {}
         self.EventGroups = {}
+        self.instance_event_groups = defaultdict(
+            list
+        )  # {group_id : list of events that reference this group}
+        self.instance_resource_groups = defaultdict(
+            list
+        )  # {group_id : list of resources that reference this group}
         self.Constraints: list[Constraint] = []
         self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
         self._parse_resources(XMLInstance.find("Resources"))
         self._parse_events(XMLInstance.find("Events"))
-        self._parse_constraints(XMLInstance.find("Constraints"))
-        self._parse_solutions(XMLSolutions)
+        self._parse_constraints(
+            XMLInstance.find("Constraints")
+        )  # must be parsed after the above due to references
+        self._parse_solutions(
+            XMLSolutions
+        )  # must be parsed after Events because of duration fallback!
 
     def get_events(self):
         return self.Events
@@ -291,6 +420,7 @@ class XHSTTSInstance:
 
         self.Resources = {
             XMLResource.attrib["Id"]: XHSTTSInstance.Resource(
+                XMLResource.attrib["Id"],
                 XMLResource.find("Name").text,
                 XMLResource.find("ResourceType").attrib["Reference"],
                 list(
@@ -302,6 +432,11 @@ class XHSTTSInstance:
             )
             for XMLResource in XMLResources.findall("Resource")
         }
+
+        # populate instance_resource_groups
+        for _, resource in self.Resources.items():
+            for ref in resource.ResourceGroupReferences:
+                self.instance_resource_groups[ref].append(resource)
 
     def _parse_events(self, XMLEvents: ET.Element):
         XMLEventGroups = XMLEvents.find("EventGroups")
@@ -317,6 +452,7 @@ class XHSTTSInstance:
 
         self.Events = {
             XMLEvent.attrib["Id"]: XHSTTSInstance.Event(
+                Reference=XMLEvent.attrib["Id"],
                 Name=XMLEvent.find("Name").text,
                 Duration=int(XMLEvent.find("Duration").text),
                 Workload=int(XMLEvent.find("Workload").text)
@@ -368,18 +504,31 @@ class XHSTTSInstance:
             for XMLEvent in XMLEvents.findall("Event")
         }
 
+        # populate instance_event_groups
+        for _, event in self.Events.items():
+            for ref in event.EventGroupReferences:
+                self.instance_event_groups[ref].append(event)
+
     def _parse_constraints(self, XMLConstraints: ET.Element):
         for XMLConstraint in XMLConstraints.findall("*"):
             class_name = XMLConstraint.tag
             try:
-                constraint_class = globals()[class_name]
+                try:
+                    constraint_class = globals()[class_name]
+                except:
+                    raise Exception(f"Unrecognized constraint: {class_name}")
                 assert callable(constraint_class) and isclass(
                     constraint_class
-                ), f"{class_name} is not a valid class"
-                constraint_instance = constraint_class(XMLConstraint)
+                ), f"Exception: {class_name} is not a valid class"
+                constraint_instance = constraint_class(
+                    XMLConstraint,
+                    self.instance_resource_groups,
+                    self.instance_event_groups,
+                    self.Events,
+                )
                 self.Constraints.append(constraint_instance)
-            except:
-                raise Exception(f"Unrecognized constraint: {class_name}")
+            except Exception as e:
+                print("Exception", e)
 
     def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
@@ -390,9 +539,9 @@ class XHSTTSInstance:
                         InstanceEventReference=XMLSolutionEvent.attrib["Reference"],
                         Duration=int(XMLSolutionEvent.find("Duration").text)
                         if XMLSolutionEvent.find("Duration") is not None
-                        else None,
+                        else self.Events[XMLSolutionEvent.attrib["Reference"]].Duration,
                         TimeReference=XMLSolutionEvent.find("Time").attrib["Reference"]
-                        if XMLSolutionEvent.find("Time")
+                        if XMLSolutionEvent.find("Time") is not None
                         else None,
                         Resources=[
                             XHSTTSInstance.SolutionEventResource(
@@ -418,6 +567,7 @@ class XHSTTSInstance:
 
         for constraint in self.Constraints:
             value = self.get_cost(solution, constraint)
+            print("value = ", value, constraint)
             if constraint.is_required():
                 cost.Infeasibility_Value += value
             else:

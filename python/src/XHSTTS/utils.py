@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from enum import Enum, auto
 from pathlib import Path
 from collections import namedtuple
@@ -33,7 +34,7 @@ def cost_function_to_enum(cost_function: str):
     elif cost_function == "Step":
         return Cost_Function_Type.Step
     else:
-        raise Exception("Invalid cost_function")
+        raise Exception(f"Invalid cost_function named {cost_function}")
 
 
 def cost(deviation: int, constraint_weight: int, cost_type: Cost_Function_Type):
@@ -44,7 +45,11 @@ def cost(deviation: int, constraint_weight: int, cost_type: Cost_Function_Type):
     return constraint_weight * cost_function(deviation, cost_type)
 
 
-Cost = namedtuple("Cost", ["Infeasibility_Value", "Objective_Value"])
+@dataclass
+class Cost:
+    Infeasibility_Value: int
+    Objective_Value: int
+
 
 if __name__ == "__main__":
     pass
