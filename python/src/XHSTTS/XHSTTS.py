@@ -568,7 +568,8 @@ class XHSTTSInstance:
         return cost
 
     # TODO
-    def add_solution():
+    @staticmethod
+    def create_solution():
         pass
 
 
@@ -585,6 +586,21 @@ class XHSTTS:
                 f".//SolutionGroups/SolutionGroup//Solution[@Reference='{self.instances[0].attrib['Id']}']"
             ),
         )
+
+    def get_instance(self, index: int):
+        assert index < len(
+            self.instances
+        ), "index should be less than the number of instances."
+        assert index >= 0, "index should be greater than or equal to 0."
+        return XHSTTSInstance(
+            self.instances[index],
+            self.root.findall(
+                f".//SolutionGroups/SolutionGroup//Solution[@Reference='{self.instances[0].attrib['Id']}']"
+            ),
+        )
+
+    def num_instances(self):
+        return len(self.instances)
 
 
 if __name__ == "__main__":
