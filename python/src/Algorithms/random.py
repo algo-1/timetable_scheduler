@@ -37,9 +37,9 @@ if __name__ == "__main__":
         "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/ArtificialAbramson15.xml"
     )
 
-    assert dataset.num_instances() == 2
+    assert dataset.num_instances() == 1
 
-    instance = dataset.get_instance(index=1)
+    instance = dataset.get_instance(index=0)
 
     instance_events = instance.Events
 
