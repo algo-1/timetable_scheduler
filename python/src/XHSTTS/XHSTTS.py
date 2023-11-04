@@ -98,7 +98,6 @@ class AssignTimeConstraint(Constraint):
                     if solution_event.InstanceEventReference == event.Reference:
                         seen = True
                         if not solution_event.TimeReference:
-                            print("wtf", solution_event)
                             deviation += solution_event.Duration
                 if not seen:
                     deviation += event.Duration
@@ -569,8 +568,18 @@ class XHSTTSInstance:
 
     # TODO
     @staticmethod
-    def create_solution():
-        pass
+    def create_solution_event(event: Event) -> SolutionEvent:
+        return XHSTTSInstance.SolutionEvent(
+            InstanceEventReference=event.Reference,
+            Duration=event.Duration,
+            TimeReference=event.PreAssignedTimeReference,
+            Resources=[
+                XHSTTSInstance.SolutionEventResource(
+                    Reference=resource.Reference, Role=resource.Role
+                )
+                for resource in event.Resources
+            ],
+        )
 
 
 class XHSTTS:
