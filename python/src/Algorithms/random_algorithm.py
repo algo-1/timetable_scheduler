@@ -9,8 +9,6 @@ import random
 
 from python.src.XHSTTS.XHSTTS import XHSTTS, XHSTTSInstance
 
-random.seed(23)
-
 
 def get_n_random_events_to_split(n: int, instance_events: list[XHSTTSInstance.Event]):
     """
@@ -105,33 +103,38 @@ def assign_random_resources(
 
 
 if __name__ == "__main__":
-    dataset = XHSTTS(
-        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/ArtificialAbramson15.xml"
-    )
+    from pathlib import Path
 
-    assert dataset.num_instances() == 1
+    root_dir = Path(__file__).parent.parent.parent.parent
+    data_dir = root_dir.joinpath("data/ALL_INSTANCES")
 
-    instance = dataset.get_instance(index=0)
+    dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
+    dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
 
-    instance_events = instance.Events
+    for dataset in (dataset_sudoku4x4, dataset_abramson15):
+        random.seed(23)
 
-    n_events, rest = get_n_random_events_to_split(
-        len(instance_events) // 3, list(instance_events.values())
-    )  # use grid search cv? to find the best number to split ? or better way to decide if we split if constraints not telling us to split. Can splitting yield a solution when non splitting cannot?  seems that this should be the case!
+        assert dataset.num_instances() == 1
 
-    # n_events and rest should be new objects not point to the same ones as events - sol event objects preferably!
-    sol_events = [sol_event for sol_event in rest]
+        instance = dataset.get_instance(index=0)
 
-    print(len(sol_events))
+        instance_events = instance.Events
 
-    # split some events
-    sol_events.extend(random_split(n_events))
+        n_events, rest = get_n_random_events_to_split(
+            len(instance_events) // 3, list(instance_events.values())
+        )  # use grid search cv? to find the best number to split ? or better way to decide if we split if constraints not telling us to split. Can splitting yield a solution when non splitting cannot?  seems that this should be the case!
 
-    # assign time and resources randomly anywhere necessary
-    result: list[XHSTTSInstance.SolutionEvent] = assign_random_resources(
-        assign_random_times(sol_events, instance), instance
-    )
+        # n_events and rest should be new objects not point to the same ones as events - sol event objects preferably!
+        sol_events = [sol_event for sol_event in rest]
 
-    evaluation = instance.evaluate_solution(result)
+        # split some events
+        sol_events.extend(random_split(n_events))
 
-    print("---Evaluation---\n", evaluation)
+        # assign time and resources randomly anywhere necessary
+        result: list[XHSTTSInstance.SolutionEvent] = assign_random_resources(
+            assign_random_times(sol_events, instance), instance
+        )
+
+        evaluation = instance.evaluate_solution(result)
+
+        print("---Evaluation---\n", evaluation)
