@@ -5,7 +5,7 @@ import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 
 
-# Hack, TODO sort out modules properly! (virtual env? Add to path? setup.py?)
+# Hack, TODO sort out modules properly! (virtual env? setup.py?)
 try:
     from .utils import Cost, Cost_Function_Type, cost_function_to_enum, cost_function
 except:
