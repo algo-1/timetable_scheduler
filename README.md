@@ -1,6 +1,6 @@
 # Timetable Scheduler
 
-## Python Commands
+## Python Commands
 From the `timetabling_solver` dir,
 
 - `python -m python.src.XHSTTS.XHSTTS` to run the `xhstts.py` script
