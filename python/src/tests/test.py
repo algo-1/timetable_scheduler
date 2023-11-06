@@ -2,7 +2,7 @@
 
 import pytest
 from pathlib import Path
-from XHSTTS.XHSTTS import XHSTTS, XHSTTSInstance
+from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 from XHSTTS.utils import Cost
 
 base_dir = Path(__file__).parent.parent.parent.parent

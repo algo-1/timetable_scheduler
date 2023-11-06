@@ -618,12 +618,6 @@ if __name__ == "__main__":
         "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/ArtificialAbramson15.xml"
     ).get_first_instance()
 
-    from pprint import pp
-
-    pp(list(first_instance.get_events().items())[:5])
-
-    pp(first_instance.get_solutions()[1])
-
     import re
 
     def get_event_number(event):

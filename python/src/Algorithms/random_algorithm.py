@@ -7,7 +7,7 @@
 from collections import defaultdict
 import random
 
-from XHSTTS.XHSTTS import XHSTTS, XHSTTSInstance
+from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 
 def get_n_random_events_to_split(n: int, instance_events: list[XHSTTSInstance.Event]):
