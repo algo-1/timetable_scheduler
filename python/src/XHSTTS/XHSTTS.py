@@ -567,7 +567,7 @@ class XHSTTSInstance:
 
         return cost
 
-    # TODO
+    # TODO : make list -> list
     @staticmethod
     def create_solution_event(event: Event) -> SolutionEvent:
         return XHSTTSInstance.SolutionEvent(
