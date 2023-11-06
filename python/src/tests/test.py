@@ -2,10 +2,10 @@
 
 import pytest
 from pathlib import Path
-from python.src.XHSTTS.XHSTTS import XHSTTS, XHSTTSInstance
-from python.src.XHSTTS.utils import Cost
+from XHSTTS.XHSTTS import XHSTTS, XHSTTSInstance
+from XHSTTS.utils import Cost
 
-base_dir = Path(__file__).parent.parent.parent
+base_dir = Path(__file__).parent.parent.parent.parent
 
 data_dir = base_dir.joinpath(Path("data"))
 

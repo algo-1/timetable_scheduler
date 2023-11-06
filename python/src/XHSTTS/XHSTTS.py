@@ -5,11 +5,12 @@ import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 
 
-# Hack, TODO sort out modules properly! (virtual env? setup.py?)
-try:
-    from .utils import Cost, Cost_Function_Type, cost_function_to_enum, cost_function
-except:
-    from utils import Cost, Cost_Function_Type, cost_function_to_enum, cost_function
+from XHSTTS.utils import (
+    Cost,
+    Cost_Function_Type,
+    cost_function_to_enum,
+    cost_function,
+)
 
 
 class Constraint(ABC):
@@ -506,7 +507,7 @@ class XHSTTSInstance:
             try:
                 try:
                     constraint_class = globals()[class_name]
-                except:
+                except KeyError:
                     raise Exception(f"Unrecognized constraint: {class_name}")
                 assert callable(constraint_class) and isclass(
                     constraint_class
