@@ -1,7 +1,7 @@
 # Timetable Scheduler
 
 ## Python Commands
-From the `timetabling_scheduler` dir,
+From the `timetable_scheduler` dir,
 
 - `python -m python.src.XHSTTS.XHSTTS` to run the `xhstts.py` script
 - `python -m python.src.Algorithms.random_algorithm` to run the algorithms (replace random_algorithm with the name of the algorithm file excluding the '.py')
