@@ -505,22 +505,19 @@ class XHSTTSInstance:
         for XMLConstraint in XMLConstraints.findall("*"):
             class_name = XMLConstraint.tag
             try:
-                try:
-                    constraint_class = globals()[class_name]
-                except KeyError:
-                    raise Exception(f"Unrecognized constraint: {class_name}")
-                assert callable(constraint_class) and isclass(
-                    constraint_class
-                ), f"Exception: {class_name} is not a valid class"
-                constraint_instance = constraint_class(
-                    XMLConstraint,
-                    self.instance_resource_groups,
-                    self.instance_event_groups,
-                    self.Events,
-                )
-                self.Constraints.append(constraint_instance)
-            except Exception as e:
-                print("Exception", e)
+                constraint_class = globals()[class_name]
+            except KeyError:
+                raise Exception(f"Unrecognized constraint: {class_name}")
+            assert callable(constraint_class) and isclass(
+                constraint_class
+            ), f"Exception: {class_name} is not a valid class"
+            constraint_instance = constraint_class(
+                XMLConstraint,
+                self.instance_resource_groups,
+                self.instance_event_groups,
+                self.Events,
+            )
+            self.Constraints.append(constraint_instance)
 
     def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
