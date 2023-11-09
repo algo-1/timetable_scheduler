@@ -102,6 +102,27 @@ def assign_random_resources(
     return new_sol_events
 
 
+def random_solution(instance: XHSTTSInstance) -> list[XHSTTSInstance.SolutionEvent]:
+    instance_events = instance.Events
+
+    n_events, rest = get_n_random_events_to_split(
+        len(instance_events) // 3, list(instance_events.values())
+    )  # use grid search cv? to find the best number to split ? or better way to decide if we split if constraints not telling us to split.Can splitting yield a solution when non splitting cannot?  seems that this should be the case!
+
+    # n_events and rest should be new objects not point to the same ones as events - sol event objects preferably!
+    sol_events = [sol_event for sol_event in rest]
+
+    # split some events
+    sol_events.extend(random_split(n_events))
+
+    # assign time and resources randomly anywhere necessary
+    result: list[XHSTTSInstance.SolutionEvent] = assign_random_resources(
+        assign_random_times(sol_events, instance), instance
+    )
+
+    return result
+
+
 if __name__ == "__main__":
     from pathlib import Path
 
@@ -118,23 +139,10 @@ if __name__ == "__main__":
 
         instance = dataset.get_instance(index=0)
 
-        instance_events = instance.Events
+        # get solution
+        result = random_solution(instance)
 
-        n_events, rest = get_n_random_events_to_split(
-            len(instance_events) // 3, list(instance_events.values())
-        )  # use grid search cv? to find the best number to split ? or better way to decide if we split if constraints not telling us to split. Can splitting yield a solution when non splitting cannot?  seems that this should be the case!
-
-        # n_events and rest should be new objects not point to the same ones as events - sol event objects preferably!
-        sol_events = [sol_event for sol_event in rest]
-
-        # split some events
-        sol_events.extend(random_split(n_events))
-
-        # assign time and resources randomly anywhere necessary
-        result: list[XHSTTSInstance.SolutionEvent] = assign_random_resources(
-            assign_random_times(sol_events, instance), instance
-        )
-
+        # evaluate
         evaluation = instance.evaluate_solution(result)
 
-        print("---Evaluation---\n", evaluation)
+        print("\n---Evaluation---\n", evaluation)
