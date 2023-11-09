@@ -557,7 +557,7 @@ class XHSTTSInstance:
 
         for constraint in self.Constraints:
             value = self.get_cost(solution, constraint)
-            print("value = ", value, constraint.__class__.__name__)
+            # print("value = ", value, constraint.__class__.__name__)
             if constraint.is_required():
                 cost.Infeasibility_Value += value
             else:
