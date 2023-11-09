@@ -322,6 +322,7 @@ class XHSTTSInstance:
         """
         XMLInstance : The XHSTTS XML representation of the Instance.\n
         XMLSolutions : List of all solutions in the dataset that reference the XMLInstance.
+
         """
         self.TimeGroups = {}
         self.Times = {}
