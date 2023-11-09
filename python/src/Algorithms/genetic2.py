@@ -107,7 +107,6 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
 
     best_solution = None
 
-    # Repeat until a satisfactory solution is found.
     for idx in range(NGEN):
         # Select the best solutions from the population.
         selected_solutions = tournament_selection(population, instance, 20)
