@@ -28,7 +28,9 @@ class Solution:
 def mutate(solution: Solution) -> None:
     # TODO: make faster is there a nice way to use vectors/numpy arrays?
     for i, event in enumerate(solution.sol_events):
-        if random.random() < 0.5:  # parameterise this value and how do we decide it?
+        if (
+            random.random() < 0.5
+        ):  # TODO parameterise this value and how do we decide it?
             # Randomly select a different event.
             other_idx = random.randint(0, len(solution.sol_events) - 1)
             other_event = solution.sol_events[other_idx]
