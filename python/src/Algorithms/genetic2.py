@@ -1,10 +1,12 @@
 import random
+
+import numpy as np
 from Algorithms.random_algorithm import random_solution
 from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 POPULATION_SIZE = 100
-NGEN = 40
+NGEN = 85
 
 
 class Solution:
@@ -12,6 +14,7 @@ class Solution:
         self.sol_events = sol_events
         self.cost: Cost = None
 
+    # TODO use cache here / add logic to prevent useless calls to instance.evaluate_solution
     def evaluate(self, instance: XHSTTSInstance) -> int:
         """
         returns the negative of the cost because 0 is the best cost.
@@ -27,9 +30,10 @@ class Solution:
 
 def mutate(solution: Solution) -> None:
     # TODO: make faster is there a nice way to use vectors/numpy arrays?
+    random.shuffle(solution.sol_events)
     for i, event in enumerate(solution.sol_events):
         if (
-            random.random() < 0.5
+            random.random() < 0.01
         ):  # TODO parameterise this value and how do we decide it?
             # Randomly select a different event.
             other_idx = random.randint(0, len(solution.sol_events) - 1)
@@ -37,16 +41,34 @@ def mutate(solution: Solution) -> None:
 
             # Swap the two events. # TODO: refactor sol_events to dataclasses!
             tmp = event
-            event = event._replace(
-                TimeReference=other_event.TimeReference, Resources=other_event.Resources
-            )
-            assert tmp != event or (
-                tmp.TimeReference == other_event.TimeReference
-                and tmp.Resources == other_event.Resources
-            )
-            other_event = other_event._replace(
-                TimeReference=tmp.TimeReference, Resources=tmp.Resources
-            )
+
+            # swap times
+            event = event._replace(TimeReference=other_event.TimeReference)
+
+            assert tmp != event or (tmp.TimeReference == other_event.TimeReference)
+
+            other_event = other_event._replace(TimeReference=tmp.TimeReference)
+
+            # swap resources
+            selected = set()
+            if other_event.Resources:
+                for i in range(len(event.Resources)):
+                    if random.random() < 0.01:
+                        # Randomly select a resource from the other event.
+                        other_event_resource_idx = random.randint(
+                            0, len(other_event.Resources) - 1
+                        )
+                        if other_event_resource_idx not in selected:
+                            # swap
+                            (
+                                event.Resources[i],
+                                other_event.Resources[other_event_resource_idx],
+                            ) = (
+                                other_event.Resources[other_event_resource_idx],
+                                event.Resources[i],
+                            )
+                            selected.add(other_event_resource_idx)
+
             solution.sol_events[i] = event
             solution.sol_events[other_idx] = other_event
 
@@ -100,10 +122,17 @@ def tournament_selection(
 
 def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
     # Create a population of solutions.
-    population: list[Solution] = []
-    for _ in range(POPULATION_SIZE):
-        solution = Solution(random_solution(instance))
-        population.append(solution)
+
+    # best of 1000 random solutions
+    population: list[Solution] = sorted(
+        [Solution(random_solution(instance)) for _ in range(1000)],
+        key=lambda x: x.evaluate(instance),
+        reverse=True,
+    )[:POPULATION_SIZE]
+
+    best_random = population[0].cost
+
+    random.shuffle(population)
 
     best_solution = None
 
@@ -131,8 +160,10 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
         # Add the offspring to the population and remove the worst individuals.
         population = selected_solutions + offspring
         population = sorted(
-            population, key=lambda solution: solution.evaluate(instance)
+            population, key=lambda solution: solution.evaluate(instance), reverse=True
         )[:100]
+
+        print([x.evaluate(instance) for x in population])
 
         # Check if a satisfactory solution has been found.
         best_solution = max(
@@ -142,6 +173,8 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
             return best_solution.sol_events
 
         print(f"Generation: {idx + 1}")
+
+    print("best random: ", best_random)
 
     return best_solution.sol_events
 
