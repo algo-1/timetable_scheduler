@@ -1,4 +1,6 @@
 import random
+import multiprocessing
+from pathos.multiprocessing import ProcessingPool as Pool
 
 import numpy as np
 from Algorithms.random_algorithm import random_solution
@@ -120,6 +122,35 @@ def tournament_selection(
     return selected_solutions
 
 
+# slower than non-parallel possibly due to overhead, TODO: profile non-parallel - vectorise with numpy?
+def generate_offspring_parallel(selected_solutions, num_processes):
+    with Pool(processes=num_processes) as pool:
+        offspring = pool.map(
+            lambda args: crossover(*args),
+            [
+                (selected_solutions[i], selected_solutions[i + 1])
+                for i in range(0, len(selected_solutions), 2)
+            ],
+        )
+
+        return [solution for pair in offspring for solution in pair]
+
+
+# issue with not being able to pickle <class 'XHSTTS.xhstts.SolutionEvent'> TODO: profile non-parallel - vectorise with numpy?
+# def generate_offspring_parallel(selected_solutions, num_processes):
+#     pool = multiprocessing.Pool(processes=num_processes)
+#     offspring = pool.starmap(
+#         crossover,
+#         [
+#             (selected_solutions[i], selected_solutions[i + 1])
+#             for i in range(0, len(selected_solutions), 2)
+#         ],
+#     )
+#     pool.close()
+#     pool.join()
+#     return [solution for pair in offspring for solution in pair]
+
+
 def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
     # Create a population of solutions.
 
@@ -138,16 +169,12 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
 
     for idx in range(NGEN):
         # Select the best solutions from the population.
-        selected_solutions = tournament_selection(population, instance, 20)
+        selected_solutions = tournament_selection(
+            population, instance, 20
+        )  # parameterise this number
 
         # Crossover the selected solutions to produce new offspring.
-        offspring: list[Solution] = []
-        for i in range(0, len(selected_solutions), 2):
-            new_solution1, new_solution2 = crossover(
-                selected_solutions[i], selected_solutions[i + 1]
-            )
-            offspring.append(new_solution1)
-            offspring.append(new_solution2)
+        offspring = generate_offspring_parallel(selected_solutions, num_processes=8)
 
         # Mutate the offspring.
         for offspring_solution in offspring:
@@ -193,7 +220,7 @@ if __name__ == "__main__":
         dataset_abramson15: "ArtificialAbramson15",
     }
 
-    for dataset in (dataset_sudoku4x4,):  # ataset_abramson15):
+    for dataset in (dataset_sudoku4x4,):  # , dataset_abramson15):
         random.seed(23)
 
         assert dataset.num_instances() == 1
