@@ -37,7 +37,7 @@ def random_split(sol_events: list[XHSTTSInstance.SolutionEvent], max_split=6):
     for event in sol_events:
         if max_split > 0 and event.Duration > 1:
             num_splits = min(
-                max_split, event.Duration, random.randint(2, event.duration)
+                max_split, event.Duration, random.randint(2, event.Duration)
             )
             split_duration = event.Duration // num_splits
 
