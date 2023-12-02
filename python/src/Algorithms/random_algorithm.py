@@ -15,7 +15,7 @@ def get_n_random_events_to_split(n: int, instance_events: list[XHSTTSInstance.Ev
     returns a tuple of n random solution events and
     (len(instance_events) - n) solution events both based on the instance events.
     """
-    # TODO: make a set when you rewrite named tuples as dataclasses as we can have a set of objects but not a tuple that has a list element
+    # TODO: make a set when you rewrite named tuples as frozen? / eq set to false dataclasses as we can have a set of objects but not a tuple that has a list element
     events_to_split = random.sample(instance_events, n)
     remaining_events = [
         event for event in instance_events if event not in events_to_split
