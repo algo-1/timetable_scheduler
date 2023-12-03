@@ -8,6 +8,7 @@ from abc import ABC, abstractmethod
 from XHSTTS.utils import (
     Cost,
     Cost_Function_Type,
+    cost,
     cost_function_to_enum,
     cost_function,
 )
@@ -103,7 +104,7 @@ class AssignTimeConstraint(Constraint):
                 if not seen:
                     deviation += event.Duration
 
-        return cost_function(deviation, self.cost_function)
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class AssignResourceConstraint(Constraint):
@@ -132,7 +133,7 @@ class AssignResourceConstraint(Constraint):
                             else 0
                         )
 
-        return cost_function(deviation, self.cost_function)
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class PreferResourcesConstraint(Constraint):
@@ -172,7 +173,7 @@ class PreferResourcesConstraint(Constraint):
                             else 0
                         )
 
-        return cost_function(deviation, self.cost_function)
+        return cost(deviation, self.weight, self.cost_function)
 
     def _parse_preferred_resources(self, XMLConstraint: ET.Element):
         XMLResourceGroups = XMLConstraint.find("ResourceGroups")
@@ -213,7 +214,7 @@ class AvoidClashesConstraint(Constraint):
                     else:
                         times.add(solution_event.TimeReference)
 
-        return cost_function(deviation, self.cost_function)
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class SplitEventsConstraint(Constraint):
@@ -243,7 +244,7 @@ class SplitEventsConstraint(Constraint):
             elif amount_count > self.max_amount:
                 deviation += amount_count - self.max_amount
 
-        return cost_function(deviation, self.cost_function)
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class DistributeSplitEventsConstraint(Constraint):
