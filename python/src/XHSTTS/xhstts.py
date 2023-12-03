@@ -217,11 +217,33 @@ class AvoidClashesConstraint(Constraint):
 
 
 class SplitEventsConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.min_duration = int(XMLConstraint.find("MinimumDuration").text)
+        self.max_duration = int(XMLConstraint.find("MaximumDuration").text)
+        self.min_amount = int(XMLConstraint.find("MinimumAmount").text)
+        self.max_amount = int(XMLConstraint.find("MaximumAmount").text)
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for event in self.events:
+            violates_duration_count = 0
+            amount_count = 0
+            for solution_event in solution:
+                if solution_event.InstanceEventReference == event.Reference:
+                    amount_count += 1
+                    if (
+                        solution_event.Duration < self.min_duration
+                        or solution_event.Duration > self.max_duration
+                    ):
+                        violates_duration_count += 1
+            deviation += violates_duration_count
+            if amount_count < self.min_amount:
+                deviation += self.min_amount - amount_count
+            elif amount_count > self.max_amount:
+                deviation += amount_count - self.max_amount
+
+        return cost_function(deviation, self.cost_function)
 
 
 class DistributeSplitEventsConstraint(Constraint):
