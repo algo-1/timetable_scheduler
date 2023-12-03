@@ -88,6 +88,16 @@ class Constraint(ABC):
         if XMLEventPairs:
             raise Exception("Not implemented yet")  # TODO
 
+    def hasResource(
+        self,
+        resource_reference,
+        solution_event_resources: list[XHSTTSInstance.SolutionEventResource],
+    ):
+        for reference, _ in solution_event_resources:
+            if reference == resource_reference:
+                return True
+        return False
+
 
 class AssignTimeConstraint(Constraint):
     def __init__(self, *args):
@@ -194,16 +204,6 @@ class PreferResourcesConstraint(Constraint):
 class AvoidClashesConstraint(Constraint):
     def __init__(self, *args):
         super().__init__(*args)
-
-    def hasResource(
-        self,
-        resource_reference,
-        solution_event_resources: list[XHSTTSInstance.SolutionEventResource],
-    ):
-        for reference, _ in solution_event_resources:
-            if reference == resource_reference:
-                return True
-        return False
 
     def evaluate(self, solution):
         deviation = 0
@@ -356,11 +356,41 @@ class SpreadEventsConstraint(Constraint):
 
 
 class AvoidUnavailableTimesConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.time_refs = set()
+        self._parse_time_refs(XMLConstraint)
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for resource_ref in self.resource_references:
+            for time_ref in self.time_refs:
+                found = False
+                for solution_event in solution:
+                    if (
+                        solution_event.TimeReference
+                        and solution_event.TimeReference == time_ref
+                        and self.hasResource(resource_ref, solution_event.Resources)
+                    ):
+                        found = True
+                        break
+                if found:
+                    deviation += 1
+
+        return cost(deviation, self.weight, self.cost_function)
+
+    def _parse_time_refs(self, XMLConstraint: ET.Element):
+        XMLTimeGroups = XMLConstraint.find("TimeGroups")
+        if XMLTimeGroups:
+            for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
+                ref = XMLTimeGroup.attrib["Reference"]
+                for time in self.instance_time_groups[ref]:
+                    self.time_refs.add(time.Reference)
+
+        XMLTimes = XMLConstraint.find("Times")
+        if XMLTimes:
+            for XMLTime in XMLTimes.findall("Time"):
+                self.time_refs.add(XMLTime.attrib["Reference"])
 
 
 class LimitIdleTimesConstraint(Constraint):
