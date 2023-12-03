@@ -248,11 +248,26 @@ class SplitEventsConstraint(Constraint):
 
 
 class DistributeSplitEventsConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.duration = int(XMLConstraint.find("Duration").text)
+        self.min = int(XMLConstraint.find("Minimum").text)
+        self.max = int(XMLConstraint.find("Maximum").text)
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for event in self.events:
+            count = 0
+            for solution_event in solution:
+                if solution_event.InstanceEventReference == event.Reference:
+                    if solution_event.Duration == self.duration:
+                        count += 1
+            if count < self.min:
+                deviation += self.min - count
+            elif count > self.max:
+                deviation += count - self.max
+
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class PreferTimesConstraint(Constraint):
