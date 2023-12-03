@@ -20,6 +20,7 @@ class Constraint(ABC):
         XMLConstraint: ET.Element,
         instance_resource_groups,
         instance_event_groups,
+        instance_time_groups,
         instance_events,
     ):
         self.name: str = XMLConstraint.find("Name").text
@@ -33,6 +34,7 @@ class Constraint(ABC):
         self.events = []
         self.instance_event_groups = instance_event_groups
         self.instance_events = instance_events
+        self.instance_time_groups = instance_time_groups
         self._parse_applies_to(XMLConstraint.find("AppliesTo"))
 
     @abstractmethod
@@ -271,19 +273,86 @@ class DistributeSplitEventsConstraint(Constraint):
 
 
 class PreferTimesConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        XMLDuration = XMLConstraint.find("Duration")
+        self.duration = int(XMLDuration.text) if XMLDuration else None
+        self.preferred_times = set()
+        self._parse_preferred_times(XMLConstraint)
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for event in self.events:
+            for solution_event in solution:
+                if solution_event.InstanceEventReference == event.Reference:
+                    if (
+                        solution_event.TimeReference
+                        and solution_event.TimeReference not in self.preferred_times
+                    ):
+                        if self.duration:
+                            if self.duration == solution_event.Duration:
+                                deviation += solution_event.Duration
+                        else:
+                            deviation += solution_event.Duration
+
+        return cost(deviation, self.weight, self.cost_function)
+
+    def _parse_preferred_times(self, XMLConstraint: ET.Element):
+        XMLTimeGroups = XMLConstraint.find("TimeGroups")
+        if XMLTimeGroups:
+            for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
+                ref = XMLTimeGroup.attrib["Reference"]
+                for time in self.instance_time_groups[ref]:
+                    self.preferred_times.add(time.Reference)
+
+        XMLTimes = XMLConstraint.find("Times")
+        if XMLTimes:
+            for XMLTime in XMLTimes.findall("Time"):
+                self.preferred_times.add(XMLTime.attrib["Reference"])
 
 
 class SpreadEventsConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.time_groups = []
+        self._parse_time_groups(XMLConstraint)
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for event_group in self.instance_event_groups:
+            event_group_events = set(
+                [e.Reference for e in self.instance_event_groups[event_group]]
+            )
+            for refs, minimum, maximum in self.time_groups:
+                count = 0
+                for solution_event in solution:
+                    if solution_event.InstanceEventReference in event_group_events:
+                        if (
+                            solution_event.TimeReference
+                            and solution_event.TimeReference in refs
+                        ):
+                            count += 1
+                if count < minimum:
+                    deviation += minimum - count
+                elif count > maximum:
+                    deviation += count - maximum
+
+        return cost(deviation, self.weight, self.cost_function)
+
+    def _parse_time_groups(self, XMLConstraint: ET.Element):
+        XMLTimeGroups = XMLConstraint.find("TimeGroups")
+        if XMLTimeGroups:
+            for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
+                ref = XMLTimeGroup.attrib["Reference"]
+                minimum = int(XMLTimeGroup.find("Minimum").text)
+                maximum = int(XMLTimeGroup.find("Maximum").text)
+                self.time_groups.append(
+                    (
+                        set([t.Reference for t in self.instance_time_groups[ref]]),
+                        minimum,
+                        maximum,
+                    )
+                )
 
 
 class AvoidUnavailableTimesConstraint(Constraint):
@@ -320,7 +389,7 @@ class XHSTTSInstance:
         "PreferResourcesConstraint",
         "AvoidClashesConstraint",
     ]
-    Time = namedtuple("Time", ["Name", "TimeGroupReferences"])
+    Time = namedtuple("Time", ["Reference", "Name", "TimeGroupReferences"])
     TimeGroup = namedtuple("TimeGroup", ["Name", "Type"])
     EventGroup = namedtuple("EventGroup", ["Name", "Type"])
     ResourceGroup = namedtuple("ResourceGroup", ["Name", "ResourceTypeReference"])
@@ -375,6 +444,9 @@ class XHSTTSInstance:
         self.instance_resource_groups = defaultdict(
             list
         )  # {group_id : list of resources that reference this group}
+        self.instance_time_groups = defaultdict(
+            list
+        )  # {group_id : list of times that are in this time group (timegroup can be Day or Week)) }
         self.Constraints: list[Constraint] = []
         self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
@@ -420,8 +492,13 @@ class XHSTTSInstance:
                 )
             ]
             self.Times[time_Id] = XHSTTSInstance.Time(
-                Name=Name, TimeGroupReferences=TimeGroup_references
+                Reference=time_Id, Name=Name, TimeGroupReferences=TimeGroup_references
             )
+
+        # populate instance_time_groups
+        for _, time in self.Times.items():
+            for ref in time.TimeGroupReferences:
+                self.instance_time_groups[ref].append(time)
 
     def _parse_TimeGroups(self, XMLTimeGroups: ET.Element):
         return {
@@ -539,6 +616,8 @@ class XHSTTSInstance:
         for _, event in self.Events.items():
             for ref in event.EventGroupReferences:
                 self.instance_event_groups[ref].append(event)
+            if event.CourseReference:
+                self.instance_event_groups[event.CourseReference].append(event)
 
     def _parse_constraints(self, XMLConstraints: ET.Element):
         for XMLConstraint in XMLConstraints.findall("*"):
@@ -554,6 +633,7 @@ class XHSTTSInstance:
                 XMLConstraint,
                 self.instance_resource_groups,
                 self.instance_event_groups,
+                self.instance_time_groups,
                 self.Events,
             )
             self.Constraints.append(constraint_instance)
