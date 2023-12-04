@@ -23,12 +23,14 @@ class Solution:
         """
         self.cost = instance.evaluate_solution(self.sol_events)
         return -(10 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        # return -(self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        # return -self.cost.Infeasibility_Value
 
     def is_feasible(self) -> bool:
         return self.cost.Infeasibility_Value == 0
 
 
-def mutate(solution: Solution) -> None:
+def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
     # TODO: make faster is there a nice way to use vectors/numpy arrays?
     random.shuffle(solution.sol_events)
     for i, event in enumerate(solution.sol_events):
@@ -58,7 +60,17 @@ def mutate(solution: Solution) -> None:
                         other_event_resource_idx = random.randint(
                             0, len(other_event.Resources) - 1
                         )
-                        if other_event_resource_idx not in selected:
+                        if (
+                            other_event_resource_idx not in selected
+                            and instance.get_resources()[
+                                other_event.Resources[
+                                    other_event_resource_idx
+                                ].Reference
+                            ].ResourceTypeReference
+                            == instance.get_resources()[
+                                event.Resources[i].Reference
+                            ].ResourceTypeReference
+                        ):
                             # swap
                             (
                                 event.Resources[i],
@@ -151,7 +163,7 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
 
         # Mutate the offspring.
         for offspring_solution in offspring:
-            mutate(offspring_solution)
+            mutate(offspring_solution, instance)
 
         # Evaluate the offspring.
         for offspring_solution in offspring:
@@ -174,7 +186,7 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
 
         # print(f"Generation: {idx + 1}")
 
-    print("best random: ", best_random)
+    print("\nbest random: ", best_random)
 
     return best_solution.sol_events
 
@@ -187,13 +199,15 @@ if __name__ == "__main__":
 
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
+    dataset_brazil1 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
         dataset_abramson15: "ArtificialAbramson15",
+        dataset_brazil1: "BrazilInstance3.xml",
     }
 
-    for dataset in (dataset_sudoku4x4,):  # ataset_abramson15):
+    for dataset in (dataset_brazil1,):  # (dataset_sudoku4x4,):  # dataset_abramson15):
         random.seed(23)
 
         assert dataset.num_instances() == 1
@@ -206,4 +220,4 @@ if __name__ == "__main__":
         # evaluate
         evaluation = instance.evaluate_solution(result)
 
-        print(f"\n---Evaluation ({dataset_names[dataset]})---\n", evaluation)
+        print(f"\n---Genetic2 Evaluation ({dataset_names[dataset]})---\n", evaluation)
