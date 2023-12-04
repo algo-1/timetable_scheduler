@@ -154,20 +154,13 @@ class PreferResourcesConstraint(Constraint):
         self.preferred_resources = set()
         self._parse_preferred_resources(XMLConstraint)
 
-    def is_assigned(
+    def is_assigned_and_not_preferred(
         self, solution_event_resources: list[XHSTTSInstance.SolutionEventResource]
     ):
-        for _, role in solution_event_resources:
-            if role == self.role:
-                return True
-        return False
-
-    def is_preferred(
-        self, solution_event_resources: list[XHSTTSInstance.SolutionEventResource]
-    ):
-        for reference, _ in solution_event_resources:
-            if reference in self.preferred_resources:
-                return True
+        for ref, role in solution_event_resources:
+            if ref and role == self.role:
+                if ref not in self.preferred_resources:
+                    return True
         return False
 
     def evaluate(self, solution):
@@ -179,8 +172,9 @@ class PreferResourcesConstraint(Constraint):
                         deviation += (
                             solution_event.Duration
                             if solution_event.InstanceEventReference == event.Reference
-                            and self.is_assigned(solution_event.Resources)
-                            and (not self.is_preferred(solution_event.Resources))
+                            and self.is_assigned_and_not_preferred(
+                                solution_event.Resources
+                            )
                             else 0
                         )
 
