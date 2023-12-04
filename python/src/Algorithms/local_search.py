@@ -10,15 +10,23 @@ class LocalSearchSolution:
         self.sol_events = sol_events
         self.cost: Cost = None
 
+    # TODO use cache here / add logic to prevent useless calls to instance.evaluate_solution
     def evaluate(self, instance: XHSTTSInstance) -> int:
+        """
+        returns the negative of the cost because 0 is the best cost.
+        weights the infeasible cost 10 times the objective cost.
+        TODO: choose better evaluation and investigate how it affects population
+        """
         self.cost = instance.evaluate_solution(self.sol_events)
-        return -(10 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        return -(100 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        # return -(self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        # return -self.cost.Infeasibility_Value
 
     def is_feasible(self) -> bool:
         return self.cost.Infeasibility_Value == 0
 
 
-def mutate(solution: LocalSearchSolution) -> None:
+def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
     # TODO: make faster is there a nice way to use vectors/numpy arrays?
     random.shuffle(solution.sol_events)
     for i, event in enumerate(solution.sol_events):
@@ -48,7 +56,17 @@ def mutate(solution: LocalSearchSolution) -> None:
                         other_event_resource_idx = random.randint(
                             0, len(other_event.Resources) - 1
                         )
-                        if other_event_resource_idx not in selected:
+                        if (
+                            other_event_resource_idx not in selected
+                            and instance.get_resources()[
+                                other_event.Resources[
+                                    other_event_resource_idx
+                                ].Reference
+                            ].ResourceTypeReference
+                            == instance.get_resources()[
+                                event.Resources[i].Reference
+                            ].ResourceTypeReference
+                        ):
                             # swap
                             (
                                 event.Resources[i],
@@ -85,7 +103,7 @@ def local_search(
             for _ in range(10)
         ]
         for neighbor in neighbors:
-            mutate(neighbor)
+            mutate(neighbor, instance)
 
         # Evaluate the neighbors
         for neighbor in neighbors:
@@ -110,7 +128,7 @@ def local_search(
         if current_solution.is_feasible():
             return current_solution
 
-    print("best random: ", best_random_solution.cost)
+    print("\nbest random: ", best_random_solution.cost)
 
     return current_solution
 
@@ -123,13 +141,17 @@ if __name__ == "__main__":
 
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
+    dataset_brazil1 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
         dataset_abramson15: "ArtificialAbramson15",
+        dataset_brazil1: "BrazilInstance3.xml",
     }
 
-    for dataset in (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):
+    for dataset in (
+        dataset_brazil1,
+    ):  # (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):
         random.seed(23)
 
         assert dataset.num_instances() == 1
@@ -143,5 +165,7 @@ if __name__ == "__main__":
         evaluation = instance.evaluate_solution(local_search_result.sol_events)
 
         print(
-            f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n", evaluation
+            f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
+            evaluation,
+            "\n",
         )
