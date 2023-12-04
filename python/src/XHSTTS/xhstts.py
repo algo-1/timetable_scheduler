@@ -10,7 +10,6 @@ from XHSTTS.utils import (
     Cost_Function_Type,
     cost,
     cost_function_to_enum,
-    cost_function,
 )
 
 
