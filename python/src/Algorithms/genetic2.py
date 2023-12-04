@@ -199,15 +199,15 @@ if __name__ == "__main__":
 
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
-    dataset_brazil1 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
+    dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
         dataset_abramson15: "ArtificialAbramson15",
-        dataset_brazil1: "BrazilInstance3.xml",
+        dataset_brazil3: "BrazilInstance3.xml",
     }
 
-    for dataset in (dataset_brazil1,):  # (dataset_sudoku4x4,):  # dataset_abramson15):
+    for dataset in (dataset_brazil3,):  # (dataset_sudoku4x4,):  # dataset_abramson15):
         random.seed(23)
 
         assert dataset.num_instances() == 1
@@ -220,4 +220,7 @@ if __name__ == "__main__":
         # evaluate
         evaluation = instance.evaluate_solution(result)
 
-        print(f"\n---Genetic2 Evaluation ({dataset_names[dataset]})---\n", evaluation)
+        print(
+            f"\n---Genetic Evaluation ({dataset_names[dataset]})---\n",
+            evaluation,
+        )

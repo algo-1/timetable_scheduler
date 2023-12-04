@@ -131,9 +131,11 @@ if __name__ == "__main__":
 
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
-    dataset_brazil1 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
+    dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
 
-    for dataset in (dataset_sudoku4x4, dataset_abramson15, dataset_brazil1):
+    for dataset in (
+        dataset_brazil3,
+    ):  # (dataset_sudoku4x4, dataset_abramson15, dataset_brazil1):
         random.seed(23)
 
         assert dataset.num_instances() == 1
