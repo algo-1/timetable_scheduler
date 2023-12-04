@@ -393,19 +393,112 @@ class AvoidUnavailableTimesConstraint(Constraint):
 
 
 class LimitIdleTimesConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.min = int(XMLConstraint.find("Minimum").text)
+        self.max = int(XMLConstraint.find("Maximum").text)
+        self.time_groups = []
+        self._parse_time_groups(XMLConstraint)
+
+    def get_resource_status(
+        self,
+        resource_ref,
+        timegroup: tuple,
+        solution: list[XHSTTSInstance.SolutionEvent],
+    ):
+        return [
+            True
+            if any(
+                sol_event.TimeReference
+                and time_ref == sol_event.TimeReference
+                and self.hasResource(resource_ref, sol_event.Resources)
+                for sol_event in solution
+            )
+            else False
+            for time_ref in timegroup
+        ]
+
+    def get_idle_times_count(self, resource_status: list[bool]):
+        first_true = False
+        count = 0
+        res = 0
+        for value in resource_status:
+            if value:
+                if not first_true:
+                    first_true = True
+                else:
+                    # add count to result and reset count
+                    res += count
+                    count = 0
+            else:
+                if first_true:
+                    count += 1
+        return res
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for resource_ref in self.resource_references:
+            idle_times_count = 0
+            for timegroup in self.time_groups:
+                resource_status = self.get_resource_status(
+                    resource_ref, timegroup, solution
+                )
+                idle_times_count += self.get_idle_times_count(resource_status)
+            if idle_times_count < self.min:
+                deviation += self.min - idle_times_count
+            elif idle_times_count > self.max:
+                deviation += idle_times_count - self.max
+
+        return cost(deviation, self.weight, self.cost_function)
+
+    def _parse_time_groups(self, XMLConstraint: ET.Element):
+        XMLTimeGroups = XMLConstraint.find("TimeGroups")
+        if XMLTimeGroups:
+            for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
+                ref = XMLTimeGroup.attrib["Reference"]
+                self.time_groups.append(
+                    tuple(t.Reference for t in self.instance_time_groups[ref])
+                )
 
 
 class ClusterBusyTimesConstraint(Constraint):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+        self.min = int(XMLConstraint.find("Minimum").text)
+        self.max = int(XMLConstraint.find("Maximum").text)
+        self.time_groups: list[set] = []
+        self._parse_time_groups(XMLConstraint)
 
     def evaluate(self, solution):
-        pass
+        deviation = 0
+        for resource_ref in self.resource_references:
+            count = 0
+            for timegroup in self.time_groups:
+                found = False
+                for sol_event in solution:
+                    if sol_event.TimeReference:
+                        if sol_event.TimeReference in timegroup:
+                            if self.hasResource(resource_ref, sol_event.Resources):
+                                found = True
+                                break
+                if found:
+                    count += 1
+
+            if count < self.min:
+                deviation += self.min - count
+            elif count > self.max:
+                deviation += count - self.max
+
+        return cost(deviation, self.weight, self.cost_function)
+
+    def _parse_time_groups(self, XMLConstraint: ET.Element):
+        XMLTimeGroups = XMLConstraint.find("TimeGroups")
+        if XMLTimeGroups:
+            for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
+                ref = XMLTimeGroup.attrib["Reference"]
+                self.time_groups.append(
+                    set([t.Reference for t in self.instance_time_groups[ref]])
+                )
 
 
 class XHSTTSInstance:
@@ -525,6 +618,7 @@ class XHSTTSInstance:
             )
 
         # populate instance_time_groups
+        # NOTE: Assumes that self.Times dictionary is ordered as the order of times as specified in the xml matter. Python 3.11 is used for development/ Python guarantees this behaviour in versions 3.6+
         for _, time in self.Times.items():
             for ref in time.TimeGroupReferences:
                 self.instance_time_groups[ref].append(time)
