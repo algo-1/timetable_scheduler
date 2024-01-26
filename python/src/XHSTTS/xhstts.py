@@ -547,6 +547,7 @@ class XHSTTSInstance:
         XMLSolutions : List of all solutions in the dataset that reference the XMLInstance.
 
         """
+        self.name = XMLInstance.find("MetaData").find("Name").text
         self.TimeGroups = {}
         self.Times = {}
         self.ResourceTypes = {}
