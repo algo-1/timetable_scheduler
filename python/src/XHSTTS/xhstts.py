@@ -838,7 +838,7 @@ class XHSTTS:
         return XHSTTSInstance(
             self.instances[index],
             self.root.findall(
-                f".//SolutionGroups/SolutionGroup//Solution[@Reference='{self.instances[0].attrib['Id']}']"
+                f".//SolutionGroups/SolutionGroup//Solution[@Reference='{self.instances[index].attrib['Id']}']"
             ),
         )
 
