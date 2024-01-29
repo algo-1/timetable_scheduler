@@ -705,7 +705,9 @@ class XHSTTSInstance:
                         else None,
                     )
                     for XMLResource in XMLEvent.find("Resources").findall("Resource")
-                ],
+                ]
+                if XMLEvent.find("Resources") is not None
+                else [],
                 ResourceGroupReferences=[
                     XMLResourceGroup.attrib["Reference"]
                     for XMLResourceGroup in XMLEvent.find("ResourceGroups").findall(
