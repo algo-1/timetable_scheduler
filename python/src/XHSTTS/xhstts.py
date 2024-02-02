@@ -1,6 +1,7 @@
 from __future__ import annotations
 from collections import defaultdict, namedtuple
 from inspect import isclass
+from pathlib import Path
 import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 
@@ -548,6 +549,7 @@ class XHSTTSInstance:
 
         """
         self.name = XMLInstance.find("MetaData").find("Name").text
+        self.id = XMLInstance.attrib["Id"]
         self.TimeGroups = {}
         self.Times = {}
         self.ResourceTypes = {}
@@ -817,6 +819,35 @@ class XHSTTSInstance:
                 for resource in event.Resources
             ],
         )
+
+    @staticmethod
+    def sol_events_to_xml(
+        sol_events: list[SolutionEvent], instance: XHSTTSInstance, file_path: Path
+    ) -> ET.Element:
+        assert len(sol_events) > 0, "sol_events cannot be empty!"
+        root = ET.Element("Solution", Reference=instance.id)
+        events_element = ET.SubElement(root, "Events")
+
+        for sol_event in sol_events:
+            event_element = ET.SubElement(
+                events_element, "Event", Reference=sol_event.InstanceEventReference
+            )
+            ET.SubElement(event_element, "Duration").text = str(sol_event.Duration)
+            ET.SubElement(event_element, "Time", Reference=sol_event.TimeReference)
+
+            if sol_event.Resources:
+                resources_element = ET.SubElement(event_element, "Resources")
+                for resource in sol_event.Resources:
+                    resource_element = ET.SubElement(
+                        resources_element, "Resource", Reference=resource.Reference
+                    )
+                    ET.SubElement(resource_element, "Role").text = str(resource.Role)
+
+        # write to output file
+        xml_tree = ET.ElementTree(root)
+        xml_tree.write(file_path, encoding="utf-8", xml_declaration=True)
+
+        return xml_tree
 
 
 class XHSTTS:
