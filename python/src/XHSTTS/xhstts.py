@@ -744,6 +744,7 @@ class XHSTTSInstance:
     def _parse_constraints(self, XMLConstraints: ET.Element):
         for XMLConstraint in XMLConstraints.findall("*"):
             class_name = XMLConstraint.tag
+            # print(class_name)
             try:
                 constraint_class = globals()[class_name]
             except KeyError:
@@ -792,12 +793,18 @@ class XHSTTSInstance:
     def get_cost(self, solution, constraint: Constraint):
         return constraint.evaluate(solution)
 
-    def evaluate_solution(self, solution: list[SolutionEvent]):
+    def evaluate_solution(self, solution: list[SolutionEvent], debug=False):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
         for constraint in self.Constraints:
             value = self.get_cost(solution, constraint)
-            # print("value = ", value, constraint.__class__.__name__)
+            if debug:
+                print(
+                    "value = ",
+                    value,
+                    f"required = {constraint.is_required()}",
+                    constraint.__class__.__name__,
+                )
             if constraint.is_required():
                 cost.Infeasibility_Value += value
             else:
