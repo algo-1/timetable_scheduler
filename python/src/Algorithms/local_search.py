@@ -82,16 +82,19 @@ def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
 
 
 def local_search(
-    instance: XHSTTSInstance,
-    max_iterations: int = 10_000,
-) -> LocalSearchSolution:
-    best_random_solution: LocalSearchSolution = sorted(
-        [LocalSearchSolution(random_solution(instance)) for _ in range(1000)],
-        key=lambda x: x.evaluate(instance),
-        reverse=True,
-    )[0]
+    instance: XHSTTSInstance, max_iterations: int = 10_000, sol_events=[]
+) -> list[XHSTTSInstance.SolutionEvent]:
+    best_random_solution = None
+    if sol_events:
+        current_solution = LocalSearchSolution(sol_events)
+    else:
+        best_random_solution: LocalSearchSolution = sorted(
+            [LocalSearchSolution(random_solution(instance)) for _ in range(10)],
+            key=lambda x: x.evaluate(instance),
+            reverse=True,
+        )[0]
+        current_solution = best_random_solution
 
-    current_solution = best_random_solution
     current_solution.evaluate(instance)
 
     no_improvement = 0
@@ -111,7 +114,7 @@ def local_search(
 
         # Select the best neighbor
         best_neighbor = max(neighbors, key=lambda x: x.evaluate(instance))
-        print(sorted([x.evaluate(instance) for x in neighbors], reverse=True))
+        # print(sorted([x.evaluate(instance) for x in neighbors], reverse=True))
 
         # Check if the best neighbor is an improvement
         if best_neighbor.evaluate(instance) > current_solution.evaluate(instance):
@@ -120,17 +123,18 @@ def local_search(
         else:
             # No improvement for 20 iterations, terminate the search
             no_improvement += 1
-            print(f"no consecutive improvements {no_improvement}")
+            # print(f"no consecutive improvements {no_improvement}")
             if no_improvement > 19:  # TODO make constant
                 break
 
         # Check if a satisfactory solution has been found.
         if current_solution.is_feasible():
-            return current_solution
+            return current_solution.sol_events
 
-    print("\nbest random: ", best_random_solution.cost)
+    if not sol_events:
+        print("\nbest random: ", best_random_solution.cost)
 
-    return current_solution
+    return current_solution.sol_events
 
 
 if __name__ == "__main__":
@@ -142,6 +146,7 @@ if __name__ == "__main__":
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
     dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
+    benchmark_dataset = XHSTTS(data_dir.parent.joinpath("XHSTT-2014.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
@@ -150,22 +155,84 @@ if __name__ == "__main__":
     }
 
     for dataset in (
-        dataset_brazil3,
-    ):  # (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):
+        benchmark_dataset,
+    ):  # dataset_brazil3 (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):
         random.seed(23)
 
-        assert dataset.num_instances() == 1
+        print(f"number of benchmark instances = {benchmark_dataset.num_instances()}")
+        for idx in range(1, benchmark_dataset.num_instances()):
+            instance = dataset.get_instance(index=idx)
 
-        instance = dataset.get_instance(index=0)
+            if instance.name in (
+                "BrazilInstance2",
+                "BrazilInstance4",
+                "BrazilInstance6",
+            ):
+                dataset.get_instance(index=idx)
+                print(f"-----{instance.name}-----")
 
-        # perform local search
-        local_search_result = local_search(instance)
+                from Algorithms.genetic2 import genetic_algorithm
 
-        # evaluate local search result
-        evaluation = instance.evaluate_solution(local_search_result.sol_events)
+                genetic_result = genetic_algorithm(instance)
 
-        print(
-            f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
-            evaluation,
-            "\n",
-        )
+                evaluation = instance.evaluate_solution(genetic_result, debug=True)
+
+                print(
+                    f"\n---Genetic Evaluation ({instance.name})---\n",
+                    evaluation,
+                )
+
+                # perform local search
+                local_search_result = local_search(instance, sol_events=genetic_result)
+
+                # evaluate local search result
+                evaluation = instance.evaluate_solution(local_search_result, debug=True)
+
+                print(
+                    f"\n---Local Search Benchmark Evaluation {instance.name} ---\n",
+                    evaluation,
+                    "\n",
+                )
+
+    # for dataset in (
+    #     dataset_sudoku4x4,
+    #     dataset_brazil3,
+    # ):  #  (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):  benchmark_dataset,
+    #     random.seed(23)
+
+    #     assert dataset.num_instances() == 1
+
+    #     instance = dataset.get_instance(index=0)
+
+    #     from Algorithms.genetic2 import genetic_algorithm
+
+    #     genetic_result = genetic_algorithm(instance)
+
+    #     evaluation = instance.evaluate_solution(genetic_result, debug=True)
+
+    #     print(
+    #         f"\n---Genetic Evaluation ({dataset_names[dataset]})---\n",
+    #         evaluation,
+    #     )
+
+    #     # perform local search
+    #     local_search_result = local_search(instance, sol_events=genetic_result)
+
+    #     # evaluate local search result
+    #     evaluation = instance.evaluate_solution(local_search_result, debug=True)
+
+    #     print(
+    #         f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
+    #         evaluation,
+    #     )
+
+    #     # perform local search
+    #     local_search_result = local_search(instance, sol_events=local_search_result)
+
+    #     # evaluate local search result
+    #     evaluation = instance.evaluate_solution(local_search_result, debug=True)
+
+    #     print(
+    #         f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
+    #         evaluation,
+    #     )
