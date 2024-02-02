@@ -5,6 +5,7 @@
 # randomly assign time resources to all instance events where necessary in accordance to the rules (not constraints)
 # split some events into smaller pieces randomly too in accordance to the rules (not constraints)
 from collections import defaultdict
+from itertools import cycle
 import random
 
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
@@ -58,10 +59,11 @@ def assign_random_times(
     sol_events: list[XHSTTSInstance.SolutionEvent], instance: XHSTTSInstance
 ):
     time_refs = list(instance.Times.keys())
+    random.shuffle(time_refs)
+    time_cycle = cycle(time_refs)
+
     return [
-        event
-        if event.TimeReference
-        else event._replace(TimeReference=random.choice(time_refs))
+        event if event.TimeReference else event._replace(TimeReference=next(time_cycle))
         for event in sol_events
     ]
 
