@@ -496,6 +496,38 @@ class ClusterBusyTimesConstraint(Constraint):
                 )
 
 
+class AvoidSplitAssignmentsConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+
+    def evaluate(self, solution):
+        return 0
+
+
+class LinkEventsConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+
+    def evaluate(self, solution):
+        return 0
+
+
+class LimitBusyTimesConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+
+    def evaluate(self, solution):
+        return 0
+
+
+class LimitWorkloadConstraint(Constraint):
+    def __init__(self, XMLConstraint: ET.Element, *args):
+        super().__init__(XMLConstraint, *args)
+
+    def evaluate(self, solution):
+        return 0
+
+
 class XHSTTSInstance:
     # TODO - remove redundant constants & convert named tuples to dataclasses
     TIME_GROUP_NAMES = ["TimeGroup", "Day", "Week"]
