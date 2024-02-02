@@ -184,7 +184,7 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
         if best_solution.is_feasible():
             return best_solution.sol_events
 
-        # print(f"Generation: {idx + 1}")
+        print(f"Generation: {idx + 1}")
 
     print("\nbest random: ", best_random)
 
