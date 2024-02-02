@@ -148,7 +148,16 @@ if __name__ == "__main__":
         result = random_solution(instance)
 
         # evaluate
-        evaluation = instance.evaluate_solution(result)
+        evaluation = instance.evaluate_solution(result, debug=True)
 
-        print("\n---Random Evaluation---\n", evaluation)
-        print("---Random Evaluation---\n\n")
+        print(
+            f"\n--- Random Evaluation ({dataset_names[dataset]}) ---\n",
+            evaluation,
+        )
+
+        # save the solution as an xml file
+        solutions_dir = root_dir.joinpath("solutions")
+        file_path = solutions_dir.joinpath(
+            f"random_solution_{dataset_names[dataset]}.xml"
+        )
+        XHSTTSInstance.sol_events_to_xml(result, instance, file_path)
