@@ -62,6 +62,8 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
                         )
                         if (
                             other_event_resource_idx not in selected
+                            and event.Resources[i].Role
+                            == other_event.Resources[other_event_resource_idx].Role
                             and instance.get_resources()[
                                 other_event.Resources[
                                     other_event_resource_idx
