@@ -230,6 +230,6 @@ if __name__ == "__main__":
         # save the solution as an xml file
         solutions_dir = root_dir.joinpath("solutions")
         file_path = solutions_dir.joinpath(
-            f"genetic_solution{dataset_names[dataset]}.xml"
+            f"genetic_solution_{dataset_names[dataset]}.xml"
         )
         XHSTTSInstance.sol_events_to_xml(result, instance, file_path)
