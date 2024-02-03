@@ -220,9 +220,16 @@ if __name__ == "__main__":
         result = genetic_algorithm(instance)
 
         # evaluate
-        evaluation = instance.evaluate_solution(result)
+        evaluation = instance.evaluate_solution(result, debug=True)
 
         print(
             f"\n---Genetic Evaluation ({dataset_names[dataset]})---\n",
             evaluation,
         )
+
+        # save the solution as an xml file
+        solutions_dir = root_dir.joinpath("solutions")
+        file_path = solutions_dir.joinpath(
+            f"genetic_solution_no_resource_swap{dataset_names[dataset]}.xml"
+        )
+        XHSTTSInstance.sol_events_to_xml(result, instance, file_path)
