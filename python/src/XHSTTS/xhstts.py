@@ -724,53 +724,71 @@ class XHSTTSInstance:
                 Reference=XMLEvent.attrib["Id"],
                 Name=XMLEvent.find("Name").text,
                 Duration=int(XMLEvent.find("Duration").text),
-                Workload=int(XMLEvent.find("Workload").text)
-                if XMLEvent.find("Workload") is not None
-                else None,
-                PreAssignedTimeReference=XMLEvent.find("Time").attrib["Reference"]
-                if XMLEvent.find("Time") is not None
-                else None,
-                Resources=[
-                    XHSTTSInstance.EventResource(
-                        Reference=XMLResource.attrib.get(
-                            "Reference"
-                        ),  # can be None in which case the solver is expected to assign a resource to the event and in this case the Role and ResourceType are compulsory
-                        Role=XMLResource.find("Role").text
-                        if XMLResource.find("Role") is not None
-                        else None,
-                        ResourceTypeReference=XMLResource.find("ResourceType").attrib[
-                            "Reference"
-                        ]
-                        if XMLResource.find("ResourceType") is not None
-                        else None,
-                        Workload=int(XMLResource.find("Workload").text)
-                        if XMLResource.find("Workload") is not None
-                        else None,
-                    )
-                    for XMLResource in XMLEvent.find("Resources").findall("Resource")
-                ]
-                if XMLEvent.find("Resources") is not None
-                else [],
-                ResourceGroupReferences=[
-                    XMLResourceGroup.attrib["Reference"]
-                    for XMLResourceGroup in XMLEvent.find("ResourceGroups").findall(
-                        "ResourceGroup"
-                    )
-                ]
-                if XMLEvent.find("ResourceGroups") is not None
-                else [],  # every resource in the resource group is to be preassigned to the event, however spec may change as was intended to be used for student sectioning
+                Workload=(
+                    int(XMLEvent.find("Workload").text)
+                    if XMLEvent.find("Workload") is not None
+                    else None
+                ),
+                PreAssignedTimeReference=(
+                    XMLEvent.find("Time").attrib["Reference"]
+                    if XMLEvent.find("Time") is not None
+                    else None
+                ),
+                Resources=(
+                    [
+                        XHSTTSInstance.EventResource(
+                            Reference=XMLResource.attrib.get(
+                                "Reference"
+                            ),  # can be None in which case the solver is expected to assign a resource to the event and in this case the Role and ResourceType are compulsory
+                            Role=(
+                                XMLResource.find("Role").text
+                                if XMLResource.find("Role") is not None
+                                else None
+                            ),
+                            ResourceTypeReference=(
+                                XMLResource.find("ResourceType").attrib["Reference"]
+                                if XMLResource.find("ResourceType") is not None
+                                else None
+                            ),
+                            Workload=(
+                                int(XMLResource.find("Workload").text)
+                                if XMLResource.find("Workload") is not None
+                                else None
+                            ),
+                        )
+                        for XMLResource in XMLEvent.find("Resources").findall(
+                            "Resource"
+                        )
+                    ]
+                    if XMLEvent.find("Resources") is not None
+                    else []
+                ),
+                ResourceGroupReferences=(
+                    [
+                        XMLResourceGroup.attrib["Reference"]
+                        for XMLResourceGroup in XMLEvent.find("ResourceGroups").findall(
+                            "ResourceGroup"
+                        )
+                    ]
+                    if XMLEvent.find("ResourceGroups") is not None
+                    else []
+                ),  # every resource in the resource group is to be preassigned to the event, however spec may change as was intended to be used for student sectioning
                 # TODO: do any datasets use this?
-                CourseReference=XMLEvent.find("Course").attrib["Reference"]
-                if XMLEvent.find("Course") is not None
-                else None,
-                EventGroupReferences=[
-                    XMLEventGroup.attrib["Reference"]
-                    for XMLEventGroup in XMLEvent.find("EventGroups").findall(
-                        "EventGroup"
-                    )
-                ]
-                if XMLEvent.find("EventGroups") is not None
-                else [],
+                CourseReference=(
+                    XMLEvent.find("Course").attrib["Reference"]
+                    if XMLEvent.find("Course") is not None
+                    else None
+                ),
+                EventGroupReferences=(
+                    [
+                        XMLEventGroup.attrib["Reference"]
+                        for XMLEventGroup in XMLEvent.find("EventGroups").findall(
+                            "EventGroup"
+                        )
+                    ]
+                    if XMLEvent.find("EventGroups") is not None
+                    else []
+                ),
             )
             for XMLEvent in XMLEvents.findall("Event")
         }
