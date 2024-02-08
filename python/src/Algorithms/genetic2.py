@@ -31,65 +31,71 @@ class Solution:
 
 
 def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
-    # TODO: make faster is there a nice way to use vectors/numpy arrays?
-    random.shuffle(solution.sol_events)
     for i, event in enumerate(solution.sol_events):
-        if (
-            random.random() < 0.01
-        ):  # TODO parameterise this value and how do we decide it?
-            # Randomly select a different event.
-            other_idx = random.randint(0, len(solution.sol_events) - 1)
-            other_event = solution.sol_events[other_idx]
+        # randomly mutate an event
+        if random.random() < 0.01:
+            # replace time ref
+            if not instance.Events[
+                event.InstanceEventReference
+            ].PreAssignedTimeReference:
+                new_time_reference = instance.get_random_time_reference()
+                new_event = event._replace(TimeReference=new_time_reference)
 
-            # Swap the two events. # TODO: refactor sol_events to dataclasses!
-            tmp = event
-
-            # swap times
-            event = event._replace(TimeReference=other_event.TimeReference)
-
-            assert tmp != event or (tmp.TimeReference == other_event.TimeReference)
-
-            other_event = other_event._replace(TimeReference=tmp.TimeReference)
-
-            # swap resources
-            selected = set()
-            if other_event.Resources:
-                for i in range(len(event.Resources)):
-                    if random.random() < 0.01:
-                        # Randomly select a resource from the other event.
-                        other_event_resource_idx = random.randint(
-                            0, len(other_event.Resources) - 1
+            for k in range(len(event.Resources)):
+                # randomly replace resource with a resource of the same type and role
+                if random.random() < 0.01:
+                    new_event_resource = (
+                        instance.get_random_and_valid_resource_reference(
+                            new_event.Resources[k], new_event.InstanceEventReference
                         )
-                        if (
-                            other_event_resource_idx not in selected
-                            and event.Resources[i].Role
-                            == other_event.Resources[other_event_resource_idx].Role
-                            and instance.get_resources()[
-                                other_event.Resources[
-                                    other_event_resource_idx
-                                ].Reference
-                            ].ResourceTypeReference
-                            == instance.get_resources()[
-                                event.Resources[i].Reference
-                            ].ResourceTypeReference
-                        ):
-                            # swap
-                            (
-                                event.Resources[i],
-                                other_event.Resources[other_event_resource_idx],
-                            ) = (
-                                other_event.Resources[other_event_resource_idx],
-                                event.Resources[i],
-                            )
-                            selected.add(other_event_resource_idx)
+                    )
+                    new_event.Resources[k] = new_event_resource
 
-            solution.sol_events[i] = event
-            solution.sol_events[other_idx] = other_event
+            solution.sol_events[i] = new_event
+
+        # randomly swap times and resources with other events??
+
+        if random.random() < 0.01:
+            other_idx = random.randint(0, len(solution.sol_events) - 1)
+            swap(
+                solution.sol_events[i].TimeReference,
+                solution.sol_events[other_idx].TimeReference,
+            )
+
+            # for k in range(len(solution.sol_events[i].Resources)):
+            #     other_event_resource_idx = random.randint(
+            #         0, len(solution.sol_events[other_idx].Resources) - 1
+            #     )
+            #     if (
+            #         solution.sol_events[i].Resources[k].Role
+            #         == solution.sol_events[other_idx]
+            #         .Resources[other_event_resource_idx]
+            #         .Role
+            #         and instance.get_resources()[
+            #             solution.sol_events[other_idx]
+            #             .Resources[other_event_resource_idx]
+            #             .Reference
+            #         ].ResourceTypeReference
+            #         == instance.get_resources()[
+            #             event.Resources[k].Reference
+            #         ].ResourceTypeReference
+            #     ):
+            #         # swap
+            #         swap(
+            #             solution.sol_events[i].Resources[k],
+            #             solution.sol_events[other_idx].Resources[
+            #                 other_event_resource_idx
+            #             ],
+            #         )
+
+
+def swap(a, b):
+    a, b = b, a
 
 
 def crossover(sol1: Solution, sol2: Solution) -> tuple[Solution]:
-    random.shuffle(sol1.sol_events)
-    random.shuffle(sol2.sol_events)
+    # random.shuffle(sol1.sol_events)
+    # random.shuffle(sol2.sol_events)
 
     # Randomly select a crossover point.
     crossover_point = random.randint(0, len(sol1.sol_events) - 1)
@@ -209,7 +215,10 @@ if __name__ == "__main__":
         dataset_brazil3: "BrazilInstance3.xml",
     }
 
-    for dataset in (dataset_brazil3,):  # (dataset_sudoku4x4,):  # dataset_abramson15):
+    for dataset in (
+        dataset_sudoku4x4,
+        dataset_abramson15,
+    ):  # (dataset_sudoku4x4,):  # dataset_abramson15):
         random.seed(23)
 
         assert dataset.num_instances() == 1
