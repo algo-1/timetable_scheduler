@@ -137,9 +137,12 @@ if __name__ == "__main__":
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
     dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
 
-    for dataset in (
-        dataset_brazil3,
-    ):  # (dataset_sudoku4x4, dataset_abramson15, dataset_brazil1):
+    dataset_names = {
+        dataset_sudoku4x4: "ArtificialSudoku4x4",
+        dataset_abramson15: "ArtificialAbramson15",
+        dataset_brazil3: "BrazilInstance3.xml",
+    }
+    for dataset in (dataset_sudoku4x4, dataset_abramson15, dataset_brazil3):
         random.seed(23)
 
         assert dataset.num_instances() == 1
@@ -150,12 +153,11 @@ if __name__ == "__main__":
         result = random_solution(instance)
 
         # evaluate
+        print(f"\n\n--- Random Evaluation ({dataset_names[dataset]}) ---")
+
         evaluation = instance.evaluate_solution(result, debug=True)
 
-        print(
-            f"\n--- Random Evaluation ({dataset_names[dataset]}) ---\n",
-            evaluation,
-        )
+        print("\n", evaluation)
 
         # save the solution as an xml file
         solutions_dir = root_dir.joinpath("solutions")
