@@ -2,6 +2,7 @@ from __future__ import annotations
 from collections import defaultdict, namedtuple
 from inspect import isclass
 from pathlib import Path
+import random
 import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 
@@ -114,6 +115,7 @@ class AssignTimeConstraint(Constraint):
                         if not solution_event.TimeReference:
                             deviation += solution_event.Duration
                 if not seen:
+                    # print(f"ref = {event.Reference}, duration = {event.Duration}")
                     deviation += event.Duration
 
         return cost(deviation, self.weight, self.cost_function)
@@ -402,14 +404,16 @@ class LimitIdleTimesConstraint(Constraint):
         solution: list[XHSTTSInstance.SolutionEvent],
     ):
         return [
-            True
-            if any(
-                sol_event.TimeReference
-                and time_ref == sol_event.TimeReference
-                and self.hasResource(resource_ref, sol_event.Resources)
-                for sol_event in solution
+            (
+                True
+                if any(
+                    sol_event.TimeReference
+                    and time_ref == sol_event.TimeReference
+                    and self.hasResource(resource_ref, sol_event.Resources)
+                    for sol_event in solution
+                )
+                else False
             )
-            else False
             for time_ref in timegroup
         ]
 
@@ -610,6 +614,11 @@ class XHSTTSInstance:
             XMLSolutions
         )  # must be parsed after Events because of duration fallback!
 
+        # partition the resources based on resourcve types
+        self.partitioned_resources_refs = defaultdict(list)
+        for ref, resource in self.Resources.items():
+            self.partitioned_resources_refs[resource.ResourceTypeReference].append(ref)
+
     def get_events(self):
         return self.Events
 
@@ -800,23 +809,31 @@ class XHSTTSInstance:
                 [
                     XHSTTSInstance.SolutionEvent(
                         InstanceEventReference=XMLSolutionEvent.attrib["Reference"],
-                        Duration=int(XMLSolutionEvent.find("Duration").text)
-                        if XMLSolutionEvent.find("Duration") is not None
-                        else self.Events[XMLSolutionEvent.attrib["Reference"]].Duration,
-                        TimeReference=XMLSolutionEvent.find("Time").attrib["Reference"]
-                        if XMLSolutionEvent.find("Time") is not None
-                        else None,
-                        Resources=[
-                            XHSTTSInstance.SolutionEventResource(
-                                XMLSolutionResource.attrib["Reference"],
-                                XMLSolutionResource.find("Role").text,
-                            )
-                            for XMLSolutionResource in XMLSolutionEvent.find(
-                                "Resources"
-                            ).findall("Resource")
-                        ]
-                        if XMLSolutionEvent.find("Resources") is not None
-                        else [],
+                        Duration=(
+                            int(XMLSolutionEvent.find("Duration").text)
+                            if XMLSolutionEvent.find("Duration") is not None
+                            else self.Events[
+                                XMLSolutionEvent.attrib["Reference"]
+                            ].Duration
+                        ),
+                        TimeReference=(
+                            XMLSolutionEvent.find("Time").attrib["Reference"]
+                            if XMLSolutionEvent.find("Time") is not None
+                            else None
+                        ),
+                        Resources=(
+                            [
+                                XHSTTSInstance.SolutionEventResource(
+                                    XMLSolutionResource.attrib["Reference"],
+                                    XMLSolutionResource.find("Role").text,
+                                )
+                                for XMLSolutionResource in XMLSolutionEvent.find(
+                                    "Resources"
+                                ).findall("Resource")
+                            ]
+                            if XMLSolutionEvent.find("Resources") is not None
+                            else []
+                        ),
                     )
                     for XMLSolutionEvent in solution_events
                 ]
@@ -843,6 +860,34 @@ class XHSTTSInstance:
                 cost.Objective_Value += value
 
         return cost
+
+    def get_random_time_reference(self):
+        return random.choice(list(self.Times.keys()))
+
+    def find_resource_type(
+        self, resources: list[XHSTTSInstance.EventResource], role: str
+    ):
+        for elem in resources:
+            if elem.Role == role:
+                return elem.ResourceTypeReference
+        raise Exception(f"Did not find the '{role}' role in resources.")
+
+    def get_random_and_valid_resource_reference(
+        self, event_resource: EventResource, instanceEventReference
+    ):
+        resourceType = self.find_resource_type(
+            self.Events[instanceEventReference].Resources,
+            event_resource.Role,
+        )
+
+        if not resourceType:
+            # it was pre-assigned so do not mutate
+            # TODO: add isPreassigned field to event resources to aid easy check in algorithms
+            return event_resource
+
+        return event_resource._replace(
+            Reference=random.choice(self.partitioned_resources_refs[resourceType])
+        )
 
     # TODO : make list -> list
     @staticmethod
