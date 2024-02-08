@@ -1,6 +1,7 @@
 import random
 from Algorithms.random_algorithm import random_solution
-from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
+from Algorithms.genetic2 import genetic_algorithm
+from XHSTTS.xhstts import XHSTTS, Constraint, XHSTTSInstance
 from XHSTTS.utils import Cost
 from copy import deepcopy
 
@@ -27,58 +28,39 @@ class LocalSearchSolution:
 
 
 def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
-    # TODO: make faster is there a nice way to use vectors/numpy arrays?
-    random.shuffle(solution.sol_events)
     for i, event in enumerate(solution.sol_events):
-        if (
-            random.random() < 0.01
-        ):  # TODO parameterise this value and how do we decide it?
-            # Randomly select a different event.
-            other_idx = random.randint(0, len(solution.sol_events) - 1)
-            other_event = solution.sol_events[other_idx]
+        # randomly mutate an event
+        if random.random() < 0.01:
+            # replace time ref
+            if not instance.Events[
+                event.InstanceEventReference
+            ].PreAssignedTimeReference:
+                new_time_reference = instance.get_random_time_reference()
+                new_event = event._replace(TimeReference=new_time_reference)
 
-            # Swap the two events. # TODO: refactor sol_events to dataclasses!
-            tmp = event
-
-            # swap times
-            event = event._replace(TimeReference=other_event.TimeReference)
-
-            assert tmp != event or (tmp.TimeReference == other_event.TimeReference)
-
-            other_event = other_event._replace(TimeReference=tmp.TimeReference)
-
-            # swap resources
-            selected = set()
-            if other_event.Resources:
-                for i in range(len(event.Resources)):
-                    if random.random() < 0.01:
-                        # Randomly select a resource from the other event.
-                        other_event_resource_idx = random.randint(
-                            0, len(other_event.Resources) - 1
+            for k in range(len(event.Resources)):
+                # randomly replace resource with a resource of the same type and role
+                if random.random() < 0.01:
+                    new_event_resource = (
+                        instance.get_random_and_valid_resource_reference(
+                            new_event.Resources[k], new_event.InstanceEventReference
                         )
-                        if (
-                            other_event_resource_idx not in selected
-                            and instance.get_resources()[
-                                other_event.Resources[
-                                    other_event_resource_idx
-                                ].Reference
-                            ].ResourceTypeReference
-                            == instance.get_resources()[
-                                event.Resources[i].Reference
-                            ].ResourceTypeReference
-                        ):
-                            # swap
-                            (
-                                event.Resources[i],
-                                other_event.Resources[other_event_resource_idx],
-                            ) = (
-                                other_event.Resources[other_event_resource_idx],
-                                event.Resources[i],
-                            )
-                            selected.add(other_event_resource_idx)
+                    )
+                    new_event.Resources[k] = new_event_resource
 
-            solution.sol_events[i] = event
-            solution.sol_events[other_idx] = other_event
+            solution.sol_events[i] = new_event
+        # randomly swap times and resources with other events??
+
+        if random.random() < 0.01:
+            other_idx = random.randint(0, len(solution.sol_events) - 1)
+            swap(
+                solution.sol_events[i].TimeReference,
+                solution.sol_events[other_idx].TimeReference,
+            )
+
+
+def swap(a, b):
+    a, b = b, a
 
 
 def local_search(
@@ -154,48 +136,41 @@ if __name__ == "__main__":
         dataset_brazil3: "BrazilInstance3.xml",
     }
 
-    for dataset in (
-        benchmark_dataset,
-    ):  # dataset_brazil3 (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):
-        random.seed(23)
+    random.seed(23)
 
-        print(f"number of benchmark instances = {benchmark_dataset.num_instances()}")
-        for idx in range(1, benchmark_dataset.num_instances()):
-            instance = dataset.get_instance(index=idx)
+    print(f"number of benchmark instances = {benchmark_dataset.num_instances()}")
+    for idx in range(1, benchmark_dataset.num_instances()):
+        instance = benchmark_dataset.get_instance(index=idx)
+        print(instance.name)
+        if instance.name in ("GreeceHighSchool1", "BrazilInstance2"):
+            print(
+                f"-----{instance.name}   {len(instance.Constraints)} constraints-----"
+            )
 
-            if instance.name in (
-                "BrazilInstance2",
-                "BrazilInstance4",
-                "BrazilInstance6",
-            ):
-                dataset.get_instance(index=idx)
-                print(f"-----{instance.name}-----")
+            genetic_result = genetic_algorithm(instance)
 
-                from Algorithms.genetic2 import genetic_algorithm
+            evaluation = instance.evaluate_solution(genetic_result, debug=True)
 
-                genetic_result = genetic_algorithm(instance)
+            print(
+                f"\n---Genetic Evaluation ({instance.name})---\n",
+                evaluation,
+            )
 
-                evaluation = instance.evaluate_solution(genetic_result, debug=True)
+            # perform local search
+            local_search_result = local_search(instance, sol_events=genetic_result)
 
-                print(
-                    f"\n---Genetic Evaluation ({instance.name})---\n",
-                    evaluation,
-                )
+            # evaluate local search result
+            evaluation = instance.evaluate_solution(local_search_result, debug=True)
 
-                # perform local search
-                local_search_result = local_search(instance, sol_events=genetic_result)
-
-                # evaluate local search result
-                evaluation = instance.evaluate_solution(local_search_result, debug=True)
-
-                print(
-                    f"\n---Local Search Benchmark Evaluation {instance.name} ---\n",
-                    evaluation,
-                    "\n",
-                )
+            print(
+                f"\n---Local Search Benchmark Evaluation {instance.name} ---\n",
+                evaluation,
+                "\n",
+            )
 
     # for dataset in (
     #     dataset_sudoku4x4,
+    #     dataset_abramson15,
     #     dataset_brazil3,
     # ):  #  (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):  benchmark_dataset,
     #     random.seed(23)
@@ -226,13 +201,15 @@ if __name__ == "__main__":
     #         evaluation,
     #     )
 
-    #     # perform local search
-    #     local_search_result = local_search(instance, sol_events=local_search_result)
+    #     print(len(local_search_result))
 
-    #     # evaluate local search result
-    #     evaluation = instance.evaluate_solution(local_search_result, debug=True)
+    # # perform local search
+    # local_search_result = local_search(instance, sol_events=local_search_result)
 
-    #     print(
-    #         f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
-    #         evaluation,
-    #     )
+    # # evaluate local search result
+    # evaluation = instance.evaluate_solution(local_search_result, debug=True)
+
+    # print(
+    #     f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
+    #     evaluation,
+    # )
