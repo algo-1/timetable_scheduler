@@ -85,16 +85,18 @@ def assign_random_resources(
     new_sol_events = []
     for event in sol_events:
         resources = [
-            resource
-            if resource.Reference
-            else resource._replace(
-                Reference=random.choice(
-                    partitioned_resources_refs[
-                        find_resource_type(
-                            instance.Events[event.InstanceEventReference].Resources,
-                            resource.Role,
-                        )
-                    ]
+            (
+                resource
+                if resource.Reference
+                else resource._replace(
+                    Reference=random.choice(
+                        partitioned_resources_refs[
+                            find_resource_type(
+                                instance.Events[event.InstanceEventReference].Resources,
+                                resource.Role,
+                            )
+                        ]
+                    )
                 )
             )
             for resource in event.Resources
