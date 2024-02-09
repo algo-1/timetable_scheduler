@@ -1,6 +1,7 @@
 import random
 from Algorithms.random_algorithm import random_solution
 from Algorithms.genetic2 import genetic_algorithm
+from Algorithms.simulated_annealing import simulated_annealing
 from XHSTTS.xhstts import XHSTTS, Constraint, XHSTTSInstance
 from XHSTTS.utils import Cost
 from copy import deepcopy
@@ -142,7 +143,14 @@ if __name__ == "__main__":
     for idx in range(1, benchmark_dataset.num_instances()):
         instance = benchmark_dataset.get_instance(index=idx)
         print(instance.name)
-        if instance.name in ("GreeceHighSchool1", "BrazilInstance2"):
+        if instance.name in (
+            # "BrazilInstance2",
+            # "FalkonG2012",
+            # "StPaul",
+            # "GreeceHighSchool1",
+            # "Kottenpark2003",
+            "Lewitt2009",
+        ):
             print(
                 f"-----{instance.name}   {len(instance.Constraints)} constraints-----"
             )
@@ -164,6 +172,18 @@ if __name__ == "__main__":
 
             print(
                 f"\n---Local Search Benchmark Evaluation {instance.name} ---\n",
+                evaluation,
+                "\n",
+            )
+
+            # perform annealing
+            annealing_result = simulated_annealing(instance, local_search_result)
+
+            # evaluate simulated annealing search result
+            evaluation = instance.evaluate_solution(annealing_result, debug=True)
+
+            print(
+                f"\n---Simulated Annealing Benchmark Evaluation {instance.name} ---\n",
                 evaluation,
                 "\n",
             )

@@ -5,8 +5,8 @@ from Algorithms.random_algorithm import random_solution
 from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
-POPULATION_SIZE = 100
-NGEN = 85
+POPULATION_SIZE = 200
+NGEN = 40  # 85
 
 
 class Solution:
@@ -156,6 +156,7 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
 
     best_solution = None
 
+    print("Generation Begin!")
     for idx in range(NGEN):
         # Select the best solutions from the population.
         selected_solutions = tournament_selection(population, instance, 20)

@@ -1,7 +1,5 @@
 import random
 import math
-from Algorithms.genetic2 import genetic_algorithm
-from Algorithms.local_search import local_search
 from Algorithms.random_algorithm import random_solution
 from XHSTTS.xhstts import XHSTTSInstance, XHSTTS
 from XHSTTS.utils import Cost
@@ -21,6 +19,9 @@ class Solution:
 
 
 def generate_initial_solution(instance: XHSTTSInstance) -> Solution:
+    from Algorithms.genetic2 import genetic_algorithm
+    from Algorithms.local_search import local_search
+
     # best_random_solution: Solution = sorted(
     #     [Solution(random_solution(instance)) for _ in range(100)],
     #     key=lambda x: x.evaluate(instance),
@@ -98,13 +99,19 @@ def acceptance_probability(
     return math.exp((new_energy - current_energy) / temperature)
 
 
-def simulated_annealing(instance: XHSTTSInstance) -> list[XHSTTSInstance.SolutionEvent]:
-    current_solution = generate_initial_solution(instance)
+def simulated_annealing(
+    instance: XHSTTSInstance, input_solution_events: list[XHSTTSInstance.SolutionEvent]
+) -> list[XHSTTSInstance.SolutionEvent]:
+    current_solution = None
+    if input_solution_events:
+        current_solution = Solution(input_solution_events)
+    else:
+        current_solution = generate_initial_solution(instance)
     current_energy = current_solution.evaluate(instance)
 
     best_solution = current_solution
     temperature = 1
-    temperature_decay = 0.995
+    temperature_decay = 0.99995
 
     while temperature > 0.1:
         new_solution = neighbor(current_solution, instance)
