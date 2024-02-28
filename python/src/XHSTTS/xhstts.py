@@ -32,10 +32,13 @@ class Constraint(ABC):
         )
         self.resource_references = []
         self.instance_resource_groups = instance_resource_groups
-        self.events = []
-        self.instance_event_groups = instance_event_groups
-        self.instance_events = instance_events
+        self.events: list[XHSTTSInstance.Event] = []
+        self.instance_event_groups: dict[str, list[XHSTTSInstance.Event]] = (
+            instance_event_groups
+        )
+        self.instance_events: dict[str, XHSTTSInstance.Event] = instance_events
         self.instance_time_groups = instance_time_groups
+        self.event_group_refs: dict[str, set[str]] = defaultdict(set)
         self._parse_applies_to(XMLConstraint.find("AppliesTo"))
 
     @abstractmethod
@@ -78,6 +81,14 @@ class Constraint(ABC):
             for XMLEventGroup in XMLEventGroups.findall("EventGroup"):
                 self.events.extend(
                     self.instance_event_groups[XMLEventGroup.attrib["Reference"]]
+                )
+                self.event_group_refs[XMLEventGroup.attrib["Reference"]].update(
+                    {
+                        x.Reference
+                        for x in self.instance_event_groups[
+                            XMLEventGroup.attrib["Reference"]
+                        ]
+                    }
                 )
 
         XMLEvents = XMLAppliesTo.find("Events")
@@ -132,6 +143,7 @@ class AssignResourceConstraint(Constraint):
         for _, role in solution_event_resources:
             if role == self.role:
                 return True
+        # print("Unassigned role --> ", self.role)
         return False
 
     def evaluate(self, solution):
@@ -222,6 +234,23 @@ class SplitEventsConstraint(Constraint):
         self.max_duration = int(XMLConstraint.find("MaximumDuration").text)
         self.min_amount = int(XMLConstraint.find("MinimumAmount").text)
         self.max_amount = int(XMLConstraint.find("MaximumAmount").text)
+
+        # update instance events split attributes
+        for event in self.events:
+            new_min_duration = max(event.SplitMinDuration, self.min_duration)
+
+            new_max_duration = min(event.SplitMaxDuration, self.max_duration)
+
+            new_min_amount = max(event.SplitMinAmount, self.min_amount)
+
+            new_max_amount = min(event.SplitMaxAmount, self.max_amount)
+
+            self.instance_events[event.Reference] = event._replace(
+                SplitMinDuration=new_min_duration,
+                SplitMaxDuration=new_max_duration,
+                SplitMinAmount=new_min_amount,
+                SplitMaxAmount=new_max_amount,
+            )
 
     def evaluate(self, solution):
         deviation = 0
@@ -503,9 +532,22 @@ class ClusterBusyTimesConstraint(Constraint):
 class AvoidSplitAssignmentsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element, *args):
         super().__init__(XMLConstraint, *args)
+        self.role = XMLConstraint.find("Role").text
 
     def evaluate(self, solution):
-        return 0
+        deviation = 0
+        for ref, event_refs in self.event_group_refs.items():
+            assigned_resources = set()
+            for sol_event in solution:
+                if sol_event.InstanceEventReference in event_refs:
+                    for sol_resource in sol_event:
+                        if sol_resource.Role == self.role:
+                            assigned_resources.add(sol_resource.Reference)
+                            break
+
+            deviation += len(assigned_resources) - 1
+
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class LinkEventsConstraint(Constraint):
@@ -513,23 +555,75 @@ class LinkEventsConstraint(Constraint):
         super().__init__(XMLConstraint, *args)
 
     def evaluate(self, solution):
-        return 0
+        deviation = 0
+        for ref, event_refs in self.event_group_refs.items():
+            appear_count = defaultdict(int)
+            num_times = 0
+            for sol_event in solution:
+                if sol_event.InstanceEventReference in event_refs:
+                    if sol_event.TimeReference:
+                        num_times += 1
+                        appear_count[sol_event.TimeReference] += 1
+
+            deviation += sum(
+                1 if appear_count[x] != num_times else 0 for x in appear_count
+            )
+
+        return cost(deviation, self.weight, self.cost_function)
 
 
-class LimitBusyTimesConstraint(Constraint):
+class LimitBusyTimesConstraint(LimitIdleTimesConstraint):
     def __init__(self, XMLConstraint: ET.Element, *args):
         super().__init__(XMLConstraint, *args)
+        self.min = int(XMLConstraint.find("Minimum").text)
+        self.max = int(XMLConstraint.find("Maximum").text)
+        self.time_groups: list[set] = []
+        self._parse_time_groups(XMLConstraint)
 
     def evaluate(self, solution):
-        return 0
+        deviation = 0
+        for resource_ref in self.resource_references:
+            busy_times_count = 0
+            for timegroup in self.time_groups:
+                resource_status = self.get_resource_status(
+                    resource_ref, timegroup, solution
+                )
+                busy_times_count += self.get_busy_times_count(resource_status)
+
+            if busy_times_count > 0:
+                if busy_times_count < self.min:
+                    deviation += self.min - busy_times_count
+                elif busy_times_count > self.max:
+                    deviation += busy_times_count - self.max
+
+        return cost(deviation, self.weight, self.cost_function)
+
+    def get_busy_times_count(self, resource_status: list[bool]):
+        return sum(resource_status)
 
 
 class LimitWorkloadConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element, *args):
         super().__init__(XMLConstraint, *args)
+        self.min = int(XMLConstraint.find("Minimum").text)
+        self.max = int(XMLConstraint.find("Maximum").text)
 
     def evaluate(self, solution):
-        return 0
+        deviation = 0
+        for resource_ref in self.resource_references:
+            workload = 0
+            for sol_event in solution:
+                if self.hasResource(resource_ref, sol_event.Resources):
+                    workload += self.instance_events[
+                        sol_event.InstanceEventReference
+                    ].Workload
+
+            if workload < self.min:
+                deviation += self.min - workload
+            elif workload > self.max:
+                deviation += workload - self.max
+
+        return cost(deviation, self.weight, self.cost_function)
 
 
 class XHSTTSInstance:
@@ -562,6 +656,10 @@ class XHSTTSInstance:
             "ResourceGroupReferences",
             "CourseReference",
             "EventGroupReferences",
+            "SplitMinDuration",
+            "SplitMaxDuration",
+            "SplitMinAmount",
+            "SplitMaxAmount",
         ],
     )
     EventResource = namedtuple(
@@ -574,6 +672,10 @@ class XHSTTSInstance:
             "Duration",
             "TimeReference",
             "Resources",  # List of SolutionEventResource
+            "SplitMinDuration",
+            "SplitMaxDuration",
+            "SplitMinAmount",
+            "SplitMaxAmount",
         ],
     )
     SolutionEventResource = namedtuple("SolutionEventResource", ["Reference", "Role"])
@@ -718,7 +820,6 @@ class XHSTTSInstance:
                 XMLEventGroups.findall("Course") + XMLEventGroups.findall("EventGroup")
             )
         }
-
         self.Events = {
             XMLEvent.attrib["Id"]: XHSTTSInstance.Event(
                 Reference=XMLEvent.attrib["Id"],
@@ -789,6 +890,11 @@ class XHSTTSInstance:
                     if XMLEvent.find("EventGroups") is not None
                     else []
                 ),
+                # these attrs will be updated when constraints are parsed
+                SplitMinDuration=0,
+                SplitMaxDuration=float("inf"),
+                SplitMinAmount=0,
+                SplitMaxAmount=float("inf"),
             )
             for XMLEvent in XMLEvents.findall("Event")
         }
@@ -852,6 +958,10 @@ class XHSTTSInstance:
                             if XMLSolutionEvent.find("Resources") is not None
                             else []
                         ),
+                        SplitMinDuration=0,
+                        SplitMaxDuration=float("inf"),
+                        SplitMinAmount=0,
+                        SplitMaxAmount=float("inf"),
                     )
                     for XMLSolutionEvent in solution_events
                 ]
@@ -920,6 +1030,11 @@ class XHSTTSInstance:
                 )
                 for resource in event.Resources
             ],
+            # NOTE: requires that constraints are parsed first!
+            SplitMinDuration=event.SplitMinDuration,
+            SplitMaxDuration=event.SplitMaxDuration,
+            SplitMinAmount=event.SplitMinAmount,
+            SplitMaxAmount=event.SplitMaxAmount,
         )
 
     @staticmethod
