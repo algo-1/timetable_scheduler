@@ -1,8 +1,9 @@
 from __future__ import annotations
-from collections import defaultdict, namedtuple
+from collections import defaultdict
 from inspect import isclass
 from pathlib import Path
 import random
+from typing import NamedTuple
 import xml.etree.ElementTree as ET
 from abc import ABC, abstractmethod
 
@@ -627,58 +628,63 @@ class LimitWorkloadConstraint(Constraint):
 
 
 class XHSTTSInstance:
-    # TODO - remove redundant constants & convert named tuples to dataclasses
-    TIME_GROUP_NAMES = ["TimeGroup", "Day", "Week"]
-    EVENT_GROUP_NAMES = ["EventGroup", "Course"]
-    CONSTRAINT_NAMES = [
-        "AssignResourceConstraint",
-        "AssignTimeConstraint",
-        "PreferResourcesConstraint",
-        "AvoidClashesConstraint",
-    ]
-    Time = namedtuple("Time", ["Reference", "Name", "TimeGroupReferences"])
-    TimeGroup = namedtuple("TimeGroup", ["Name", "Type"])
-    EventGroup = namedtuple("EventGroup", ["Name", "Type"])
-    ResourceGroup = namedtuple("ResourceGroup", ["Name", "ResourceTypeReference"])
-    Resource = namedtuple(
-        "Resource",
-        ["Reference", "Name", "ResourceTypeReference", "ResourceGroupReferences"],
-    )
-    Event = namedtuple(
-        "Event",
-        [
-            "Reference",
-            "Name",
-            "Duration",
-            "Workload",
-            "PreAssignedTimeReference",
-            "Resources",  # List of EventResource
-            "ResourceGroupReferences",
-            "CourseReference",
-            "EventGroupReferences",
-            "SplitMinDuration",
-            "SplitMaxDuration",
-            "SplitMinAmount",
-            "SplitMaxAmount",
-        ],
-    )
-    EventResource = namedtuple(
-        "EventResource", ["Reference", "Role", "ResourceTypeReference", "Workload"]
-    )
-    SolutionEvent = namedtuple(
-        "SolutionEvent",
-        [
-            "InstanceEventReference",
-            "Duration",
-            "TimeReference",
-            "Resources",  # List of SolutionEventResource
-            "SplitMinDuration",
-            "SplitMaxDuration",
-            "SplitMinAmount",
-            "SplitMaxAmount",
-        ],
-    )
-    SolutionEventResource = namedtuple("SolutionEventResource", ["Reference", "Role"])
+    class Time(NamedTuple):
+        Reference: str
+        Name: str
+        TimeGroupReferences: list[str]
+
+    class TimeGroup(NamedTuple):
+        Name: str
+        Type: str
+
+    class EventGroup(NamedTuple):
+        Name: str
+        Type: str
+
+    class ResourceGroup(NamedTuple):
+        Name: str
+        ResourceTypeReference: str
+
+    class Resource(NamedTuple):
+        Reference: str
+        Name: str
+        ResourceTypeReference: str
+        ResourceGroupReferences: list[str]
+
+    class EventResource(NamedTuple):
+        Reference: str
+        Role: str
+        ResourceTypeReference: str
+        Workload: int
+
+    class Event(NamedTuple):
+        Reference: str
+        Name: str
+        Duration: int
+        Workload: int
+        PreAssignedTimeReference: str
+        Resources: list[XHSTTSInstance.EventResource]
+        ResourceGroupReferences: list[str]
+        CourseReference: str
+        EventGroupReferences: list[str]
+        SplitMinDuration: int
+        SplitMaxDuration: int
+        SplitMinAmount: int
+        SplitMaxAmount: int
+
+    class SolutionEventResource(NamedTuple):
+        Reference: str
+        Role: str
+
+    class SolutionEvent(NamedTuple):
+        InstanceEventReference: str
+        Duration: int
+        TimeReference: str
+        Resources: list[XHSTTSInstance.SolutionEventResource]
+        SplitMinDuration: int
+        SplitMaxDuration: int
+        SplitMinAmount: int
+        SplitMaxAmount: int
 
     def __init__(self, XMLInstance: ET.Element, XMLSolutions: list[ET.Element]):
         """
