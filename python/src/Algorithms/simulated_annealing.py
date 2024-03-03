@@ -73,16 +73,16 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
                     )
                     new_event.Resources[k] = new_event_resource
 
+        # randomly swap times and resources with other events?? does this even make sense for annealing?
+
         if random.random() < 0.01:
             other_idx = random.randint(0, len(solution.sol_events) - 1)
             swap(
-                solution.sol_events[i].TimeReference,
+                new_event.TimeReference,
                 solution.sol_events[other_idx].TimeReference,
             )
 
         new_solution_events.append(new_event)
-
-    # randomly swap times and resources with other events??
 
     return Solution(new_solution_events)
 
