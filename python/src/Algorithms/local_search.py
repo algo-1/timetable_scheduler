@@ -1,10 +1,15 @@
+from contextlib import redirect_stdout
+import io
 import random
+import sys
 from Algorithms.random_algorithm import random_solution
 from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.simulated_annealing import simulated_annealing
 from XHSTTS.xhstts import XHSTTS, Constraint, XHSTTSInstance
 from XHSTTS.utils import Cost
 from copy import deepcopy
+import concurrent.futures
+from pathlib import Path
 
 
 class LocalSearchSolution:
@@ -58,6 +63,8 @@ def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
                 solution.sol_events[i].TimeReference,
                 solution.sol_events[other_idx].TimeReference,
             )
+
+        # swap resources?
 
 
 def swap(a, b):
@@ -120,9 +127,42 @@ def local_search(
     return current_solution.sol_events
 
 
-if __name__ == "__main__":
-    from pathlib import Path
+def process_instance(instance: XHSTTSInstance):
+    root_dir = Path(__file__).parent.parent.parent.parent
+    solutions_dir = root_dir.joinpath("benchmark_solutions")
 
+    with io.StringIO() as buffer, redirect_stdout(buffer):
+
+        print(f"-----{instance.name}   {len(instance.Constraints)} constraints-----")
+
+        genetic_result = genetic_algorithm(instance)
+        evaluation = instance.evaluate_solution(genetic_result, debug=True)
+
+        print("\n---Genetic Evaluation---\n", evaluation)
+
+        local_search_result = local_search(instance, sol_events=genetic_result)
+        evaluation = instance.evaluate_solution(local_search_result, debug=True)
+
+        print("\n---Local Search Benchmark Evaluation ---\n", evaluation, "\n")
+
+        annealing_result = simulated_annealing(instance, local_search_result)
+        evaluation = instance.evaluate_solution(annealing_result, debug=True)
+
+        print("\n---Simulated Annealing Benchmark Evaluation ---\n", evaluation, "\n")
+
+        # Write the output and solution XML to files
+        output_path = solutions_dir.joinpath(Path(f"output_{instance.name}.txt"))
+        xml_path = solutions_dir.joinpath(Path(f"solution_{instance.name}.xml"))
+
+        with open(output_path, "w") as output_file:
+            output_file.write(buffer.getvalue())
+
+        XHSTTSInstance.sol_events_to_xml(annealing_result, instance, xml_path)
+
+    return f"{instance.name} finished"
+
+
+if __name__ == "__main__":
     root_dir = Path(__file__).parent.parent.parent.parent
     data_dir = root_dir.joinpath("data/ALL_INSTANCES")
 
@@ -140,96 +180,21 @@ if __name__ == "__main__":
     random.seed(23)
 
     print(f"number of benchmark instances = {benchmark_dataset.num_instances()}")
-    for idx in range(1, benchmark_dataset.num_instances()):
-        instance = benchmark_dataset.get_instance(index=idx)
-        print(instance.name)
-        if instance.name in (
-            # "BrazilInstance2",
-            # "FalkonG2012",
-            # "StPaul",
-            # "GreeceHighSchool1",
-            # "Kottenpark2003",
-            "Lewitt2009",
-        ):
-            print(
-                f"-----{instance.name}   {len(instance.Constraints)} constraints-----"
-            )
 
-            genetic_result = genetic_algorithm(instance)
+    benchmark_instances = [
+        benchmark_dataset.get_instance(index=idx)
+        for idx in range(benchmark_dataset.num_instances())
+    ]
 
-            evaluation = instance.evaluate_solution(genetic_result, debug=True)
+    # benchmark_instances = [
+    #     instance
+    #     for idx in range(benchmark_dataset.num_instances())
+    #     if (instance := benchmark_dataset.get_instance(index=idx)).name
+    #     in ("Lewitt2009", "BrazilInstance2")
+    # ]
 
-            print(
-                f"\n---Genetic Evaluation ({instance.name})---\n",
-                evaluation,
-            )
+    # print(benchmark_instances)
 
-            # perform local search
-            local_search_result = local_search(instance, sol_events=genetic_result)
-
-            # evaluate local search result
-            evaluation = instance.evaluate_solution(local_search_result, debug=True)
-
-            print(
-                f"\n---Local Search Benchmark Evaluation {instance.name} ---\n",
-                evaluation,
-                "\n",
-            )
-
-            # perform annealing
-            annealing_result = simulated_annealing(instance, local_search_result)
-
-            # evaluate simulated annealing search result
-            evaluation = instance.evaluate_solution(annealing_result, debug=True)
-
-            print(
-                f"\n---Simulated Annealing Benchmark Evaluation {instance.name} ---\n",
-                evaluation,
-                "\n",
-            )
-
-    # for dataset in (
-    #     dataset_sudoku4x4,
-    #     dataset_abramson15,
-    #     dataset_brazil3,
-    # ):  #  (dataset_sudoku4x4, dataset_abramson15):  # dataset_abramson15):  benchmark_dataset,
-    #     random.seed(23)
-
-    #     assert dataset.num_instances() == 1
-
-    #     instance = dataset.get_instance(index=0)
-
-    #     from Algorithms.genetic2 import genetic_algorithm
-
-    #     genetic_result = genetic_algorithm(instance)
-
-    #     evaluation = instance.evaluate_solution(genetic_result, debug=True)
-
-    #     print(
-    #         f"\n---Genetic Evaluation ({dataset_names[dataset]})---\n",
-    #         evaluation,
-    #     )
-
-    #     # perform local search
-    #     local_search_result = local_search(instance, sol_events=genetic_result)
-
-    #     # evaluate local search result
-    #     evaluation = instance.evaluate_solution(local_search_result, debug=True)
-
-    #     print(
-    #         f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
-    #         evaluation,
-    #     )
-
-    #     print(len(local_search_result))
-
-    # # perform local search
-    # local_search_result = local_search(instance, sol_events=local_search_result)
-
-    # # evaluate local search result
-    # evaluation = instance.evaluate_solution(local_search_result, debug=True)
-
-    # print(
-    #     f"\n---Local Search Evaluation ({dataset_names[dataset]})---\n",
-    #     evaluation,
-    # )
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+        for result in executor.map(process_instance, benchmark_instances):
+            print(result)
