@@ -88,6 +88,12 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
             #             ],
             #         )
 
+        # TODO
+        # randomly split events
+        # how do you handle crossover then when lengths are no longer the same? diff type of cross over but still ensure all events are present?
+        # maybe decide if to take all splits from event x randomly
+        # also current crossover is ordered thats not ideal
+
 
 def swap(a, b):
     a, b = b, a
