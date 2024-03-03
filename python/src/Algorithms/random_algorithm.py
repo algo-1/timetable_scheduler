@@ -32,13 +32,24 @@ def get_n_random_events_to_split(n: int, instance_events: list[XHSTTSInstance.Ev
     return sol_events_to_split, remaining_sol_events
 
 
-def random_split(sol_events: list[XHSTTSInstance.SolutionEvent], max_split=6):
+def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
     """returns a list of solution events by randomly splitting instance events according to the rules (duration etc)"""
+    # TODO: incorporate event.SplitMinDuration  & event.SplitMaxDuration?
     split_sol_events = []
     for event in sol_events:
-        if max_split > 0 and event.Duration > 1:
-            num_splits = min(
-                max_split, event.Duration, random.randint(2, event.Duration)
+        if (
+            event.SplitMaxAmount > 0
+            and event.Duration > 1
+            and event.SplitMinAmount != 0
+            and event.SplitMaxAmount != float("inf")
+        ):
+            num_splits = (
+                min(
+                    random.randint(event.SplitMinAmount, event.SplitMaxAmount),
+                    event.Duration,
+                )
+                if event.SplitMinAmount != 0 and event.SplitMaxAmount != float("inf")
+                else min(random.randint(2, event.Duration), event.Duration)
             )
             split_duration = event.Duration // num_splits
 
@@ -110,7 +121,7 @@ def random_solution(instance: XHSTTSInstance) -> list[XHSTTSInstance.SolutionEve
     instance_events = instance.Events
 
     n_events, rest = get_n_random_events_to_split(
-        len(instance_events) // 3, list(instance_events.values())
+        len(instance_events), list(instance_events.values())
     )  # use grid search cv? to find the best number to split ? or better way to decide if we split if constraints not telling us to split.Can splitting yield a solution when non splitting cannot?  seems that this should be the case!
 
     # n_events and rest should be new objects not point to the same ones as events - sol event objects preferably!
