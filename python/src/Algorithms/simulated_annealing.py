@@ -93,7 +93,8 @@ def acceptance_probability(
 
 
 def simulated_annealing(
-    instance: XHSTTSInstance, input_solution_events: list[XHSTTSInstance.SolutionEvent]
+    instance: XHSTTSInstance,
+    input_solution_events: list[XHSTTSInstance.SolutionEvent] = None,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     current_solution = None
     if input_solution_events:
