@@ -1,6 +1,8 @@
+from copy import deepcopy
 import random
 import math
 from Algorithms.random_algorithm import random_solution
+from Algorithms.utils import swap
 from XHSTTS.xhstts import XHSTTSInstance, XHSTTS
 from XHSTTS.utils import Cost
 
@@ -49,46 +51,37 @@ def generate_initial_solution(instance: XHSTTSInstance) -> Solution:
 
 
 def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
+    # TODO: scrap deepcopy in this function
+
     new_solution_events = []
-    for i, event in enumerate(solution.sol_events):
+    for event in solution.sol_events:
         # randomly mutate an event
 
-        new_event = event
+        new_event = deepcopy(event)
 
         if random.random() < 0.01:
-            # replace time ref
-            if not instance.Events[
-                event.InstanceEventReference
-            ].PreAssignedTimeReference:
-                new_time_reference = instance.get_random_time_reference()
-                new_event = event._replace(TimeReference=new_time_reference)
-
-            for k in range(len(event.Resources)):
-                # randomly replace resource with a resource of the same type and role
-                if random.random() < 0.01:
-                    new_event_resource = (
-                        instance.get_random_and_valid_resource_reference(
-                            new_event.Resources[k], new_event.InstanceEventReference
-                        )
-                    )
-                    new_event.Resources[k] = new_event_resource
-
-        # randomly swap times and resources with other events?? does this even make sense for annealing?
-
-        if random.random() < 0.01:
-            other_idx = random.randint(0, len(solution.sol_events) - 1)
-            swap(
-                new_event.TimeReference,
-                solution.sol_events[other_idx].TimeReference,
-            )
+            # decide between mutating the time or one of the resources
+            rand_num = random.randint(0, len(new_event.Resources))
+            if rand_num == len(new_event.Resources):
+                # replace time ref
+                if not instance.Events[
+                    event.InstanceEventReference
+                ].PreAssignedTimeReference:
+                    new_time_reference = instance.get_random_time_reference()
+                    new_event = event._replace(TimeReference=new_time_reference)
+            else:
+                resource_to_change_idx = (
+                    rand_num  # rand_num is guaranteed to be a valid index
+                )
+                new_event_resource = instance.get_random_and_valid_resource_reference(
+                    new_event.Resources[resource_to_change_idx],
+                    new_event.InstanceEventReference,
+                )
+                new_event.Resources[resource_to_change_idx] = new_event_resource
 
         new_solution_events.append(new_event)
 
     return Solution(new_solution_events)
-
-
-def swap(a, b):
-    a, b = b, a
 
 
 def acceptance_probability(
