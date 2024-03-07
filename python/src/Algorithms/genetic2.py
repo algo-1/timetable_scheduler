@@ -1,12 +1,15 @@
+from copy import deepcopy
+import math
 import random
 
 import numpy as np
 from Algorithms.random_algorithm import random_solution
+from Algorithms.utils import swap
 from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
-POPULATION_SIZE = 200
-NGEN = 40  # 85
+POPULATION_SIZE = 100
+NGEN = 40
 
 
 class Solution:
@@ -31,72 +34,75 @@ class Solution:
 
 
 def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
+    # TODO: scrap deepcopy in this function
     for i, event in enumerate(solution.sol_events):
         # randomly mutate an event
+        new_event = deepcopy(event)
         if random.random() < 0.01:
-            # replace time ref
-            if not instance.Events[
-                event.InstanceEventReference
-            ].PreAssignedTimeReference:
-                new_time_reference = instance.get_random_time_reference()
-                new_event = event._replace(TimeReference=new_time_reference)
-
-            for k in range(len(event.Resources)):
-                # randomly replace resource with a resource of the same type and role
-                if random.random() < 0.01:
-                    new_event_resource = (
-                        instance.get_random_and_valid_resource_reference(
-                            new_event.Resources[k], new_event.InstanceEventReference
-                        )
-                    )
-                    new_event.Resources[k] = new_event_resource
+            # decide between mutating the time or one of the resources
+            rand_num = random.randint(0, len(new_event.Resources))
+            if rand_num == len(new_event.Resources):
+                # replace time ref
+                if not instance.Events[
+                    event.InstanceEventReference
+                ].PreAssignedTimeReference:
+                    new_time_reference = instance.get_random_time_reference()
+                    new_event = event._replace(TimeReference=new_time_reference)
+            else:
+                resource_to_change_idx = (
+                    rand_num  # rand_num is guaranteed to be a valid index
+                )
+                new_event_resource = instance.get_random_and_valid_resource_reference(
+                    new_event.Resources[resource_to_change_idx],
+                    new_event.InstanceEventReference,
+                )
+                new_event.Resources[resource_to_change_idx] = new_event_resource
 
             solution.sol_events[i] = new_event
 
         # randomly swap times and resources with other events??
 
-        if random.random() < 0.01:
-            other_idx = random.randint(0, len(solution.sol_events) - 1)
-            swap(
-                solution.sol_events[i].TimeReference,
-                solution.sol_events[other_idx].TimeReference,
-            )
+        # if random.random() < 0.001:
+        #     other_idx = random.randint(0, len(solution.sol_events) - 1)
+        #     tmp_time_ref = solution.sol_events[i].TimeReference
+        #     solution.sol_events[i] = solution.sol_events[i]._replace(
+        #         TimeReference=solution.sol_events[other_idx].TimeReference
+        #     )
+        #     solution.sol_events[other_idx] = solution.sol_events[other_idx]._replace(
+        #         TimeReference=tmp_time_ref
+        #     )
 
-            # for k in range(len(solution.sol_events[i].Resources)):
-            #     other_event_resource_idx = random.randint(
-            #         0, len(solution.sol_events[other_idx].Resources) - 1
-            #     )
-            #     if (
-            #         solution.sol_events[i].Resources[k].Role
-            #         == solution.sol_events[other_idx]
-            #         .Resources[other_event_resource_idx]
-            #         .Role
-            #         and instance.get_resources()[
-            #             solution.sol_events[other_idx]
-            #             .Resources[other_event_resource_idx]
-            #             .Reference
-            #         ].ResourceTypeReference
-            #         == instance.get_resources()[
-            #             event.Resources[k].Reference
-            #         ].ResourceTypeReference
-            #     ):
-            #         # swap
-            #         swap(
-            #             solution.sol_events[i].Resources[k],
-            #             solution.sol_events[other_idx].Resources[
-            #                 other_event_resource_idx
-            #             ],
-            #         )
+        #     for k in range(len(solution.sol_events[i].Resources)):
+        #         other_event_resource_idx = random.randint(
+        #             0, len(solution.sol_events[other_idx].Resources) - 1
+        #         )
+        #         if (
+        #             solution.sol_events[i].Resources[k].Role
+        #             == solution.sol_events[other_idx]
+        #             .Resources[other_event_resource_idx]
+        #             .Role
+        #             and instance.get_resources()[
+        #                 solution.sol_events[other_idx]
+        #                 .Resources[other_event_resource_idx]
+        #                 .Reference
+        #             ].ResourceTypeReference
+        #             == instance.get_resources()[
+        #                 solution.sol_events[i].Resources[k].Reference
+        #             ].ResourceTypeReference
+        #         ):
+        #             # swap
+        #             swap(
+        #                 solution.sol_events[i].Resources,
+        #                 solution.sol_events[other_idx].Resources,
+        #                 k,
+        #                 other_event_resource_idx,
+        #             )
 
         # TODO
         # randomly split events
         # how do you handle crossover then when lengths are no longer the same? diff type of cross over but still ensure all events are present?
         # maybe decide if to take all splits from event x randomly
         # also current crossover is ordered thats not ideal
-
-
-def swap(a, b):
-    a, b = b, a
 
 
 def crossover(sol1: Solution, sol2: Solution) -> tuple[Solution]:
@@ -120,21 +126,14 @@ def crossover(sol1: Solution, sol2: Solution) -> tuple[Solution]:
 def tournament_selection(
     population: list[Solution], instance: XHSTTSInstance, size: int
 ) -> list[Solution]:
-    """
-    Selects the best solutions from the population using tournament selection.
 
-    Args:
-        population: A list of solutions.
-        fitness: A list of fitness values for the solutions in the population.
-        tournament_size: The size of the tournament pool.
+    random.shuffle(population)
+    sample_size = math.floor(math.sqrt(len(population)))
 
-    Returns:
-        A list of the best solutions selected from the population.
-    """
     selected_solutions = []
     for _ in range(size):
         # Randomly select a subset of individuals from the population.
-        tournament_pool = random.sample(population, 10)
+        tournament_pool = random.sample(population, sample_size)
 
         # Choose the best individual from the tournament pool.
         winner = max(
@@ -146,17 +145,36 @@ def tournament_selection(
     return selected_solutions
 
 
-def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
+def genetic_algorithm(
+    instance, input_solution: list[XHSTTSInstance.SolutionEvent] = []
+) -> list[XHSTTSInstance.SolutionEvent]:
     # Create a population of solutions.
 
-    # best of 1000 random solutions
-    population: list[Solution] = sorted(
-        [Solution(random_solution(instance)) for _ in range(1000)],
-        key=lambda x: x.evaluate(instance),
-        reverse=True,
-    )[:POPULATION_SIZE]
+    global POPULATION_SIZE
 
-    best_random = population[0].cost
+    population: list[Solution] = None
+    best_random_solution = None
+    if input_solution:
+        POPULATION_SIZE = min(POPULATION_SIZE, len(input_solution) * 2)
+        population = [
+            Solution(deepcopy(input_solution)) for _ in range(POPULATION_SIZE)
+        ]
+        # mutate the population as currently all == input_solution TODO: better mutation as this isn't a great input into genetic or just scrap entirely?
+        map(lambda sol: mutate(sol, instance), population)
+    else:
+
+        random_1000 = sorted(
+            [Solution(random_solution(instance)) for _ in range(1000)],
+            key=lambda x: x.evaluate(instance),
+            reverse=True,
+        )
+
+        # set population size according to number of sol events (assumes each random solution has the same number of sol_events)
+        POPULATION_SIZE = min(POPULATION_SIZE, len(random_1000[0].sol_events) * 2)
+
+        population = random_1000[:POPULATION_SIZE]
+
+        best_random_solution = deepcopy(population[0])
 
     random.shuffle(population)
 
@@ -181,27 +199,31 @@ def genetic_algorithm(instance) -> list[XHSTTSInstance.SolutionEvent]:
             mutate(offspring_solution, instance)
 
         # Evaluate the offspring.
-        for offspring_solution in offspring:
-            offspring_solution.evaluate(instance)
+        # for offspring_solution in offspring:
+        #     offspring_solution.evaluate(instance)
 
         # Add the offspring to the population and remove the worst individuals.
         population = selected_solutions + offspring
         population = sorted(
             population, key=lambda solution: solution.evaluate(instance), reverse=True
-        )[:100]
+        )[:POPULATION_SIZE]
 
         # print([x.evaluate(instance) for x in population])
 
         # Check if a satisfactory solution has been found.
-        best_solution = max(
-            population, key=lambda solution: solution.evaluate(instance)
-        )
+        # best_solution = max(
+        #     population, key=lambda solution: solution.evaluate(instance)
+        # )
+
+        best_solution = deepcopy(population[0])
         if best_solution.is_feasible():
             return best_solution.sol_events
 
         print(f"Generation: {idx + 1}")
 
-    print("\nbest random: ", best_random)
+    if not input_solution:
+        instance.evaluate_solution(best_random_solution.sol_events, debug=True)
+        print("\nbest random: ", best_random_solution.cost)
 
     return best_solution.sol_events
 
