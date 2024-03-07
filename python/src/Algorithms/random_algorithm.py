@@ -43,13 +43,9 @@ def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
             and event.SplitMinAmount != 0
             and event.SplitMaxAmount != float("inf")
         ):
-            num_splits = (
-                min(
-                    random.randint(event.SplitMinAmount, event.SplitMaxAmount),
-                    event.Duration,
-                )
-                if event.SplitMinAmount != 0 and event.SplitMaxAmount != float("inf")
-                else min(random.randint(2, event.Duration), event.Duration)
+            num_splits = min(
+                event.SplitMaxAmount,
+                event.Duration,
             )
             split_duration = event.Duration // num_splits
 
