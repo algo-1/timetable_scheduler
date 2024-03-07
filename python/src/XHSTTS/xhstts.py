@@ -541,7 +541,7 @@ class AvoidSplitAssignmentsConstraint(Constraint):
             assigned_resources = set()
             for sol_event in solution:
                 if sol_event.InstanceEventReference in event_refs:
-                    for sol_resource in sol_event:
+                    for sol_resource in sol_event.Resources:
                         if sol_resource.Role == self.role:
                             assigned_resources.add(sol_resource.Reference)
                             break
@@ -615,9 +615,10 @@ class LimitWorkloadConstraint(Constraint):
             workload = 0
             for sol_event in solution:
                 if self.hasResource(resource_ref, sol_event.Resources):
-                    workload += self.instance_events[
-                        sol_event.InstanceEventReference
-                    ].Workload
+                    if self.instance_events[sol_event.InstanceEventReference].Workload:
+                        workload += self.instance_events[
+                            sol_event.InstanceEventReference
+                        ].Workload
 
             if workload < self.min:
                 deviation += self.min - workload
@@ -1153,3 +1154,7 @@ if __name__ == "__main__":
     print(first_instance.ResourceTypes)
     print(first_instance.ResourceGroups)
     print(first_instance.get_constraints())
+
+    print(
+        first_instance.evaluate_solution(first_instance.get_solutions()[2], debug=True)
+    )
