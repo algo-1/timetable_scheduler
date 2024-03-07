@@ -2,3 +2,5 @@
 **/__pycache__/**
 notes.md
 **/.DS_Store
+**/build/** 
+**/dist/**
