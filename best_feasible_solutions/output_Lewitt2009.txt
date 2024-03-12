@@ -1,0 +1,143 @@
+-----Lewitt2009   30 constraints-----
+Generation Begin!
+Generation: 1
+Generation: 2
+Generation: 3
+Generation: 4
+Generation: 5
+Generation: 6
+Generation: 7
+Generation: 8
+Generation: 9
+Generation: 10
+Generation: 11
+Generation: 12
+Generation: 13
+Generation: 14
+Generation: 15
+Generation: 16
+Generation: 17
+Generation: 18
+Generation: 19
+Generation: 20
+Generation: 21
+Generation: 22
+Generation: 23
+Generation: 24
+Generation: 25
+Generation: 26
+Generation: 27
+Generation: 28
+Generation: 29
+Generation: 30
+Generation: 31
+Generation: 32
+Generation: 33
+Generation: 34
+Generation: 35
+Generation: 36
+Generation: 37
+Generation: 38
+Generation: 39
+Generation: 40
+value =  0 required = True AssignTimeConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False SplitEventsConstraint
+value =  50 required = False PreferTimesConstraint
+value =  54 required = False PreferTimesConstraint
+value =  22 required = False PreferTimesConstraint
+value =  24 required = False PreferTimesConstraint
+value =  45 required = True PreferTimesConstraint
+value =  15 required = True PreferTimesConstraint
+value =  269 required = True PreferTimesConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  15 required = True AvoidClashesConstraint
+
+best random:  Cost(Infeasibility_Value=344, Objective_Value=222)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False SplitEventsConstraint
+value =  52 required = False PreferTimesConstraint
+value =  54 required = False PreferTimesConstraint
+value =  28 required = False PreferTimesConstraint
+value =  28 required = False PreferTimesConstraint
+value =  0 required = True PreferTimesConstraint
+value =  11 required = True PreferTimesConstraint
+value =  195 required = True PreferTimesConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  4 required = False LinkEventsConstraint
+value =  14 required = True AvoidClashesConstraint
+
+---Genetic Evaluation---
+ Cost(Infeasibility_Value=220, Objective_Value=230)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False SplitEventsConstraint
+value =  0 required = False PreferTimesConstraint
+value =  0 required = False PreferTimesConstraint
+value =  0 required = False PreferTimesConstraint
+value =  0 required = False PreferTimesConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = False LinkEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+
+---Simulated Annealing Benchmark Evaluation ---
+ Cost(Infeasibility_Value=0, Objective_Value=0) 
+ temperature_decay = 0.999995
+
+Lewitt2009 finished in 1725.213849067688 seconds.
