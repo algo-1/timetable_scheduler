@@ -11,27 +11,6 @@ import random
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 
-def get_n_random_events_to_split(n: int, instance_events: list[XHSTTSInstance.Event]):
-    """
-    returns a tuple of n random solution events and
-    (len(instance_events) - n) solution events both based on the instance events.
-    """
-    # TODO: make a set when you rewrite named tuples as frozen? / eq set to false dataclasses as we can have a set of objects but not a tuple that has a list element
-    events_to_split = random.sample(instance_events, n)
-    remaining_events = [
-        event for event in instance_events if event not in events_to_split
-    ]
-
-    sol_events_to_split = list(
-        map(XHSTTSInstance.create_solution_event, events_to_split)
-    )
-    remaining_sol_events = list(
-        map(XHSTTSInstance.create_solution_event, remaining_events)
-    )
-
-    return sol_events_to_split, remaining_sol_events
-
-
 def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
     """returns a list of solution events by randomly splitting instance events according to the rules (duration etc)"""
     # TODO: incorporate event.SplitMinDuration  & event.SplitMaxDuration?
@@ -40,7 +19,8 @@ def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
         if (
             event.SplitMaxAmount > 0
             and event.Duration > 1
-            and event.SplitMinAmount != 0
+            and event.SplitMinAmount
+            != 0  # TODO: update to cover [0, 6] case for example
             and event.SplitMaxAmount != float("inf")
         ):
             num_splits = min(
@@ -116,21 +96,17 @@ def assign_random_resources(
 def random_solution(instance: XHSTTSInstance) -> list[XHSTTSInstance.SolutionEvent]:
     instance_events = instance.Events
 
-    n_events, rest = get_n_random_events_to_split(
-        len(instance_events), list(instance_events.values())
-    )  # use grid search cv? to find the best number to split ? or better way to decide if we split if constraints not telling us to split.Can splitting yield a solution when non splitting cannot?  seems that this should be the case!
-
-    # n_events and rest should be new objects not point to the same ones as events - sol event objects preferably!
-    sol_events = [sol_event for sol_event in rest]
-
-    # split some events
-    sol_events.extend(random_split(n_events))
+    # convert to solution event object and split based on constraints
+    sol_events = random_split(
+        list(map(XHSTTSInstance.create_solution_event, list(instance_events.values())))
+    )
 
     # assign time and resources randomly anywhere necessary
     result: list[XHSTTSInstance.SolutionEvent] = assign_random_resources(
         assign_random_times(sol_events, instance), instance
     )
-
+    # print(list(map(lambda x: x.Reference, list(instance_events.values())[:5])))
+    # print(list(map(lambda x: x.InstanceEventReference, result[:5])))
     return result
 
 
