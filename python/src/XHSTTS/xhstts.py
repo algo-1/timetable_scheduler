@@ -363,7 +363,7 @@ class SpreadEventsConstraint(Constraint):
                 elif count > maximum:
                     deviation += count - maximum
 
-        return cost(deviation, self.weight, self.cost_function)
+        return 10 * cost(deviation, self.weight, self.cost_function)
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")

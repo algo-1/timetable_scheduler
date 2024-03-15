@@ -19,6 +19,9 @@ class Solution:
     def is_feasible(self) -> bool:
         return self.cost.Infeasibility_Value == 0
 
+    def is_feasible_and_solves_objectives(self):
+        return self.cost.Infeasibility_Value == 0 and self.cost.Objective_Value == 0
+
 
 def generate_initial_solution(instance: XHSTTSInstance) -> Solution:
     from Algorithms.genetic2 import genetic_algorithm
@@ -107,7 +110,10 @@ def simulated_annealing(
     temperature = 1
     temperature_decay = 0.99995
 
+    num_iterations = 0
+
     while temperature > 0.1:
+        num_iterations += 1
         new_solution = neighbor(current_solution, instance)
         new_energy = new_solution.evaluate(instance)
 
@@ -121,8 +127,12 @@ def simulated_annealing(
         if new_energy > best_solution.evaluate(instance):
             best_solution = new_solution
 
+        if best_solution.is_feasible_and_solves_objectives():
+            break
+
         temperature *= temperature_decay
 
+    print(f"number of iterations = {num_iterations}")
     return best_solution.sol_events
 
 

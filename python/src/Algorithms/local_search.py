@@ -3,6 +3,7 @@ import io
 from multiprocessing import current_process
 import random
 import sys
+import time
 from Algorithms.random_algorithm import random_solution
 from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.simulated_annealing import simulated_annealing
@@ -33,6 +34,9 @@ class LocalSearchSolution:
 
     def is_feasible(self) -> bool:
         return self.cost.Infeasibility_Value == 0
+
+    def is_feasible_and_solves_objectives(self):
+        return self.cost.Infeasibility_Value == 0 and self.cost.Objective_Value == 0
 
 
 def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
@@ -191,7 +195,7 @@ def local_search(
                     break
 
         # Check if a satisfactory solution has been found.
-        if current_solution.is_feasible():
+        if current_solution.is_feasible_and_solves_objectives():
             return current_solution.sol_events
 
     if not sol_events:
@@ -210,6 +214,7 @@ def process_instance(instance: XHSTTSInstance):
     )
 
     with io.StringIO() as buffer, redirect_stdout(buffer):
+        start_time = time.time()
 
         print(f"-----{instance.name}   {len(instance .Constraints)} constraints-----")
 
@@ -218,15 +223,19 @@ def process_instance(instance: XHSTTSInstance):
 
         print("\n---Genetic Evaluation---\n", evaluation)
 
-        local_search_result = local_search(instance, sol_events=genetic_result)
-        evaluation = instance.evaluate_solution(local_search_result, debug=True)
+        # local_search_result = local_search(instance, sol_events=genetic_result)
+        # evaluation = instance.evaluate_solution(local_search_result, debug=True)
 
-        print("\n---Local Search Benchmark Evaluation ---\n", evaluation, "\n")
+        # print("\n---Local Search Benchmark Evaluation ---\n", evaluation, "\n")
 
-        annealing_result = simulated_annealing(instance, local_search_result)
+        annealing_result = simulated_annealing(instance, genetic_result)
         evaluation = instance.evaluate_solution(annealing_result, debug=True)
 
         print("\n---Simulated Annealing Benchmark Evaluation ---\n", evaluation, "\n")
+
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print(f"{instance.name} finished in {elapsed_time} seconds.")
 
         # Write the output and solution XML to files
         output_path = solutions_dir.joinpath(Path(f"output_{instance.name}.txt"))
@@ -246,6 +255,11 @@ if __name__ == "__main__":
 
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
+    hdtt4 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt4.xml"))
+    hdtt5 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt5.xml"))
+    hdtt6 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt6.xml"))
+    hdtt7 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt7.xml"))
+    hdtt8 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt8.xml"))
     dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
     benchmark_dataset = XHSTTS(data_dir.parent.joinpath("XHSTT-2014.xml"))
 
@@ -270,15 +284,25 @@ if __name__ == "__main__":
         # futures = [
         #     executor.submit(process_instance, task)
         #     for task in [benchmark_instances[i] for i in range(10, 16)]
-        #     + [benchmark_instances[21]]
+        #     + [dataset_sudoku4x4.get_first_instance(), benchmark_instances[21]]
         # ]
 
         futures = [
             executor.submit(process_instance, task)
             for task in [
+                hdtt4.get_first_instance(),
+                hdtt5.get_first_instance(),
+                hdtt6.get_first_instance(),
+                hdtt7.get_first_instance(),
+                hdtt8.get_first_instance(),
                 dataset_sudoku4x4.get_first_instance(),
                 benchmark_instances[21],
+                dataset_abramson15.get_first_instance(),
+                dataset_brazil3.get_first_instance(),
             ]
         ]
         for future in concurrent.futures.as_completed(futures):
-            print(future.result(), flush=True)
+            try:
+                print(future.result(), flush=True)
+            except Exception as e:
+                print(e, flush=True)
