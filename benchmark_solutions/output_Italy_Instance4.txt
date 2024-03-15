@@ -1,0 +1,347 @@
+-----Italy_Instance4   73 constraints-----
+Generation Begin!
+Generation: 1
+Generation: 2
+Generation: 3
+Generation: 4
+Generation: 5
+Generation: 6
+Generation: 7
+Generation: 8
+Generation: 9
+Generation: 10
+Generation: 11
+Generation: 12
+Generation: 13
+Generation: 14
+Generation: 15
+Generation: 16
+Generation: 17
+Generation: 18
+Generation: 19
+Generation: 20
+Generation: 21
+Generation: 22
+Generation: 23
+Generation: 24
+Generation: 25
+Generation: 26
+Generation: 27
+Generation: 28
+Generation: 29
+Generation: 30
+Generation: 31
+Generation: 32
+Generation: 33
+Generation: 34
+Generation: 35
+Generation: 36
+Generation: 37
+Generation: 38
+Generation: 39
+Generation: 40
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  338 required = True PreferTimesConstraint
+value =  656 required = True PreferTimesConstraint
+value =  976 required = True PreferTimesConstraint
+value =  848 required = True SpreadEventsConstraint
+value =  7420 required = True SpreadEventsConstraint
+value =  267 required = True AvoidClashesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  279 required = False AvoidUnavailableTimesConstraint
+value =  1600 required = False AvoidUnavailableTimesConstraint
+value =  18900 required = False LimitIdleTimesConstraint
+value =  257 required = False LimitIdleTimesConstraint
+value =  13600 required = False ClusterBusyTimesConstraint
+value =  1998 required = False LimitBusyTimesConstraint
+
+best random:  Cost(Infeasibility_Value=10615, Objective_Value=36634)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  188 required = True PreferTimesConstraint
+value =  556 required = True PreferTimesConstraint
+value =  872 required = True PreferTimesConstraint
+value =  852 required = True SpreadEventsConstraint
+value =  7380 required = True SpreadEventsConstraint
+value =  279 required = True AvoidClashesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  195 required = False AvoidUnavailableTimesConstraint
+value =  800 required = False AvoidUnavailableTimesConstraint
+value =  16800 required = False LimitIdleTimesConstraint
+value =  269 required = False LimitIdleTimesConstraint
+value =  12200 required = False ClusterBusyTimesConstraint
+value =  1914 required = False LimitBusyTimesConstraint
+
+---Genetic Evaluation---
+ Cost(Infeasibility_Value=10224, Objective_Value=32178)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  0 required = True PreferTimesConstraint
+value =  18 required = True PreferTimesConstraint
+value =  124 required = True PreferTimesConstraint
+value =  796 required = True SpreadEventsConstraint
+value =  7291 required = True SpreadEventsConstraint
+value =  298 required = True AvoidClashesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  5 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = False AvoidUnavailableTimesConstraint
+value =  0 required = False AvoidUnavailableTimesConstraint
+value =  3700 required = False LimitIdleTimesConstraint
+value =  92 required = False LimitIdleTimesConstraint
+value =  6700 required = False ClusterBusyTimesConstraint
+value =  1860 required = False LimitBusyTimesConstraint
+
+---Local Search Benchmark Evaluation ---
+ Cost(Infeasibility_Value=8601, Objective_Value=12352) 
+
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  0 required = True PreferTimesConstraint
+value =  26 required = True PreferTimesConstraint
+value =  126 required = True PreferTimesConstraint
+value =  799 required = True SpreadEventsConstraint
+value =  7294 required = True SpreadEventsConstraint
+value =  400 required = True AvoidClashesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  0 required = False AvoidUnavailableTimesConstraint
+value =  0 required = False AvoidUnavailableTimesConstraint
+value =  6900 required = False LimitIdleTimesConstraint
+value =  106 required = False LimitIdleTimesConstraint
+value =  8400 required = False ClusterBusyTimesConstraint
+value =  1650 required = False LimitBusyTimesConstraint
+
+---Simulated Annealing Benchmark Evaluation ---
+ Cost(Infeasibility_Value=8735, Objective_Value=17056) 
+

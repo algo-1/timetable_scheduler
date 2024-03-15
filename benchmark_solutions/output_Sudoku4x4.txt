@@ -1,0 +1,205 @@
+-----Sudoku4x4   10 constraints-----
+population size = 32
+number of generations = 160
+Generation Begin!
+Generation: 1
+Generation: 2
+Generation: 3
+Generation: 4
+Generation: 5
+Generation: 6
+Generation: 7
+Generation: 8
+Generation: 9
+Generation: 10
+Generation: 11
+Generation: 12
+Generation: 13
+Generation: 14
+Generation: 15
+Generation: 16
+Generation: 17
+Generation: 18
+Generation: 19
+Generation: 20
+Generation: 21
+Generation: 22
+Generation: 23
+Generation: 24
+Generation: 25
+Generation: 26
+Generation: 27
+Generation: 28
+Generation: 29
+Generation: 30
+Generation: 31
+Generation: 32
+Generation: 33
+Generation: 34
+Generation: 35
+Generation: 36
+Generation: 37
+Generation: 38
+Generation: 39
+Generation: 40
+Generation: 41
+Generation: 42
+Generation: 43
+Generation: 44
+Generation: 45
+Generation: 46
+Generation: 47
+Generation: 48
+Generation: 49
+Generation: 50
+Generation: 51
+Generation: 52
+Generation: 53
+Generation: 54
+Generation: 55
+Generation: 56
+Generation: 57
+Generation: 58
+Generation: 59
+Generation: 60
+Generation: 61
+Generation: 62
+Generation: 63
+Generation: 64
+Generation: 65
+Generation: 66
+Generation: 67
+Generation: 68
+Generation: 69
+Generation: 70
+Generation: 71
+Generation: 72
+Generation: 73
+Generation: 74
+Generation: 75
+Generation: 76
+Generation: 77
+Generation: 78
+Generation: 79
+Generation: 80
+Generation: 81
+Generation: 82
+Generation: 83
+Generation: 84
+Generation: 85
+Generation: 86
+Generation: 87
+Generation: 88
+Generation: 89
+Generation: 90
+Generation: 91
+Generation: 92
+Generation: 93
+Generation: 94
+Generation: 95
+Generation: 96
+Generation: 97
+Generation: 98
+Generation: 99
+Generation: 100
+Generation: 101
+Generation: 102
+Generation: 103
+Generation: 104
+Generation: 105
+Generation: 106
+Generation: 107
+Generation: 108
+Generation: 109
+Generation: 110
+Generation: 111
+Generation: 112
+Generation: 113
+Generation: 114
+Generation: 115
+Generation: 116
+Generation: 117
+Generation: 118
+Generation: 119
+Generation: 120
+Generation: 121
+Generation: 122
+Generation: 123
+Generation: 124
+Generation: 125
+Generation: 126
+Generation: 127
+Generation: 128
+Generation: 129
+Generation: 130
+Generation: 131
+Generation: 132
+Generation: 133
+Generation: 134
+Generation: 135
+Generation: 136
+Generation: 137
+Generation: 138
+Generation: 139
+Generation: 140
+Generation: 141
+Generation: 142
+Generation: 143
+Generation: 144
+Generation: 145
+Generation: 146
+Generation: 147
+Generation: 148
+Generation: 149
+Generation: 150
+Generation: 151
+Generation: 152
+Generation: 153
+Generation: 154
+Generation: 155
+Generation: 156
+Generation: 157
+Generation: 158
+Generation: 159
+Generation: 160
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  1 required = True PreferResourcesConstraint
+value =  1 required = True PreferResourcesConstraint
+value =  3 required = True PreferResourcesConstraint
+value =  2 required = True PreferResourcesConstraint
+value =  16 required = True AvoidClashesConstraint
+
+best random:  Cost(Infeasibility_Value=23, Objective_Value=0)
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  2 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  3 required = True AvoidClashesConstraint
+
+---Genetic Evaluation---
+ Cost(Infeasibility_Value=5, Objective_Value=0)
+number of iterations = 46051
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  2 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  2 required = True AvoidClashesConstraint
+
+---Simulated Annealing Benchmark Evaluation ---
+ Cost(Infeasibility_Value=4, Objective_Value=0) 
+
+Sudoku4x4 finished in 7.013496160507202 seconds.

@@ -1,0 +1,100 @@
+-----BrazilInstance2   15 constraints-----
+Generation Begin!
+Generation: 1
+Generation: 2
+Generation: 3
+Generation: 4
+Generation: 5
+Generation: 6
+Generation: 7
+Generation: 8
+Generation: 9
+Generation: 10
+Generation: 11
+Generation: 12
+Generation: 13
+Generation: 14
+Generation: 15
+Generation: 16
+Generation: 17
+Generation: 18
+Generation: 19
+Generation: 20
+Generation: 21
+Generation: 22
+Generation: 23
+Generation: 24
+Generation: 25
+Generation: 26
+Generation: 27
+Generation: 28
+Generation: 29
+Generation: 30
+Generation: 31
+Generation: 32
+Generation: 33
+Generation: 34
+Generation: 35
+Generation: 36
+Generation: 37
+Generation: 38
+Generation: 39
+Generation: 40
+
+best random:  Cost(Infeasibility_Value=237, Objective_Value=430)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  50 required = False DistributeSplitEventsConstraint
+value =  8 required = False DistributeSplitEventsConstraint
+value =  16 required = True PreferTimesConstraint
+value =  157 required = True SpreadEventsConstraint
+value =  42 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  66 required = False LimitIdleTimesConstraint
+value =  36 required = False ClusterBusyTimesConstraint
+value =  27 required = False ClusterBusyTimesConstraint
+value =  81 required = False ClusterBusyTimesConstraint
+value =  27 required = False ClusterBusyTimesConstraint
+
+---Genetic Evaluation---
+ Cost(Infeasibility_Value=219, Objective_Value=295)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  50 required = False DistributeSplitEventsConstraint
+value =  8 required = False DistributeSplitEventsConstraint
+value =  13 required = True PreferTimesConstraint
+value =  148 required = True SpreadEventsConstraint
+value =  26 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  42 required = False LimitIdleTimesConstraint
+value =  36 required = False ClusterBusyTimesConstraint
+value =  36 required = False ClusterBusyTimesConstraint
+value =  72 required = False ClusterBusyTimesConstraint
+value =  27 required = False ClusterBusyTimesConstraint
+
+---Local Search Benchmark Evaluation ---
+ Cost(Infeasibility_Value=187, Objective_Value=271) 
+
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  50 required = False DistributeSplitEventsConstraint
+value =  8 required = False DistributeSplitEventsConstraint
+value =  13 required = True PreferTimesConstraint
+value =  147 required = True SpreadEventsConstraint
+value =  82 required = True AvoidClashesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  4 required = True AvoidUnavailableTimesConstraint
+value =  111 required = False LimitIdleTimesConstraint
+value =  108 required = False ClusterBusyTimesConstraint
+value =  27 required = False ClusterBusyTimesConstraint
+value =  72 required = False ClusterBusyTimesConstraint
+value =  18 required = False ClusterBusyTimesConstraint
+
+---Simulated Annealing Benchmark Evaluation ---
+ Cost(Infeasibility_Value=250, Objective_Value=394) 
+
