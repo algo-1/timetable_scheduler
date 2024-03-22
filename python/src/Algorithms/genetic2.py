@@ -9,13 +9,14 @@ from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 POPULATION_SIZE = 100
-NGEN = 40
+NGEN = 100
 
 
 class Solution:
     def __init__(self, sol_events: list[XHSTTSInstance.SolutionEvent]):
         self.sol_events = sol_events
         self.cost: Cost = None
+        self.eval: int = None
 
     # TODO use cache here / add logic to prevent useless calls to instance.evaluate_solution
     def evaluate(self, instance: XHSTTSInstance) -> int:
@@ -25,7 +26,8 @@ class Solution:
         TODO: choose better evaluation and investigate how it affects population
         """
         self.cost = instance.evaluate_solution(self.sol_events)
-        return -(10 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        self.eval = -(10 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
+        return self.eval
         # return -(self.cost.Infeasibility_Value + self.cost.Objective_Value)
         # return -self.cost.Infeasibility_Value
 
@@ -138,9 +140,7 @@ def tournament_selection(
         tournament_pool = random.sample(population, sample_size)
 
         # Choose the best individual from the tournament pool.
-        winner = max(
-            tournament_pool, key=lambda individual: individual.evaluate(instance)
-        )
+        winner = max(tournament_pool, key=lambda individual: individual.eval)
 
         selected_solutions.append(winner)
 
