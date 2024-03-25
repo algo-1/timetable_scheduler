@@ -52,6 +52,7 @@ class Constraint(ABC):  # class Constraint(metaclass=TimerMeta):
         instance_event_groups,
         instance_time_groups,
         instance_events,
+        instance_time_refs_indices: dict[str, int],
     ):
         self.name: str = XMLConstraint.find("Name").text
         self.required: bool = XMLConstraint.find("Required").text == "true"
@@ -67,6 +68,10 @@ class Constraint(ABC):  # class Constraint(metaclass=TimerMeta):
         )
         self.instance_events: dict[str, XHSTTSInstance.Event] = instance_events
         self.instance_time_groups = instance_time_groups
+        self.instance_time_refs_indices = instance_time_refs_indices
+        self.instance_time_refs_indices_list = list(
+            self.instance_time_refs_indices.items()
+        )
         self.event_group_refs: dict[str, set[str]] = defaultdict(set)
         self._parse_applies_to(XMLConstraint.find("AppliesTo"))
 
@@ -138,6 +143,18 @@ class Constraint(ABC):  # class Constraint(metaclass=TimerMeta):
             if reference == resource_reference:
                 return True
         return False
+
+    def get_consecutive_times(self, start_time_ref, duration):
+        time_ref_idx = self.instance_time_refs_indices[start_time_ref] + 1
+
+        time_refs = [start_time_ref]
+
+        for _ in range(duration - 1):
+            if time_ref_idx < len(self.instance_time_refs_indices_list):
+                time_refs.append(self.instance_time_refs_indices_list[time_ref_idx][0])
+                time_ref_idx += 1
+        # print(duration, time_refs)
+        return time_refs
 
 
 class AssignTimeConstraint(Constraint):
@@ -418,13 +435,19 @@ class AvoidUnavailableTimesConstraint(Constraint):
             for time_ref in self.time_refs:
                 found = False
                 for solution_event in solution:
-                    if (
-                        solution_event.TimeReference
-                        and solution_event.TimeReference == time_ref
-                        and self.hasResource(resource_ref, solution_event.Resources)
-                    ):
-                        found = True
-                        break
+                    if solution_event.TimeReference:
+                        for duration_time_ref in self.get_consecutive_times(
+                            solution_event.TimeReference, solution_event.Duration
+                        ):
+                            if (
+                                solution_event.TimeReference
+                                and time_ref == duration_time_ref
+                                and self.hasResource(
+                                    resource_ref, solution_event.Resources
+                                )
+                            ):
+                                found = True
+                                break
                 if found:
                     deviation += 1
 
@@ -463,7 +486,12 @@ class LimitIdleTimesConstraint(Constraint):
                 True
                 if any(
                     sol_event.TimeReference
-                    and time_ref == sol_event.TimeReference
+                    and any(
+                        time_ref == time
+                        for time in self.get_consecutive_times(
+                            sol_event.TimeReference, sol_event.Duration
+                        )
+                    )
                     and self.hasResource(resource_ref, sol_event.Resources)
                     for sol_event in solution
                 )
@@ -627,19 +655,25 @@ class LimitBusyTimesConstraint(Constraint):
 
         return cost(deviation, self.weight, self.cost_function)
 
-    def get_busy_times_count(self, resource_ref, timegroup, solution):
+    def get_busy_times_count(
+        self, resource_ref, timegroup, solution: list[XHSTTSInstance.SolutionEvent]
+    ):
         # print(f"resource: {resource_ref}")
         ll = [0] * len(timegroup)
         for idx, time_ref in enumerate(timegroup):
             count = 0
             for sol_event in solution:
                 # print(sol_event.Resources)
-                if (
-                    sol_event.TimeReference
-                    and time_ref == sol_event.TimeReference
-                    and self.hasResource(resource_ref, sol_event.Resources)
-                ):
-                    count += 1
+                if sol_event.TimeReference:
+                    for duration_time_ref in self.get_consecutive_times(
+                        sol_event.TimeReference, sol_event.Duration
+                    ):
+                        if (
+                            sol_event.TimeReference
+                            and time_ref == duration_time_ref
+                            and self.hasResource(resource_ref, sol_event.Resources)
+                        ):
+                            count += 1
             ll[idx] = count
 
         # print(ll)
@@ -763,6 +797,9 @@ class XHSTTSInstance:
         self.instance_time_groups = defaultdict(
             list
         )  # {group_id : list of times that are in this time group (timegroup can be Day or Week)) }
+        self.instance_time_refs_indices = (
+            {}
+        )  # the chronological position of the time refs
         self.Constraints: list[Constraint] = []
         self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
@@ -821,6 +858,12 @@ class XHSTTSInstance:
         for _, time in self.Times.items():
             for ref in time.TimeGroupReferences:
                 self.instance_time_groups[ref].append(time)
+
+        # populate instance_time_refs_indices
+        idx = 0
+        for time_ref, _ in self.Times.items():
+            self.instance_time_refs_indices[time_ref] = idx
+            idx += 1
 
     def _parse_TimeGroups(self, XMLTimeGroups: ET.Element):
         return {
@@ -982,6 +1025,7 @@ class XHSTTSInstance:
                 self.instance_event_groups,
                 self.instance_time_groups,
                 self.Events,
+                self.instance_time_refs_indices,
             )
             self.Constraints.append(constraint_instance)
 
