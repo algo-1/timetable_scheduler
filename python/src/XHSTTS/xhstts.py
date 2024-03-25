@@ -1078,6 +1078,17 @@ class XHSTTSInstance:
                                         "Resources"
                                     ).findall("Resource")
                                 ]
+                                + [
+                                    XHSTTSInstance.SolutionEventResource(
+                                        resource.Reference, resource.Role
+                                    )
+                                    for resource in self.get_missing_resources(
+                                        XMLSolutionEvent.find("Resources").findall(
+                                            "Resource"
+                                        ),
+                                        XMLSolutionEvent.attrib["Reference"],
+                                    )
+                                ]
                                 if XMLSolutionEvent.find("Resources") is not None
                                 else [
                                     XHSTTSInstance.SolutionEventResource(
@@ -1115,6 +1126,20 @@ class XHSTTSInstance:
                     for instance_solution_event in missing_events
                 ]
             )
+
+    def get_missing_resources(
+        self, solutionEventResources: list[ET.Element], instance_event_ref
+    ):
+        sol_events_resource_refs = {
+            res.attrib["Reference"] for res in solutionEventResources
+        }
+
+        result = []
+        for resource in self.Events[instance_event_ref].Resources:
+            if resource.Reference not in sol_events_resource_refs:
+                result.append(resource)
+
+        return result
 
     def get_cost(self, solution, constraint: Constraint):
         return constraint.evaluate(solution)
