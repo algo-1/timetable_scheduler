@@ -60,7 +60,7 @@ class Constraint(ABC):
 
     def _parse_applies_to(self, XMLAppliesTo: ET.Element):
         XMLResourceGroups = XMLAppliesTo.find("ResourceGroups")
-        if XMLResourceGroups:
+        if XMLResourceGroups is not None:
             for XMLResourceGroup in XMLResourceGroups.findall("ResourceGroup"):
                 group_reference = XMLResourceGroup.attrib["Reference"]
                 self.resource_references.extend(
@@ -73,12 +73,12 @@ class Constraint(ABC):
                 )
 
         XMLResources = XMLAppliesTo.find("Resources")
-        if XMLResources:
+        if XMLResources is not None:
             for XMLResource in XMLResources:
                 self.resource_references.append(XMLResource.attrib["Reference"])
 
         XMLEventGroups = XMLAppliesTo.find("EventGroups")
-        if XMLEventGroups:
+        if XMLEventGroups is not None:
             for XMLEventGroup in XMLEventGroups.findall("EventGroup"):
                 self.events.extend(
                     self.instance_event_groups[XMLEventGroup.attrib["Reference"]]
@@ -93,7 +93,7 @@ class Constraint(ABC):
                 )
 
         XMLEvents = XMLAppliesTo.find("Events")
-        if XMLEvents:
+        if XMLEvents is not None:
             for XMLEvent in XMLEvents:
                 self.events.append(self.instance_events[XMLEvent.attrib["Reference"]])
 
@@ -198,14 +198,14 @@ class PreferResourcesConstraint(Constraint):
 
     def _parse_preferred_resources(self, XMLConstraint: ET.Element):
         XMLResourceGroups = XMLConstraint.find("ResourceGroups")
-        if XMLResourceGroups:
+        if XMLResourceGroups is not None:
             for XMLResourceGroup in XMLResourceGroups.findall("ResourceGroup"):
                 resource_group_ref = XMLResourceGroup.attrib["Reference"]
                 for resource in self.instance_resource_groups[resource_group_ref]:
                     self.preferred_resources.add(resource.Reference)
 
         XMLResources = XMLConstraint.find("Resources")
-        if XMLResources:
+        if XMLResources is not None:
             for XMLResource in XMLResources.findall("Resource"):
                 self.preferred_resources.add(XMLResource.attrib["Reference"])
 
@@ -302,7 +302,7 @@ class PreferTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element, *args):
         super().__init__(XMLConstraint, *args)
         XMLDuration = XMLConstraint.find("Duration")
-        self.duration = int(XMLDuration.text) if XMLDuration else None
+        self.duration = int(XMLDuration.text) if XMLDuration is not None else None
         self.preferred_times = set()
         self._parse_preferred_times(XMLConstraint)
 
@@ -325,14 +325,14 @@ class PreferTimesConstraint(Constraint):
 
     def _parse_preferred_times(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
-        if XMLTimeGroups:
+        if XMLTimeGroups is not None:
             for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
                 ref = XMLTimeGroup.attrib["Reference"]
                 for time in self.instance_time_groups[ref]:
                     self.preferred_times.add(time.Reference)
 
         XMLTimes = XMLConstraint.find("Times")
-        if XMLTimes:
+        if XMLTimes is not None:
             for XMLTime in XMLTimes.findall("Time"):
                 self.preferred_times.add(XMLTime.attrib["Reference"])
 
@@ -345,10 +345,7 @@ class SpreadEventsConstraint(Constraint):
 
     def evaluate(self, solution):
         deviation = 0
-        for event_group in self.instance_event_groups:
-            event_group_events = set(
-                [e.Reference for e in self.instance_event_groups[event_group]]
-            )
+        for _, event_group_events in self.event_group_refs.items():
             for refs, minimum, maximum in self.time_groups:
                 count = 0
                 for solution_event in solution:
@@ -367,7 +364,7 @@ class SpreadEventsConstraint(Constraint):
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
-        if XMLTimeGroups:
+        if XMLTimeGroups is not None:
             for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
                 ref = XMLTimeGroup.attrib["Reference"]
                 minimum = int(XMLTimeGroup.find("Minimum").text)
@@ -414,7 +411,7 @@ class AvoidUnavailableTimesConstraint(Constraint):
                     self.time_refs.add(time.Reference)
 
         XMLTimes = XMLConstraint.find("Times")
-        if XMLTimes:
+        if XMLTimes is not None:
             for XMLTime in XMLTimes.findall("Time"):
                 self.time_refs.add(XMLTime.attrib["Reference"])
 
@@ -482,7 +479,7 @@ class LimitIdleTimesConstraint(Constraint):
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
-        if XMLTimeGroups:
+        if XMLTimeGroups is not None:
             for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
                 ref = XMLTimeGroup.attrib["Reference"]
                 self.time_groups.append(
@@ -522,7 +519,7 @@ class ClusterBusyTimesConstraint(Constraint):
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
-        if XMLTimeGroups:
+        if XMLTimeGroups is not None:
             for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
                 ref = XMLTimeGroup.attrib["Reference"]
                 self.time_groups.append(
@@ -558,22 +555,28 @@ class LinkEventsConstraint(Constraint):
     def evaluate(self, solution):
         deviation = 0
         for ref, event_refs in self.event_group_refs.items():
-            appear_count = defaultdict(int)
-            num_times = 0
+            instance_event_sets = defaultdict(set)
+            time_refs = set()
             for sol_event in solution:
                 if sol_event.InstanceEventReference in event_refs:
                     if sol_event.TimeReference:
-                        num_times += 1
-                        appear_count[sol_event.TimeReference] += 1
+                        instance_event_sets[sol_event.InstanceEventReference].add(
+                            sol_event.TimeReference
+                        )
+                        time_refs.add(sol_event.TimeReference)
 
             deviation += sum(
-                1 if appear_count[x] != num_times else 0 for x in appear_count
+                self._count_sets_elem_not_in(ref, instance_event_sets.values())
+                for ref in time_refs
             )
 
         return cost(deviation, self.weight, self.cost_function)
 
+    def _count_sets_elem_not_in(self, elem, sets):
+        return sum(1 for s in sets if elem not in s)
 
-class LimitBusyTimesConstraint(LimitIdleTimesConstraint):
+
+class LimitBusyTimesConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element, *args):
         super().__init__(XMLConstraint, *args)
         self.min = int(XMLConstraint.find("Minimum").text)
@@ -584,23 +587,44 @@ class LimitBusyTimesConstraint(LimitIdleTimesConstraint):
     def evaluate(self, solution):
         deviation = 0
         for resource_ref in self.resource_references:
-            busy_times_count = 0
             for timegroup in self.time_groups:
-                resource_status = self.get_resource_status(
+                busy_times_count = self.get_busy_times_count(
                     resource_ref, timegroup, solution
                 )
-                busy_times_count += self.get_busy_times_count(resource_status)
-
-            if busy_times_count > 0:
-                if busy_times_count < self.min:
-                    deviation += self.min - busy_times_count
-                elif busy_times_count > self.max:
-                    deviation += busy_times_count - self.max
+                if busy_times_count > 0:
+                    if busy_times_count < self.min:
+                        deviation += self.min - busy_times_count
+                    elif busy_times_count > self.max:
+                        deviation += busy_times_count - self.max
 
         return cost(deviation, self.weight, self.cost_function)
 
-    def get_busy_times_count(self, resource_status: list[bool]):
-        return sum(resource_status)
+    def get_busy_times_count(self, resource_ref, timegroup, solution):
+        # print(f"resource: {resource_ref}")
+        ll = [0] * len(timegroup)
+        for idx, time_ref in enumerate(timegroup):
+            count = 0
+            for sol_event in solution:
+                # print(sol_event.Resources)
+                if (
+                    sol_event.TimeReference
+                    and time_ref == sol_event.TimeReference
+                    and self.hasResource(resource_ref, sol_event.Resources)
+                ):
+                    count += 1
+            ll[idx] = count
+
+        # print(ll)
+        return sum(ll)
+
+    def _parse_time_groups(self, XMLConstraint: ET.Element):
+        XMLTimeGroups = XMLConstraint.find("TimeGroups")
+        if XMLTimeGroups is not None:
+            for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
+                ref = XMLTimeGroup.attrib["Reference"]
+                self.time_groups.append(
+                    tuple(t.Reference for t in self.instance_time_groups[ref])
+                )
 
 
 class LimitWorkloadConstraint(Constraint):
@@ -745,7 +769,7 @@ class XHSTTSInstance:
 
     def _parse_times(self, XMLTimes: ET.Element):
         XMLTimesGroups = XMLTimes.find("TimeGroups")
-        if XMLTimesGroups:
+        if XMLTimesGroups is not None:
             self.TimeGroups = self._parse_TimeGroups(XMLTimesGroups)
 
         XMLTimeList = XMLTimes.findall("Time")
@@ -935,6 +959,14 @@ class XHSTTSInstance:
 
     def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
+            report = XMLSolution.find("Report")
+            if report is not None:
+                print("hard: ", report.find("InfeasibilityValue").text)
+                print("soft: ", report.find("ObjectiveValue").text)
+            else:
+                print("no report")
+            print()
+
             solution_events = XMLSolution.find("Events").findall("Event")
             self.Solutions.append(
                 [
@@ -950,20 +982,31 @@ class XHSTTSInstance:
                         TimeReference=(
                             XMLSolutionEvent.find("Time").attrib["Reference"]
                             if XMLSolutionEvent.find("Time") is not None
-                            else None
+                            else self.Events[
+                                XMLSolutionEvent.attrib["Reference"]
+                            ].PreAssignedTimeReference
                         ),
                         Resources=(
-                            [
-                                XHSTTSInstance.SolutionEventResource(
-                                    XMLSolutionResource.attrib["Reference"],
-                                    XMLSolutionResource.find("Role").text,
-                                )
-                                for XMLSolutionResource in XMLSolutionEvent.find(
-                                    "Resources"
-                                ).findall("Resource")
-                            ]
-                            if XMLSolutionEvent.find("Resources") is not None
-                            else []
+                            (
+                                [
+                                    XHSTTSInstance.SolutionEventResource(
+                                        XMLSolutionResource.attrib["Reference"],
+                                        XMLSolutionResource.find("Role").text,
+                                    )
+                                    for XMLSolutionResource in XMLSolutionEvent.find(
+                                        "Resources"
+                                    ).findall("Resource")
+                                ]
+                                if XMLSolutionEvent.find("Resources") is not None
+                                else [
+                                    XHSTTSInstance.SolutionEventResource(
+                                        resource.Reference, resource.Role
+                                    )
+                                    for resource in self.Events[
+                                        XMLSolutionEvent.attrib["Reference"]
+                                    ].Resources
+                                ]
+                            )
                         ),
                         SplitMinDuration=0,
                         SplitMaxDuration=float("inf"),
