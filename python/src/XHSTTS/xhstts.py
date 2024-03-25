@@ -162,8 +162,9 @@ class AssignTimeConstraint(Constraint):
         super().__init__(*args)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for event in self.events:
+            deviation = 0
             if not event.PreAssignedTimeReference:
                 seen = False
                 for solution_event in solution:
@@ -175,7 +176,9 @@ class AssignTimeConstraint(Constraint):
                     # print(f"ref = {event.Reference}, duration = {event.Duration}")
                     deviation += event.Duration
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
 
 class AssignResourceConstraint(Constraint):
@@ -193,9 +196,10 @@ class AssignResourceConstraint(Constraint):
         return False
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for event in self.events:
             for resource in event.Resources:
+                deviation = 0
                 if not resource.Reference and resource.Role == self.role:
                     for solution_event in solution:
                         deviation += (
@@ -204,8 +208,9 @@ class AssignResourceConstraint(Constraint):
                             and (not self.is_assigned(solution_event.Resources))
                             else 0
                         )
+                total_cost += cost(deviation, self.weight, self.cost_function)
 
-        return cost(deviation, self.weight, self.cost_function)
+        return total_cost
 
 
 class PreferResourcesConstraint(Constraint):
@@ -225,9 +230,10 @@ class PreferResourcesConstraint(Constraint):
         return False
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for event in self.events:
             for resource in event.Resources:
+                deviation = 0
                 if not resource.Reference and resource.Role == self.role:
                     for solution_event in solution:
                         deviation += (
@@ -238,8 +244,9 @@ class PreferResourcesConstraint(Constraint):
                             )
                             else 0
                         )
+                total_cost += cost(deviation, self.weight, self.cost_function)
 
-        return cost(deviation, self.weight, self.cost_function)
+        return total_cost
 
     def _parse_preferred_resources(self, XMLConstraint: ET.Element):
         XMLResourceGroups = XMLConstraint.find("ResourceGroups")
@@ -260,8 +267,9 @@ class AvoidClashesConstraint(Constraint):
         super().__init__(*args)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for resource_ref in self.resource_references:
+            deviation = 0
             times = set()
             for solution_event in solution:
                 if solution_event.TimeReference:
@@ -274,7 +282,9 @@ class AvoidClashesConstraint(Constraint):
                             else:
                                 times.add(duration_time_ref)
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
 
 class SplitEventsConstraint(Constraint):
@@ -303,8 +313,9 @@ class SplitEventsConstraint(Constraint):
             )
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for event in self.events:
+            deviation = 0
             violates_duration_count = 0
             amount_count = 0
             for solution_event in solution:
@@ -321,7 +332,9 @@ class SplitEventsConstraint(Constraint):
             elif amount_count > self.max_amount:
                 deviation += amount_count - self.max_amount
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
 
 class DistributeSplitEventsConstraint(Constraint):
@@ -332,8 +345,9 @@ class DistributeSplitEventsConstraint(Constraint):
         self.max = int(XMLConstraint.find("Maximum").text)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for event in self.events:
+            deviation = 0
             count = 0
             for solution_event in solution:
                 if solution_event.InstanceEventReference == event.Reference:
@@ -344,7 +358,9 @@ class DistributeSplitEventsConstraint(Constraint):
             elif count > self.max:
                 deviation += count - self.max
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
 
 class PreferTimesConstraint(Constraint):
@@ -356,8 +372,9 @@ class PreferTimesConstraint(Constraint):
         self._parse_preferred_times(XMLConstraint)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for event in self.events:
+            deviation = 0
             for solution_event in solution:
                 if solution_event.InstanceEventReference == event.Reference:
                     if (
@@ -370,7 +387,9 @@ class PreferTimesConstraint(Constraint):
                         else:
                             deviation += solution_event.Duration
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
     def _parse_preferred_times(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
@@ -393,8 +412,9 @@ class SpreadEventsConstraint(Constraint):
         self._parse_time_groups(XMLConstraint)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for _, event_group_events in self.event_group_refs.items():
+            deviation = 0
             for refs, minimum, maximum in self.time_groups:
                 count = 0
                 for solution_event in solution:
@@ -409,7 +429,9 @@ class SpreadEventsConstraint(Constraint):
                 elif count > maximum:
                     deviation += count - maximum
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
@@ -434,8 +456,9 @@ class AvoidUnavailableTimesConstraint(Constraint):
         self._parse_time_refs(XMLConstraint)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for resource_ref in self.resource_references:
+            deviation = 0
             for time_ref in self.time_refs:
                 found = False
                 for solution_event in solution:
@@ -455,7 +478,9 @@ class AvoidUnavailableTimesConstraint(Constraint):
                 if found:
                     deviation += 1
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
     def _parse_time_refs(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
@@ -522,7 +547,7 @@ class LimitIdleTimesConstraint(Constraint):
         return res
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for resource_ref in self.resource_references:
             idle_times_count = 0
             for timegroup in self.time_groups:
@@ -530,12 +555,17 @@ class LimitIdleTimesConstraint(Constraint):
                     resource_ref, timegroup, solution
                 )
                 idle_times_count += self.get_idle_times_count(resource_status)
-            if idle_times_count < self.min:
-                deviation += self.min - idle_times_count
-            elif idle_times_count > self.max:
-                deviation += idle_times_count - self.max
 
-        return cost(deviation, self.weight, self.cost_function)
+            if idle_times_count < self.min:
+                total_cost += cost(
+                    self.min - idle_times_count, self.weight, self.cost_function
+                )
+            elif idle_times_count > self.max:
+                total_cost += cost(
+                    idle_times_count - self.max, self.weight, self.cost_function
+                )
+
+        return total_cost
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
@@ -556,8 +586,9 @@ class ClusterBusyTimesConstraint(Constraint):
         self._parse_time_groups(XMLConstraint)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for resource_ref in self.resource_references:
+            deviation = 0
             count = 0
             for timegroup in self.time_groups:
                 found = False
@@ -575,7 +606,9 @@ class ClusterBusyTimesConstraint(Constraint):
             elif count > self.max:
                 deviation += count - self.max
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
     def _parse_time_groups(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
@@ -593,8 +626,9 @@ class AvoidSplitAssignmentsConstraint(Constraint):
         self.role = XMLConstraint.find("Role").text
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for ref, event_refs in self.event_group_refs.items():
+            deviation = 0
             assigned_resources = set()
             for sol_event in solution:
                 if sol_event.InstanceEventReference in event_refs:
@@ -605,7 +639,9 @@ class AvoidSplitAssignmentsConstraint(Constraint):
 
             deviation += len(assigned_resources) - 1
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
 
 class LinkEventsConstraint(Constraint):
@@ -613,8 +649,9 @@ class LinkEventsConstraint(Constraint):
         super().__init__(XMLConstraint, *args)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for ref, event_refs in self.event_group_refs.items():
+            deviation = 0
             instance_event_sets = defaultdict(set)
             time_refs = set()
             for sol_event in solution:
@@ -629,8 +666,9 @@ class LinkEventsConstraint(Constraint):
                 self._count_sets_elem_not_in(ref, instance_event_sets.values())
                 for ref in time_refs
             )
+            total_cost += cost(deviation, self.weight, self.cost_function)
 
-        return cost(deviation, self.weight, self.cost_function)
+        return total_cost
 
     def _count_sets_elem_not_in(self, elem, sets):
         return sum(1 for s in sets if elem not in s)
@@ -645,8 +683,9 @@ class LimitBusyTimesConstraint(Constraint):
         self._parse_time_groups(XMLConstraint)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for resource_ref in self.resource_references:
+            deviation = 0
             for timegroup in self.time_groups:
                 busy_times_count = self.get_busy_times_count(
                     resource_ref, timegroup, solution
@@ -657,7 +696,9 @@ class LimitBusyTimesConstraint(Constraint):
                     elif busy_times_count > self.max:
                         deviation += busy_times_count - self.max
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
     def get_busy_times_count(
         self, resource_ref, timegroup, solution: list[XHSTTSInstance.SolutionEvent]
@@ -698,8 +739,9 @@ class LimitWorkloadConstraint(Constraint):
         self.max = int(XMLConstraint.find("Maximum").text)
 
     def evaluate(self, solution):
-        deviation = 0
+        total_cost = 0
         for resource_ref in self.resource_references:
+            deviation = 0
             workload = 0
             for sol_event in solution:
                 if self.hasResource(resource_ref, sol_event.Resources):
@@ -713,7 +755,9 @@ class LimitWorkloadConstraint(Constraint):
             elif workload > self.max:
                 deviation += workload - self.max
 
-        return cost(deviation, self.weight, self.cost_function)
+            total_cost += cost(deviation, self.weight, self.cost_function)
+
+        return total_cost
 
 
 class XHSTTSInstance:
