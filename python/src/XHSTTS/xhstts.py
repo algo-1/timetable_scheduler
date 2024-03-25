@@ -1042,6 +1042,13 @@ class XHSTTSInstance:
             print()
 
             solution_events = XMLSolution.find("Events").findall("Event")
+            solution_events_refs = set(
+                XMLSolutionEvent.attrib["Reference"]
+                for XMLSolutionEvent in solution_events
+            )
+            missing_event_refs = set(self.Events.keys()) - solution_events_refs
+            missing_events = [self.Events[ref] for ref in missing_event_refs]
+
             self.Solutions.append(
                 [
                     XHSTTSInstance.SolutionEvent(
@@ -1088,6 +1095,24 @@ class XHSTTSInstance:
                         SplitMaxAmount=float("inf"),
                     )
                     for XMLSolutionEvent in solution_events
+                ]
+                + [
+                    XHSTTSInstance.SolutionEvent(
+                        InstanceEventReference=instance_solution_event.Reference,
+                        Duration=instance_solution_event.Duration,
+                        TimeReference=instance_solution_event.PreAssignedTimeReference,
+                        Resources=[
+                            XHSTTSInstance.SolutionEventResource(
+                                resource.Reference, resource.Role
+                            )
+                            for resource in instance_solution_event.Resources
+                        ],
+                        SplitMinDuration=0,
+                        SplitMaxDuration=float("inf"),
+                        SplitMinAmount=0,
+                        SplitMaxAmount=float("inf"),
+                    )
+                    for instance_solution_event in missing_events
                 ]
             )
 
