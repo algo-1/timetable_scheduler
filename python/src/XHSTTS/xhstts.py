@@ -432,7 +432,7 @@ class AvoidUnavailableTimesConstraint(Constraint):
 
     def _parse_time_refs(self, XMLConstraint: ET.Element):
         XMLTimeGroups = XMLConstraint.find("TimeGroups")
-        if XMLTimeGroups:
+        if XMLTimeGroups is not None:
             for XMLTimeGroup in XMLTimeGroups.findall("TimeGroup"):
                 ref = XMLTimeGroup.attrib["Reference"]
                 for time in self.instance_time_groups[ref]:
