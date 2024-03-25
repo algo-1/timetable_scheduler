@@ -264,11 +264,15 @@ class AvoidClashesConstraint(Constraint):
         for resource_ref in self.resource_references:
             times = set()
             for solution_event in solution:
-                if self.hasResource(resource_ref, solution_event.Resources):
-                    if solution_event.TimeReference in times:
-                        deviation += 1
-                    else:
-                        times.add(solution_event.TimeReference)
+                if solution_event.TimeReference:
+                    if self.hasResource(resource_ref, solution_event.Resources):
+                        for duration_time_ref in self.get_consecutive_times(
+                            solution_event.TimeReference, solution_event.Duration
+                        ):
+                            if duration_time_ref in times:
+                                deviation += 1
+                            else:
+                                times.add(duration_time_ref)
 
         return cost(deviation, self.weight, self.cost_function)
 
