@@ -1,11 +1,13 @@
 from __future__ import annotations
 from collections import defaultdict
+from functools import wraps
 from inspect import isclass
 from pathlib import Path
 import random
+import time
 from typing import NamedTuple
 import xml.etree.ElementTree as ET
-from abc import ABC, abstractmethod
+from abc import ABC, ABCMeta, abstractmethod
 
 
 from XHSTTS.utils import (
@@ -16,7 +18,33 @@ from XHSTTS.utils import (
 )
 
 
-class Constraint(ABC):
+def timer(func):
+    @wraps(func)
+    def wrapper_timer(*args, **kwargs):
+        start_time = time.perf_counter()  # Start timing
+        result = func(*args, **kwargs)
+        end_time = time.perf_counter()  # End timing
+        elapsed_time = end_time - start_time
+        print(f"Function '{func.__name__}' executed in {elapsed_time:.6f} seconds")
+        return result
+
+    return wrapper_timer
+
+
+# Custom metaclass with timer decorator
+class TimerMeta(ABCMeta):
+    def __new__(cls, clsname, bases, clsdict):
+        for name, value in clsdict.items():
+            if (
+                callable(value)
+                and value.__name__ == "evaluate"
+                # and not name.startswith("__")
+            ):  # Check if it's the evaluate method
+                clsdict[name] = timer(value)  # decorate evaluate
+        return super().__new__(cls, clsname, bases, clsdict)
+
+
+class Constraint(ABC):  # class Constraint(metaclass=TimerMeta):
     def __init__(
         self,
         XMLConstraint: ET.Element,
@@ -1020,6 +1048,7 @@ class XHSTTSInstance:
     def get_cost(self, solution, constraint: Constraint):
         return constraint.evaluate(solution)
 
+    @timer
     def evaluate_solution(self, solution: list[SolutionEvent], debug=False):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
