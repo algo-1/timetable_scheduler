@@ -672,10 +672,8 @@ class LimitBusyTimesConstraint(Constraint):
                     for duration_time_ref in self.get_consecutive_times(
                         sol_event.TimeReference, sol_event.Duration
                     ):
-                        if (
-                            sol_event.TimeReference
-                            and time_ref == duration_time_ref
-                            and self.hasResource(resource_ref, sol_event.Resources)
+                        if time_ref == duration_time_ref and self.hasResource(
+                            resource_ref, sol_event.Resources
                         ):
                             count += 1
             ll[idx] = count
