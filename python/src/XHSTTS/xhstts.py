@@ -657,10 +657,11 @@ class LinkEventsConstraint(Constraint):
             for sol_event in solution:
                 if sol_event.InstanceEventReference in event_refs:
                     if sol_event.TimeReference:
-                        instance_event_sets[sol_event.InstanceEventReference].add(
-                            sol_event.TimeReference
-                        )
-                        time_refs.add(sol_event.TimeReference)
+                        for duration_time in self.get_consecutive_times(sol_event.TimeReference, sol_event.Duration):
+                            instance_event_sets[sol_event.InstanceEventReference].add(
+                                duration_time
+                            )
+                            time_refs.add(duration_time)
 
             deviation += sum(
                 self._count_sets_elem_not_in(ref, instance_event_sets.values())
