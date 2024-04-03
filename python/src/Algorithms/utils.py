@@ -1,3 +1,4 @@
+from copy import deepcopy
 import random
 
 from XHSTTS.utils import Cost
@@ -20,7 +21,7 @@ class Solution:
         if self.needs_eval_update:
             self.cost = instance.evaluate_solution(self.sol_events)
             self.eval = -(
-                50 * self.cost.Infeasibility_Value + self.cost.Objective_Value
+                10 * self.cost.Infeasibility_Value + self.cost.Objective_Value
             )
             self.needs_eval_update = False
         return self.eval
@@ -57,9 +58,10 @@ def mutate_time(
     event: XHSTTSInstance.SolutionEvent,
     solution: Solution,
     event_idx: int,
+    swap_percentage: float = 0.5,
 ):
     new_event = event
-    if random.random() < 0.2:
+    if random.random() < swap_percentage:
         new_event = swap_time_refs(solution, event_idx)
     else:
         new_time_reference = instance.get_random_time_reference()
@@ -90,64 +92,60 @@ def mutate_resource(instance: XHSTTSInstance, event: XHSTTSInstance):
 
 
 def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
-    for i, event in enumerate(solution.sol_events):
-        # randomly mutate an event
-        new_event = event
-        if random.random() < 0.01:
-            solution.needs_eval_update = True
 
-            # decide between mutating the time or one of the resources
-            rand_num = random.randint(0, len(new_event.Resources))
-            if rand_num == len(new_event.Resources):
-                # mutate time if not pre-assigned
-                if not instance.Events[
-                    event.InstanceEventReference
-                ].PreAssignedTimeReference:
-                    new_event = mutate_time(instance, event, solution, i)
-                else:
-                    # choose a non-preassigned resource
-                    _, new_event = mutate_resource(instance, event)
+    i = random.randint(0, len(solution.sol_events) - 1)
+    event = solution.sol_events[i]
 
-            else:
-                # choose a non-preassigned resource
-                resource_mutated, new_event = mutate_resource(instance, event)
-                if not resource_mutated:
-                    # mutate time
-                    new_event = mutate_time(instance, event, solution, i)
-
-            solution.sol_events[i] = new_event
+    # randomly mutate an event
+    new_event = event
+    solution.needs_eval_update = True
+    # decide between mutating the time or one of the resources
+    rand_num = random.randint(0, len(new_event.Resources))
+    if rand_num == len(new_event.Resources):
+        # mutate time if not pre-assigned
+        if not instance.Events[event.InstanceEventReference].PreAssignedTimeReference:
+            new_event = mutate_time(instance, event, solution, i)
+        else:
+            # choose a non-preassigned resource
+            _, new_event = mutate_resource(instance, event)
+    else:
+        # choose a non-preassigned resource
+        resource_mutated, new_event = mutate_resource(instance, event)
+        if not resource_mutated:
+            # mutate time
+            new_event = mutate_time(instance, event, solution, i)
+    solution.sol_events[i] = new_event
 
 
 def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
+    # solution should not be modified!
 
-    new_solution_events = []
-    for idx, event in enumerate(solution.sol_events):
-        # randomly mutate an event
+    new_solution = Solution(deepcopy(solution.sol_events))
+    idx = random.randint(0, len(new_solution.sol_events) - 1)
+    event = new_solution.sol_events[idx]
 
-        new_event = event
+    new_event = event
+    solution.needs_eval_update = True
+    # decide between mutating the time or one of the resources
+    rand_num = random.randint(0, len(new_event.Resources))
+    if rand_num == len(new_event.Resources):
+        # mutate time if not pre-assigned
+        if not instance.Events[event.InstanceEventReference].PreAssignedTimeReference:
+            new_event = mutate_time(
+                instance, event, new_solution, idx, swap_percentage=0.5
+            )
+        else:
+            # choose a non-preassigned resource
+            _, new_event = mutate_resource(instance, event)
+    else:
+        # choose a non-preassigned resource
+        resource_mutated, new_event = mutate_resource(instance, event)
+        if not resource_mutated:
+            # mutate time
+            new_event = mutate_time(
+                instance, event, new_solution, idx, swap_percentage=0.5
+            )
 
-        if random.random() < 0.01:
-            solution.needs_eval_update = True
+    new_solution.sol_events[idx] = new_event
 
-            # decide between mutating the time or one of the resources
-            rand_num = random.randint(0, len(new_event.Resources))
-            if rand_num == len(new_event.Resources):
-                # mutate time if not pre-assigned
-                if not instance.Events[
-                    event.InstanceEventReference
-                ].PreAssignedTimeReference:
-                    new_event = mutate_time(instance, event, solution, idx)
-                else:
-                    # choose a non-preassigned resource
-                    _, new_event = mutate_resource(instance, event)
-
-            else:
-                # choose a non-preassigned resource
-                resource_mutated, new_event = mutate_resource(instance, event)
-                if not resource_mutated:
-                    # mutate time
-                    new_event = mutate_time(instance, event, solution, idx)
-
-        new_solution_events.append(new_event)
-
-    return Solution(new_solution_events)
+    return new_solution
