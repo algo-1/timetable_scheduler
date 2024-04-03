@@ -1219,25 +1219,25 @@ class XHSTTSInstance:
     def find_resource_type(
         self, resources: list[XHSTTSInstance.EventResource], role: str
     ):
-        for elem in resources:
+        for idx, elem in enumerate(resources):
             if elem.Role == role:
-                return elem.ResourceTypeReference
+                return idx, elem.ResourceTypeReference
         raise Exception(f"Did not find the '{role}' role in resources.")
 
     def get_random_and_valid_resource_reference(
         self, event_resource: EventResource, instanceEventReference
     ):
-        resourceType = self.find_resource_type(
+        idx, resourceType = self.find_resource_type(
             self.Events[instanceEventReference].Resources,
             event_resource.Role,
         )
 
-        if not resourceType:
+        if self.Events[instanceEventReference].Resources[idx].Reference is not None:
             # it was pre-assigned so do not mutate
             # TODO: add isPreassigned field to event resources to aid easy check in algorithms
-            return event_resource
+            return True, event_resource
 
-        return event_resource._replace(
+        return False, event_resource._replace(
             Reference=random.choice(self.partitioned_resources_refs[resourceType])
         )
 
