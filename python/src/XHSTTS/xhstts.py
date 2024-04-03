@@ -1193,7 +1193,7 @@ class XHSTTSInstance:
     def get_cost(self, solution, constraint: Constraint):
         return constraint.evaluate(solution)
 
-    @timer
+    # @timer
     def evaluate_solution(self, solution: list[SolutionEvent], debug=False):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
