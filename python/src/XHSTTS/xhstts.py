@@ -594,10 +594,15 @@ class ClusterBusyTimesConstraint(Constraint):
                 found = False
                 for sol_event in solution:
                     if sol_event.TimeReference:
-                        if sol_event.TimeReference in timegroup:
-                            if self.hasResource(resource_ref, sol_event.Resources):
-                                found = True
-                                break
+                        for duration_time in self.get_consecutive_times(
+                            sol_event.TimeReference, sol_event.Duration
+                        ):
+                            if duration_time in timegroup:
+                                if self.hasResource(resource_ref, sol_event.Resources):
+                                    found = True
+                                    break
+                        if found:
+                            break
                 if found:
                     count += 1
 
@@ -657,7 +662,9 @@ class LinkEventsConstraint(Constraint):
             for sol_event in solution:
                 if sol_event.InstanceEventReference in event_refs:
                     if sol_event.TimeReference:
-                        for duration_time in self.get_consecutive_times(sol_event.TimeReference, sol_event.Duration):
+                        for duration_time in self.get_consecutive_times(
+                            sol_event.TimeReference, sol_event.Duration
+                        ):
                             instance_event_sets[sol_event.InstanceEventReference].add(
                                 duration_time
                             )
