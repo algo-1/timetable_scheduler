@@ -119,13 +119,44 @@ if __name__ == "__main__":
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
     dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
+    aus_bghs98 = XHSTTS(data_dir.joinpath("AustraliaBGHS98.xml"))
+    italy4 = XHSTTS(data_dir.joinpath("ItalyInstance4.xml"))
+    aus_sahs96 = XHSTTS(data_dir.joinpath("AustraliaSAHS96.xml"))
+    aus_tes99 = XHSTTS(data_dir.joinpath("AustraliaTES99.xml"))
+    stpaul = XHSTTS(data_dir.joinpath("EnglandStPaul.xml"))
+    spainschool = XHSTTS(data_dir.joinpath("SpainSchool.xml"))
+    brazil2 = XHSTTS(data_dir.joinpath("BrazilInstance2.xml"))
+    lewitt = XHSTTS(data_dir.joinpath("SouthAfricaLewitt2009.xml"))
+    woodlands = XHSTTS(data_dir.joinpath("SouthAfricaWoodlands2009.xml"))
+    hdtt4 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt4.xml"))
+    hdtt5 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt5.xml"))
+    hdtt6 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt6.xml"))
+    hdtt7 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt7.xml"))
+    hdtt8 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt8.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
         dataset_abramson15: "ArtificialAbramson15",
         dataset_brazil3: "BrazilInstance3.xml",
     }
-    for dataset in (dataset_sudoku4x4, dataset_abramson15, dataset_brazil3):
+    for dataset in (
+        stpaul,
+        italy4,
+        aus_bghs98,
+        aus_sahs96,
+        aus_tes99,
+        spainschool,
+        brazil2,
+        lewitt,
+        dataset_sudoku4x4,
+        dataset_abramson15,
+        woodlands,
+        hdtt4,
+        hdtt5,
+        hdtt6,
+        hdtt7,
+        hdtt8,
+    ):  # (dataset_sudoku4x4, dataset_abramson15, dataset_brazil3):
         random.seed(23)
 
         assert dataset.num_instances() == 1
@@ -133,18 +164,22 @@ if __name__ == "__main__":
         instance = dataset.get_instance(index=0)
 
         # get solution
-        result = random_solution(instance)
+        result = instance.get_solutions()[
+            -1
+        ]  # random_solution( instance)  # testing eval on benchmark solutions instance.get_solutions()[-1]
 
         # evaluate
-        print(f"\n\n--- Random Evaluation ({dataset_names[dataset]}) ---")
+        print(f"\n\n--- Random Evaluation ({instance.name}) ---")
 
         evaluation = instance.evaluate_solution(result, debug=True)
 
         print("\n", evaluation)
 
+        print("\n\n")
+
         # save the solution as an xml file
-        solutions_dir = root_dir.joinpath("solutions")
-        file_path = solutions_dir.joinpath(
-            f"random_solution_{dataset_names[dataset]}.xml"
-        )
-        XHSTTSInstance.sol_events_to_xml(result, instance, file_path)
+        # solutions_dir = root_dir.joinpath("solutions")
+        # file_path = solutions_dir.joinpath(
+        #     f"random_solution_{dataset_names[dataset]}.xml"
+        # )
+        # XHSTTSInstance.sol_events_to_xml(result, instance, file_path)
