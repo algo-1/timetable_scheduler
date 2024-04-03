@@ -7,126 +7,12 @@ import time
 from Algorithms.random_algorithm import random_solution
 from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.simulated_annealing import simulated_annealing
-from Algorithms.utils import swap
+from Algorithms.utils import Solution, mutate, swap
 from XHSTTS.xhstts import XHSTTS, Constraint, XHSTTSInstance
 from XHSTTS.utils import Cost
 from copy import deepcopy
 import concurrent.futures
 from pathlib import Path
-
-
-class LocalSearchSolution:
-    def __init__(self, sol_events: list[XHSTTSInstance.SolutionEvent]):
-        self.sol_events = sol_events
-        self.cost: Cost = None
-
-    # TODO use cache here / add logic to prevent useless calls to instance.evaluate_solution
-    def evaluate(self, instance: XHSTTSInstance) -> int:
-        """
-        returns the negative of the cost because 0 is the best cost.
-        weights the infeasible cost 10 times the objective cost.
-        TODO: choose better evaluation and investigate how it affects population
-        """
-        self.cost = instance.evaluate_solution(self.sol_events)
-        return -(100 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
-        # return -(self.cost.Infeasibility_Value + self.cost.Objective_Value)
-        # return -self.cost.Infeasibility_Value
-
-    def is_feasible(self) -> bool:
-        return self.cost.Infeasibility_Value == 0
-
-    def is_feasible_and_solves_objectives(self):
-        return self.cost.Infeasibility_Value == 0 and self.cost.Objective_Value == 0
-
-
-def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
-    # TODO: scrap deepcopy in this function
-    for i, event in enumerate(solution.sol_events):
-        # randomly mutate an event
-        new_event = deepcopy(event)
-        if random.random() < 0.01:
-            # decide between mutating the time or one of the resources
-            rand_num = random.randint(0, len(new_event.Resources))
-            if rand_num == len(new_event.Resources):
-                # replace time ref
-                if not instance.Events[
-                    event.InstanceEventReference
-                ].PreAssignedTimeReference:
-                    new_time_reference = instance.get_random_time_reference()
-                    new_event = event._replace(TimeReference=new_time_reference)
-            else:
-                resource_to_change_idx = (
-                    rand_num  # rand_num is guaranteed to be a valid index
-                )
-                new_event_resource = instance.get_random_and_valid_resource_reference(
-                    new_event.Resources[resource_to_change_idx],
-                    new_event.InstanceEventReference,
-                )
-                new_event.Resources[resource_to_change_idx] = new_event_resource
-
-            solution.sol_events[i] = new_event
-
-
-# def mutate(solution: LocalSearchSolution, instance: XHSTTSInstance) -> None:
-#     for i, event in enumerate(solution.sol_events):
-#         # randomly mutate an event
-#         new_event = event
-#         if random.random() < 0.01:
-#             # replace time ref
-#             if not instance.Events[
-#                 event.InstanceEventReference
-#             ].PreAssignedTimeReference:
-#                 new_time_reference = instance.get_random_time_reference()
-#                 new_event = event._replace(TimeReference=new_time_reference)
-
-#             for k in range(len(event.Resources)):
-#                 # randomly replace resource with a resource of the same type and role
-#                 if random.random() < 0.01:
-#                     new_event_resource = (
-#                         instance.get_random_and_valid_resource_reference(
-#                             new_event.Resources[k], new_event.InstanceEventReference
-#                         )
-#                     )
-#                     new_event.Resources[k] = new_event_resource
-
-#             solution.sol_events[i] = new_event
-#         # randomly swap times and resources with other events??
-
-#         # if random.random() < 0.001:
-#         #     other_idx = random.randint(0, len(solution.sol_events) - 1)
-#         #     tmp_time_ref = solution.sol_events[i].TimeReference
-#         #     solution.sol_events[i] = solution.sol_events[i]._replace(
-#         #         TimeReference=solution.sol_events[other_idx].TimeReference
-#         #     )
-#         #     solution.sol_events[other_idx] = solution.sol_events[other_idx]._replace(
-#         #         TimeReference=tmp_time_ref
-#         #     )
-
-#         #     for k in range(len(solution.sol_events[i].Resources)):
-#         #         other_event_resource_idx = random.randint(
-#         #             0, len(solution.sol_events[other_idx].Resources) - 1
-#         #         )
-#         #         if (
-#         #             solution.sol_events[i].Resources[k].Role
-#         #             == solution.sol_events[other_idx]
-#         #             .Resources[other_event_resource_idx]
-#         #             .Role
-#         #             and instance.get_resources()[
-#         #                 solution.sol_events[other_idx]
-#         #                 .Resources[other_event_resource_idx]
-#         #                 .Reference
-#         #             ].ResourceTypeReference
-#         #             == instance.get_resources()[
-#         #                 solution.sol_events[i].Resources[k].Reference
-#         #             ].ResourceTypeReference
-#         #         ):
-#         #             # swap
-#         #             swap(
-#         #                 solution.sol_events[i].Resources,
-#         #                 solution.sol_events[other_idx].Resources,
-#         #                 k,
-#         #                 other_event_resource_idx,
-#         #             )
 
 
 def local_search(
@@ -137,10 +23,10 @@ def local_search(
 ) -> list[XHSTTSInstance.SolutionEvent]:
     best_random_solution = None
     if sol_events:
-        current_solution = LocalSearchSolution(deepcopy(sol_events))
+        current_solution = Solution(deepcopy(sol_events))
     else:
-        best_random_solution: LocalSearchSolution = sorted(
-            [LocalSearchSolution(random_solution(instance)) for _ in range(10)],
+        best_random_solution: Solution = sorted(
+            [Solution(random_solution(instance)) for _ in range(10)],
             key=lambda x: x.evaluate(instance),
             reverse=True,
         )[0]
@@ -152,10 +38,7 @@ def local_search(
 
     for iteration in range(max_iterations):
         # Generate neighbors by performing small changes to the current solution
-        neighbors = [
-            LocalSearchSolution(deepcopy(current_solution.sol_events))
-            for _ in range(10)
-        ]
+        neighbors = [Solution(deepcopy(current_solution.sol_events)) for _ in range(10)]
         for neighbor in neighbors:
             mutate(neighbor, instance)
 
@@ -178,7 +61,7 @@ def local_search(
             if no_improvement > 4:  # TODO make constant
                 if restart_count < 3:  # TODO make constant
                     restart_count += 1
-                    restart_solution = LocalSearchSolution(
+                    restart_solution = Solution(
                         local_search(
                             instance,
                             sol_events=sol_events,
@@ -238,15 +121,23 @@ def process_instance(instance: XHSTTSInstance):
         print(f"{instance.name} finished in {elapsed_time} seconds.")
 
         # Write the output and solution XML to files
-        output_path = solutions_dir.joinpath(Path(f"output_{instance.name}.txt"))
-        xml_path = solutions_dir.joinpath(Path(f"solution_{instance.name}.xml"))
+        output_path = solutions_dir.joinpath(
+            Path(
+                f"output_{instance.name}_spread_fixed_evaluate_min_split_low_iter_annealing.txt"
+            )
+        )
+        xml_path = solutions_dir.joinpath(
+            Path(
+                f"solution_{instance.name}_spread_fixed_evaluate_min_split_low_iter_annealing.xml"
+            )
+        )
 
         with open(output_path, "w") as output_file:
             output_file.write(buffer.getvalue())
 
         XHSTTSInstance.sol_events_to_xml(annealing_result, instance, xml_path)
 
-    return f"{instance.name} finished"
+    return f"{instance.name} finished"  # annealing_result
 
 
 if __name__ == "__main__":
@@ -296,9 +187,13 @@ if __name__ == "__main__":
                 hdtt7.get_first_instance(),
                 hdtt8.get_first_instance(),
                 dataset_sudoku4x4.get_first_instance(),
+                benchmark_instances[3],
                 benchmark_instances[21],
+                benchmark_instances[0],
                 dataset_abramson15.get_first_instance(),
                 dataset_brazil3.get_first_instance(),
+                benchmark_instances[10],
+                benchmark_instances[11],
             ]
         ]
         for future in concurrent.futures.as_completed(futures):
