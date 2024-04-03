@@ -1,90 +1,20 @@
 from copy import deepcopy
 import random
 import math
+import time
 from Algorithms.random_algorithm import random_solution
-from Algorithms.utils import swap
+from Algorithms.utils import Solution, neighbor, swap
 from XHSTTS.xhstts import XHSTTSInstance, XHSTTS
 from XHSTTS.utils import Cost
 
 
-class Solution:
-    def __init__(self, sol_events: list[XHSTTSInstance.SolutionEvent]):
-        self.sol_events = sol_events
-        self.cost: Cost = None
-
-    def evaluate(self, instance: XHSTTSInstance) -> int:
-        self.cost = instance.evaluate_solution(self.sol_events)
-        return -(10 * self.cost.Infeasibility_Value + self.cost.Objective_Value)
-
-    def is_feasible(self) -> bool:
-        return self.cost.Infeasibility_Value == 0
-
-    def is_feasible_and_solves_objectives(self):
-        return self.cost.Infeasibility_Value == 0 and self.cost.Objective_Value == 0
-
-
 def generate_initial_solution(instance: XHSTTSInstance) -> Solution:
-    from Algorithms.genetic2 import genetic_algorithm
-    from Algorithms.local_search import local_search
-
-    # best_random_solution: Solution = sorted(
-    #     [Solution(random_solution(instance)) for _ in range(100)],
-    #     key=lambda x: x.evaluate(instance),
-    #     reverse=True,
-    # )[0]
-    # print("best random : ", best_random_solution.cost)
-    # return best_random_solution
-    genetic_result = genetic_algorithm(instance)
-    evaluation = instance.evaluate_solution(genetic_result, debug=True)
-    print(
-        f"\n---Genetic Evaluation ({instance.name})---\n",
-        evaluation,
+    best_random_solution: Solution = max(
+        [Solution(random_solution(instance)) for _ in range(1000)],
+        key=lambda x: x.evaluate(instance),
     )
-    local_search_result = local_search(instance, sol_events=genetic_result)
-
-    # evaluate local search result
-    evaluation = instance.evaluate_solution(local_search_result, debug=True)
-
-    print(
-        f"\n---Local Search Benchmark Evaluation {instance.name} ---\n",
-        evaluation,
-        "\n",
-    )
-    return Solution(local_search_result)
-
-
-def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
-    # TODO: scrap deepcopy in this function
-
-    new_solution_events = []
-    for event in solution.sol_events:
-        # randomly mutate an event
-
-        new_event = deepcopy(event)
-
-        if random.random() < 0.01:
-            # decide between mutating the time or one of the resources
-            rand_num = random.randint(0, len(new_event.Resources))
-            if rand_num == len(new_event.Resources):
-                # replace time ref
-                if not instance.Events[
-                    event.InstanceEventReference
-                ].PreAssignedTimeReference:
-                    new_time_reference = instance.get_random_time_reference()
-                    new_event = event._replace(TimeReference=new_time_reference)
-            else:
-                resource_to_change_idx = (
-                    rand_num  # rand_num is guaranteed to be a valid index
-                )
-                new_event_resource = instance.get_random_and_valid_resource_reference(
-                    new_event.Resources[resource_to_change_idx],
-                    new_event.InstanceEventReference,
-                )
-                new_event.Resources[resource_to_change_idx] = new_event_resource
-
-        new_solution_events.append(new_event)
-
-    return Solution(new_solution_events)
+    print("best random : ", best_random_solution.cost)
+    return best_random_solution
 
 
 def acceptance_probability(
@@ -107,12 +37,14 @@ def simulated_annealing(
     current_energy = current_solution.evaluate(instance)
 
     best_solution = current_solution
-    temperature = 1
-    temperature_decay = 0.99995
+    temperature = 2
+    temperature_decay = 0.999999
 
     num_iterations = 0
 
     while temperature > 0.1:
+        start_time = time.time()
+
         num_iterations += 1
         new_solution = neighbor(current_solution, instance)
         new_energy = new_solution.evaluate(instance)
@@ -132,7 +64,15 @@ def simulated_annealing(
 
         temperature *= temperature_decay
 
-    print(f"number of iterations = {num_iterations}")
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+
+        if num_iterations % 1000 == 0:
+            print(
+                f"SA Iteration: {num_iterations} time taken: {elapsed_time} current energy {current_energy} best energy {best_solution.evaluate(instance)} best_cost {best_solution.cost}"
+            )
+
+    print(f"number of Simulated Annealing iterations = {num_iterations}")
     return best_solution.sol_events
 
 
@@ -145,13 +85,14 @@ if __name__ == "__main__":
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
     dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
+    aus_bghs98 = XHSTTS(data_dir.joinpath("AustraliaBGHS98.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
         dataset_abramson15: "ArtificialAbramson15",
         dataset_brazil3: "BrazilInstance3.xml",
     }
-    for dataset in (dataset_sudoku4x4, dataset_brazil3):
+    for dataset in (dataset_abramson15,):
         random.seed(23)
 
         assert dataset.num_instances() == 1
