@@ -1077,13 +1077,13 @@ class XHSTTSInstance:
 
     def _parse_solutions(self, XMLSolutions: list[ET.Element]):
         for XMLSolution in XMLSolutions:
-            report = XMLSolution.find("Report")
-            if report is not None:
-                print("hard: ", report.find("InfeasibilityValue").text)
-                print("soft: ", report.find("ObjectiveValue").text)
-            else:
-                print("no report")
-            print()
+            # report = XMLSolution.find("Report")
+            # if report is not None:
+            #     print("hard: ", report.find("InfeasibilityValue").text)
+            #     print("soft: ", report.find("ObjectiveValue").text)
+            # else:
+            #     print("no report")
+            # print()
 
             solution_events = XMLSolution.find("Events").findall("Event")
             solution_events_refs = set(
@@ -1092,6 +1092,8 @@ class XHSTTSInstance:
             )
             missing_event_refs = set(self.Events.keys()) - solution_events_refs
             missing_events = [self.Events[ref] for ref in missing_event_refs]
+
+            # print("missing", len(missing_events))
 
             self.Solutions.append(
                 [
@@ -1180,7 +1182,10 @@ class XHSTTSInstance:
 
         result = []
         for resource in self.Events[instance_event_ref].Resources:
-            if resource.Reference not in sol_events_resource_refs:
+            if (
+                resource.Reference
+                and resource.Reference not in sol_events_resource_refs
+            ):
                 result.append(resource)
 
         return result
