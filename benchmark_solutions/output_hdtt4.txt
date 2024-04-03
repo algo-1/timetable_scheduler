@@ -1,6 +1,6 @@
 -----hdtt4   2 constraints-----
 population size = 118
-number of generations = 590
+number of generations = 354
 Generation Begin!
 Generation: 1
 Generation: 2
@@ -15,21 +15,6 @@ Generation: 10
 Generation: 11
 Generation: 12
 Generation: 13
-Generation: 14
-Generation: 15
-Generation: 16
-Generation: 17
-Generation: 18
-Generation: 19
-Generation: 20
-Generation: 21
-Generation: 22
-Generation: 23
-Generation: 24
-Generation: 25
-Generation: 26
-Generation: 27
-Generation: 28
 value =  0 required = True AssignTimeConstraint
 value =  25 required = True AvoidClashesConstraint
 
@@ -46,4 +31,4 @@ value =  0 required = True AvoidClashesConstraint
 ---Simulated Annealing Benchmark Evaluation ---
  Cost(Infeasibility_Value=0, Objective_Value=0) 
 
-hdtt4 finished in 3.253070831298828 seconds.
+hdtt4 finished in 1.6189930438995361 seconds.

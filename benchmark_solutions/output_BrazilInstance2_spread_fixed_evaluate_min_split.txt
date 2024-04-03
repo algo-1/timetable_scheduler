@@ -1,0 +1,145 @@
+-----BrazilInstance2   15 constraints-----
+population size = 100
+number of generations = 85
+Generation Begin!
+Generation: 1
+Generation: 2
+Generation: 3
+Generation: 4
+Generation: 5
+Generation: 6
+Generation: 7
+Generation: 8
+Generation: 9
+Generation: 10
+Generation: 11
+Generation: 12
+Generation: 13
+Generation: 14
+Generation: 15
+Generation: 16
+Generation: 17
+Generation: 18
+Generation: 19
+Generation: 20
+Generation: 21
+Generation: 22
+Generation: 23
+Generation: 24
+Generation: 25
+Generation: 26
+Generation: 27
+Generation: 28
+Generation: 29
+Generation: 30
+Generation: 31
+Generation: 32
+Generation: 33
+Generation: 34
+Generation: 35
+Generation: 36
+Generation: 37
+Generation: 38
+Generation: 39
+Generation: 40
+Generation: 41
+Generation: 42
+Generation: 43
+Generation: 44
+Generation: 45
+Generation: 46
+Generation: 47
+Generation: 48
+Generation: 49
+Generation: 50
+Generation: 51
+Generation: 52
+Generation: 53
+Generation: 54
+Generation: 55
+Generation: 56
+Generation: 57
+Generation: 58
+Generation: 59
+Generation: 60
+Generation: 61
+Generation: 62
+Generation: 63
+Generation: 64
+Generation: 65
+Generation: 66
+Generation: 67
+Generation: 68
+Generation: 69
+Generation: 70
+Generation: 71
+Generation: 72
+Generation: 73
+Generation: 74
+Generation: 75
+Generation: 76
+Generation: 77
+Generation: 78
+Generation: 79
+Generation: 80
+Generation: 81
+Generation: 82
+Generation: 83
+Generation: 84
+Generation: 85
+value =  0 required = True AssignTimeConstraint
+value =  29 required = True SplitEventsConstraint
+value =  25 required = False DistributeSplitEventsConstraint
+value =  8 required = False DistributeSplitEventsConstraint
+value =  25 required = True PreferTimesConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  2 required = True AvoidClashesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  3 required = True AvoidUnavailableTimesConstraint
+value =  30 required = False LimitIdleTimesConstraint
+value =  45 required = False ClusterBusyTimesConstraint
+value =  9 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+
+best random:  Cost(Infeasibility_Value=60, Objective_Value=117)
+value =  0 required = True AssignTimeConstraint
+value =  29 required = True SplitEventsConstraint
+value =  25 required = False DistributeSplitEventsConstraint
+value =  8 required = False DistributeSplitEventsConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = False LimitIdleTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+
+---Genetic Evaluation---
+ Cost(Infeasibility_Value=29, Objective_Value=33)
+number of iterations = 460516
+value =  0 required = True AssignTimeConstraint
+value =  29 required = True SplitEventsConstraint
+value =  25 required = False DistributeSplitEventsConstraint
+value =  8 required = False DistributeSplitEventsConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = False LimitIdleTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+
+---Simulated Annealing Benchmark Evaluation ---
+ Cost(Infeasibility_Value=29, Objective_Value=33) 
+
+BrazilInstance2 finished in 747.4776909351349 seconds.

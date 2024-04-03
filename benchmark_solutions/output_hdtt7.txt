@@ -1,6 +1,6 @@
 -----hdtt7   2 constraints-----
 population size = 308
-number of generations = 1540
+number of generations = 924
 Generation Begin!
 Generation: 1
 Generation: 2
@@ -83,4 +83,4 @@ value =  0 required = True AvoidClashesConstraint
 ---Simulated Annealing Benchmark Evaluation ---
  Cost(Infeasibility_Value=0, Objective_Value=0) 
 
-hdtt7 finished in 98.04334497451782 seconds.
+hdtt7 finished in 106.78303503990173 seconds.

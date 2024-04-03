@@ -1,6 +1,6 @@
 -----hdtt8   2 constraints-----
 population size = 394
-number of generations = 1970
+number of generations = 1182
 Generation Begin!
 Generation: 1
 Generation: 2
@@ -97,6 +97,22 @@ Generation: 92
 Generation: 93
 Generation: 94
 Generation: 95
+Generation: 96
+Generation: 97
+Generation: 98
+Generation: 99
+Generation: 100
+Generation: 101
+Generation: 102
+Generation: 103
+Generation: 104
+Generation: 105
+Generation: 106
+Generation: 107
+Generation: 108
+Generation: 109
+Generation: 110
+Generation: 111
 value =  0 required = True AssignTimeConstraint
 value =  93 required = True AvoidClashesConstraint
 
@@ -113,4 +129,4 @@ value =  0 required = True AvoidClashesConstraint
 ---Simulated Annealing Benchmark Evaluation ---
  Cost(Infeasibility_Value=0, Objective_Value=0) 
 
-hdtt8 finished in 294.3063540458679 seconds.
+hdtt8 finished in 355.66925597190857 seconds.

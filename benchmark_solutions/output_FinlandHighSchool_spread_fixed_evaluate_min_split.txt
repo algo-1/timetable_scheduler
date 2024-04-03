@@ -1,0 +1,280 @@
+-----FinlandHighSchool   31 constraints-----
+population size = 100
+number of generations = 172
+Generation Begin!
+Generation: 1
+Generation: 2
+Generation: 3
+Generation: 4
+Generation: 5
+Generation: 6
+Generation: 7
+Generation: 8
+Generation: 9
+Generation: 10
+Generation: 11
+Generation: 12
+Generation: 13
+Generation: 14
+Generation: 15
+Generation: 16
+Generation: 17
+Generation: 18
+Generation: 19
+Generation: 20
+Generation: 21
+Generation: 22
+Generation: 23
+Generation: 24
+Generation: 25
+Generation: 26
+Generation: 27
+Generation: 28
+Generation: 29
+Generation: 30
+Generation: 31
+Generation: 32
+Generation: 33
+Generation: 34
+Generation: 35
+Generation: 36
+Generation: 37
+Generation: 38
+Generation: 39
+Generation: 40
+Generation: 41
+Generation: 42
+Generation: 43
+Generation: 44
+Generation: 45
+Generation: 46
+Generation: 47
+Generation: 48
+Generation: 49
+Generation: 50
+Generation: 51
+Generation: 52
+Generation: 53
+Generation: 54
+Generation: 55
+Generation: 56
+Generation: 57
+Generation: 58
+Generation: 59
+Generation: 60
+Generation: 61
+Generation: 62
+Generation: 63
+Generation: 64
+Generation: 65
+Generation: 66
+Generation: 67
+Generation: 68
+Generation: 69
+Generation: 70
+Generation: 71
+Generation: 72
+Generation: 73
+Generation: 74
+Generation: 75
+Generation: 76
+Generation: 77
+Generation: 78
+Generation: 79
+Generation: 80
+Generation: 81
+Generation: 82
+Generation: 83
+Generation: 84
+Generation: 85
+Generation: 86
+Generation: 87
+Generation: 88
+Generation: 89
+Generation: 90
+Generation: 91
+Generation: 92
+Generation: 93
+Generation: 94
+Generation: 95
+Generation: 96
+Generation: 97
+Generation: 98
+Generation: 99
+Generation: 100
+Generation: 101
+Generation: 102
+Generation: 103
+Generation: 104
+Generation: 105
+Generation: 106
+Generation: 107
+Generation: 108
+Generation: 109
+Generation: 110
+Generation: 111
+Generation: 112
+Generation: 113
+Generation: 114
+Generation: 115
+Generation: 116
+Generation: 117
+Generation: 118
+Generation: 119
+Generation: 120
+Generation: 121
+Generation: 122
+Generation: 123
+Generation: 124
+Generation: 125
+Generation: 126
+Generation: 127
+Generation: 128
+Generation: 129
+Generation: 130
+Generation: 131
+Generation: 132
+Generation: 133
+Generation: 134
+Generation: 135
+Generation: 136
+Generation: 137
+Generation: 138
+Generation: 139
+Generation: 140
+Generation: 141
+Generation: 142
+Generation: 143
+Generation: 144
+Generation: 145
+Generation: 146
+Generation: 147
+Generation: 148
+Generation: 149
+Generation: 150
+Generation: 151
+Generation: 152
+Generation: 153
+Generation: 154
+Generation: 155
+Generation: 156
+Generation: 157
+Generation: 158
+Generation: 159
+Generation: 160
+Generation: 161
+Generation: 162
+Generation: 163
+Generation: 164
+Generation: 165
+Generation: 166
+Generation: 167
+Generation: 168
+Generation: 169
+Generation: 170
+Generation: 171
+Generation: 172
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  52 required = True PreferTimesConstraint
+value =  27 required = True PreferTimesConstraint
+value =  40 required = True SpreadEventsConstraint
+value =  57 required = True AvoidClashesConstraint
+value =  2704 required = False LimitIdleTimesConstraint
+value =  3969 required = False LimitIdleTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  1 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  36 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  49 required = False LimitBusyTimesConstraint
+value =  64 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  49 required = False LimitBusyTimesConstraint
+value =  4 required = False LimitBusyTimesConstraint
+value =  4 required = False LimitBusyTimesConstraint
+value =  36 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  9 required = False LimitBusyTimesConstraint
+value =  36 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  36 required = False LimitBusyTimesConstraint
+value =  1 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+
+best random:  Cost(Infeasibility_Value=176, Objective_Value=7096)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True PreferTimesConstraint
+value =  14 required = True SpreadEventsConstraint
+value =  41 required = True AvoidClashesConstraint
+value =  16 required = False LimitIdleTimesConstraint
+value =  4 required = False LimitIdleTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  1 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  36 required = False LimitBusyTimesConstraint
+value =  36 required = False LimitBusyTimesConstraint
+value =  9 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  4 required = False LimitBusyTimesConstraint
+value =  4 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  9 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  1 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+
+---Genetic Evaluation---
+ Cost(Infeasibility_Value=55, Objective_Value=291)
+number of iterations = 460516
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True PreferTimesConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  11 required = True AvoidClashesConstraint
+value =  0 required = False LimitIdleTimesConstraint
+value =  0 required = False LimitIdleTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+value =  1 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  4 required = False LimitBusyTimesConstraint
+value =  4 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  9 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  16 required = False LimitBusyTimesConstraint
+value =  25 required = False LimitBusyTimesConstraint
+value =  1 required = False LimitBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+
+---Simulated Annealing Benchmark Evaluation ---
+ Cost(Infeasibility_Value=11, Objective_Value=292) 
+
+FinlandHighSchool finished in 6225.345322132111 seconds.

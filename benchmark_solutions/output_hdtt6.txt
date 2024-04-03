@@ -1,6 +1,6 @@
 -----hdtt6   2 constraints-----
 population size = 250
-number of generations = 1250
+number of generations = 750
 Generation Begin!
 Generation: 1
 Generation: 2
@@ -57,8 +57,6 @@ Generation: 52
 Generation: 53
 Generation: 54
 Generation: 55
-Generation: 56
-Generation: 57
 value =  0 required = True AssignTimeConstraint
 value =  53 required = True AvoidClashesConstraint
 
@@ -75,4 +73,4 @@ value =  0 required = True AvoidClashesConstraint
 ---Simulated Annealing Benchmark Evaluation ---
  Cost(Infeasibility_Value=0, Objective_Value=0) 
 
-hdtt6 finished in 44.825201988220215 seconds.
+hdtt6 finished in 49.35901594161987 seconds.

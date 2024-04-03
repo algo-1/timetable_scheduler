@@ -1,6 +1,6 @@
 -----hdtt5   2 constraints-----
 population size = 176
-number of generations = 880
+number of generations = 528
 Generation Begin!
 Generation: 1
 Generation: 2
@@ -41,4 +41,4 @@ value =  0 required = True AvoidClashesConstraint
 ---Simulated Annealing Benchmark Evaluation ---
  Cost(Infeasibility_Value=0, Objective_Value=0) 
 
-hdtt5 finished in 8.116707801818848 seconds.
+hdtt5 finished in 8.025166988372803 seconds.
