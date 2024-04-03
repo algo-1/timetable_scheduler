@@ -13,15 +13,15 @@ from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
     """returns a list of solution events by randomly splitting instance events according to the rules (duration etc)"""
-    # TODO: incorporate event.SplitMinDuration  & event.SplitMaxDuration?
+    # TODO: incorporate event.SplitMinDuration  & event.SplitMaxDuration? NOTE: must be callled before assigning times
     split_sol_events = []
     for event in sol_events:
         if (
             event.SplitMaxAmount > 0
             and event.Duration > 1
-            and event.SplitMinAmount
-            != 0  # TODO: update to cover [0, 6] case for example
-            and event.SplitMaxAmount != float("inf")
+            # and event.SplitMinAmount != 0  # TODO: add if else to avoid div by 0 if choosing min amount split
+            # and event.SplitMaxAmount != float("inf") we still want to split even if no split constraints -- hdtt problems for example
+            and not event.TimeReference
         ):
             num_splits = min(
                 event.SplitMaxAmount,
