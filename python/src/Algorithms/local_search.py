@@ -18,18 +18,20 @@ from pathlib import Path
 def local_search(
     instance: XHSTTSInstance,
     max_iterations: int = 10_000,
-    sol_events=[],
-    restart_count=0,
+    sol_events: list = [],
+    restart_count: int = 0,
+    num_neighbours: int = 10,
+    max_no_improvement: int = 5,
+    max_restart_count: int = 3,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     best_random_solution = None
     if sol_events:
         current_solution = Solution(deepcopy(sol_events))
     else:
-        best_random_solution: Solution = sorted(
+        best_random_solution: Solution = max(
             [Solution(random_solution(instance)) for _ in range(10)],
             key=lambda x: x.evaluate(instance),
-            reverse=True,
-        )[0]
+        )
         current_solution = best_random_solution
 
     current_solution.evaluate(instance)
@@ -38,7 +40,10 @@ def local_search(
 
     for iteration in range(max_iterations):
         # Generate neighbors by performing small changes to the current solution
-        neighbors = [Solution(deepcopy(current_solution.sol_events)) for _ in range(10)]
+        neighbors = [
+            Solution(deepcopy(current_solution.sol_events))
+            for _ in range(num_neighbours)
+        ]
         for neighbor in neighbors:
             mutate(neighbor, instance)
 
@@ -58,8 +63,8 @@ def local_search(
             # No improvement for 5 iterations, terminate the search
             no_improvement += 1
             # print(f"no consecutive improvements {no_improvement}")
-            if no_improvement > 4:  # TODO make constant
-                if restart_count < 3:  # TODO make constant
+            if no_improvement > max_no_improvement - 1:  # TODO make constant
+                if restart_count < max_restart_count:  # TODO make constant
                     restart_count += 1
                     restart_solution = Solution(
                         local_search(

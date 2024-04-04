@@ -28,6 +28,9 @@ def acceptance_probability(
 def simulated_annealing(
     instance: XHSTTSInstance,
     input_solution_events: list[XHSTTSInstance.SolutionEvent] = None,
+    initial_temperature: int = 2,
+    temperature_decay: float = 0.99999,
+    lowest_temperature: int = 0.1,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     current_solution = None
     if input_solution_events:
@@ -37,12 +40,10 @@ def simulated_annealing(
     current_energy = current_solution.evaluate(instance)
 
     best_solution = current_solution
-    temperature = 2
-    temperature_decay = 0.999999
-
+    temperature = initial_temperature
     num_iterations = 0
 
-    while temperature > 0.1:
+    while temperature > lowest_temperature:
         start_time = time.time()
 
         num_iterations += 1

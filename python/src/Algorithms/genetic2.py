@@ -9,15 +9,14 @@ from Algorithms.utils import Solution, mutate, swap
 from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
-POPULATION_SIZE = 150
-NGEN = 200
 
-
-def crossover(sol1: Solution, sol2: Solution) -> tuple[Solution, Solution]:
+def crossover(
+    sol1: Solution, sol2: Solution, uniform_percentage: int
+) -> tuple[Solution, Solution]:
     # random.shuffle(sol1.sol_events)
     # random.shuffle(sol2.sol_events)
 
-    if random.random() < 0.5:
+    if random.random() < uniform_percentage:
         # uniform crossover
         offspring1 = deepcopy(sol1)
         offspring2 = deepcopy(sol2)
@@ -46,11 +45,14 @@ def crossover(sol1: Solution, sol2: Solution) -> tuple[Solution, Solution]:
 
 
 def tournament_selection(
-    population: list[Solution], instance: XHSTTSInstance, size: int
+    population: list[Solution],
+    instance: XHSTTSInstance,
+    size: int,
+    sample_size: int = None,
 ) -> list[Solution]:
 
     random.shuffle(population)
-    sample_size = math.floor(math.sqrt(len(population)))
+    sample_size = sample_size if sample_size else math.floor(math.sqrt(len(population)))
 
     selected_solutions = []
     for _ in range(size):
@@ -69,12 +71,21 @@ def tournament_selection(
 
 def genetic_algorithm(
     instance,
+    tournament_size: int = None,
+    num_selected_for_crossover: int = None,
+    mutation_rate: float = 0.2,
     input_solution: list[XHSTTSInstance.SolutionEvent] = [],
     input_population: list[list[XHSTTSInstance.SolutionEvent]] = [],
+    crossover_uniform_percentage: float = 0.5,
+    POPULATION_SIZE: int = 100,
+    NGEN: int = 40,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     # Create a population of solutions.
 
-    global POPULATION_SIZE, NGEN
+    if tournament_size:
+        assert (
+            tournament_size < POPULATION_SIZE
+        ), f"tournament_size ({tournament_size}) should be less than the POPULATION_SIZE ({POPULATION_SIZE})"
 
     population: list[Solution] = None
     best_random_solution = None
@@ -102,7 +113,7 @@ def genetic_algorithm(
 
         # set population size & number of generations according to number of sol events (assumes each random solution has the same number of sol_events)
         # POPULATION_SIZE = min(POPULATION_SIZE, len(random_1000[0].sol_events) * 2)
-        NGEN = max(NGEN, int(len(random_1000[0].sol_events)) // 2)
+        NGEN = max(NGEN, int(len(random_1000[0].sol_events) // 1.5))
 
         print(f"population size = {POPULATION_SIZE}\nnumber of generations = {NGEN}")
 
@@ -118,12 +129,18 @@ def genetic_algorithm(
     for idx in range(NGEN):
         start_time = time.time()
         # Select the best solutions from the population.
-        num_selection = int(len(population) // 2)
+        num_selection = (
+            num_selected_for_crossover
+            if num_selected_for_crossover
+            else int(len(population) // 2)
+        )
         # ensure even number
         num_selection = num_selection + 1 if (num_selection % 2 != 0) else num_selection
 
         tournament_start_time = time.time()
-        selected_solutions = tournament_selection(population, instance, num_selection)
+        selected_solutions = tournament_selection(
+            population, instance, num_selection, sample_size=tournament_size
+        )
         tournament_elapsed_time = time.time() - tournament_start_time
 
         # Crossover the selected solutions to produce new offspring.
@@ -131,7 +148,9 @@ def genetic_algorithm(
         offspring: list[Solution] = []
         for i in range(0, len(selected_solutions), 2):
             new_solution1, new_solution2 = crossover(
-                selected_solutions[i], selected_solutions[i + 1]
+                selected_solutions[i],
+                selected_solutions[i + 1],
+                uniform_percentage=crossover_uniform_percentage,
             )
             offspring.append(new_solution1)
             offspring.append(new_solution2)
@@ -140,7 +159,7 @@ def genetic_algorithm(
         # Mutate the offspring.
         mutation_start_time = time.time()
         for offspring_solution in offspring:
-            if random.random() < 0.2:
+            if random.random() < mutation_rate:
                 mutate(offspring_solution, instance)
         mutation_elapsed_time = time.time() - mutation_start_time
 

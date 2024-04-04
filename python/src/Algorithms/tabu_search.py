@@ -41,6 +41,9 @@ def tabu_search(
     instance: XHSTTSInstance,
     input_solution_events: list[XHSTTSInstance.SolutionEvent] = None,
     tabu_size: int = 20,
+    max_iterations: int = 5000,
+    num_neighbours: int = 500,
+    max_no_improvement: int = 20,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     current_solution = None
     if input_solution_events:
@@ -55,12 +58,14 @@ def tabu_search(
     num_iterations = 0
     no_improvement = 0
 
-    while num_iterations < 5000:
+    while num_iterations < max_iterations:
         start_time = time.time()
 
         num_iterations += 1
 
-        neighbors = [neighbor(current_solution, instance) for _ in range(500)]
+        neighbors = [
+            neighbor(current_solution, instance) for _ in range(num_neighbours)
+        ]
 
         new_solution = max(neighbors, key=lambda x: x.evaluate(instance))
 
@@ -90,7 +95,7 @@ def tabu_search(
         if best_solution.is_feasible_and_solves_objectives():
             break
 
-        if no_improvement >= 100:
+        if no_improvement >= max_no_improvement:
             break
 
         end_time = time.time()
@@ -98,7 +103,7 @@ def tabu_search(
 
         if num_iterations % 20 == 0:
             print(
-                f"Tabu Search Iteration: {num_iterations} time taken: {elapsed_time} best cost = {best_solution.cost}  tabu size = {len(tabu_list)} fuckkkkk {new_energy} {current_energy}"
+                f"Tabu Search Iteration: {num_iterations} time taken: {elapsed_time} best cost = {best_solution.cost}  tabu size = {len(tabu_list)} {new_energy} {current_energy}"
             )
 
     print(f"number of Tabu Search iterations = {num_iterations}")
@@ -124,6 +129,7 @@ if __name__ == "__main__":
     lewitt = XHSTTS(data_dir.joinpath("SouthAfricaLewitt2009.xml"))
     woodlands = XHSTTS(data_dir.joinpath("SouthAfricaWoodlands2009.xml"))
     spainschool = XHSTTS(data_dir.joinpath("SpainSchool.xml"))
+    aus_tes99 = XHSTTS(data_dir.joinpath("AustraliaTES99.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
@@ -131,9 +137,10 @@ if __name__ == "__main__":
         dataset_brazil3: "BrazilInstance3.xml",
     }
     for dataset in (
+        # aus_tes99,
         # woodlands,
         # brazil2,
-        # lewitt,
+        lewitt,
         # dataset_brazil3,
         # dataset_sudoku4x4,
         # hdtt4,
@@ -141,7 +148,7 @@ if __name__ == "__main__":
         # hdtt6,
         # hdtt7,
         # hdtt7,
-        hdtt8,
+        # hdtt8,
         # dataset_abramson15,
         # spainschool,
     ):  # dataset_abramson15, dataset_brazil3):
