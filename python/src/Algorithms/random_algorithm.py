@@ -11,34 +11,77 @@ import random
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 
+# def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
+#     """returns a list of solution events by randomly splitting instance events according to the rules (duration etc)"""
+#     # TODO: incorporate event.SplitMinDuration  & event.SplitMaxDuration? NOTE: must be callled before assigning times
+#     split_sol_events = []
+#     for event in sol_events:
+#         if (
+#             event.SplitMaxAmount > 0
+#             and event.Duration > 1
+#             # and event.SplitMinAmount != 0  # TODO: add if else to avoid div by 0 if choosing min amount split
+#             # and event.SplitMaxAmount != float("inf") we still want to split even if no split constraints -- hdtt problems for example
+#             and not event.TimeReference
+#         ):
+#             num_splits = min(
+#                 event.SplitMaxAmount,
+#                 event.Duration,
+#             )
+#             split_duration = event.Duration // num_splits
+
+#             for _ in range(num_splits - 1):
+#                 split_event = event._replace(Duration=split_duration)
+#                 split_sol_events.append(split_event)
+#             last_split_event = event._replace(
+#                 Duration=event.Duration - (split_duration * (num_splits - 1))
+#             )
+#             split_sol_events.append(last_split_event)
+#         else:
+#             # no split necesary
+#             split_sol_events.append(event)
+#     return split_sol_events
+
+
+def generate_n_durations(N, input_total_duration, min_duration, max_duration):
+    durations = []
+    total_duration = input_total_duration
+
+    for index in range(N - 1):
+        integer = random.randint(
+            1,
+            min(total_duration - (N - index - 1), max_duration),
+        )  # ensure each duration is at least 1
+        durations.append(integer)
+        total_duration -= integer
+
+    # The last integer is the remaining value of total_duration
+    durations.append(total_duration)
+
+    return durations
+
+
 def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
-    """returns a list of solution events by randomly splitting instance events according to the rules (duration etc)"""
-    # TODO: incorporate event.SplitMinDuration  & event.SplitMaxDuration? NOTE: must be callled before assigning times
     split_sol_events = []
     for event in sol_events:
         if (
             event.SplitMaxAmount > 0
             and event.Duration > 1
-            # and event.SplitMinAmount != 0  # TODO: add if else to avoid div by 0 if choosing min amount split
-            # and event.SplitMaxAmount != float("inf") we still want to split even if no split constraints -- hdtt problems for example
-            and not event.TimeReference
+            and event.SplitMinAmount <= min(event.Duration, event.SplitMaxAmount)
         ):
-            num_splits = min(
-                event.SplitMaxAmount,
-                event.Duration,
+            num_splits = random.randint(
+                event.SplitMinAmount, min(event.Duration, event.SplitMaxAmount)
             )
-            split_duration = event.Duration // num_splits
+            durations = generate_n_durations(
+                num_splits, event.Duration, event.SplitMinAmount, event.SplitMaxDuration
+            )
 
-            for _ in range(num_splits - 1):
+            for split_duration in durations:
                 split_event = event._replace(Duration=split_duration)
                 split_sol_events.append(split_event)
-            last_split_event = event._replace(
-                Duration=event.Duration - (split_duration * (num_splits - 1))
-            )
-            split_sol_events.append(last_split_event)
         else:
             # no split necesary
             split_sol_events.append(event)
+
     return split_sol_events
 
 

@@ -16,32 +16,29 @@ def crossover(
     # random.shuffle(sol1.sol_events)
     # random.shuffle(sol2.sol_events)
 
-    if random.random() < uniform_percentage:
-        # uniform crossover
-        offspring1 = deepcopy(sol1)
-        offspring2 = deepcopy(sol2)
+    # uniform crossover
+    offspring1_events = []
+    offspring2_events = []
 
-        for idx in range(len(offspring1.sol_events)):
-            if random.random() < 0.5:
-                offspring1.sol_events[idx], offspring2.sol_events[idx] = (
-                    offspring2.sol_events[idx],
-                    offspring1.sol_events[idx],
-                )
+    for ref in sol1.original_events:
+        sol1_idxs = sol1.original_events[ref]
+        sol2_idxs = sol2.original_events[ref]
+        if random.random() < 0.5:
+            # swap
+            for index in sol2_idxs:
+                offspring1_events.append(sol2.sol_events[index])
 
-        return offspring1, offspring2
-    else:
-        # Randomly select a crossover point.
-        crossover_point = random.randint(0, len(sol1.sol_events) - 1)
+            for index in sol1_idxs:
+                offspring2_events.append(sol1.sol_events[index])
 
-        # Create two new offspring solutions.
-        offspring1 = Solution(
-            sol1.sol_events[:crossover_point] + sol2.sol_events[crossover_point:]
-        )
-        offspring2 = Solution(
-            sol2.sol_events[:crossover_point] + sol1.sol_events[crossover_point:]
-        )
+        else:
+            for index in sol1_idxs:
+                offspring1_events.append(sol1.sol_events[index])
 
-        return offspring1, offspring2
+            for index in sol2_idxs:
+                offspring2_events.append(sol2.sol_events[index])
+
+    return Solution(offspring1_events), Solution(offspring2_events)
 
 
 def tournament_selection(
