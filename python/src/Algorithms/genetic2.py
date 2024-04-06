@@ -38,7 +38,12 @@ def crossover(
             for index in sol2_idxs:
                 offspring2_events.append(sol2.sol_events[index])
 
-    return Solution(offspring1_events), Solution(offspring2_events)
+    new_sol1 = Solution(offspring1_events)
+    new_sol1.k = sol1.k
+    new_sol2 = Solution(offspring2_events)
+    new_sol2.k = sol2.k
+
+    return new_sol1, new_sol2
 
 
 def tournament_selection(
@@ -67,17 +72,18 @@ def tournament_selection(
 
 
 def genetic_algorithm(
-    instance,
+    instance: XHSTTSInstance,
     tournament_size: int = None,
     num_selected_for_crossover: int = None,
     mutation_rate: float = 0.2,
     input_solution: list[XHSTTSInstance.SolutionEvent] = [],
     input_population: list[list[XHSTTSInstance.SolutionEvent]] = [],
     crossover_uniform_percentage: float = 0.5,
-    POPULATION_SIZE: int = 100,
-    NGEN: int = 40,
+    POPULATION_SIZE: int = 150,
+    NGEN: int = 500,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     # Create a population of solutions.
+    sol_changes_made = False
 
     if tournament_size:
         assert (
@@ -190,6 +196,13 @@ def genetic_algorithm(
                 instance.evaluate_solution(best_random_solution.sol_events, debug=True)
                 print("\nbest random: ", best_random_solution.cost)
             return best_solution.sol_events
+
+        if best_solution.is_feasible() and not sol_changes_made:
+            instance.evaluate_solution(best_solution.sol_events, debug=True)
+            print("\nbest feasible  solution so far")
+            for sol in population:
+                sol.k = 1.5
+                sol.needs_eval_update = True
 
         end_time = time.time()
         elapsed_time = end_time - start_time

@@ -57,6 +57,7 @@ def tabu_search(
 
     num_iterations = 0
     no_improvement = 0
+    sol_changes_made = False
 
     while num_iterations < max_iterations:
         start_time = time.time()
@@ -94,6 +95,15 @@ def tabu_search(
 
         if best_solution.is_feasible_and_solves_objectives():
             break
+
+        if best_solution.is_feasible() and not sol_changes_made:
+            instance.evaluate_solution(best_solution.sol_events, debug=True)
+            best_solution.k = 1.5
+            best_solution.needs_eval_update = True
+            current_solution.k = 1.5
+            current_solution.needs_eval_update = True
+            sol_changes_made = True
+            current_energy = current_solution.evaluate(instance)
 
         if no_improvement >= max_no_improvement:
             break

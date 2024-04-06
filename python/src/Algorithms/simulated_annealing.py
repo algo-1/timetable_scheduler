@@ -29,7 +29,7 @@ def simulated_annealing(
     instance: XHSTTSInstance,
     input_solution_events: list[XHSTTSInstance.SolutionEvent] = None,
     initial_temperature: int = 2,
-    temperature_decay: float = 0.99999,
+    temperature_decay: float = 0.999995,
     lowest_temperature: int = 0.1,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     current_solution = None
@@ -42,6 +42,7 @@ def simulated_annealing(
     best_solution = current_solution
     temperature = initial_temperature
     num_iterations = 0
+    sol_changes_made = False
 
     while temperature > lowest_temperature:
         start_time = time.time()
@@ -62,6 +63,15 @@ def simulated_annealing(
 
         if best_solution.is_feasible_and_solves_objectives():
             break
+
+        if best_solution.is_feasible() and not sol_changes_made:
+            instance.evaluate_solution(best_solution.sol_events, debug=True)
+            best_solution.k = 1.5
+            best_solution.needs_eval_update = True
+            current_solution.k = 1.5
+            current_solution.needs_eval_update = True
+            sol_changes_made = True
+            current_energy = current_solution.evaluate(instance)
 
         temperature *= temperature_decay
 
