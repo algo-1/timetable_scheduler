@@ -826,6 +826,7 @@ class XHSTTSInstance:
         SplitMaxDuration: int
         SplitMinAmount: int
         SplitMaxAmount: int
+        IsOriginal: bool
 
     def __init__(self, XMLInstance: ET.Element, XMLSolutions: list[ET.Element]):
         """
@@ -1158,6 +1159,7 @@ class XHSTTSInstance:
                         SplitMaxDuration=float("inf"),
                         SplitMinAmount=0,
                         SplitMaxAmount=float("inf"),
+                        IsOriginal=True,
                     )
                     for XMLSolutionEvent in solution_events
                 ]
@@ -1176,6 +1178,7 @@ class XHSTTSInstance:
                         SplitMaxDuration=float("inf"),
                         SplitMinAmount=0,
                         SplitMaxAmount=float("inf"),
+                        IsOriginal=True,
                     )
                     for instance_solution_event in missing_events
                 ]
@@ -1267,6 +1270,7 @@ class XHSTTSInstance:
             SplitMaxDuration=event.SplitMaxDuration,
             SplitMinAmount=event.SplitMinAmount,
             SplitMaxAmount=event.SplitMaxAmount,
+            IsOriginal=True,
         )
 
     @staticmethod
