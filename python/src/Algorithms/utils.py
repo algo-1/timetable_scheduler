@@ -89,23 +89,80 @@ def mutate_time(
     return new_event
 
 
-def mutate_resource(instance: XHSTTSInstance, event: XHSTTSInstance.SolutionEvent):
+def swap_resources(
+    solution: Solution, instance: XHSTTSInstance, event: XHSTTSInstance.SolutionEvent
+):
     values = list(range(0, len(event.Resources)))
-    random.shuffle(values)
     values_set = set(values)
     resource_mutated = False
     for _ in range(len(event.Resources)):
         resource_to_change_idx = values_set.pop()
-        is_preassigned, new_event_resource = (
-            instance.get_random_and_valid_resource_reference(
-                event.Resources[resource_to_change_idx],
-                event.InstanceEventReference,
-            )
+
+        idx, resourceType = instance.find_resource_type(
+            instance.Events[event.InstanceEventReference].Resources,
+            event.Resources[resource_to_change_idx].Role,
         )
-        if not is_preassigned:
-            event.Resources[resource_to_change_idx] = new_event_resource
+
+        if not instance.Events[event.InstanceEventReference].Resources[idx].Reference:
+            print(instance.resource_swap_partition[resourceType])
+            other_event_ref = random.choice(
+                list(instance.resource_swap_partition[resourceType])
+            )
+            sol_event_idx = random.choice(
+                list(solution.original_events[other_event_ref])
+            )
+            other_sol_event = solution.sol_events[sol_event_idx]
+            for other_resource_index, other_resource in enumerate(
+                other_sol_event.Resources
+            ):
+                if (
+                    instance.find_resource_type(
+                        instance.Events[
+                            other_sol_event.InstanceEventReference
+                        ].Resources,
+                        other_resource.Role,
+                    )
+                    == resourceType
+                ):
+                    swap(
+                        event.Resources,
+                        other_sol_event.Resources,
+                        resource_to_change_idx,
+                        other_resource_index,
+                    )
+                    break
             resource_mutated = True
             break
+
+    return resource_mutated, event
+
+
+def mutate_resource(
+    solution: Solution,
+    instance: XHSTTSInstance,
+    event: XHSTTSInstance.SolutionEvent,
+    swap_percentage=0.5,
+):
+    resource_mutated = False
+    if random.random() < swap_percentage:
+        resource_mutated, event = swap_resources(solution, instance, event)
+    else:
+        values = list(range(0, len(event.Resources)))
+        random.shuffle(values)
+        values_set = set(values)
+
+        for _ in range(len(event.Resources)):
+            resource_to_change_idx = values_set.pop()
+            is_preassigned, new_event_resource = (
+                instance.get_random_and_valid_resource_reference(
+                    event.Resources[resource_to_change_idx],
+                    event.InstanceEventReference,
+                )
+            )
+            if not is_preassigned:
+                event.Resources[resource_to_change_idx] = new_event_resource
+                resource_mutated = True
+                break
 
     return resource_mutated, event
 
@@ -130,10 +187,10 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
                 new_event = mutate_time(instance, event, solution, i)
             else:
                 # choose a non-preassigned resource
-                _, new_event = mutate_resource(instance, event)
+                _, new_event = mutate_resource(solution, instance, event)
         else:
             # choose a non-preassigned resource
-            resource_mutated, new_event = mutate_resource(instance, event)
+            resource_mutated, new_event = mutate_resource(solution, instance, event)
             if not resource_mutated:
                 # mutate time
                 new_event = mutate_time(instance, event, solution, i)
@@ -188,7 +245,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
                 _, new_event = mutate_resource(instance, event)
         else:
             # choose a non-preassigned resource
-            resource_mutated, new_event = mutate_resource(instance, event)
+            resource_mutated, new_event = mutate_resource(solution, instance, event)
             if not resource_mutated:
                 # mutate time
                 new_event = mutate_time(
