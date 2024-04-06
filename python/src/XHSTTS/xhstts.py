@@ -376,7 +376,9 @@ class PreferTimesConstraint(Constraint):
         for event in self.events:
             deviation = 0
             for solution_event in solution:
-                if solution_event.InstanceEventReference == event.Reference:
+                if (not event.PreAssignedTimeReference) and (
+                    solution_event.InstanceEventReference == event.Reference
+                ):
                     if (
                         solution_event.TimeReference
                         and solution_event.TimeReference not in self.preferred_times
