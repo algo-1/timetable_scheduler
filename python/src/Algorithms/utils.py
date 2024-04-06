@@ -12,6 +12,7 @@ class Solution:
         self.cost: Cost = None
         self.eval: int = None
         self.needs_eval_update: bool = True
+        self.k = 10
         self.original_events: dict[str, set[int]] = defaultdict(set)
         self._parse_sol_events()
 
@@ -24,7 +25,7 @@ class Solution:
         if self.needs_eval_update:
             self.cost = instance.evaluate_solution(self.sol_events)
             self.eval = -(
-                10 * self.cost.Infeasibility_Value + self.cost.Objective_Value
+                self.k * self.cost.Infeasibility_Value + self.cost.Objective_Value
             )
             self.needs_eval_update = False
         return self.eval
@@ -50,8 +51,15 @@ def swap(list_a, list_b, pos_a, pos_b):
     list_a[pos_a], list_b[pos_b] = list_b[pos_b], list_a[pos_a]
 
 
-def swap_time_refs(solution: Solution, event_idx: int):
+def swap_time_refs(solution: Solution, instance: XHSTTSInstance, event_idx: int):
     other_idx = random.randint(0, len(solution.sol_events) - 1)
+    while (
+        instance.Events[
+            solution.sol_events[other_idx].InstanceEventReference
+        ].PreAssignedTimeReference
+        is not None
+    ):
+        other_idx = random.randint(0, len(solution.sol_events) - 1)
 
     tmp_time_ref = solution.sol_events[event_idx].TimeReference
     solution.sol_events[event_idx] = solution.sol_events[event_idx]._replace(
@@ -73,7 +81,7 @@ def mutate_time(
 ):
     new_event = event
     if random.random() < swap_percentage:
-        new_event = swap_time_refs(solution, event_idx)
+        new_event = swap_time_refs(solution, instance, event_idx)
     else:
         new_time_reference = instance.get_random_time_reference()
         new_event = event._replace(TimeReference=new_time_reference)
@@ -112,9 +120,9 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
     solution.needs_eval_update = True
 
     # decide between mutating time, mutating resource, splitting an event into two or merging two events
-    rand_num = random.randint(1, 3)
-    if rand_num == 1:
-        if rand_num == len(new_event.Resources):
+    rand_num = random.randint(1, 4)
+    if rand_num == 1 or rand_num == 2:
+        if random.random() > 0.5:
             # mutate time if not pre-assigned
             if not instance.Events[
                 event.InstanceEventReference
@@ -131,7 +139,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
                 new_event = mutate_time(instance, event, solution, i)
         solution.sol_events[i] = new_event
 
-    elif rand_num == 2:
+    elif rand_num == 3:
         # split event
         split_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_split = solution.sol_events[split_event_idx]
@@ -143,7 +151,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
         ):
             split_event(solution, instance, split_event_idx)
 
-    elif rand_num == 3:
+    elif rand_num == 4:
         # merge two events
         merge_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_merge = solution.sol_events[merge_event_idx]
@@ -157,32 +165,57 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
     # solution should not be modified!
 
     new_solution = Solution(deepcopy(solution.sol_events))
+    new_solution.k = solution.k
     idx = random.randint(0, len(new_solution.sol_events) - 1)
     event = new_solution.sol_events[idx]
 
     new_event = event
     solution.needs_eval_update = True
-    # decide between mutating the time or one of the resources
-    rand_num = random.randint(0, len(new_event.Resources))
-    if rand_num == len(new_event.Resources):
-        # mutate time if not pre-assigned
-        if not instance.Events[event.InstanceEventReference].PreAssignedTimeReference:
-            new_event = mutate_time(
-                instance, event, new_solution, idx, swap_percentage=0.5
-            )
+
+    # decide between mutating time, mutating resource, splitting an event into two or merging two events
+    rand_num = random.randint(1, 4)
+    if rand_num == 1 or rand_num == 2:
+        if random.random() > 0.5:
+            # mutate time if not pre-assigned
+            if not instance.Events[
+                event.InstanceEventReference
+            ].PreAssignedTimeReference:
+                new_event = mutate_time(
+                    instance, event, new_solution, idx, swap_percentage=0.5
+                )
+            else:
+                # choose a non-preassigned resource
+                _, new_event = mutate_resource(instance, event)
         else:
             # choose a non-preassigned resource
-            _, new_event = mutate_resource(instance, event)
-    else:
-        # choose a non-preassigned resource
-        resource_mutated, new_event = mutate_resource(instance, event)
-        if not resource_mutated:
-            # mutate time
-            new_event = mutate_time(
-                instance, event, new_solution, idx, swap_percentage=0.5
-            )
+            resource_mutated, new_event = mutate_resource(instance, event)
+            if not resource_mutated:
+                # mutate time
+                new_event = mutate_time(
+                    instance, event, new_solution, idx, swap_percentage=0.5
+                )
+        new_solution.sol_events[idx] = new_event
 
-    new_solution.sol_events[idx] = new_event
+    elif rand_num == 3:
+        # split event
+        split_event_idx = random.choice(list(range(0, len(new_solution.sol_events))))
+        event_to_split = new_solution.sol_events[split_event_idx]
+        if (
+            event_to_split.Duration > 1
+            and event_to_split.SplitMinDuration < event_to_split.Duration
+            and event_to_split.SplitMaxAmount
+            > len(new_solution.original_events[event_to_split.InstanceEventReference])
+        ):
+            split_event(new_solution, instance, split_event_idx)
+
+    elif rand_num == 4:
+        # merge two events
+        merge_event_idx = random.choice(list(range(0, len(new_solution.sol_events))))
+        event_to_merge = new_solution.sol_events[merge_event_idx]
+        if (not event_to_merge.IsOriginal) and (
+            len(new_solution.original_events[event_to_merge.InstanceEventReference]) > 1
+        ):
+            merge_event(new_solution, merge_event_idx)
 
     return new_solution
 
