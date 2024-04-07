@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict, deque
 from copy import deepcopy
 import random
 
@@ -177,8 +177,8 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
     solution.needs_eval_update = True
 
     # decide between mutating time, mutating resource, splitting an event into two or merging two events
-    rand_num = random.randint(1, 4)
-    if rand_num == 1 or rand_num == 2:
+    rand_num = random.randint(1, 6)
+    if rand_num == 1 or rand_num == 2 or rand_num == 3 or rand_num == 4:
         if random.random() > 0.5:
             # mutate time if not pre-assigned
             if not instance.Events[
@@ -196,7 +196,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
                 new_event = mutate_time(instance, event, solution, i)
         solution.sol_events[i] = new_event
 
-    elif rand_num == 3:
+    elif rand_num == 5 or rand_num == 6 or rand_num == 7:
         # split event
         split_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_split = solution.sol_events[split_event_idx]
@@ -208,7 +208,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
         ):
             split_event(solution, instance, split_event_idx)
 
-    elif rand_num == 4:
+    elif rand_num == 8 or rand_num == 9:
         # merge two events
         merge_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_merge = solution.sol_events[merge_event_idx]
@@ -216,6 +216,10 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
             len(solution.original_events[event_to_merge.InstanceEventReference]) > 1
         ):
             merge_event(solution, merge_event_idx)
+
+    elif rand_num == 10:
+        # kempe move
+        kempe_move(solution, instance)
 
 
 def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
@@ -230,8 +234,8 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
     solution.needs_eval_update = True
 
     # decide between mutating time, mutating resource, splitting an event into two or merging two events
-    rand_num = random.randint(1, 4)
-    if rand_num == 1 or rand_num == 2:
+    rand_num = random.randint(1, 10)
+    if rand_num == 1 or rand_num == 2 or rand_num == 3 or rand_num == 4:
         if random.random() > 0.5:
             # mutate time if not pre-assigned
             if not instance.Events[
@@ -242,7 +246,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
                 )
             else:
                 # choose a non-preassigned resource
-                _, new_event = mutate_resource(instance, event)
+                _, new_event = mutate_resource(solution, instance, event)
         else:
             # choose a non-preassigned resource
             resource_mutated, new_event = mutate_resource(solution, instance, event)
@@ -253,19 +257,23 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
                 )
         new_solution.sol_events[idx] = new_event
 
-    elif rand_num == 3:
+    elif rand_num == 5 or rand_num == 6 or rand_num == 7:
         # split event
         split_event_idx = random.choice(list(range(0, len(new_solution.sol_events))))
         event_to_split = new_solution.sol_events[split_event_idx]
+
         if (
-            event_to_split.Duration > 1
+            not instance.Events[
+                event_to_split.InstanceEventReference
+            ].PreAssignedTimeReference
+            and event_to_split.Duration > 1
             and event_to_split.SplitMinDuration < event_to_split.Duration
             and event_to_split.SplitMaxAmount
             > len(new_solution.original_events[event_to_split.InstanceEventReference])
         ):
             split_event(new_solution, instance, split_event_idx)
 
-    elif rand_num == 4:
+    elif rand_num == 8 or rand_num == 9:
         # merge two events
         merge_event_idx = random.choice(list(range(0, len(new_solution.sol_events))))
         event_to_merge = new_solution.sol_events[merge_event_idx]
@@ -273,6 +281,10 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
             len(new_solution.original_events[event_to_merge.InstanceEventReference]) > 1
         ):
             merge_event(new_solution, merge_event_idx)
+
+    elif rand_num == 10:
+        # kempe move
+        kempe_move(new_solution, instance)
 
     return new_solution
 
@@ -286,6 +298,9 @@ def split_event(
     Splits an event with a duration >= 2 into events with a different time but the same resources
     """
     event: XHSTTSInstance.SolutionEvent = solution.sol_events[idx]
+    assert not instance.Events[
+        event.InstanceEventReference
+    ].PreAssignedTimeReference, "cannot split event with a pre-assigned time"
     assert event.Duration > 1, f"event duration must be > 1, got {event.Duration}"
     assert (
         event.SplitMinDuration < event.Duration
@@ -374,5 +389,105 @@ def merge_event(solution: Solution, idx):
     return solution
 
 
-def kempe():
-    pass
+def has_common_resource(
+    sol_event_a: XHSTTSInstance.SolutionEvent, sol_event_b: XHSTTSInstance.SolutionEvent
+):
+    for resource_a in sol_event_a.Resources:
+        for resource_b in sol_event_b.Resources:
+            if resource_a.Reference == resource_b.Reference:
+                return True
+    return False
+
+
+def get_connected_components(U, edges):
+    chains = []
+    visited = set()
+    for u in U:
+        if u not in visited:
+            chain = set()
+            stack = deque([u])
+            while stack:
+                node = stack.pop()
+                if node not in visited:
+                    visited.add(node)
+                    chain.add(node)
+                    stack.extend(edges[node])
+            chains.append(chain)
+
+    return chains
+
+
+def kempe_move(solution: Solution, instance: XHSTTSInstance):
+    sol_ev1_idx = random.choice(range(len(solution.sol_events)))
+    sol_ev1 = solution.sol_events[sol_ev1_idx]
+
+    # ensure not pre-assigned, we can loop because all instances have assign times constraints
+    while (
+        instance.Events[sol_ev1.InstanceEventReference].PreAssignedTimeReference
+        is not None
+    ):
+        sol_ev1_idx = random.choice(range(len(solution.sol_events)))
+        sol_ev1 = solution.sol_events[sol_ev1_idx]
+
+    sol_ev2_idx = random.choice(range(len(solution.sol_events)))
+    sol_ev2 = solution.sol_events[sol_ev2_idx]
+
+    # ensure times are different and not pre-assigned
+    while (
+        sol_ev1.TimeReference == sol_ev2.TimeReference
+        and instance.Events[sol_ev2.InstanceEventReference].PreAssignedTimeReference
+        is not None
+    ):
+        sol_ev2_idx = random.choice(range(len(solution.sol_events)))
+        sol_ev2 = solution.sol_events[sol_ev2_idx]
+
+    # construct bipartite graph where members in the same set have the same time reference and consist of all non-preassigned events that are assigned that time (note this is only taking starting times into account)
+    # The graph is a conflict graph as edges are from elems of U to V such that u and v share a resource.
+    U = set([sol_ev1_idx])
+    V = set([sol_ev2_idx])
+    edges = defaultdict(list)
+
+    # add nodes
+    for idx, sol_event in enumerate(solution.sol_events):
+        if (
+            sol_event.TimeReference == sol_ev1.TimeReference
+            and not instance.Events[
+                sol_event.InstanceEventReference
+            ].PreAssignedTimeReference
+            and sol_event != sol_ev1
+        ):
+            U.add(idx)
+        elif (
+            sol_event.TimeReference == sol_ev2.TimeReference
+            and not instance.Events[
+                sol_event.InstanceEventReference
+            ].PreAssignedTimeReference
+            and sol_event != sol_ev2
+        ):
+            V.add(idx)
+
+    # add edges
+    for u in U:
+        for v in V:
+            if has_common_resource(solution.sol_events[u], solution.sol_events[v]):
+                edges[u].append(v)
+                edges[v].append(u)
+
+    # Identify connected components (chains) in the bipartite graph
+    chains = get_connected_components(U, edges)
+
+    # Select a chain to swap
+    chain_to_swap = random.choice(chains)
+
+    # Perform swap within the selected chain
+    for sol_event_idx in chain_to_swap:
+        if sol_event_idx in U:
+            solution.sol_events[sol_event_idx] = solution.sol_events[
+                sol_event_idx
+            ]._replace(TimeReference=sol_ev2.TimeReference)
+        else:
+            solution.sol_events[sol_event_idx] = solution.sol_events[
+                sol_event_idx
+            ]._replace(TimeReference=sol_ev1.TimeReference)
+
+    return solution
