@@ -68,16 +68,44 @@ def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
             and event.Duration > 1
             and event.SplitMinAmount <= min(event.Duration, event.SplitMaxAmount)
         ):
-            num_splits = random.randint(
-                event.SplitMinAmount, min(event.Duration, event.SplitMaxAmount)
-            )
-            durations = generate_n_durations(
-                num_splits, event.Duration, event.SplitMinAmount, event.SplitMaxDuration
-            )
+            # if constraint specifies an exact split amount
+            if (
+                event.SplitMinAmount == event.SplitMaxAmount
+                and event.Duration % event.SplitMaxAmount == 0
+            ):
+                num_splits = event.SplitMaxAmount
+                # if constraint specifies an exact duration
+                if (
+                    event.SplitMinDuration == event.SplitMaxDuration
+                    and event.SplitMaxAmount * event.SplitMaxDuration == event.Duration
+                ):
+                    for _ in range(num_splits):
+                        split_event = event._replace(Duration=event.SplitMaxDuration)
+                        split_sol_events.append(split_event)
+                else:
+                    durations = generate_n_durations(
+                        num_splits,
+                        event.Duration,
+                        event.SplitMinAmount,
+                        event.SplitMaxDuration,
+                    )
+                    for split_duration in durations:
+                        split_event = event._replace(Duration=split_duration)
+                        split_sol_events.append(split_event)
+            else:
+                num_splits = random.randint(
+                    event.SplitMinAmount, min(event.Duration, event.SplitMaxAmount)
+                )
+                durations = generate_n_durations(
+                    num_splits,
+                    event.Duration,
+                    event.SplitMinAmount,
+                    event.SplitMaxDuration,
+                )
 
-            for split_duration in durations:
-                split_event = event._replace(Duration=split_duration)
-                split_sol_events.append(split_event)
+                for split_duration in durations:
+                    split_event = event._replace(Duration=split_duration)
+                    split_sol_events.append(split_event)
         else:
             # no split necesary
             split_sol_events.append(event)
