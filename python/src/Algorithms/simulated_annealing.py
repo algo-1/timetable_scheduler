@@ -3,7 +3,7 @@ import random
 import math
 import time
 from Algorithms.random_algorithm import random_solution
-from Algorithms.utils import Solution, neighbor, swap
+from Algorithms.utils import Mode, Solution, kempe_move, neighbor, swap
 from XHSTTS.xhstts import XHSTTSInstance, XHSTTS
 from XHSTTS.utils import Cost
 
@@ -18,11 +18,11 @@ def generate_initial_solution(instance: XHSTTSInstance) -> Solution:
 
 
 def acceptance_probability(
-    current_energy: int, new_energy: int, temperature: float
+    current_energy: int, new_energy: int, temperature: float, weight=1000
 ) -> float:
     if new_energy > current_energy:
         return 1.0
-    return math.exp((new_energy - current_energy) / temperature)
+    return math.exp(weight * (new_energy - current_energy) / temperature)
 
 
 def simulated_annealing(
@@ -31,6 +31,7 @@ def simulated_annealing(
     initial_temperature: int = 2,
     temperature_decay: float = 0.999995,
     lowest_temperature: int = 0.1,
+    weight: float = 1000,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     current_solution = None
     if input_solution_events:
@@ -53,14 +54,14 @@ def simulated_annealing(
         new_energy = new_solution.evaluate(instance)
 
         if (
-            acceptance_probability(current_energy, new_energy, temperature)
+            acceptance_probability(current_energy, new_energy, temperature, weight)
             > random.random()
         ):
             current_solution = new_solution
             current_energy = new_energy
 
         if new_energy > best_solution.evaluate(instance):
-            best_solution = new_solution
+            best_solution = deepcopy(new_solution)
             no_improvement = 0
         else:
             no_improvement += 1
@@ -73,9 +74,9 @@ def simulated_annealing(
 
         if best_solution.is_feasible() and not sol_changes_made:
             instance.evaluate_solution(best_solution.sol_events, debug=True)
-            best_solution.k = 1.5
+            best_solution.mode = Mode.Soft
             best_solution.needs_eval_update = True
-            current_solution.k = 1.5
+            current_solution.mode = Mode.Soft
             current_solution.needs_eval_update = True
             sol_changes_made = True
             current_energy = current_solution.evaluate(instance)
