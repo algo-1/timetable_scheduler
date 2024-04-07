@@ -844,7 +844,7 @@ class XHSTTSInstance:
         self.ResourceTypes = {}
         self.ResourceGroups = {}
         self.Resources = {}
-        self.Events = {}
+        self.Events: dict[str, XHSTTSInstance.Event] = {}
         self.EventGroups = {}
         self.instance_event_groups = defaultdict(
             list
@@ -874,6 +874,16 @@ class XHSTTSInstance:
         self.partitioned_resources_refs = defaultdict(list)
         for ref, resource in self.Resources.items():
             self.partitioned_resources_refs[resource.ResourceTypeReference].append(ref)
+
+        # store mapping from resource type to events that contain non-preassigned resources with those types
+        self.resource_swap_partition = defaultdict(set)
+        for ref, event in self.Events.items():
+            for resource in event.Resources:
+                # is not pre-assigned
+                if not resource.Reference:
+                    self.resource_swap_partition[resource.ResourceTypeReference].add(
+                        ref
+                    )
 
     def get_events(self):
         return self.Events
