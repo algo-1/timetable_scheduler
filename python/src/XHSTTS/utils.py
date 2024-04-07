@@ -10,6 +10,11 @@ class Cost_Function_Type(Enum):
     Step = auto()
 
 
+class Mode(Enum):
+    Hard = auto()
+    Soft = auto()
+
+
 def cost_function(deviation: int, cost_type: Cost_Function_Type):
     """
     deviation : is non-negative.

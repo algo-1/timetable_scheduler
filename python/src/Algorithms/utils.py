@@ -1,8 +1,10 @@
 from collections import defaultdict, deque
 from copy import deepcopy
+from enum import Enum, auto
+import itertools
 import random
 
-from XHSTTS.utils import Cost
+from XHSTTS.utils import Cost, Mode
 from XHSTTS.xhstts import XHSTTSInstance
 
 
@@ -12,7 +14,8 @@ class Solution:
         self.cost: Cost = None
         self.eval: int = None
         self.needs_eval_update: bool = True
-        self.k = 10
+        self.k = 1000
+        self.mode = Mode.Hard
         self.original_events: dict[str, set[int]] = defaultdict(set)
         self._parse_sol_events()
 
@@ -23,10 +26,17 @@ class Solution:
         TODO: choose better evaluation and investigate how it affects population
         """
         if self.needs_eval_update:
-            self.cost = instance.evaluate_solution(self.sol_events)
-            self.eval = -(
-                self.k * self.cost.Infeasibility_Value + self.cost.Objective_Value
-            )
+            if self.mode == Mode.Hard:
+                self.cost = instance.evaluate_solution(self.sol_events, mode=Mode.Hard)
+                self.eval = -self.cost.Infeasibility_Value
+            else:
+                # make it impossible to accept hard cost violations, perhaps use epsilon here as may need to increaase first?
+                self.cost = instance.evaluate_solution(self.sol_events, mode=Mode.Soft)
+                if self.cost.Infeasibility_Value > 0:
+                    self.eval = -float("inf")
+                else:
+                    self.eval = -self.cost.Objective_Value
+
             self.needs_eval_update = False
         return self.eval
         # return -(self.cost.Infeasibility_Value + self.cost.Objective_Value)
@@ -36,7 +46,11 @@ class Solution:
         return self.cost.Infeasibility_Value == 0
 
     def is_feasible_and_solves_objectives(self):
-        return self.cost.Infeasibility_Value == 0 and self.cost.Objective_Value == 0
+        return (
+            self.mode == Mode.Soft
+            and self.cost.Infeasibility_Value == 0
+            and self.cost.Objective_Value == 0
+        )
 
     def _parse_sol_events(self):
         for idx, ev in enumerate(self.sol_events):
@@ -104,7 +118,6 @@ def swap_resources(
         )
 
         if not instance.Events[event.InstanceEventReference].Resources[idx].Reference:
-            print(instance.resource_swap_partition[resourceType])
             other_event_ref = random.choice(
                 list(instance.resource_swap_partition[resourceType])
             )
@@ -226,7 +239,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
     # solution should not be modified!
 
     new_solution = Solution(deepcopy(solution.sol_events))
-    new_solution.k = solution.k
+    new_solution.mode = solution.mode
     idx = random.randint(0, len(new_solution.sol_events) - 1)
     event = new_solution.sol_events[idx]
 

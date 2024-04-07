@@ -5,7 +5,7 @@ import time
 
 import numpy as np
 from Algorithms.random_algorithm import random_solution
-from Algorithms.utils import Solution, mutate, swap
+from Algorithms.utils import Mode, Solution, mutate, swap
 from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
@@ -39,9 +39,9 @@ def crossover(
                 offspring2_events.append(sol2.sol_events[index])
 
     new_sol1 = Solution(offspring1_events)
-    new_sol1.k = sol1.k
+    new_sol1.mode = sol1.mode
     new_sol2 = Solution(offspring2_events)
-    new_sol2.k = sol2.k
+    new_sol2.mode = sol2.mode
 
     return new_sol1, new_sol2
 
@@ -201,8 +201,9 @@ def genetic_algorithm(
             instance.evaluate_solution(best_solution.sol_events, debug=True)
             print("\nbest feasible  solution so far")
             for sol in population:
-                sol.k = 1.5
+                sol.mode = Mode.Soft
                 sol.needs_eval_update = True
+            sol_changes_made = True
 
         end_time = time.time()
         elapsed_time = end_time - start_time

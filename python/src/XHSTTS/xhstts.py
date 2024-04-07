@@ -13,6 +13,7 @@ from abc import ABC, ABCMeta, abstractmethod
 from XHSTTS.utils import (
     Cost,
     Cost_Function_Type,
+    Mode,
     cost,
     cost_function_to_enum,
 )
@@ -1218,10 +1219,15 @@ class XHSTTSInstance:
         return constraint.evaluate(solution)
 
     # @timer
-    def evaluate_solution(self, solution: list[SolutionEvent], debug=False):
+    def evaluate_solution(
+        self, solution: list[SolutionEvent], mode: Mode = Mode.Soft, debug=False
+    ):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
         for constraint in self.Constraints:
+            if mode == Mode.Hard and not constraint.is_required():
+                continue
+
             value = self.get_cost(solution, constraint)
             if debug:
                 print(

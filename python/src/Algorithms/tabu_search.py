@@ -7,7 +7,15 @@ from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.local_search import local_search
 from Algorithms.random_algorithm import random_solution
 from Algorithms.simulated_annealing import simulated_annealing
-from Algorithms.utils import Solution, mutate_resource, mutate_time, neighbor, swap
+from Algorithms.utils import (
+    Mode,
+    Solution,
+    kempe_move,
+    mutate_resource,
+    mutate_time,
+    neighbor,
+    swap,
+)
 from XHSTTS.xhstts import XHSTTSInstance, XHSTTS
 from XHSTTS.utils import Cost
 
@@ -98,9 +106,9 @@ def tabu_search(
 
         if best_solution.is_feasible() and not sol_changes_made:
             instance.evaluate_solution(best_solution.sol_events, debug=True)
-            best_solution.k = 1.5
+            best_solution.mode = Mode.Soft
             best_solution.needs_eval_update = True
-            current_solution.k = 1.5
+            current_solution.mode = Mode.Soft
             current_solution.needs_eval_update = True
             sol_changes_made = True
             current_energy = current_solution.evaluate(instance)
