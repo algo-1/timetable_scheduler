@@ -52,7 +52,7 @@ def tabu_search(
     max_iterations: int = 5000,
     num_neighbours: int = 500,
     max_no_improvement: int = 20,
-) -> list[XHSTTSInstance.SolutionEvent]:
+) -> Solution:
     current_solution = None
     if input_solution_events:
         current_solution = Solution(input_solution_events)
@@ -125,6 +125,50 @@ def tabu_search(
             )
 
     print(f"number of Tabu Search iterations = {num_iterations}")
+    return best_solution
+
+
+def perturb_solution(solution: Solution, instance: XHSTTSInstance):
+    return kempe_move(solution, instance, double=True)  # neighbor(solution, instance)
+
+
+def ils_tabu(
+    instance: XHSTTSInstance,
+    input_sol_events: list[XHSTTSInstance.SolutionEvent] = [],
+    max_iterations: int = 3,
+):
+    best_solution = None
+    best_cost = float("-inf")
+    sol_changes_made = False
+
+    for _ in range(max_iterations):
+        if input_sol_events:
+            tabu_search_result = tabu_search(
+                instance, neighbor(Solution(input_sol_events), instance).sol_events
+            )
+        else:
+            tabu_search_result = tabu_search(
+                instance, generate_initial_solution(instance).sol_events
+            )
+        perturbed_solution = perturb_solution(tabu_search_result, instance)
+        final_solution = tabu_search(instance, perturbed_solution.sol_events)
+
+        final_cost = final_solution.evaluate(instance)
+        if final_cost > best_cost:
+            best_solution = final_solution
+            best_cost = final_cost
+
+        if best_solution.is_feasible_and_solves_objectives():
+            break
+
+        if best_solution.is_feasible() and not sol_changes_made:
+            instance.evaluate_solution(best_solution.sol_events, debug=True)
+            best_solution.mode = Mode.Soft
+            best_solution.needs_eval_update = True
+            sol_changes_made = True
+            best_cost = best_solution.evaluate(instance)
+
+        print(f"current best cost = {best_cost}")
     return best_solution.sol_events
 
 
