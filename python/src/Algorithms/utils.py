@@ -232,7 +232,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
 
     elif rand_num == 10:
         # kempe move
-        kempe_move(solution, instance)
+        kempe_move(solution, instance, double=True)
 
 
 def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
@@ -297,7 +297,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
 
     elif rand_num == 10:
         # kempe move
-        kempe_move(new_solution, instance)
+        kempe_move(new_solution, instance, double=True)
 
     return new_solution
 
@@ -430,7 +430,7 @@ def get_connected_components(U, edges):
     return chains
 
 
-def kempe_move(solution: Solution, instance: XHSTTSInstance):
+def kempe_move(solution: Solution, instance: XHSTTSInstance, double=False):
     sol_ev1_idx = random.choice(range(len(solution.sol_events)))
     sol_ev1 = solution.sol_events[sol_ev1_idx]
 
@@ -489,8 +489,19 @@ def kempe_move(solution: Solution, instance: XHSTTSInstance):
     # Identify connected components (chains) in the bipartite graph
     chains = get_connected_components(U, edges)
 
-    # Select a chain to swap
-    chain_to_swap = random.choice(chains)
+    chain_to_swap = None
+    if double:
+        # select 2 chains to swap if possible
+        if len(chains) > 1:
+            list_of_chains_to_swap = random.sample(chains, k=2)
+
+            # flatten the 2d list
+            chain_to_swap = list(itertools.chain.from_iterable(list_of_chains_to_swap))
+        else:
+            chain_to_swap = random.choice(chains)
+    else:
+        # Select a chain to swap
+        chain_to_swap = random.choice(chains)
 
     # Perform swap within the selected chain
     for sol_event_idx in chain_to_swap:
