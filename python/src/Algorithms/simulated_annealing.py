@@ -43,6 +43,7 @@ def simulated_annealing(
     temperature = initial_temperature
     num_iterations = 0
     sol_changes_made = False
+    no_improvement = 0
 
     while temperature > lowest_temperature:
         start_time = time.time()
@@ -60,6 +61,12 @@ def simulated_annealing(
 
         if new_energy > best_solution.evaluate(instance):
             best_solution = new_solution
+            no_improvement = 0
+        else:
+            no_improvement += 1
+
+        if no_improvement > 200_000:
+            break
 
         if best_solution.is_feasible_and_solves_objectives():
             break
