@@ -218,7 +218,10 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
         split_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_split = solution.sol_events[split_event_idx]
         if (
-            event_to_split.Duration > 1
+            not instance.Events[
+                event_to_split.InstanceEventReference
+            ].PreAssignedTimeReference
+            and event_to_split.Duration > 1
             and event_to_split.SplitMinDuration < event_to_split.Duration
             and event_to_split.SplitMaxAmount
             > len(solution.original_events[event_to_split.InstanceEventReference])
