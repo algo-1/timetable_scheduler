@@ -47,49 +47,51 @@ def simulated_annealing(
     no_improvement = 0
 
     while temperature > lowest_temperature:
-        start_time = time.time()
+        while True:
+            start_time = time.time()
+            num_iterations += 1
+            new_solution = neighbor(current_solution, instance)
+            new_energy = new_solution.evaluate(instance)
+            if (
+                acceptance_probability(current_energy, new_energy, temperature, weight)
+                > random.random()
+            ):
+                current_solution = new_solution
+                current_energy = new_energy
 
-        num_iterations += 1
-        new_solution = neighbor(current_solution, instance)
-        new_energy = new_solution.evaluate(instance)
+            if new_energy > best_solution.evaluate(instance):
+                best_solution = deepcopy(new_solution)
+                no_improvement = 0
+            else:
+                no_improvement += 1
 
-        if (
-            acceptance_probability(current_energy, new_energy, temperature, weight)
-            > random.random()
-        ):
-            current_solution = new_solution
-            current_energy = new_energy
+            if no_improvement > 1000:
+                no_improvement = 0
+                break
 
-        if new_energy > best_solution.evaluate(instance):
-            best_solution = deepcopy(new_solution)
-            no_improvement = 0
-        else:
-            no_improvement += 1
+            if best_solution.is_feasible_and_solves_objectives():
+                break
 
-        if no_improvement > 200_000:
-            break
+            if best_solution.is_feasible() and not sol_changes_made:
+                instance.evaluate_solution(best_solution.sol_events, debug=True)
+                best_solution.mode = Mode.Soft
+                best_solution.needs_eval_update = True
+                current_solution.mode = Mode.Soft
+                current_solution.needs_eval_update = True
+                sol_changes_made = True
+                current_energy = current_solution.evaluate(instance)
 
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+
+            if num_iterations % 1000 == 0:
+                print(
+                    f"SA Iteration: {num_iterations} time taken: {elapsed_time} current energy {current_energy} best energy {best_solution.evaluate(instance)} best_cost {best_solution.cost}"
+                )
         if best_solution.is_feasible_and_solves_objectives():
             break
 
-        if best_solution.is_feasible() and not sol_changes_made:
-            instance.evaluate_solution(best_solution.sol_events, debug=True)
-            best_solution.mode = Mode.Soft
-            best_solution.needs_eval_update = True
-            current_solution.mode = Mode.Soft
-            current_solution.needs_eval_update = True
-            sol_changes_made = True
-            current_energy = current_solution.evaluate(instance)
-
         temperature *= temperature_decay
-
-        end_time = time.time()
-        elapsed_time = end_time - start_time
-
-        if num_iterations % 1000 == 0:
-            print(
-                f"SA Iteration: {num_iterations} time taken: {elapsed_time} current energy {current_energy} best energy {best_solution.evaluate(instance)} best_cost {best_solution.cost}"
-            )
 
     print(f"number of Simulated Annealing iterations = {num_iterations}")
     return best_solution.sol_events
@@ -105,6 +107,7 @@ if __name__ == "__main__":
     dataset_abramson15 = XHSTTS(data_dir.joinpath("ArtificialAbramson15.xml"))
     dataset_brazil3 = XHSTTS(data_dir.joinpath("BrazilInstance3.xml"))
     aus_bghs98 = XHSTTS(data_dir.joinpath("AustraliaBGHS98.xml"))
+    hdtt5 = XHSTTS(data_dir.joinpath("ArtificialORLibrary-hdtt5.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
@@ -125,13 +128,11 @@ if __name__ == "__main__":
         evaluation = instance.evaluate_solution(result, debug=True)
 
         print(
-            f"\n---Simulated Annealing Evaluation ({dataset_names[dataset]})---\n",
+            f"\n---Simulated Annealing Evaluation ({instance.name})---\n",
             evaluation,
         )
 
         # save the solution as an xml file
         solutions_dir = root_dir.joinpath("solutions")
-        file_path = solutions_dir.joinpath(
-            f"annealing_solution_{dataset_names[dataset]}.xml"
-        )
+        file_path = solutions_dir.joinpath(f"annealing_solution_{instance.name}.xml")
         XHSTTSInstance.sol_events_to_xml(result, instance, file_path)
