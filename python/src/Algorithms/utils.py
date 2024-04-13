@@ -97,7 +97,11 @@ def mutate_time(
     if random.random() < swap_percentage:
         new_event = swap_time_refs(solution, instance, event_idx)
     else:
-        new_time_reference = instance.get_random_time_reference()
+        new_time_reference = (
+            random.choice(list(event.PreferredTimes))
+            if event.PreferredTimes
+            else instance.get_random_time_reference()
+        )
         new_event = event._replace(TimeReference=new_time_reference)
 
     return new_event
@@ -336,12 +340,17 @@ def split_event(
         child_event = XHSTTSInstance.SolutionEvent(
             InstanceEventReference=event.InstanceEventReference,
             Duration=duration,
-            TimeReference=instance.get_random_time_reference(),
+            TimeReference=(
+                random.choice(list(event.PreferredTimes))
+                if event.PreferredTimes
+                else instance.get_random_time_reference()
+            ),
             Resources=event.Resources,
             SplitMaxAmount=event.SplitMaxAmount,
             SplitMinAmount=event.SplitMinAmount,
             SplitMinDuration=event.SplitMinDuration,
             SplitMaxDuration=event.SplitMaxDuration,
+            PreferredTimes=event.PreferredTimes,
             IsOriginal=False,
         )
         solution.original_events[event.InstanceEventReference].add(
@@ -391,6 +400,7 @@ def merge_event(solution: Solution, idx):
         SplitMinAmount=event.SplitMinAmount,
         SplitMinDuration=event.SplitMinDuration,
         SplitMaxDuration=event.SplitMaxDuration,
+        PreferredTimes=event.PreferredTimes,
         IsOriginal=False,
     )
 
@@ -515,3 +525,30 @@ def kempe_move(solution: Solution, instance: XHSTTSInstance, double=False):
             ]._replace(TimeReference=sol_ev1.TimeReference)
 
     return solution
+
+
+def get_consecutive_times(instance: XHSTTSInstance, start_time_ref, duration):
+    time_ref_idx = instance.instance_time_refs_indices[start_time_ref] + 1
+
+    time_refs = [start_time_ref]
+
+    for _ in range(duration - 1):
+        if time_ref_idx < len(instance.instance_time_refs_indices_list):
+            time_refs.append(instance.instance_time_refs_indices_list[time_ref_idx][0])
+            time_ref_idx += 1
+    # print(duration, time_refs)
+    return time_refs
+
+
+def ejection_chains(solution: Solution, instance: XHSTTSInstance):
+    # used for repairing in-feasible solutions
+    # when you modify a solution you better soecify that it needs eval update!
+    # TODO: we need to analyse a solution and return a list of (constraint, events involved in defect)
+    # we queue the defects and pop, repair, analyse, update queue until queue empty or limit reached, we always keep best solution stored and return that.
+    # then depending on the defect repair & analyse again etc until calm
+    # make hard & soft phases explicit so when hard is done ejection chains are called if solution is infeasible to try to find a feasible solution, set a limit on the repair and that it cannot get worse than the solution that came into it.
+    # pass it into the soft constraints optimisation phase
+    # initialisation splits
+    # prefer times fields - required, or maybe field_all ?? same for splits & distribute splits gen partitions where senssible (min(duration, max amount)not a large number, assume max duration is never large)
+    # links
+    pass
