@@ -17,9 +17,16 @@ def generate_n_durations(N, input_total_duration, min_duration, max_duration):
     total_duration = input_total_duration
 
     for index in range(N - 1):
-        integer = random.randint(
-            1,
-            min(total_duration - (N - index - 1), max_duration),
+        integer = (
+            random.randint(
+                min(min_duration, total_duration - (N - index - 1)),
+                min(min_duration, total_duration - (N - index - 1), max_duration),
+            )
+            if min_duration >= 1
+            else random.randint(
+                1,
+                min(total_duration - (N - index - 1), max_duration),
+            )
         )  # ensure each duration is at least 1
         durations.append(integer)
         total_duration -= integer
