@@ -299,22 +299,29 @@ class SplitEventsConstraint(Constraint):
         self.max_amount = int(XMLConstraint.find("MaximumAmount").text)
 
         # update instance events split attributes
-        if self.is_required():
-            for event in self.events:
-                new_min_duration = max(event.SplitMinDuration, self.min_duration)
+        # if self.is_required():
+        for event in self.events:
+            new_min_duration = max(event.SplitMinDuration, self.min_duration)
 
-                new_max_duration = min(event.SplitMaxDuration, self.max_duration)
+            new_max_duration = min(event.SplitMaxDuration, self.max_duration)
 
-                new_min_amount = max(event.SplitMinAmount, self.min_amount)
+            new_min_amount = max(event.SplitMinAmount, self.min_amount)
 
-                new_max_amount = min(event.SplitMaxAmount, self.max_amount)
+            new_max_amount = min(event.SplitMaxAmount, self.max_amount)
 
-                self.instance_events[event.Reference] = event._replace(
-                    SplitMinDuration=new_min_duration,
-                    SplitMaxDuration=new_max_duration,
-                    SplitMinAmount=new_min_amount,
-                    SplitMaxAmount=new_max_amount,
-                )
+            self.instance_events[event.Reference] = event._replace(
+                SplitMinDuration=new_min_duration,
+                SplitMaxDuration=new_max_duration,
+                SplitMinAmount=new_min_amount,
+                SplitMaxAmount=new_max_amount,
+            )
+
+        # update event groups
+        for _, event in self.instance_events.items():
+            for ref in event.EventGroupReferences:
+                self.instance_event_groups[ref].append(event)
+            if event.CourseReference:
+                self.instance_event_groups[event.CourseReference].append(event)
 
     def evaluate(self, solution):
         total_cost = 0
@@ -379,6 +386,13 @@ class PreferTimesConstraint(Constraint):
             for event in self.events:
                 new_event = event._replace(PreferredTimes=self.preferred_times)
                 self.instance_events[event.Reference] = new_event
+
+            # update event groups
+            for _, event in self.instance_events.items():
+                for ref in event.EventGroupReferences:
+                    self.instance_event_groups[ref].append(event)
+                if event.CourseReference:
+                    self.instance_event_groups[event.CourseReference].append(event)
 
     def evaluate(self, solution):
         total_cost = 0
