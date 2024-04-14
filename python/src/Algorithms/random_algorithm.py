@@ -44,8 +44,7 @@ def get_valid_partition(
     event_duration, min_amount, max_amount, min_duration, max_duration
 ):
     possible_partitions = integer_partitions[event_duration]
-    print(possible_partitions)
-    print(event_duration, min_amount, max_amount, min_duration, max_duration)
+
     xx = list(
         filter(
             lambda x: len(x) >= min_amount
