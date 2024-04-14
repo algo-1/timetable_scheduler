@@ -7,9 +7,12 @@
 from collections import defaultdict
 from itertools import cycle
 import random
+from sympy.utilities.iterables import ordered_partitions
 
 from Algorithms.utils import get_consecutive_times
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
+
+integer_partitions = {i: list(ordered_partitions(i)) for i in range(1, 11)}
 
 
 def generate_n_durations(N, input_total_duration, min_duration, max_duration):
@@ -37,10 +40,110 @@ def generate_n_durations(N, input_total_duration, min_duration, max_duration):
     return durations
 
 
-def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
+def get_valid_partition(
+    event_duration, min_amount, max_amount, min_duration, max_duration
+):
+    possible_partitions = integer_partitions[event_duration]
+    print(possible_partitions)
+    print(event_duration, min_amount, max_amount, min_duration, max_duration)
+    xx = list(
+        filter(
+            lambda x: len(x) >= min_amount
+            and len(x) <= max_amount
+            and all(i >= min_duration and i <= max_duration for i in x),
+            possible_partitions,
+        )
+    )
+
+    # print("after filtering", len(xx), len(possible_partitions))
+    return random.choice(xx)
+
+
+def partitions_split(
+    sol_events: list[XHSTTSInstance.SolutionEvent], instance: XHSTTSInstance
+):
     split_sol_events = []
     for event in sol_events:
-        if (not (event.SplitMinAmount == 1 and event.SplitMaxAmount == 1)) and (
+        if instance.name.startswith("hdtt"):
+            num_splits = event.Duration  ## maximum split
+            for _ in range(num_splits):
+                split_event = event._replace(Duration=1)
+                split_sol_events.append(split_event)
+        elif event.Duration > 1 and (
+            not (event.SplitMinAmount == 1 and event.SplitMaxAmount == 1)
+        ):
+            if event.Duration <= 10:
+                durations = get_valid_partition(
+                    event.Duration,
+                    event.SplitMinAmount,
+                    event.SplitMaxAmount,
+                    event.SplitMinDuration,
+                    event.SplitMaxDuration,
+                )
+                for split_duration in durations:
+                    split_event = event._replace(Duration=split_duration)
+                    split_sol_events.append(split_event)
+            else:
+                # if constraint specifies an exact split amount
+                print("num partitions required > 10", instance.name, event.Duration)
+                if (
+                    event.SplitMinAmount == event.SplitMaxAmount
+                    and event.Duration % event.SplitMaxAmount == 0
+                ):
+                    num_splits = event.SplitMaxAmount
+                    # if constraint specifies an exact duration
+                    if (
+                        event.SplitMinDuration == event.SplitMaxDuration
+                        and event.SplitMaxAmount * event.SplitMaxDuration
+                        == event.Duration
+                    ):
+                        for _ in range(num_splits):
+                            split_event = event._replace(
+                                Duration=event.SplitMaxDuration
+                            )
+                            split_sol_events.append(split_event)
+                    else:
+                        durations = generate_n_durations(
+                            num_splits,
+                            event.Duration,
+                            event.SplitMinAmount,
+                            event.SplitMaxDuration,
+                        )
+                        for split_duration in durations:
+                            split_event = event._replace(Duration=split_duration)
+                            split_sol_events.append(split_event)
+                else:
+                    num_splits = random.randint(
+                        event.SplitMinAmount, min(event.Duration, event.SplitMaxAmount)
+                    )
+                    durations = generate_n_durations(
+                        num_splits,
+                        event.Duration,
+                        event.SplitMinAmount,
+                        event.SplitMaxDuration,
+                    )
+                    for split_duration in durations:
+                        split_event = event._replace(Duration=split_duration)
+                        split_sol_events.append(split_event)
+        else:
+            # no split required
+            split_sol_events.append(event)
+
+    return split_sol_events
+
+
+def random_split(
+    sol_events: list[XHSTTSInstance.SolutionEvent], instance: XHSTTSInstance
+):
+    split_sol_events = []
+    for event in sol_events:
+        if instance.name.startswith("hdtt"):
+            num_splits = event.Duration  ## maximum split
+            for _ in range(num_splits):
+                split_event = event._replace(Duration=1)
+                split_sol_events.append(split_event)
+
+        elif (not (event.SplitMinAmount == 1 and event.SplitMaxAmount == 1)) and (
             event.SplitMaxAmount > 0
             and event.Duration > 1
             and event.SplitMinAmount <= min(event.Duration, event.SplitMaxAmount)
@@ -294,8 +397,9 @@ def random_solution(instance: XHSTTSInstance) -> list[XHSTTSInstance.SolutionEve
     instance_events = instance.Events
 
     # convert to solution event object and split based on constraints
-    sol_events = random_split(
-        list(map(XHSTTSInstance.create_solution_event, list(instance_events.values())))
+    sol_events = partitions_split(
+        list(map(XHSTTSInstance.create_solution_event, list(instance_events.values()))),
+        instance,
     )
 
     # assign time and resources randomly anywhere necessary
