@@ -33,7 +33,7 @@ def generate_n_durations(N, input_total_duration, min_duration, max_duration):
 def random_split(sol_events: list[XHSTTSInstance.SolutionEvent]):
     split_sol_events = []
     for event in sol_events:
-        if (
+        if (not (event.SplitMinAmount == 1 and event.SplitMaxAmount == 1)) and (
             event.SplitMaxAmount > 0
             and event.Duration > 1
             and event.SplitMinAmount <= min(event.Duration, event.SplitMaxAmount)
