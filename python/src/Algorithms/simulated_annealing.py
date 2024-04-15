@@ -1,3 +1,5 @@
+# the parameters actually make it such that worse solutions are not accepted so this is just steepest descent!
+
 from copy import deepcopy
 import random
 import math
@@ -32,6 +34,8 @@ def simulated_annealing(
     temperature_decay: float = 0.999995,
     lowest_temperature: int = 0.1,
     weight: float = 1000,
+    time_limit: int = 20000,
+    max_iterations: int = 5_000_000,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     current_solution = None
     if input_solution_events:
@@ -45,10 +49,21 @@ def simulated_annealing(
     num_iterations = 0
     sol_changes_made = False
     no_improvement = 0
+    start_time = time.time()
 
-    while temperature > lowest_temperature:
+    best_solution.evaluate(instance)
+    if best_solution.is_feasible() and not sol_changes_made:
+        instance.evaluate_solution(best_solution.sol_events, debug=True)
+        best_solution.mode = Mode.Soft
+        best_solution.needs_eval_update = True
+        current_solution.mode = Mode.Soft
+        current_solution.needs_eval_update = True
+        sol_changes_made = True
+        current_energy = current_solution.evaluate(instance)
+
+    while temperature > lowest_temperature and time.time() - start_time < time_limit:
         while True:
-            start_time = time.time()
+            iter_start_time = time.time()
             num_iterations += 1
             new_solution = neighbor(current_solution, instance)
             new_energy = new_solution.evaluate(instance)
@@ -81,12 +96,12 @@ def simulated_annealing(
                 sol_changes_made = True
                 current_energy = current_solution.evaluate(instance)
 
-            end_time = time.time()
-            elapsed_time = end_time - start_time
+            iter_end_time = time.time()
+            elapsed_time = iter_end_time - iter_start_time
 
             if num_iterations % 1000 == 0:
                 print(
-                    f"SA Iteration: {num_iterations} time taken: {elapsed_time} current energy {current_energy} best energy {best_solution.evaluate(instance)} best_cost {best_solution.cost}"
+                    f"SA Iteration: {num_iterations} time taken: {elapsed_time} current energy {current_energy} best energy {best_solution.evaluate(instance)} best_cost {best_solution.cost} time so far {(time.time() - start_time)}"
                 )
         if best_solution.is_feasible_and_solves_objectives():
             break

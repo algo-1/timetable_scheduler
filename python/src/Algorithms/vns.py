@@ -7,6 +7,7 @@ from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.local_search import local_search
 from Algorithms.random_algorithm import random_solution
 from Algorithms.simulated_annealing import simulated_annealing
+from Algorithms.tabu_search import ils_tabu
 from Algorithms.utils import (
     Solution,
     get_connected_components,
@@ -247,6 +248,7 @@ def variable_neighborhood_search(
     input_solution_events: list[XHSTTSInstance.SolutionEvent],
     max_iterations: int = 100,
     assign_resources: bool = False,
+    time_limit: int = 600,
 ):
     start_time = time.time()
     sol_changes_made = False
@@ -258,17 +260,25 @@ def variable_neighborhood_search(
         neighborhoods.extend([change_resource, swap_resource])
 
     # Initialize best solution
-    best_solution = deepcopy(Solution(input_solution_events))
+    best_solution = Solution(deepcopy(input_solution_events))
+    best_solution.evaluate(instance)
+
+    if best_solution.is_feasible() and not sol_changes_made:
+        instance.evaluate_solution(best_solution.sol_events, debug=True)
+        best_solution.mode = Mode.Soft
+        best_solution.needs_eval_update = True
+        sol_changes_made = True
+        best_solution.evaluate(instance)
 
     # Main loop
     iteration = 0
-    while iteration < max_iterations and time.time() - start_time < 600:
+    while iteration < max_iterations and time.time() - start_time < time_limit:
         iter_start_time = time.time()
 
         # Select neighborhood
         curr_neighborhood = neighborhoods[iteration % len(neighborhoods)]
 
-        # Apply local search within the selected neighborhood nah
+        # Apply local search within the selected neighborhood
         new_solution = Solution(
             local_search(
                 instance,
@@ -312,32 +322,52 @@ if __name__ == "__main__":
 
     lewitt = XHSTTS(data_dir.joinpath("SouthAfricaLewitt2009.xml"))
     dataset_sudoku4x4 = XHSTTS(data_dir.joinpath("ArtificialSudoku4x4.xml"))
+    brazil2 = XHSTTS(data_dir.joinpath("BrazilInstance2.xml"))
+    spainschool = XHSTTS(data_dir.joinpath("SpainSchool.xml"))
 
-    instance = lewitt.get_instance(index=0)
+    instance = spainschool.get_instance(index=0)
 
-    genetic_result = genetic_algorithm(instance)
+    ils_tabu_sd_result = ils_tabu(instance, max_iterations=1)
 
-    print("genetic result below")
-    evaluation = instance.evaluate_solution(genetic_result, debug=True)
+    print("ILS-Tabu-SD result below")
+    evaluation = instance.evaluate_solution(ils_tabu_sd_result, debug=True)
     print(
-        f"\n---Genetic Evaluation ({instance.name})---\n",
+        f"\n---ILS-Tabu-SD Evaluation ({instance.name})---\n",
         evaluation,
     )
 
-    vns_res = variable_neighborhood_search(instance, genetic_result)
+    # vns_res = variable_neighborhood_search(instance, ils_tabu_sd_result)
+
+    # evaluation = instance.evaluate_solution(vns_res, debug=True)
+
+    # print(
+    #     f"\n---VNS Evaluation ({instance.name})---\n",
+    #     evaluation,
+    # )
+
+    # annealing_result = simulated_annealing(instance, vns_res)
+    # evaluation = instance.evaluate_solution(annealing_result, debug=True)
+
+    # print(
+    #     f"\n---Simulated Annealing Benchmark ({instance.name}) Evaluation ---\n",
+    #     evaluation,
+    #     "\n",
+    # )
+
+    vns_res = (
+        variable_neighborhood_search(instance, ils_tabu_sd_result)
+        if instance.name != "Spanish school"
+        else variable_neighborhood_search(
+            instance,
+            ils_tabu_sd_result,
+            time_limit=120,
+            assign_resources=True,
+        )
+    )
 
     evaluation = instance.evaluate_solution(vns_res, debug=True)
 
     print(
         f"\n---VNS Evaluation ({instance.name})---\n",
         evaluation,
-    )
-
-    annealing_result = simulated_annealing(instance, vns_res)
-    evaluation = instance.evaluate_solution(annealing_result, debug=True)
-
-    print(
-        f"\n---Simulated Annealing Benchmark ({instance.name}) Evaluation ---\n",
-        evaluation,
-        "\n",
     )

@@ -67,6 +67,15 @@ def tabu_search(
     no_improvement = 0
     sol_changes_made = False
 
+    if best_solution.is_feasible() and not sol_changes_made:
+        instance.evaluate_solution(best_solution.sol_events, debug=True)
+        best_solution.mode = Mode.Soft
+        best_solution.needs_eval_update = True
+        current_solution.mode = Mode.Soft
+        current_solution.needs_eval_update = True
+        sol_changes_made = True
+        current_energy = current_solution.evaluate(instance)
+
     while num_iterations < max_iterations:
         start_time = time.time()
 
@@ -135,13 +144,15 @@ def perturb_solution(solution: Solution, instance: XHSTTSInstance):
 def ils_tabu(
     instance: XHSTTSInstance,
     input_sol_events: list[XHSTTSInstance.SolutionEvent] = [],
-    max_iterations: int = 3,
+    max_iterations: int = 100,
 ):
     best_solution = None
     best_cost = float("-inf")
     sol_changes_made = False
+    stsart_time = time.time()
 
-    for _ in range(max_iterations):
+    iteration = 0
+    while iteration < max_iterations and time.time() - stsart_time < 900:
         if input_sol_events:
             tabu_search_result = tabu_search(
                 instance, neighbor(Solution(input_sol_events), instance).sol_events
@@ -151,11 +162,13 @@ def ils_tabu(
                 instance, generate_initial_solution(instance).sol_events
             )
         perturbed_solution = perturb_solution(tabu_search_result, instance)
-        final_solution = tabu_search(instance, perturbed_solution.sol_events)
+        final_solution = Solution(
+            simulated_annealing(instance, perturbed_solution.sol_events, time_limit=120)
+        )
 
         final_cost = final_solution.evaluate(instance)
         if final_cost > best_cost:
-            best_solution = final_solution
+            best_solution = deepcopy(final_solution)
             best_cost = final_cost
 
         if best_solution.is_feasible_and_solves_objectives():
@@ -168,7 +181,9 @@ def ils_tabu(
             sol_changes_made = True
             best_cost = best_solution.evaluate(instance)
 
+        iteration += 1
         print(f"current best cost = {best_cost}")
+
     return best_solution.sol_events
 
 
@@ -192,6 +207,16 @@ if __name__ == "__main__":
     woodlands = XHSTTS(data_dir.joinpath("SouthAfricaWoodlands2009.xml"))
     spainschool = XHSTTS(data_dir.joinpath("SpainSchool.xml"))
     aus_tes99 = XHSTTS(data_dir.joinpath("AustraliaTES99.xml"))
+    aus_sahs96 = XHSTTS(data_dir.joinpath("AustraliaSAHS96.xml"))
+    greece_high_1 = XHSTTS(data_dir.joinpath("GreeceHighSchool1.xml"))
+    greece_third_patras = XHSTTS(
+        data_dir.joinpath("GreeceThirdHighSchoolPatras2010.xml")
+    )
+    finland_college = XHSTTS(data_dir.joinpath("FinlandCollege.xml"))
+    western_greece_university_instance_4 = XHSTTS(
+        data_dir.joinpath("GreeceWesternGreeceUniversityInstance4.xml")
+    )
+    WHS09 = XHSTTS(data_dir.joinpath("USAWestside2009.xml"))
 
     dataset_names = {
         dataset_sudoku4x4: "ArtificialSudoku4x4",
@@ -199,10 +224,12 @@ if __name__ == "__main__":
         dataset_brazil3: "BrazilInstance3.xml",
     }
     for dataset in (
+        # WHS09,
+        # aus_sahs96,
         # aus_tes99,
         # woodlands,
         # brazil2,
-        lewitt,
+        # lewitt,
         # dataset_brazil3,
         # dataset_sudoku4x4,
         # hdtt4,
@@ -212,11 +239,17 @@ if __name__ == "__main__":
         # hdtt7,
         # hdtt8,
         # dataset_abramson15,
-        # spainschool,
+        spainschool,
+        # greece_high_1,
+        # greece_third_patras,
+        # finland_college,
+        # western_greece_university_instance_4,
     ):  # dataset_abramson15, dataset_brazil3):
-        random.seed(23)
+        random.seed(42)
 
         instance = dataset.get_instance(index=0)
+
+        print(f"--------({instance.name})--------")
 
         # get solution
         genetic_result = genetic_algorithm(instance)
@@ -228,7 +261,10 @@ if __name__ == "__main__":
             evaluation,
         )
 
-        tabu_search_result = tabu_search(instance, genetic_result)
+        # tabu_search_result = ils_tabu(
+        #     instance, genetic_result
+        # )
+        tabu_search_result = tabu_search(instance, genetic_result).sol_events
 
         # evaluate
         evaluation = instance.evaluate_solution(tabu_search_result, debug=True)
@@ -246,6 +282,18 @@ if __name__ == "__main__":
             evaluation,
             "\n",
         )
+
+        # save the solution as an xml file
+        solutions_dir = root_dir.joinpath("solutions")
+        file_path = solutions_dir.joinpath(
+            f"ga-tabu!x!-annealing_solution_{instance.name}_new_construction.xml"
+        )
+        XHSTTSInstance.sol_events_to_xml(annealing_result, instance, file_path)
+
+        # print(
+        #     f"\n---ILS - Tabu - SA Search Evaluation ({instance.name})---\n",
+        #     ils_tabu(instance),
+        # )
 
         # multi neigh tabu |vlns??
 

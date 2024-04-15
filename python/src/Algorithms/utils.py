@@ -184,7 +184,11 @@ def mutate_resource(
     return resource_mutated, event
 
 
-def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
+def mutate(
+    solution: Solution,
+    instance: XHSTTSInstance,
+    merge_split_move=True,
+) -> None:
 
     i = random.randint(0, len(solution.sol_events) - 1)
     event = solution.sol_events[i]
@@ -194,7 +198,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
     solution.needs_eval_update = True
 
     # decide between mutating time, mutating resource, splitting an event into two or merging two events
-    rand_num = random.randint(1, 6)
+    rand_num = random.randint(1, 10) if merge_split_move else random.randint(1, 5)
     if rand_num == 1 or rand_num == 2 or rand_num == 3 or rand_num == 4:
         if random.random() > 0.5:
             # mutate time if not pre-assigned
@@ -213,7 +217,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
                 new_event = mutate_time(instance, event, solution, i)
         solution.sol_events[i] = new_event
 
-    elif rand_num == 5 or rand_num == 6 or rand_num == 7:
+    elif rand_num == 6 or rand_num == 7 or rand_num == 8:
         # split event
         split_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_split = solution.sol_events[split_event_idx]
@@ -228,7 +232,7 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
         ):
             split_event(solution, instance, split_event_idx)
 
-    elif rand_num == 8 or rand_num == 9:
+    elif rand_num == 9 or rand_num == 10:
         # merge two events
         merge_event_idx = random.choice(list(range(0, len(solution.sol_events))))
         event_to_merge = solution.sol_events[merge_event_idx]
@@ -237,12 +241,16 @@ def mutate(solution: Solution, instance: XHSTTSInstance) -> None:
         ):
             merge_event(solution, merge_event_idx)
 
-    elif rand_num == 10:
+    elif rand_num == 5:
         # kempe move
         kempe_move(solution, instance, double=True)
 
 
-def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
+def neighbor(
+    solution: Solution,
+    instance: XHSTTSInstance,
+    merge_split_move=True,
+) -> Solution:
     # solution should not be modified!
 
     new_solution = Solution(deepcopy(solution.sol_events))
@@ -254,7 +262,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
     solution.needs_eval_update = True
 
     # decide between mutating time, mutating resource, splitting an event into two or merging two events
-    rand_num = random.randint(1, 10)
+    rand_num = random.randint(1, 10) if merge_split_move else random.randint(1, 5)
     if rand_num == 1 or rand_num == 2 or rand_num == 3 or rand_num == 4:
         if random.random() > 0.5:
             # mutate time if not pre-assigned
@@ -277,7 +285,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
                 )
         new_solution.sol_events[idx] = new_event
 
-    elif rand_num == 5 or rand_num == 6 or rand_num == 7:
+    elif rand_num == 6 or rand_num == 7 or rand_num == 8:
         # split event
         split_event_idx = random.choice(list(range(0, len(new_solution.sol_events))))
         event_to_split = new_solution.sol_events[split_event_idx]
@@ -293,7 +301,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
         ):
             split_event(new_solution, instance, split_event_idx)
 
-    elif rand_num == 8 or rand_num == 9:
+    elif rand_num == 9 or rand_num == 10:
         # merge two events
         merge_event_idx = random.choice(list(range(0, len(new_solution.sol_events))))
         event_to_merge = new_solution.sol_events[merge_event_idx]
@@ -302,7 +310,7 @@ def neighbor(solution: Solution, instance: XHSTTSInstance) -> Solution:
         ):
             merge_event(new_solution, merge_event_idx)
 
-    elif rand_num == 10:
+    elif rand_num == 5:
         # kempe move
         kempe_move(new_solution, instance, double=True)
 
