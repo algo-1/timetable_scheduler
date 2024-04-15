@@ -1,0 +1,596 @@
+-----hdtt4   2 constraints-----
+best random :  Cost(Infeasibility_Value=28, Objective_Value=0)
+-- -27 -28 epoch: 1
+improved-27 -28 epoch: 1
+-- -26 -27 epoch: 2
+improved-26 -27 epoch: 2
+-- -25 -26 epoch: 3
+improved-25 -26 epoch: 3
+-- -25 -25 epoch: 4
+-- -24 -25 epoch: 5
+improved-24 -25 epoch: 5
+-- -24 -24 epoch: 6
+-- -23 -24 epoch: 7
+improved-23 -24 epoch: 7
+-- -23 -23 epoch: 8
+-- -23 -23 epoch: 9
+-- -23 -23 epoch: 10
+-- -23 -23 epoch: 11
+-- -23 -23 epoch: 12
+-- -23 -23 epoch: 13
+-- -23 -23 epoch: 14
+-- -23 -23 epoch: 15
+-- -22 -23 epoch: 16
+improved-22 -23 epoch: 16
+-- -22 -22 epoch: 17
+-- -22 -22 epoch: 18
+-- -22 -22 epoch: 19
+-- -21 -22 epoch: 20
+improved-21 -22 epoch: 20
+Tabu Search Iteration: 20 time taken: 1.74057936668396 best cost = Cost(Infeasibility_Value=21, Objective_Value=0)  tabu size = 7 -21 -21
+-- -21 -21 epoch: 21
+-- -20 -21 epoch: 22
+improved-20 -21 epoch: 22
+-- -20 -20 epoch: 23
+-- -19 -20 epoch: 24
+improved-19 -20 epoch: 24
+-- -19 -19 epoch: 25
+-- -19 -19 epoch: 26
+-- -19 -19 epoch: 27
+-- -19 -19 epoch: 28
+-- -18 -19 epoch: 29
+improved-18 -19 epoch: 29
+-- -18 -18 epoch: 30
+-- -18 -18 epoch: 31
+-- -18 -18 epoch: 32
+-- -17 -18 epoch: 33
+improved-17 -18 epoch: 33
+-- -17 -17 epoch: 34
+-- -17 -17 epoch: 35
+-- -17 -17 epoch: 36
+-- -17 -17 epoch: 37
+-- -17 -17 epoch: 38
+-- -17 -17 epoch: 39
+-- -17 -17 epoch: 40
+Tabu Search Iteration: 40 time taken: 1.7629318237304688 best cost = Cost(Infeasibility_Value=17, Objective_Value=0)  tabu size = 11 -17 -17
+-- -17 -17 epoch: 41
+-- -17 -17 epoch: 42
+-- -17 -17 epoch: 43
+-- -17 -17 epoch: 44
+-- -15 -17 epoch: 45
+improved-15 -17 epoch: 45
+-- -15 -15 epoch: 46
+-- -15 -15 epoch: 47
+-- -15 -15 epoch: 48
+-- -15 -15 epoch: 49
+-- -15 -15 epoch: 50
+-- -15 -15 epoch: 51
+-- -15 -15 epoch: 52
+-- -15 -15 epoch: 53
+-- -15 -15 epoch: 54
+-- -15 -15 epoch: 55
+-- -15 -15 epoch: 56
+-- -15 -15 epoch: 57
+-- -15 -15 epoch: 58
+-- -14 -15 epoch: 59
+improved-14 -15 epoch: 59
+-- -14 -14 epoch: 60
+Tabu Search Iteration: 60 time taken: 1.7804925441741943 best cost = Cost(Infeasibility_Value=14, Objective_Value=0)  tabu size = 13 -14 -14
+-- -14 -14 epoch: 61
+-- -14 -14 epoch: 62
+-- -14 -14 epoch: 63
+-- -14 -14 epoch: 64
+-- -14 -14 epoch: 65
+-- -14 -14 epoch: 66
+-- -14 -14 epoch: 67
+-- -14 -14 epoch: 68
+-- -14 -14 epoch: 69
+-- -14 -14 epoch: 70
+-- -14 -14 epoch: 71
+-- -14 -14 epoch: 72
+-- -14 -14 epoch: 73
+-- -14 -14 epoch: 74
+-- -14 -14 epoch: 75
+-- -14 -14 epoch: 76
+-- -14 -14 epoch: 77
+-- -14 -14 epoch: 78
+-- -14 -14 epoch: 79
+number of Tabu Search iterations = 79
+SA Iteration: 1000 time taken: 0.0034279823303222656 current energy -14 best energy -14 best_cost Cost(Infeasibility_Value=14, Objective_Value=0) time so far 4.0814220905303955
+SA Iteration: 2000 time taken: 0.002850055694580078 current energy -13 best energy -13 best_cost Cost(Infeasibility_Value=13, Objective_Value=0) time so far 7.624028921127319
+SA Iteration: 3000 time taken: 0.0032668113708496094 current energy -13 best energy -13 best_cost Cost(Infeasibility_Value=13, Objective_Value=0) time so far 10.999544143676758
+SA Iteration: 4000 time taken: 0.002850055694580078 current energy -13 best energy -13 best_cost Cost(Infeasibility_Value=13, Objective_Value=0) time so far 14.97463059425354
+SA Iteration: 5000 time taken: 0.004166841506958008 current energy -13 best energy -13 best_cost Cost(Infeasibility_Value=13, Objective_Value=0) time so far 18.308376789093018
+SA Iteration: 6000 time taken: 0.0039708614349365234 current energy -12 best energy -12 best_cost Cost(Infeasibility_Value=12, Objective_Value=0) time so far 21.660770893096924
+SA Iteration: 7000 time taken: 0.003140687942504883 current energy -12 best energy -12 best_cost Cost(Infeasibility_Value=12, Objective_Value=0) time so far 25.109806537628174
+SA Iteration: 8000 time taken: 0.003301858901977539 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 28.95264220237732
+SA Iteration: 9000 time taken: 0.0028753280639648438 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 32.49895405769348
+SA Iteration: 10000 time taken: 0.004065990447998047 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 35.9045672416687
+SA Iteration: 11000 time taken: 0.002817392349243164 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 39.385945081710815
+SA Iteration: 12000 time taken: 0.003094911575317383 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 43.50439977645874
+SA Iteration: 13000 time taken: 0.020715951919555664 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 48.55994009971619
+SA Iteration: 14000 time taken: 0.01882791519165039 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 55.696635723114014
+SA Iteration: 15000 time taken: 0.002538442611694336 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 62.654484272003174
+SA Iteration: 16000 time taken: 0.004129171371459961 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 70.92071032524109
+SA Iteration: 17000 time taken: 0.0027098655700683594 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 77.92987155914307
+SA Iteration: 18000 time taken: 0.003942251205444336 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 84.72303199768066
+SA Iteration: 19000 time taken: 0.003946781158447266 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 90.92161273956299
+SA Iteration: 20000 time taken: 0.003497600555419922 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 97.05473685264587
+SA Iteration: 21000 time taken: 0.0031163692474365234 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 102.94089269638062
+SA Iteration: 22000 time taken: 0.009769916534423828 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 108.45912289619446
+SA Iteration: 23000 time taken: 0.020767688751220703 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 115.54527521133423
+number of Simulated Annealing iterations = 23928
+current best cost = -10
+best random :  Cost(Infeasibility_Value=31, Objective_Value=0)
+-- -29 -31 epoch: 1
+improved-29 -31 epoch: 1
+-- -26 -29 epoch: 2
+improved-26 -29 epoch: 2
+-- -25 -26 epoch: 3
+improved-25 -26 epoch: 3
+-- -24 -25 epoch: 4
+improved-24 -25 epoch: 4
+-- -23 -24 epoch: 5
+improved-23 -24 epoch: 5
+-- -22 -23 epoch: 6
+improved-22 -23 epoch: 6
+-- -22 -22 epoch: 7
+-- -22 -22 epoch: 8
+-- -21 -22 epoch: 9
+improved-21 -22 epoch: 9
+-- -21 -21 epoch: 10
+-- -21 -21 epoch: 11
+-- -20 -21 epoch: 12
+improved-20 -21 epoch: 12
+-- -20 -20 epoch: 13
+-- -20 -20 epoch: 14
+-- -20 -20 epoch: 15
+-- -19 -20 epoch: 16
+improved-19 -20 epoch: 16
+-- -19 -19 epoch: 17
+-- -19 -19 epoch: 18
+-- -19 -19 epoch: 19
+-- -19 -19 epoch: 20
+Tabu Search Iteration: 20 time taken: 3.4751639366149902 best cost = Cost(Infeasibility_Value=19, Objective_Value=0)  tabu size = 9 -19 -19
+-- -18 -19 epoch: 21
+improved-18 -19 epoch: 21
+-- -18 -18 epoch: 22
+-- -18 -18 epoch: 23
+-- -18 -18 epoch: 24
+-- -18 -18 epoch: 25
+-- -17 -18 epoch: 26
+improved-17 -18 epoch: 26
+-- -17 -17 epoch: 27
+-- -17 -17 epoch: 28
+-- -17 -17 epoch: 29
+-- -17 -17 epoch: 30
+-- -17 -17 epoch: 31
+-- -17 -17 epoch: 32
+-- -17 -17 epoch: 33
+-- -17 -17 epoch: 34
+-- -17 -17 epoch: 35
+-- -17 -17 epoch: 36
+-- -17 -17 epoch: 37
+-- -17 -17 epoch: 38
+-- -17 -17 epoch: 39
+-- -17 -17 epoch: 40
+Tabu Search Iteration: 40 time taken: 3.594510555267334 best cost = Cost(Infeasibility_Value=17, Objective_Value=0)  tabu size = 11 -17 -17
+-- -17 -17 epoch: 41
+-- -17 -17 epoch: 42
+-- -17 -17 epoch: 43
+-- -17 -17 epoch: 44
+-- -17 -17 epoch: 45
+-- -17 -17 epoch: 46
+number of Tabu Search iterations = 46
+SA Iteration: 1000 time taken: 0.019439697265625 current energy -17 best energy -17 best_cost Cost(Infeasibility_Value=17, Objective_Value=0) time so far 7.281066656112671
+SA Iteration: 2000 time taken: 0.01371908187866211 current energy -16 best energy -16 best_cost Cost(Infeasibility_Value=16, Objective_Value=0) time so far 14.948866605758667
+SA Iteration: 3000 time taken: 0.0033707618713378906 current energy -16 best energy -16 best_cost Cost(Infeasibility_Value=16, Objective_Value=0) time so far 20.973651885986328
+SA Iteration: 4000 time taken: 0.02048182487487793 current energy -16 best energy -16 best_cost Cost(Infeasibility_Value=16, Objective_Value=0) time so far 28.995495080947876
+SA Iteration: 5000 time taken: 0.019747257232666016 current energy -16 best energy -16 best_cost Cost(Infeasibility_Value=16, Objective_Value=0) time so far 36.17995595932007
+SA Iteration: 6000 time taken: 0.020107507705688477 current energy -15 best energy -15 best_cost Cost(Infeasibility_Value=15, Objective_Value=0) time so far 43.47945189476013
+SA Iteration: 7000 time taken: 0.003541707992553711 current energy -15 best energy -15 best_cost Cost(Infeasibility_Value=15, Objective_Value=0) time so far 51.435365438461304
+SA Iteration: 8000 time taken: 0.0033516883850097656 current energy -15 best energy -15 best_cost Cost(Infeasibility_Value=15, Objective_Value=0) time so far 58.72561717033386
+SA Iteration: 9000 time taken: 0.003591775894165039 current energy -14 best energy -14 best_cost Cost(Infeasibility_Value=14, Objective_Value=0) time so far 65.85577654838562
+SA Iteration: 10000 time taken: 0.003027677536010742 current energy -14 best energy -14 best_cost Cost(Infeasibility_Value=14, Objective_Value=0) time so far 71.83201885223389
+SA Iteration: 11000 time taken: 0.002976655960083008 current energy -14 best energy -14 best_cost Cost(Infeasibility_Value=14, Objective_Value=0) time so far 77.81671118736267
+SA Iteration: 12000 time taken: 0.0035772323608398438 current energy -13 best energy -13 best_cost Cost(Infeasibility_Value=13, Objective_Value=0) time so far 84.21378016471863
+SA Iteration: 13000 time taken: 0.019994735717773438 current energy -13 best energy -13 best_cost Cost(Infeasibility_Value=13, Objective_Value=0) time so far 91.39701557159424
+SA Iteration: 14000 time taken: 0.003161191940307617 current energy -12 best energy -12 best_cost Cost(Infeasibility_Value=12, Objective_Value=0) time so far 98.50696396827698
+SA Iteration: 15000 time taken: 0.0034809112548828125 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 106.7707872390747
+SA Iteration: 16000 time taken: 0.004130840301513672 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 113.44074130058289
+SA Iteration: 17000 time taken: 0.0028908252716064453 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 120.25998950004578
+number of Simulated Annealing iterations = 17232
+current best cost = -10
+best random :  Cost(Infeasibility_Value=32, Objective_Value=0)
+-- -31 -32 epoch: 1
+improved-31 -32 epoch: 1
+-- -30 -31 epoch: 2
+improved-30 -31 epoch: 2
+-- -28 -30 epoch: 3
+improved-28 -30 epoch: 3
+-- -27 -28 epoch: 4
+improved-27 -28 epoch: 4
+-- -26 -27 epoch: 5
+improved-26 -27 epoch: 5
+-- -26 -26 epoch: 6
+-- -25 -26 epoch: 7
+improved-25 -26 epoch: 7
+-- -25 -25 epoch: 8
+-- -25 -25 epoch: 9
+-- -25 -25 epoch: 10
+-- -25 -25 epoch: 11
+-- -23 -25 epoch: 12
+improved-23 -25 epoch: 12
+-- -21 -23 epoch: 13
+improved-21 -23 epoch: 13
+-- -19 -21 epoch: 14
+improved-19 -21 epoch: 14
+-- -19 -19 epoch: 15
+-- -19 -19 epoch: 16
+-- -18 -19 epoch: 17
+improved-18 -19 epoch: 17
+-- -18 -18 epoch: 18
+-- -18 -18 epoch: 19
+-- -18 -18 epoch: 20
+Tabu Search Iteration: 20 time taken: 2.7123639583587646 best cost = Cost(Infeasibility_Value=18, Objective_Value=0)  tabu size = 10 -18 -18
+-- -18 -18 epoch: 21
+-- -18 -18 epoch: 22
+-- -18 -18 epoch: 23
+-- -18 -18 epoch: 24
+-- -18 -18 epoch: 25
+-- -18 -18 epoch: 26
+-- -18 -18 epoch: 27
+-- -18 -18 epoch: 28
+-- -18 -18 epoch: 29
+-- -18 -18 epoch: 30
+-- -17 -18 epoch: 31
+improved-17 -18 epoch: 31
+-- -17 -17 epoch: 32
+-- -17 -17 epoch: 33
+-- -17 -17 epoch: 34
+-- -16 -17 epoch: 35
+improved-16 -17 epoch: 35
+-- -16 -16 epoch: 36
+-- -16 -16 epoch: 37
+-- -16 -16 epoch: 38
+-- -16 -16 epoch: 39
+-- -15 -16 epoch: 40
+improved-15 -16 epoch: 40
+Tabu Search Iteration: 40 time taken: 2.6569342613220215 best cost = Cost(Infeasibility_Value=15, Objective_Value=0)  tabu size = 13 -15 -15
+-- -15 -15 epoch: 41
+-- -15 -15 epoch: 42
+-- -15 -15 epoch: 43
+-- -14 -15 epoch: 44
+improved-14 -15 epoch: 44
+-- -14 -14 epoch: 45
+-- -13 -14 epoch: 46
+improved-13 -14 epoch: 46
+-- -13 -13 epoch: 47
+-- -13 -13 epoch: 48
+-- -13 -13 epoch: 49
+-- -13 -13 epoch: 50
+-- -13 -13 epoch: 51
+-- -11 -13 epoch: 52
+improved-11 -13 epoch: 52
+-- -11 -11 epoch: 53
+-- -11 -11 epoch: 54
+-- -11 -11 epoch: 55
+-- -11 -11 epoch: 56
+-- -11 -11 epoch: 57
+-- -11 -11 epoch: 58
+-- -11 -11 epoch: 59
+-- -11 -11 epoch: 60
+Tabu Search Iteration: 60 time taken: 3.635904312133789 best cost = Cost(Infeasibility_Value=11, Objective_Value=0)  tabu size = 16 -11 -11
+-- -11 -11 epoch: 61
+-- -11 -11 epoch: 62
+-- -11 -11 epoch: 63
+-- -11 -11 epoch: 64
+-- -11 -11 epoch: 65
+-- -10 -11 epoch: 66
+improved-10 -11 epoch: 66
+-- -10 -10 epoch: 67
+-- -10 -10 epoch: 68
+-- -10 -10 epoch: 69
+-- -10 -10 epoch: 70
+-- -10 -10 epoch: 71
+-- -10 -10 epoch: 72
+-- -10 -10 epoch: 73
+-- -10 -10 epoch: 74
+-- -10 -10 epoch: 75
+-- -10 -10 epoch: 76
+-- -10 -10 epoch: 77
+-- -10 -10 epoch: 78
+-- -10 -10 epoch: 79
+-- -10 -10 epoch: 80
+Tabu Search Iteration: 80 time taken: 3.58600115776062 best cost = Cost(Infeasibility_Value=10, Objective_Value=0)  tabu size = 17 -10 -10
+-- -10 -10 epoch: 81
+-- -10 -10 epoch: 82
+-- -10 -10 epoch: 83
+-- -10 -10 epoch: 84
+-- -10 -10 epoch: 85
+-- -10 -10 epoch: 86
+number of Tabu Search iterations = 86
+SA Iteration: 1000 time taken: 0.0034036636352539062 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 6.722283601760864
+SA Iteration: 2000 time taken: 0.0031249523162841797 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 14.49597430229187
+SA Iteration: 3000 time taken: 0.003149747848510742 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 22.046380519866943
+SA Iteration: 4000 time taken: 0.003582000732421875 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 29.128816604614258
+SA Iteration: 5000 time taken: 0.003080129623413086 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 36.17458939552307
+SA Iteration: 6000 time taken: 0.0036063194274902344 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 44.50617957115173
+SA Iteration: 7000 time taken: 0.01947784423828125 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 51.655932664871216
+SA Iteration: 8000 time taken: 0.020633697509765625 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 58.87354397773743
+SA Iteration: 9000 time taken: 0.020531654357910156 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 66.23625111579895
+SA Iteration: 10000 time taken: 0.003133058547973633 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 74.0219566822052
+SA Iteration: 11000 time taken: 0.002701997756958008 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 80.30485153198242
+SA Iteration: 12000 time taken: 0.0032966136932373047 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 86.99398970603943
+SA Iteration: 13000 time taken: 0.0028929710388183594 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 93.5670976638794
+SA Iteration: 14000 time taken: 0.01950693130493164 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 101.77844953536987
+SA Iteration: 15000 time taken: 0.003495931625366211 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 109.01148343086243
+SA Iteration: 16000 time taken: 0.019754886627197266 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 116.1587598323822
+SA Iteration: 17000 time taken: 0.0035402774810791016 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 123.23512506484985
+number of Simulated Annealing iterations = 17017
+current best cost = -10
+ILS-Tabu-SD result below
+value =  0 required = True AssignTimeConstraint
+value =  10 required = True AvoidClashesConstraint
+
+---ILS-Tabu-SD Evaluation (hdtt4)---
+ Cost(Infeasibility_Value=10, Objective_Value=0)
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=13, Objective_Value=0) -13 -13
+Local Search Iteration: 20 best cost = Cost(Infeasibility_Value=12, Objective_Value=0) -12 -12
+SA Iteration: 0 time taken: 69.34618043899536 current energy -12 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 69.36641120910645
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=13, Objective_Value=0) -13 -13
+Local Search Iteration: 20 best cost = Cost(Infeasibility_Value=10, Objective_Value=0) -10 -10
+SA Iteration: 1 time taken: 120.34479522705078 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 189.7113220691681
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=10, Objective_Value=0) -10 -10
+SA Iteration: 2 time taken: 66.56075549125671 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 256.2722282409668
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=10, Objective_Value=0) -10 -10
+SA Iteration: 3 time taken: 78.20211362838745 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 334.4744975566864
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=15, Objective_Value=0) -15 -15
+Local Search Iteration: 20 best cost = Cost(Infeasibility_Value=10, Objective_Value=0) -10 -10
+SA Iteration: 4 time taken: 77.98201560974121 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 412.4566431045532
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=10, Objective_Value=0) -10 -10
+SA Iteration: 5 time taken: 74.32126903533936 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 486.77806282043457
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=13, Objective_Value=0) -13 -13
+Local Search Iteration: 20 best cost = Cost(Infeasibility_Value=10, Objective_Value=0) -10 -10
+SA Iteration: 6 time taken: 90.81720304489136 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 577.5954275131226
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=12, Objective_Value=0) -12 -12
+Local Search Iteration: 20 best cost = Cost(Infeasibility_Value=11, Objective_Value=0) -11 -11
+SA Iteration: 7 time taken: 100.69869232177734 current energy -11 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 678.2942519187927
+value =  0 required = True AssignTimeConstraint
+value =  10 required = True AvoidClashesConstraint
+
+---VNS Evaluation (hdtt4)---
+ Cost(Infeasibility_Value=10, Objective_Value=0)
+SA Iteration: 1000 time taken: 0.0037806034088134766 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 7.274728059768677
+SA Iteration: 2000 time taken: 0.020436525344848633 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 14.426722049713135
+SA Iteration: 3000 time taken: 0.0034232139587402344 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 21.786863565444946
+SA Iteration: 4000 time taken: 0.0037393569946289062 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 29.694082975387573
+SA Iteration: 5000 time taken: 0.003111600875854492 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 35.99622893333435
+SA Iteration: 6000 time taken: 0.004259347915649414 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 43.02373218536377
+SA Iteration: 7000 time taken: 0.003424406051635742 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 50.31230902671814
+SA Iteration: 8000 time taken: 0.0026693344116210938 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 57.69076681137085
+SA Iteration: 9000 time taken: 0.0032949447631835938 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 64.27233338356018
+SA Iteration: 10000 time taken: 0.020082712173461914 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 70.10612487792969
+SA Iteration: 11000 time taken: 0.003522157669067383 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 77.32132244110107
+SA Iteration: 12000 time taken: 0.0034248828887939453 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 85.34510064125061
+SA Iteration: 13000 time taken: 0.019672393798828125 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 91.91169095039368
+SA Iteration: 14000 time taken: 0.003525257110595703 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 98.75656461715698
+SA Iteration: 15000 time taken: 0.03200650215148926 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 105.1319031715393
+SA Iteration: 16000 time taken: 0.0193173885345459 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 111.97940158843994
+SA Iteration: 17000 time taken: 0.002861499786376953 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 118.88120889663696
+SA Iteration: 18000 time taken: 0.003827333450317383 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 125.40731906890869
+SA Iteration: 19000 time taken: 0.003743410110473633 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 132.44208908081055
+SA Iteration: 20000 time taken: 0.003303050994873047 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 140.6352903842926
+SA Iteration: 21000 time taken: 0.022768735885620117 current energy -8 best energy -8 best_cost Cost(Infeasibility_Value=8, Objective_Value=0) time so far 147.4710078239441
+SA Iteration: 22000 time taken: 0.005153656005859375 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 153.7123100757599
+SA Iteration: 23000 time taken: 0.00390625 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 161.19049525260925
+SA Iteration: 24000 time taken: 0.003771066665649414 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 166.50934481620789
+SA Iteration: 25000 time taken: 0.0035202503204345703 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 173.04459834098816
+SA Iteration: 26000 time taken: 0.003695249557495117 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 178.8061125278473
+SA Iteration: 27000 time taken: 0.018481731414794922 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 185.81368708610535
+SA Iteration: 28000 time taken: 0.01956796646118164 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 191.1480212211609
+SA Iteration: 29000 time taken: 0.0031282901763916016 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 198.05407118797302
+SA Iteration: 30000 time taken: 0.020350933074951172 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 204.1411759853363
+SA Iteration: 31000 time taken: 0.003930568695068359 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 210.5412802696228
+SA Iteration: 32000 time taken: 0.0031507015228271484 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 216.698228597641
+SA Iteration: 33000 time taken: 0.003037691116333008 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 223.3802626132965
+SA Iteration: 34000 time taken: 0.0027272701263427734 current energy -7 best energy -7 best_cost Cost(Infeasibility_Value=7, Objective_Value=0) time so far 229.12643790245056
+SA Iteration: 35000 time taken: 0.002650022506713867 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 237.12562537193298
+SA Iteration: 36000 time taken: 0.003168344497680664 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 242.97478890419006
+SA Iteration: 37000 time taken: 0.0036754608154296875 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 249.10950684547424
+SA Iteration: 38000 time taken: 0.0029103755950927734 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 255.67039561271667
+SA Iteration: 39000 time taken: 0.004467010498046875 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 263.06177401542664
+SA Iteration: 40000 time taken: 0.0028841495513916016 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 269.36941838264465
+SA Iteration: 41000 time taken: 0.002844572067260742 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 274.5614287853241
+SA Iteration: 42000 time taken: 0.020085811614990234 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 281.9016616344452
+SA Iteration: 43000 time taken: 0.003414154052734375 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 288.86219930648804
+SA Iteration: 44000 time taken: 0.003471851348876953 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 293.65446615219116
+SA Iteration: 45000 time taken: 0.003561735153198242 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 298.57095217704773
+SA Iteration: 46000 time taken: 0.002906322479248047 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 305.1482412815094
+SA Iteration: 47000 time taken: 0.004701137542724609 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 312.9055895805359
+SA Iteration: 48000 time taken: 0.003362894058227539 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 317.85595297813416
+SA Iteration: 49000 time taken: 0.0032486915588378906 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 323.02865648269653
+SA Iteration: 50000 time taken: 0.015771150588989258 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 329.4663486480713
+SA Iteration: 51000 time taken: 0.0038225650787353516 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 337.7196934223175
+SA Iteration: 52000 time taken: 0.003452301025390625 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 344.80087304115295
+SA Iteration: 53000 time taken: 0.003505706787109375 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 351.4858384132385
+SA Iteration: 54000 time taken: 0.003323078155517578 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 358.5195860862732
+SA Iteration: 55000 time taken: 0.003389596939086914 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 366.7311840057373
+SA Iteration: 56000 time taken: 0.004556179046630859 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 373.94727635383606
+SA Iteration: 57000 time taken: 0.019909381866455078 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 381.46960282325745
+SA Iteration: 58000 time taken: 0.003954410552978516 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 389.68685722351074
+SA Iteration: 59000 time taken: 0.0031044483184814453 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 396.9170536994934
+SA Iteration: 60000 time taken: 0.0036115646362304688 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 404.05376982688904
+SA Iteration: 61000 time taken: 0.0043544769287109375 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 411.2272970676422
+SA Iteration: 62000 time taken: 0.003847837448120117 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 419.78638219833374
+SA Iteration: 63000 time taken: 0.0032393932342529297 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 426.965744972229
+SA Iteration: 64000 time taken: 0.003343820571899414 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 434.04552721977234
+SA Iteration: 65000 time taken: 0.0038657188415527344 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 441.2608370780945
+SA Iteration: 66000 time taken: 0.0034401416778564453 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 449.57721304893494
+SA Iteration: 67000 time taken: 0.0033621788024902344 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 456.697696685791
+SA Iteration: 68000 time taken: 0.0031185150146484375 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 463.6757855415344
+SA Iteration: 69000 time taken: 0.020058870315551758 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 470.1463186740875
+SA Iteration: 70000 time taken: 0.0035529136657714844 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 478.3568480014801
+SA Iteration: 71000 time taken: 0.003573894500732422 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 485.47605562210083
+SA Iteration: 72000 time taken: 0.0035560131072998047 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 491.2967040538788
+SA Iteration: 73000 time taken: 0.0034220218658447266 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 498.306645154953
+SA Iteration: 74000 time taken: 0.004357576370239258 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 505.9838922023773
+SA Iteration: 75000 time taken: 0.003449678421020508 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 512.9420003890991
+SA Iteration: 76000 time taken: 0.0033597946166992188 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 519.9319612979889
+SA Iteration: 77000 time taken: 0.0031120777130126953 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 526.8113398551941
+SA Iteration: 78000 time taken: 0.00415492057800293 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 534.941650390625
+SA Iteration: 79000 time taken: 0.004137754440307617 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 542.048246383667
+SA Iteration: 80000 time taken: 0.0025348663330078125 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 549.0633850097656
+SA Iteration: 81000 time taken: 0.0033936500549316406 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 556.1392810344696
+SA Iteration: 82000 time taken: 0.019374370574951172 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 564.652626991272
+SA Iteration: 83000 time taken: 0.019765615463256836 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 571.5454716682434
+SA Iteration: 84000 time taken: 0.0031986236572265625 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 578.6149082183838
+SA Iteration: 85000 time taken: 0.002604246139526367 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 585.5830051898956
+SA Iteration: 86000 time taken: 0.0032303333282470703 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 593.6152203083038
+SA Iteration: 87000 time taken: 0.004275798797607422 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 600.5861661434174
+SA Iteration: 88000 time taken: 0.003145456314086914 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 607.6053066253662
+SA Iteration: 89000 time taken: 0.002943754196166992 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 614.8332891464233
+SA Iteration: 90000 time taken: 0.003579378128051758 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 622.8160970211029
+SA Iteration: 91000 time taken: 0.004263401031494141 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 629.514137506485
+SA Iteration: 92000 time taken: 0.019572019577026367 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 636.9281723499298
+SA Iteration: 93000 time taken: 0.007619380950927734 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 644.832332611084
+SA Iteration: 94000 time taken: 0.0035691261291503906 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 652.2219717502594
+SA Iteration: 95000 time taken: 0.020627975463867188 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 659.36283659935
+SA Iteration: 96000 time taken: 0.0031709671020507812 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 666.4401624202728
+SA Iteration: 97000 time taken: 0.0037910938262939453 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 674.5785396099091
+SA Iteration: 98000 time taken: 0.003277301788330078 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 681.6446595191956
+SA Iteration: 99000 time taken: 0.019983530044555664 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 689.0000870227814
+SA Iteration: 100000 time taken: 0.004786968231201172 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 695.6498503684998
+SA Iteration: 101000 time taken: 0.003354310989379883 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 703.3512053489685
+SA Iteration: 102000 time taken: 0.002988576889038086 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 710.0482716560364
+SA Iteration: 103000 time taken: 0.002874135971069336 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 717.061808347702
+SA Iteration: 104000 time taken: 0.003943920135498047 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 724.028039932251
+SA Iteration: 105000 time taken: 0.00251007080078125 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 732.1399276256561
+SA Iteration: 106000 time taken: 0.0032105445861816406 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 739.0936341285706
+SA Iteration: 107000 time taken: 0.003434896469116211 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 746.2115190029144
+SA Iteration: 108000 time taken: 0.004021883010864258 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 753.0519373416901
+SA Iteration: 109000 time taken: 0.003229856491088867 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 761.202356338501
+SA Iteration: 110000 time taken: 0.002828836441040039 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 768.1040918827057
+SA Iteration: 111000 time taken: 0.003161907196044922 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 774.6640822887421
+SA Iteration: 112000 time taken: 0.003452301025390625 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 781.7670772075653
+SA Iteration: 113000 time taken: 0.018839120864868164 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 790.2963790893555
+SA Iteration: 114000 time taken: 0.0033850669860839844 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 797.4349987506866
+SA Iteration: 115000 time taken: 0.003820180892944336 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 804.5388388633728
+SA Iteration: 116000 time taken: 0.002610445022583008 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 811.5266156196594
+SA Iteration: 117000 time taken: 0.0026450157165527344 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 819.623747587204
+SA Iteration: 118000 time taken: 0.0037186145782470703 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 826.6036942005157
+SA Iteration: 119000 time taken: 0.004134416580200195 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 833.7309639453888
+SA Iteration: 120000 time taken: 0.01970648765563965 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 840.7322299480438
+SA Iteration: 121000 time taken: 0.0029456615447998047 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 848.8863863945007
+SA Iteration: 122000 time taken: 0.00403594970703125 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 855.8735201358795
+SA Iteration: 123000 time taken: 0.020237207412719727 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 862.6045565605164
+SA Iteration: 124000 time taken: 0.0033218860626220703 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 869.7518157958984
+SA Iteration: 125000 time taken: 0.003224611282348633 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 877.4473915100098
+SA Iteration: 126000 time taken: 0.019246578216552734 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 884.546374797821
+SA Iteration: 127000 time taken: 0.003557443618774414 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 891.6507606506348
+SA Iteration: 128000 time taken: 0.002894878387451172 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 898.2447414398193
+SA Iteration: 129000 time taken: 0.003324270248413086 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 906.148050069809
+SA Iteration: 130000 time taken: 0.020531415939331055 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 913.0866053104401
+SA Iteration: 131000 time taken: 0.0033843517303466797 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 920.228346824646
+SA Iteration: 132000 time taken: 0.0033140182495117188 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 927.4097611904144
+SA Iteration: 133000 time taken: 0.0034852027893066406 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 934.9876937866211
+SA Iteration: 134000 time taken: 0.003856182098388672 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 941.9119989871979
+SA Iteration: 135000 time taken: 0.0032062530517578125 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 948.3067235946655
+SA Iteration: 136000 time taken: 0.0034973621368408203 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 956.4844665527344
+SA Iteration: 137000 time taken: 0.0038208961486816406 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 963.5180780887604
+SA Iteration: 138000 time taken: 0.0033707618713378906 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 970.5550994873047
+SA Iteration: 139000 time taken: 0.0031096935272216797 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 976.0303885936737
+SA Iteration: 140000 time taken: 0.0033261775970458984 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 983.9063982963562
+SA Iteration: 141000 time taken: 0.020373821258544922 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 989.265198469162
+SA Iteration: 142000 time taken: 0.018922090530395508 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 996.0794591903687
+SA Iteration: 143000 time taken: 0.003612995147705078 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 1002.11763215065
+SA Iteration: 144000 time taken: 0.0037908554077148438 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 1009.626042842865
+SA Iteration: 145000 time taken: 0.004073381423950195 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 1016.4759211540222
+SA Iteration: 146000 time taken: 0.002644777297973633 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 1023.4675967693329
+SA Iteration: 147000 time taken: 0.01976633071899414 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 1030.5015985965729
+SA Iteration: 148000 time taken: 0.0029544830322265625 current energy -4 best energy -4 best_cost Cost(Infeasibility_Value=4, Objective_Value=0) time so far 1038.6883418560028
+SA Iteration: 149000 time taken: 0.01928114891052246 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1045.5998935699463
+SA Iteration: 150000 time taken: 0.002663135528564453 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1052.6082305908203
+SA Iteration: 151000 time taken: 0.0026116371154785156 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1059.3598828315735
+SA Iteration: 152000 time taken: 0.003786325454711914 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1066.7068870067596
+SA Iteration: 153000 time taken: 0.004660367965698242 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1072.17258810997
+SA Iteration: 154000 time taken: 0.019420385360717773 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1078.0410566329956
+SA Iteration: 155000 time taken: 0.003075122833251953 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1084.8713326454163
+SA Iteration: 156000 time taken: 0.0027740001678466797 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1093.2134652137756
+SA Iteration: 157000 time taken: 0.0039021968841552734 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1100.3222742080688
+SA Iteration: 158000 time taken: 0.0029044151306152344 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1107.322999715805
+SA Iteration: 159000 time taken: 0.0030732154846191406 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1114.7621307373047
+SA Iteration: 160000 time taken: 0.019530773162841797 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1122.8011312484741
+SA Iteration: 161000 time taken: 0.0047113895416259766 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1129.4509027004242
+SA Iteration: 162000 time taken: 0.0032341480255126953 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1136.3002181053162
+SA Iteration: 163000 time taken: 0.019867897033691406 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1143.1131074428558
+SA Iteration: 164000 time taken: 0.00398707389831543 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1150.750450849533
+SA Iteration: 165000 time taken: 0.002967357635498047 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1157.7892599105835
+SA Iteration: 166000 time taken: 0.0036649703979492188 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1164.6601030826569
+SA Iteration: 167000 time taken: 0.0035364627838134766 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1171.0774981975555
+SA Iteration: 168000 time taken: 0.004256725311279297 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1178.0336496829987
+SA Iteration: 169000 time taken: 0.0033140182495117188 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1184.4548752307892
+SA Iteration: 170000 time taken: 0.0030057430267333984 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1191.4208614826202
+SA Iteration: 171000 time taken: 0.004437685012817383 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1198.3537511825562
+SA Iteration: 172000 time taken: 0.0031087398529052734 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1206.5868127346039
+SA Iteration: 173000 time taken: 0.003048419952392578 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1213.521734237671
+SA Iteration: 174000 time taken: 0.0026650428771972656 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1220.4678437709808
+SA Iteration: 175000 time taken: 0.004019021987915039 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1227.168778181076
+SA Iteration: 176000 time taken: 0.0036613941192626953 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1234.4006938934326
+SA Iteration: 177000 time taken: 0.027605056762695312 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1240.8526864051819
+SA Iteration: 178000 time taken: 0.0030515193939208984 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1246.9175453186035
+SA Iteration: 179000 time taken: 0.019832611083984375 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1254.1345853805542
+SA Iteration: 180000 time taken: 0.0037131309509277344 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1259.9237263202667
+SA Iteration: 181000 time taken: 0.004499673843383789 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1265.4630055427551
+SA Iteration: 182000 time taken: 0.0034248828887939453 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1271.1617777347565
+SA Iteration: 183000 time taken: 0.0033109188079833984 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1278.1860146522522
+SA Iteration: 184000 time taken: 0.003084897994995117 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1283.9339456558228
+SA Iteration: 185000 time taken: 0.003407716751098633 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1289.6436233520508
+SA Iteration: 186000 time taken: 0.027788639068603516 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1295.6169867515564
+SA Iteration: 187000 time taken: 0.002899646759033203 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1303.0794808864594
+SA Iteration: 188000 time taken: 0.0030035972595214844 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1310.257961511612
+SA Iteration: 189000 time taken: 0.002961397171020508 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1316.8630259037018
+SA Iteration: 190000 time taken: 0.005121946334838867 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1323.8074269294739
+SA Iteration: 191000 time taken: 0.0037086009979248047 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1331.9450330734253
+SA Iteration: 192000 time taken: 0.002856016159057617 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1338.747897386551
+SA Iteration: 193000 time taken: 0.0037903785705566406 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1344.4004209041595
+SA Iteration: 194000 time taken: 0.0032906532287597656 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1350.1166369915009
+SA Iteration: 195000 time taken: 0.0035142898559570312 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1357.2395768165588
+SA Iteration: 196000 time taken: 0.003563404083251953 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1363.604995250702
+SA Iteration: 197000 time taken: 0.003078937530517578 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1370.6956083774567
+SA Iteration: 198000 time taken: 0.0037839412689208984 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1377.7101120948792
+SA Iteration: 199000 time taken: 0.0029494762420654297 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1385.766700744629
+SA Iteration: 200000 time taken: 0.0037109851837158203 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1391.943091392517
+SA Iteration: 201000 time taken: 0.002893686294555664 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1398.6147980690002
+SA Iteration: 202000 time taken: 0.003718852996826172 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1405.5402150154114
+SA Iteration: 203000 time taken: 0.0030303001403808594 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1412.812644958496
+SA Iteration: 204000 time taken: 0.0033833980560302734 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1419.816395521164
+SA Iteration: 205000 time taken: 0.00266265869140625 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1425.2641189098358
+SA Iteration: 206000 time taken: 0.01950359344482422 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1432.6507606506348
+SA Iteration: 207000 time taken: 0.00397944450378418 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1440.511337518692
+SA Iteration: 208000 time taken: 0.003155946731567383 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1445.8712816238403
+SA Iteration: 209000 time taken: 0.003041982650756836 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1451.4981319904327
+SA Iteration: 210000 time taken: 0.0035359859466552734 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1458.154815196991
+SA Iteration: 211000 time taken: 0.0043430328369140625 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1465.7225136756897
+SA Iteration: 212000 time taken: 0.004567861557006836 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1472.8440651893616
+SA Iteration: 213000 time taken: 0.0036046504974365234 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1479.9558367729187
+SA Iteration: 214000 time taken: 0.019277572631835938 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1486.6436703205109
+SA Iteration: 215000 time taken: 0.003295421600341797 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1493.3194830417633
+SA Iteration: 216000 time taken: 0.004146575927734375 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1500.133910894394
+SA Iteration: 217000 time taken: 0.019814014434814453 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1506.7587232589722
+SA Iteration: 218000 time taken: 0.0033142566680908203 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1514.2610909938812
+SA Iteration: 219000 time taken: 0.00353240966796875 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1520.3158366680145
+SA Iteration: 220000 time taken: 0.019635915756225586 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1527.186588525772
+SA Iteration: 221000 time taken: 0.004593849182128906 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 1534.2693226337433
+SA Iteration: 222000 time taken: 0.0033779144287109375 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 1540.2814075946808
+SA Iteration: 223000 time taken: 0.0028684139251708984 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 1545.6285557746887
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True AvoidClashesConstraint
+number of Simulated Annealing iterations = 223789
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True AvoidClashesConstraint
+
+---Simulated Annealing Benchmark (hdtt4) Evaluation ---
+ Cost(Infeasibility_Value=0, Objective_Value=0) 
+
+hdtt4 finished in 3230.117820262909 seconds.

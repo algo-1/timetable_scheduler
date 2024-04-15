@@ -1,0 +1,1546 @@
+-----Spanish school   79 constraints-----
+population size = 150
+number of generations = 500
+Generation Begin!
+diff = -2
+Generation: 1 tourn time: 1.9220495223999023 cross time: 0.1609189510345459 mut time: 0.0012121200561523438 max func time 5.441093921661377 total time: 7.525367259979248 best sol: Cost(Infeasibility_Value=272, Objective_Value=0)
+diff = -2
+Generation: 2 tourn time: 1.704132080078125 cross time: 0.08462190628051758 mut time: 0.03177142143249512 max func time 4.814560174942017 total time: 6.635162830352783 best sol: Cost(Infeasibility_Value=265, Objective_Value=0)
+diff = -2
+Generation: 3 tourn time: 3.6266534328460693 cross time: 0.06861090660095215 mut time: 0.007177591323852539 max func time 4.724281072616577 total time: 8.426810503005981 best sol: Cost(Infeasibility_Value=265, Objective_Value=0)
+diff = -2
+Generation: 4 tourn time: 1.7723743915557861 cross time: 0.07421135902404785 mut time: 0.002866029739379883 max func time 4.643369197845459 total time: 6.492897987365723 best sol: Cost(Infeasibility_Value=265, Objective_Value=0)
+diff = -2
+Generation: 5 tourn time: 1.6872713565826416 cross time: 0.06841540336608887 mut time: 0.0023424625396728516 max func time 4.535819053649902 total time: 6.293928861618042 best sol: Cost(Infeasibility_Value=253, Objective_Value=0)
+diff = -2
+Generation: 6 tourn time: 1.8747820854187012 cross time: 0.06995272636413574 mut time: 0.0009424686431884766 max func time 4.695327520370483 total time: 6.641103506088257 best sol: Cost(Infeasibility_Value=253, Objective_Value=0)
+diff = -2
+Generation: 7 tourn time: 1.7938687801361084 cross time: 0.06755590438842773 mut time: 0.0036704540252685547 max func time 4.696474075317383 total time: 6.56166672706604 best sol: Cost(Infeasibility_Value=241, Objective_Value=0)
+diff = -2
+Generation: 8 tourn time: 1.8002817630767822 cross time: 0.0625309944152832 mut time: 0.0009996891021728516 max func time 4.77254319190979 total time: 6.636447429656982 best sol: Cost(Infeasibility_Value=241, Objective_Value=0)
+diff = -2
+Generation: 9 tourn time: 1.6944489479064941 cross time: 0.06368613243103027 mut time: 0.002325773239135742 max func time 4.618767738342285 total time: 6.379326343536377 best sol: Cost(Infeasibility_Value=241, Objective_Value=0)
+diff = -2
+Generation: 10 tourn time: 1.7968614101409912 cross time: 0.06645965576171875 mut time: 0.004704475402832031 max func time 4.504323720932007 total time: 6.372447729110718 best sol: Cost(Infeasibility_Value=228, Objective_Value=0)
+diff = -2
+Generation: 11 tourn time: 1.6438887119293213 cross time: 0.03856325149536133 mut time: 0.00477290153503418 max func time 3.5129098892211914 total time: 5.200237035751343 best sol: Cost(Infeasibility_Value=228, Objective_Value=0)
+diff = -2
+Generation: 12 tourn time: 1.2408146858215332 cross time: 0.03268551826477051 mut time: 0.0025742053985595703 max func time 3.549145460128784 total time: 4.825307846069336 best sol: Cost(Infeasibility_Value=228, Objective_Value=0)
+diff = -2
+Generation: 13 tourn time: 2.5814762115478516 cross time: 0.08861732482910156 mut time: 0.06734991073608398 max func time 4.247177362442017 total time: 6.984713792800903 best sol: Cost(Infeasibility_Value=218, Objective_Value=0)
+diff = -2
+Generation: 14 tourn time: 1.3206729888916016 cross time: 0.03757452964782715 mut time: 0.004851818084716797 max func time 4.775713205337524 total time: 6.138913631439209 best sol: Cost(Infeasibility_Value=218, Objective_Value=0)
+diff = -2
+Generation: 15 tourn time: 1.676283836364746 cross time: 0.06384134292602539 mut time: 0.0008454322814941406 max func time 4.631947755813599 total time: 6.373015403747559 best sol: Cost(Infeasibility_Value=218, Objective_Value=0)
+diff = -2
+Generation: 16 tourn time: 1.6531777381896973 cross time: 0.06586623191833496 mut time: 0.0013208389282226562 max func time 4.588736057281494 total time: 6.309190511703491 best sol: Cost(Infeasibility_Value=218, Objective_Value=0)
+diff = -2
+Generation: 17 tourn time: 1.6908509731292725 cross time: 0.07011222839355469 mut time: 0.0044596195220947266 max func time 4.570116281509399 total time: 6.335634469985962 best sol: Cost(Infeasibility_Value=215, Objective_Value=0)
+diff = -2
+Generation: 18 tourn time: 1.7769625186920166 cross time: 0.06214332580566406 mut time: 0.0017213821411132812 max func time 4.602384805679321 total time: 6.4433088302612305 best sol: Cost(Infeasibility_Value=215, Objective_Value=0)
+diff = -2
+Generation: 19 tourn time: 1.7344207763671875 cross time: 0.06072735786437988 mut time: 0.0012848377227783203 max func time 4.64182448387146 total time: 6.438350439071655 best sol: Cost(Infeasibility_Value=213, Objective_Value=0)
+diff = -2
+Generation: 20 tourn time: 1.6844618320465088 cross time: 0.0671377182006836 mut time: 0.020992279052734375 max func time 4.793014049530029 total time: 6.565706491470337 best sol: Cost(Infeasibility_Value=213, Objective_Value=0)
+diff = -2
+Generation: 21 tourn time: 1.7208061218261719 cross time: 0.06339907646179199 mut time: 0.0006775856018066406 max func time 4.622273921966553 total time: 6.407251596450806 best sol: Cost(Infeasibility_Value=212, Objective_Value=0)
+diff = -2
+Generation: 22 tourn time: 1.6806869506835938 cross time: 0.06975150108337402 mut time: 0.002757549285888672 max func time 4.584406614303589 total time: 6.3376853466033936 best sol: Cost(Infeasibility_Value=212, Objective_Value=0)
+diff = -2
+Generation: 23 tourn time: 1.6648304462432861 cross time: 0.0642852783203125 mut time: 0.0026531219482421875 max func time 4.570371627807617 total time: 6.302234888076782 best sol: Cost(Infeasibility_Value=204, Objective_Value=0)
+diff = -2
+Generation: 24 tourn time: 1.7133593559265137 cross time: 0.07751345634460449 mut time: 0.001135110855102539 max func time 3.601604461669922 total time: 5.393706321716309 best sol: Cost(Infeasibility_Value=204, Objective_Value=0)
+diff = -2
+Generation: 25 tourn time: 1.7223761081695557 cross time: 0.0639808177947998 mut time: 0.004469156265258789 max func time 4.629542112350464 total time: 6.420473337173462 best sol: Cost(Infeasibility_Value=204, Objective_Value=0)
+diff = -2
+Generation: 26 tourn time: 1.71628999710083 cross time: 0.07008957862854004 mut time: 0.002964496612548828 max func time 4.683314561843872 total time: 6.472745418548584 best sol: Cost(Infeasibility_Value=195, Objective_Value=0)
+diff = -2
+Generation: 27 tourn time: 1.6833009719848633 cross time: 0.062262535095214844 mut time: 0.0020699501037597656 max func time 4.006987571716309 total time: 5.754722356796265 best sol: Cost(Infeasibility_Value=195, Objective_Value=0)
+diff = -2
+Generation: 28 tourn time: 1.7033541202545166 cross time: 0.05710434913635254 mut time: 0.030672550201416016 max func time 3.9754552841186523 total time: 5.766691446304321 best sol: Cost(Infeasibility_Value=195, Objective_Value=0)
+diff = -2
+Generation: 29 tourn time: 2.8083033561706543 cross time: 0.09232759475708008 mut time: 0.0015940666198730469 max func time 4.446109056472778 total time: 7.348413705825806 best sol: Cost(Infeasibility_Value=195, Objective_Value=0)
+diff = -2
+Generation: 30 tourn time: 1.4428133964538574 cross time: 0.029734373092651367 mut time: 0.0036537647247314453 max func time 3.947009801864624 total time: 5.423306703567505 best sol: Cost(Infeasibility_Value=195, Objective_Value=0)
+diff = -2
+Generation: 31 tourn time: 1.3232760429382324 cross time: 0.07406234741210938 mut time: 0.005277395248413086 max func time 4.4724438190460205 total time: 5.875159025192261 best sol: Cost(Infeasibility_Value=194, Objective_Value=0)
+diff = -2
+Generation: 32 tourn time: 1.6445715427398682 cross time: 0.0920262336730957 mut time: 0.008083581924438477 max func time 4.0908448696136475 total time: 5.835618495941162 best sol: Cost(Infeasibility_Value=188, Objective_Value=0)
+diff = -2
+Generation: 33 tourn time: 1.154219627380371 cross time: 0.03168892860412598 mut time: 0.0026416778564453125 max func time 3.660236120223999 total time: 4.84886360168457 best sol: Cost(Infeasibility_Value=188, Objective_Value=0)
+diff = -2
+Generation: 34 tourn time: 1.1985104084014893 cross time: 0.06460952758789062 mut time: 0.01974201202392578 max func time 3.5279200077056885 total time: 4.81088924407959 best sol: Cost(Infeasibility_Value=187, Objective_Value=0)
+diff = -2
+Generation: 35 tourn time: 1.6601531505584717 cross time: 0.0674595832824707 mut time: 0.012842416763305664 max func time 4.5206310749053955 total time: 6.261186361312866 best sol: Cost(Infeasibility_Value=187, Objective_Value=0)
+diff = -2
+Generation: 36 tourn time: 1.7118360996246338 cross time: 0.06708526611328125 mut time: 0.0193326473236084 max func time 4.200827598571777 total time: 5.999171018600464 best sol: Cost(Infeasibility_Value=182, Objective_Value=0)
+diff = -2
+Generation: 37 tourn time: 1.1936347484588623 cross time: 0.029664993286132812 mut time: 0.0008916854858398438 max func time 4.471049785614014 total time: 5.695327281951904 best sol: Cost(Infeasibility_Value=182, Objective_Value=0)
+diff = -2
+Generation: 38 tourn time: 1.2751269340515137 cross time: 0.050423622131347656 mut time: 0.0020563602447509766 max func time 4.19599986076355 total time: 5.52370810508728 best sol: Cost(Infeasibility_Value=180, Objective_Value=0)
+diff = -2
+Generation: 39 tourn time: 1.5646581649780273 cross time: 0.06568193435668945 mut time: 0.018385648727416992 max func time 4.411145210266113 total time: 6.059953212738037 best sol: Cost(Infeasibility_Value=180, Objective_Value=0)
+diff = -2
+Generation: 40 tourn time: 1.6877210140228271 cross time: 0.0693061351776123 mut time: 0.01925802230834961 max func time 4.5606207847595215 total time: 6.336998462677002 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 41 tourn time: 1.9053559303283691 cross time: 0.08093786239624023 mut time: 0.0050432682037353516 max func time 4.407060384750366 total time: 6.398501396179199 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 42 tourn time: 1.654778242111206 cross time: 0.05819892883300781 mut time: 0.0017294883728027344 max func time 4.517296075820923 total time: 6.2321062088012695 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 43 tourn time: 1.7354719638824463 cross time: 0.05100560188293457 mut time: 0.031042814254760742 max func time 4.288368463516235 total time: 6.105978012084961 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 44 tourn time: 1.6061270236968994 cross time: 0.06850337982177734 mut time: 0.02022099494934082 max func time 4.5765299797058105 total time: 6.271477937698364 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 45 tourn time: 3.1467337608337402 cross time: 0.09777617454528809 mut time: 0.002034902572631836 max func time 5.25362491607666 total time: 8.500269651412964 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 46 tourn time: 1.3360135555267334 cross time: 0.045822858810424805 mut time: 0.00421142578125 max func time 4.739576816558838 total time: 6.125721454620361 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 47 tourn time: 1.763394832611084 cross time: 0.06641197204589844 mut time: 0.0043528079986572266 max func time 4.688901901245117 total time: 6.523153781890869 best sol: Cost(Infeasibility_Value=176, Objective_Value=0)
+diff = -2
+Generation: 48 tourn time: 1.666658878326416 cross time: 0.0627741813659668 mut time: 0.018427610397338867 max func time 4.661739349365234 total time: 6.409700155258179 best sol: Cost(Infeasibility_Value=174, Objective_Value=0)
+diff = -2
+Generation: 49 tourn time: 1.7904918193817139 cross time: 0.06554555892944336 mut time: 0.0020499229431152344 max func time 4.373014688491821 total time: 6.23120641708374 best sol: Cost(Infeasibility_Value=174, Objective_Value=0)
+diff = -2
+Generation: 50 tourn time: 1.6482579708099365 cross time: 0.0661928653717041 mut time: 0.0006995201110839844 max func time 4.205475568771362 total time: 5.9207236766815186 best sol: Cost(Infeasibility_Value=174, Objective_Value=0)
+diff = -2
+Generation: 51 tourn time: 1.6778006553649902 cross time: 0.0663459300994873 mut time: 0.0032072067260742188 max func time 4.522984266281128 total time: 6.270425319671631 best sol: Cost(Infeasibility_Value=172, Objective_Value=0)
+diff = -2
+Generation: 52 tourn time: 1.7486114501953125 cross time: 0.0649099349975586 mut time: 0.0029768943786621094 max func time 4.582644701004028 total time: 6.39923095703125 best sol: Cost(Infeasibility_Value=172, Objective_Value=0)
+diff = -2
+Generation: 53 tourn time: 1.7332897186279297 cross time: 0.07078385353088379 mut time: 0.002093076705932617 max func time 4.616079568862915 total time: 6.422348499298096 best sol: Cost(Infeasibility_Value=172, Objective_Value=0)
+diff = -2
+Generation: 54 tourn time: 1.7599496841430664 cross time: 0.06312322616577148 mut time: 0.002769947052001953 max func time 4.452353239059448 total time: 6.278289079666138 best sol: Cost(Infeasibility_Value=172, Objective_Value=0)
+diff = -2
+Generation: 55 tourn time: 1.7083430290222168 cross time: 0.0675811767578125 mut time: 0.004553794860839844 max func time 4.590985298156738 total time: 6.371546030044556 best sol: Cost(Infeasibility_Value=171, Objective_Value=0)
+diff = -2
+Generation: 56 tourn time: 1.7042245864868164 cross time: 0.06205487251281738 mut time: 0.003552675247192383 max func time 4.4261980056762695 total time: 6.196126937866211 best sol: Cost(Infeasibility_Value=171, Objective_Value=0)
+diff = -2
+Generation: 57 tourn time: 1.681166410446167 cross time: 0.07294774055480957 mut time: 0.0017018318176269531 max func time 4.638941049575806 total time: 6.394862413406372 best sol: Cost(Infeasibility_Value=171, Objective_Value=0)
+diff = -2
+Generation: 58 tourn time: 1.6766481399536133 cross time: 0.07398724555969238 mut time: 0.0013585090637207031 max func time 4.649415731430054 total time: 6.401498079299927 best sol: Cost(Infeasibility_Value=171, Objective_Value=0)
+diff = -2
+Generation: 59 tourn time: 1.6757524013519287 cross time: 0.07021069526672363 mut time: 0.023028135299682617 max func time 4.506446599960327 total time: 6.27552604675293 best sol: Cost(Infeasibility_Value=168, Objective_Value=0)
+diff = -2
+Generation: 60 tourn time: 1.719505786895752 cross time: 0.06225752830505371 mut time: 0.0015423297882080078 max func time 4.959571838378906 total time: 6.742965221405029 best sol: Cost(Infeasibility_Value=168, Objective_Value=0)
+diff = -2
+Generation: 61 tourn time: 3.150373935699463 cross time: 0.09187555313110352 mut time: 0.0021026134490966797 max func time 5.13058614730835 total time: 8.375046968460083 best sol: Cost(Infeasibility_Value=168, Objective_Value=0)
+diff = -2
+Generation: 62 tourn time: 1.6009950637817383 cross time: 0.06705689430236816 mut time: 0.0022995471954345703 max func time 4.523214817047119 total time: 6.193673849105835 best sol: Cost(Infeasibility_Value=168, Objective_Value=0)
+diff = -2
+Generation: 63 tourn time: 1.661463975906372 cross time: 0.06326580047607422 mut time: 0.0008194446563720703 max func time 4.485569477081299 total time: 6.211219787597656 best sol: Cost(Infeasibility_Value=168, Objective_Value=0)
+diff = -2
+Generation: 64 tourn time: 1.6150333881378174 cross time: 0.05970263481140137 mut time: 0.02917027473449707 max func time 4.535771131515503 total time: 6.23977255821228 best sol: Cost(Infeasibility_Value=166, Objective_Value=0)
+diff = -2
+Generation: 65 tourn time: 1.7348926067352295 cross time: 0.06231880187988281 mut time: 0.0030257701873779297 max func time 4.561353921890259 total time: 6.361690998077393 best sol: Cost(Infeasibility_Value=166, Objective_Value=0)
+diff = -2
+Generation: 66 tourn time: 1.7152421474456787 cross time: 0.062483787536621094 mut time: 0.004111528396606445 max func time 4.550032377243042 total time: 6.331979990005493 best sol: Cost(Infeasibility_Value=166, Objective_Value=0)
+diff = -2
+Generation: 67 tourn time: 1.686112403869629 cross time: 0.07056403160095215 mut time: 0.0021948814392089844 max func time 4.343543767929077 total time: 6.102511405944824 best sol: Cost(Infeasibility_Value=166, Objective_Value=0)
+diff = -2
+Generation: 68 tourn time: 1.707014560699463 cross time: 0.06535220146179199 mut time: 0.0015006065368652344 max func time 4.4365456104278564 total time: 6.210501194000244 best sol: Cost(Infeasibility_Value=166, Objective_Value=0)
+diff = -2
+Generation: 69 tourn time: 1.6326465606689453 cross time: 0.06261014938354492 mut time: 0.0018587112426757812 max func time 4.567525625228882 total time: 6.2647318840026855 best sol: Cost(Infeasibility_Value=164, Objective_Value=0)
+diff = -2
+Generation: 70 tourn time: 1.6427693367004395 cross time: 0.0663752555847168 mut time: 0.000881195068359375 max func time 4.491044044494629 total time: 6.20116400718689 best sol: Cost(Infeasibility_Value=164, Objective_Value=0)
+diff = -2
+Generation: 71 tourn time: 1.723123550415039 cross time: 0.07963728904724121 mut time: 0.0017006397247314453 max func time 4.627805948257446 total time: 6.432348966598511 best sol: Cost(Infeasibility_Value=164, Objective_Value=0)
+diff = -2
+Generation: 72 tourn time: 1.2798364162445068 cross time: 0.07692313194274902 mut time: 0.000766754150390625 max func time 3.829779624938965 total time: 5.187401294708252 best sol: Cost(Infeasibility_Value=164, Objective_Value=0)
+diff = -2
+Generation: 73 tourn time: 1.5733425617218018 cross time: 0.08967185020446777 mut time: 0.017023563385009766 max func time 3.581026554107666 total time: 5.261167287826538 best sol: Cost(Infeasibility_Value=164, Objective_Value=0)
+diff = -2
+Generation: 74 tourn time: 1.3842849731445312 cross time: 0.07348489761352539 mut time: 0.01933884620666504 max func time 3.768857002258301 total time: 5.246059894561768 best sol: Cost(Infeasibility_Value=158, Objective_Value=0)
+diff = -2
+Generation: 75 tourn time: 1.1487998962402344 cross time: 0.05208706855773926 mut time: 0.0007970333099365234 max func time 3.6585962772369385 total time: 4.860376596450806 best sol: Cost(Infeasibility_Value=158, Objective_Value=0)
+diff = -2
+Generation: 76 tourn time: 1.2135510444641113 cross time: 0.03296494483947754 mut time: 0.0005819797515869141 max func time 3.4348411560058594 total time: 4.682030439376831 best sol: Cost(Infeasibility_Value=158, Objective_Value=0)
+diff = -2
+Generation: 77 tourn time: 3.241737127304077 cross time: 0.10009551048278809 mut time: 0.0029604434967041016 max func time 4.850891590118408 total time: 8.195775032043457 best sol: Cost(Infeasibility_Value=157, Objective_Value=0)
+diff = -2
+Generation: 78 tourn time: 1.778773307800293 cross time: 0.06269478797912598 mut time: 0.029603958129882812 max func time 4.598306894302368 total time: 6.46947169303894 best sol: Cost(Infeasibility_Value=157, Objective_Value=0)
+diff = -2
+Generation: 79 tourn time: 1.5727121829986572 cross time: 0.06447625160217285 mut time: 0.0004987716674804688 max func time 4.439202308654785 total time: 6.076985597610474 best sol: Cost(Infeasibility_Value=156, Objective_Value=0)
+diff = -2
+Generation: 80 tourn time: 1.6840336322784424 cross time: 0.0905911922454834 mut time: 0.001425027847290039 max func time 4.7806715965271 total time: 6.556816577911377 best sol: Cost(Infeasibility_Value=155, Objective_Value=0)
+diff = -2
+Generation: 81 tourn time: 1.7114369869232178 cross time: 0.06283712387084961 mut time: 0.0036325454711914062 max func time 4.646132469177246 total time: 6.424134016036987 best sol: Cost(Infeasibility_Value=154, Objective_Value=0)
+diff = -2
+Generation: 82 tourn time: 1.6366064548492432 cross time: 0.06647419929504395 mut time: 0.019544363021850586 max func time 4.268368244171143 total time: 5.991089344024658 best sol: Cost(Infeasibility_Value=154, Objective_Value=0)
+diff = -2
+Generation: 83 tourn time: 1.6929404735565186 cross time: 0.07140374183654785 mut time: 0.0018317699432373047 max func time 4.536745309829712 total time: 6.303006887435913 best sol: Cost(Infeasibility_Value=154, Objective_Value=0)
+diff = -2
+Generation: 84 tourn time: 1.6228828430175781 cross time: 0.06521129608154297 mut time: 0.0009963512420654297 max func time 4.421670198440552 total time: 6.110848426818848 best sol: Cost(Infeasibility_Value=154, Objective_Value=0)
+diff = -2
+Generation: 85 tourn time: 1.6167805194854736 cross time: 0.05990862846374512 mut time: 0.030517578125 max func time 4.701727628707886 total time: 6.409018516540527 best sol: Cost(Infeasibility_Value=152, Objective_Value=0)
+diff = -2
+Generation: 86 tourn time: 1.7446904182434082 cross time: 0.08842825889587402 mut time: 0.0021660327911376953 max func time 4.553245544433594 total time: 6.3886072635650635 best sol: Cost(Infeasibility_Value=152, Objective_Value=0)
+diff = -2
+Generation: 87 tourn time: 1.6068174839019775 cross time: 0.08242106437683105 mut time: 0.0019259452819824219 max func time 4.682658433914185 total time: 6.373904705047607 best sol: Cost(Infeasibility_Value=151, Objective_Value=0)
+diff = -2
+Generation: 88 tourn time: 1.6665163040161133 cross time: 0.0455777645111084 mut time: 0.018518447875976562 max func time 4.460387706756592 total time: 6.191094398498535 best sol: Cost(Infeasibility_Value=151, Objective_Value=0)
+diff = -2
+Generation: 89 tourn time: 1.6821625232696533 cross time: 0.0710911750793457 mut time: 0.0029942989349365234 max func time 4.482372999191284 total time: 6.238707542419434 best sol: Cost(Infeasibility_Value=148, Objective_Value=0)
+diff = -2
+Generation: 90 tourn time: 1.33793044090271 cross time: 0.04200434684753418 mut time: 0.002461671829223633 max func time 3.909466505050659 total time: 5.291941404342651 best sol: Cost(Infeasibility_Value=148, Objective_Value=0)
+diff = -2
+Generation: 91 tourn time: 1.5055019855499268 cross time: 0.06807112693786621 mut time: 0.001102447509765625 max func time 4.5192883014678955 total time: 6.094062328338623 best sol: Cost(Infeasibility_Value=148, Objective_Value=0)
+diff = -2
+Generation: 92 tourn time: 1.6510019302368164 cross time: 0.08469724655151367 mut time: 0.0026917457580566406 max func time 4.5762388706207275 total time: 6.3147361278533936 best sol: Cost(Infeasibility_Value=146, Objective_Value=0)
+diff = -2
+Generation: 93 tourn time: 3.362865924835205 cross time: 0.08485102653503418 mut time: 0.001789093017578125 max func time 4.833952188491821 total time: 8.283551692962646 best sol: Cost(Infeasibility_Value=146, Objective_Value=0)
+diff = -2
+Generation: 94 tourn time: 1.5249176025390625 cross time: 0.06422090530395508 mut time: 0.0016434192657470703 max func time 4.822142124176025 total time: 6.413019895553589 best sol: Cost(Infeasibility_Value=146, Objective_Value=0)
+diff = -2
+Generation: 95 tourn time: 1.8008918762207031 cross time: 0.06597638130187988 mut time: 0.00402069091796875 max func time 4.752726078033447 total time: 6.62372088432312 best sol: Cost(Infeasibility_Value=144, Objective_Value=0)
+diff = -2
+Generation: 96 tourn time: 1.6376967430114746 cross time: 0.054982900619506836 mut time: 0.021993160247802734 max func time 4.321310520172119 total time: 6.03607702255249 best sol: Cost(Infeasibility_Value=144, Objective_Value=0)
+diff = -2
+Generation: 97 tourn time: 1.2564663887023926 cross time: 0.08556318283081055 mut time: 0.0013430118560791016 max func time 3.5479323863983154 total time: 4.891395568847656 best sol: Cost(Infeasibility_Value=144, Objective_Value=0)
+diff = -2
+Generation: 98 tourn time: 1.1344494819641113 cross time: 0.03611397743225098 mut time: 0.0006935596466064453 max func time 4.199549198150635 total time: 5.370898246765137 best sol: Cost(Infeasibility_Value=144, Objective_Value=0)
+diff = -2
+Generation: 99 tourn time: 1.641510009765625 cross time: 0.05875349044799805 mut time: 0.0009143352508544922 max func time 3.6372170448303223 total time: 5.3384881019592285 best sol: Cost(Infeasibility_Value=144, Objective_Value=0)
+diff = -2
+Generation: 100 tourn time: 1.5763492584228516 cross time: 0.032141923904418945 mut time: 0.0039942264556884766 max func time 4.697860479354858 total time: 6.31044340133667 best sol: Cost(Infeasibility_Value=144, Objective_Value=0)
+diff = -2
+Generation: 101 tourn time: 1.7162728309631348 cross time: 0.06278276443481445 mut time: 0.003702878952026367 max func time 4.428267002105713 total time: 6.211118698120117 best sol: Cost(Infeasibility_Value=143, Objective_Value=0)
+diff = -2
+Generation: 102 tourn time: 1.6596765518188477 cross time: 0.0439610481262207 mut time: 0.029576778411865234 max func time 4.49791145324707 total time: 6.231235027313232 best sol: Cost(Infeasibility_Value=143, Objective_Value=0)
+diff = -2
+Generation: 103 tourn time: 1.5188465118408203 cross time: 0.0340120792388916 mut time: 0.005074262619018555 max func time 4.0787458419799805 total time: 5.636781454086304 best sol: Cost(Infeasibility_Value=143, Objective_Value=0)
+diff = -2
+Generation: 104 tourn time: 1.6807525157928467 cross time: 0.0695028305053711 mut time: 0.0019826889038085938 max func time 4.449085474014282 total time: 6.201414108276367 best sol: Cost(Infeasibility_Value=143, Objective_Value=0)
+diff = -2
+Generation: 105 tourn time: 1.670896291732788 cross time: 0.06426572799682617 mut time: 0.018455982208251953 max func time 4.542763710021973 total time: 6.296473741531372 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 106 tourn time: 1.6817197799682617 cross time: 0.06430888175964355 mut time: 0.002099275588989258 max func time 4.420546531677246 total time: 6.168760776519775 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 107 tourn time: 1.6713628768920898 cross time: 0.08966493606567383 mut time: 0.002475738525390625 max func time 4.52685546875 total time: 6.290461778640747 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 108 tourn time: 1.7177469730377197 cross time: 0.06927800178527832 mut time: 0.0010294914245605469 max func time 4.455666780471802 total time: 6.243810653686523 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 109 tourn time: 3.163055181503296 cross time: 0.06985616683959961 mut time: 0.002374887466430664 max func time 5.011524677276611 total time: 8.246885776519775 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 110 tourn time: 1.9007031917572021 cross time: 0.06474995613098145 mut time: 0.004309654235839844 max func time 4.398165464401245 total time: 6.3680195808410645 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 111 tourn time: 1.5941483974456787 cross time: 0.04221653938293457 mut time: 0.002678394317626953 max func time 4.449090242385864 total time: 6.08822774887085 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 112 tourn time: 1.5634949207305908 cross time: 0.06658244132995605 mut time: 0.0005800724029541016 max func time 3.5633575916290283 total time: 5.194095849990845 best sol: Cost(Infeasibility_Value=142, Objective_Value=0)
+diff = -2
+Generation: 113 tourn time: 1.4698989391326904 cross time: 0.06365633010864258 mut time: 0.002049684524536133 max func time 4.385309219360352 total time: 5.92100715637207 best sol: Cost(Infeasibility_Value=141, Objective_Value=0)
+diff = -2
+Generation: 114 tourn time: 1.6925275325775146 cross time: 0.06222367286682129 mut time: 0.0019698143005371094 max func time 4.481527328491211 total time: 6.238335609436035 best sol: Cost(Infeasibility_Value=140, Objective_Value=0)
+diff = -2
+Generation: 115 tourn time: 1.6635901927947998 cross time: 0.06317591667175293 mut time: 0.002741098403930664 max func time 4.456888437271118 total time: 6.186488151550293 best sol: Cost(Infeasibility_Value=140, Objective_Value=0)
+diff = -2
+Generation: 116 tourn time: 1.6302576065063477 cross time: 0.0618896484375 mut time: 0.0027904510498046875 max func time 3.492274045944214 total time: 5.1873016357421875 best sol: Cost(Infeasibility_Value=137, Objective_Value=0)
+diff = -2
+Generation: 117 tourn time: 1.6888601779937744 cross time: 0.06165766716003418 mut time: 0.0329127311706543 max func time 4.437294006347656 total time: 6.220823287963867 best sol: Cost(Infeasibility_Value=137, Objective_Value=0)
+diff = -2
+Generation: 118 tourn time: 1.6585509777069092 cross time: 0.06690740585327148 mut time: 0.004879474639892578 max func time 4.465803146362305 total time: 6.203901767730713 best sol: Cost(Infeasibility_Value=137, Objective_Value=0)
+diff = -2
+Generation: 119 tourn time: 1.6706902980804443 cross time: 0.0672292709350586 mut time: 0.0014116764068603516 max func time 4.432550668716431 total time: 6.171968460083008 best sol: Cost(Infeasibility_Value=137, Objective_Value=0)
+diff = -2
+Generation: 120 tourn time: 1.9189982414245605 cross time: 0.09477019309997559 mut time: 0.0015399456024169922 max func time 3.332838773727417 total time: 5.348238945007324 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 121 tourn time: 1.3235249519348145 cross time: 0.06187272071838379 mut time: 0.0015964508056640625 max func time 3.460996389389038 total time: 4.848083972930908 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 122 tourn time: 1.5738768577575684 cross time: 0.07512807846069336 mut time: 0.003060579299926758 max func time 3.7084341049194336 total time: 5.360586404800415 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 123 tourn time: 1.6958224773406982 cross time: 0.07277679443359375 mut time: 0.002770662307739258 max func time 4.106166124343872 total time: 5.87763786315918 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 124 tourn time: 1.4441616535186768 cross time: 0.06545495986938477 mut time: 0.0035123825073242188 max func time 4.132006406784058 total time: 5.64523983001709 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 125 tourn time: 3.163060188293457 cross time: 0.08781909942626953 mut time: 0.002980947494506836 max func time 4.2840001583099365 total time: 7.537959098815918 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 126 tourn time: 1.2766458988189697 cross time: 0.06421995162963867 mut time: 0.0026426315307617188 max func time 3.9852371215820312 total time: 5.328831195831299 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 127 tourn time: 1.6148462295532227 cross time: 0.06660079956054688 mut time: 0.0018870830535888672 max func time 4.492683172225952 total time: 6.176128387451172 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 128 tourn time: 1.7081263065338135 cross time: 0.06347250938415527 mut time: 0.0019714832305908203 max func time 4.496959924697876 total time: 6.270627498626709 best sol: Cost(Infeasibility_Value=134, Objective_Value=0)
+diff = -2
+Generation: 129 tourn time: 1.6227211952209473 cross time: 0.06102156639099121 mut time: 0.0014739036560058594 max func time 4.308344125747681 total time: 5.993654251098633 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 130 tourn time: 1.6893980503082275 cross time: 0.06426882743835449 mut time: 0.0020301342010498047 max func time 4.662700891494751 total time: 6.418485641479492 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 131 tourn time: 1.681248664855957 cross time: 0.0780177116394043 mut time: 0.0009565353393554688 max func time 4.624459743499756 total time: 6.384790658950806 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 132 tourn time: 1.7222306728363037 cross time: 0.06717324256896973 mut time: 0.0018763542175292969 max func time 4.528461456298828 total time: 6.3198442459106445 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 133 tourn time: 1.7629690170288086 cross time: 0.06251382827758789 mut time: 0.001561880111694336 max func time 4.471928834915161 total time: 6.299067497253418 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 134 tourn time: 1.6828150749206543 cross time: 0.06504368782043457 mut time: 0.022113800048828125 max func time 4.448547124862671 total time: 6.218620300292969 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 135 tourn time: 1.6693158149719238 cross time: 0.06564688682556152 mut time: 0.001165628433227539 max func time 4.528239488601685 total time: 6.264458894729614 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 136 tourn time: 1.7038328647613525 cross time: 0.06782722473144531 mut time: 0.0016868114471435547 max func time 4.534326791763306 total time: 6.307771682739258 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 137 tourn time: 1.7063205242156982 cross time: 0.06568241119384766 mut time: 0.0009655952453613281 max func time 4.4233222007751465 total time: 6.196378231048584 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 138 tourn time: 1.6823616027832031 cross time: 0.07065677642822266 mut time: 0.018457651138305664 max func time 4.540938854217529 total time: 6.31252384185791 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 139 tourn time: 1.6736905574798584 cross time: 0.07155013084411621 mut time: 0.0006585121154785156 max func time 4.5515100955963135 total time: 6.2974913120269775 best sol: Cost(Infeasibility_Value=133, Objective_Value=0)
+diff = -2
+Generation: 140 tourn time: 1.6910758018493652 cross time: 0.06693768501281738 mut time: 0.002179861068725586 max func time 4.170918703079224 total time: 5.931194067001343 best sol: Cost(Infeasibility_Value=131, Objective_Value=0)
+diff = -2
+Generation: 141 tourn time: 3.2645010948181152 cross time: 0.09323239326477051 mut time: 0.0007202625274658203 max func time 5.135595083236694 total time: 8.494150161743164 best sol: Cost(Infeasibility_Value=131, Objective_Value=0)
+diff = -2
+Generation: 142 tourn time: 1.6812479496002197 cross time: 0.06693816184997559 mut time: 0.0009660720825195312 max func time 4.642492771148682 total time: 6.391754627227783 best sol: Cost(Infeasibility_Value=131, Objective_Value=0)
+diff = -2
+Generation: 143 tourn time: 1.7244837284088135 cross time: 0.06360793113708496 mut time: 0.0007257461547851562 max func time 4.531927108764648 total time: 6.320828914642334 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 144 tourn time: 1.6200835704803467 cross time: 0.08356523513793945 mut time: 0.0029249191284179688 max func time 4.507458925247192 total time: 6.214128494262695 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 145 tourn time: 1.5694530010223389 cross time: 0.06547117233276367 mut time: 0.0017008781433105469 max func time 4.373782396316528 total time: 6.01050329208374 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 146 tourn time: 1.7165534496307373 cross time: 0.06827592849731445 mut time: 0.0029065608978271484 max func time 4.534852027893066 total time: 6.322674751281738 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 147 tourn time: 1.5892744064331055 cross time: 0.06569886207580566 mut time: 0.0030090808868408203 max func time 4.492843866348267 total time: 6.1509270668029785 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 148 tourn time: 1.6360936164855957 cross time: 0.06524419784545898 mut time: 0.0019049644470214844 max func time 4.489407777786255 total time: 6.192746877670288 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 149 tourn time: 1.625948429107666 cross time: 0.06884193420410156 mut time: 0.002760648727416992 max func time 4.5370635986328125 total time: 6.234709024429321 best sol: Cost(Infeasibility_Value=129, Objective_Value=0)
+diff = -2
+Generation: 150 tourn time: 2.079821825027466 cross time: 0.0664520263671875 mut time: 0.0008296966552734375 max func time 4.010225772857666 total time: 6.157426834106445 best sol: Cost(Infeasibility_Value=128, Objective_Value=0)
+diff = -2
+Generation: 151 tourn time: 1.6222856044769287 cross time: 0.06310343742370605 mut time: 0.0018892288208007812 max func time 4.531615972518921 total time: 6.218978643417358 best sol: Cost(Infeasibility_Value=128, Objective_Value=0)
+diff = -2
+Generation: 152 tourn time: 1.6942801475524902 cross time: 0.06755518913269043 mut time: 0.0026810169219970703 max func time 4.669074773788452 total time: 6.433674097061157 best sol: Cost(Infeasibility_Value=127, Objective_Value=0)
+diff = -2
+Generation: 153 tourn time: 1.5974221229553223 cross time: 0.06647276878356934 mut time: 0.0006651878356933594 max func time 4.499308109283447 total time: 6.163956642150879 best sol: Cost(Infeasibility_Value=127, Objective_Value=0)
+diff = -2
+Generation: 154 tourn time: 1.6887753009796143 cross time: 0.06634521484375 mut time: 0.021310091018676758 max func time 4.66247034072876 total time: 6.439000606536865 best sol: Cost(Infeasibility_Value=127, Objective_Value=0)
+diff = -2
+Generation: 155 tourn time: 1.674072027206421 cross time: 0.060305118560791016 mut time: 0.0018548965454101562 max func time 4.581047058105469 total time: 6.317371606826782 best sol: Cost(Infeasibility_Value=126, Objective_Value=0)
+diff = -2
+Generation: 156 tourn time: 1.7151603698730469 cross time: 0.06064271926879883 mut time: 0.0023963451385498047 max func time 4.497409820556641 total time: 6.275697469711304 best sol: Cost(Infeasibility_Value=125, Objective_Value=0)
+diff = -2
+Generation: 157 tourn time: 3.190183162689209 cross time: 0.11000251770019531 mut time: 0.0017704963684082031 max func time 5.226038217544556 total time: 8.528082132339478 best sol: Cost(Infeasibility_Value=125, Objective_Value=0)
+diff = -2
+Generation: 158 tourn time: 1.644714117050171 cross time: 0.06881070137023926 mut time: 0.002511739730834961 max func time 4.673262596130371 total time: 6.38940167427063 best sol: Cost(Infeasibility_Value=125, Objective_Value=0)
+diff = -2
+Generation: 159 tourn time: 1.6885125637054443 cross time: 0.06566667556762695 mut time: 0.0010809898376464844 max func time 4.814723968505859 total time: 6.570082664489746 best sol: Cost(Infeasibility_Value=125, Objective_Value=0)
+diff = -2
+Generation: 160 tourn time: 1.4130568504333496 cross time: 0.06332802772521973 mut time: 0.0010826587677001953 max func time 4.480804920196533 total time: 5.958364963531494 best sol: Cost(Infeasibility_Value=123, Objective_Value=0)
+diff = -2
+Generation: 161 tourn time: 1.6491622924804688 cross time: 0.045305728912353516 mut time: 0.0015594959259033203 max func time 4.5123655796051025 total time: 6.208492040634155 best sol: Cost(Infeasibility_Value=123, Objective_Value=0)
+diff = -2
+Generation: 162 tourn time: 1.6140310764312744 cross time: 0.0673213005065918 mut time: 0.002093791961669922 max func time 4.348682641983032 total time: 6.0322229862213135 best sol: Cost(Infeasibility_Value=122, Objective_Value=0)
+diff = -2
+Generation: 163 tourn time: 1.661292314529419 cross time: 0.06575846672058105 mut time: 0.004091024398803711 max func time 4.466923475265503 total time: 6.198154449462891 best sol: Cost(Infeasibility_Value=121, Objective_Value=0)
+diff = -2
+Generation: 164 tourn time: 1.6180882453918457 cross time: 0.06232476234436035 mut time: 0.0036847591400146484 max func time 4.46997594833374 total time: 6.1541664600372314 best sol: Cost(Infeasibility_Value=120, Objective_Value=0)
+diff = -2
+Generation: 165 tourn time: 1.6425354480743408 cross time: 0.08482956886291504 mut time: 0.0030896663665771484 max func time 4.415187120437622 total time: 6.14573860168457 best sol: Cost(Infeasibility_Value=120, Objective_Value=0)
+diff = -2
+Generation: 166 tourn time: 1.5063450336456299 cross time: 0.030179977416992188 mut time: 0.0017828941345214844 max func time 3.475769281387329 total time: 5.014163255691528 best sol: Cost(Infeasibility_Value=120, Objective_Value=0)
+diff = -2
+Generation: 167 tourn time: 1.6981067657470703 cross time: 0.0648813247680664 mut time: 0.0019245147705078125 max func time 4.412122011184692 total time: 6.177131414413452 best sol: Cost(Infeasibility_Value=120, Objective_Value=0)
+diff = -2
+Generation: 168 tourn time: 1.6784589290618896 cross time: 0.08232998847961426 mut time: 0.017863750457763672 max func time 4.421198129653931 total time: 6.199934005737305 best sol: Cost(Infeasibility_Value=119, Objective_Value=0)
+diff = -2
+Generation: 169 tourn time: 1.72198486328125 cross time: 0.07187724113464355 mut time: 0.0007784366607666016 max func time 3.9225051403045654 total time: 5.717233896255493 best sol: Cost(Infeasibility_Value=119, Objective_Value=0)
+diff = -2
+Generation: 170 tourn time: 1.459343671798706 cross time: 0.06609869003295898 mut time: 0.0023796558380126953 max func time 4.461683034896851 total time: 5.989609241485596 best sol: Cost(Infeasibility_Value=119, Objective_Value=0)
+diff = -2
+Generation: 171 tourn time: 1.7081084251403809 cross time: 0.06379294395446777 mut time: 0.004504203796386719 max func time 4.534666299819946 total time: 6.311181545257568 best sol: Cost(Infeasibility_Value=119, Objective_Value=0)
+diff = -2
+Generation: 172 tourn time: 1.7065129280090332 cross time: 0.06857895851135254 mut time: 0.020107746124267578 max func time 4.507816553115845 total time: 6.303130149841309 best sol: Cost(Infeasibility_Value=119, Objective_Value=0)
+diff = -2
+Generation: 173 tourn time: 3.1764752864837646 cross time: 0.09270668029785156 mut time: 0.00345611572265625 max func time 5.090261936187744 total time: 8.362991333007812 best sol: Cost(Infeasibility_Value=119, Objective_Value=0)
+diff = -2
+Generation: 174 tourn time: 1.70316743850708 cross time: 0.06368327140808105 mut time: 0.0027921199798583984 max func time 4.526652574539185 total time: 6.296389102935791 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 175 tourn time: 1.563385248184204 cross time: 0.06451225280761719 mut time: 0.018185138702392578 max func time 4.426767110824585 total time: 6.0729475021362305 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 176 tourn time: 1.613579273223877 cross time: 0.06259679794311523 mut time: 0.0027387142181396484 max func time 4.4852211475372314 total time: 6.16423225402832 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 177 tourn time: 1.6681180000305176 cross time: 0.06034088134765625 mut time: 0.0007894039154052734 max func time 4.467898368835449 total time: 6.1972432136535645 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 178 tourn time: 1.5782859325408936 cross time: 0.06099367141723633 mut time: 0.000885009765625 max func time 4.672321081161499 total time: 6.312582969665527 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 179 tourn time: 1.7918109893798828 cross time: 0.10813355445861816 mut time: 0.032048702239990234 max func time 4.114100217819214 total time: 6.046184301376343 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 180 tourn time: 1.613074541091919 cross time: 0.07170653343200684 mut time: 0.002636432647705078 max func time 4.434787034988403 total time: 6.122297048568726 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 181 tourn time: 1.6607601642608643 cross time: 0.06619477272033691 mut time: 0.0026493072509765625 max func time 4.50074577331543 total time: 6.23044753074646 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 182 tourn time: 1.6846916675567627 cross time: 0.04462170600891113 mut time: 0.04361844062805176 max func time 4.503721714019775 total time: 6.2767462730407715 best sol: Cost(Infeasibility_Value=118, Objective_Value=0)
+diff = -2
+Generation: 183 tourn time: 1.6796953678131104 cross time: 0.06679248809814453 mut time: 0.0016071796417236328 max func time 4.073445081710815 total time: 5.821634531021118 best sol: Cost(Infeasibility_Value=117, Objective_Value=0)
+diff = -2
+Generation: 184 tourn time: 1.2084362506866455 cross time: 0.09130859375 mut time: 0.0017714500427246094 max func time 4.54855751991272 total time: 5.850174427032471 best sol: Cost(Infeasibility_Value=117, Objective_Value=0)
+diff = -2
+Generation: 185 tourn time: 1.745474100112915 cross time: 0.06527471542358398 mut time: 0.005082845687866211 max func time 4.418501377105713 total time: 6.2344207763671875 best sol: Cost(Infeasibility_Value=116, Objective_Value=0)
+diff = -2
+Generation: 186 tourn time: 1.6554851531982422 cross time: 0.0674593448638916 mut time: 0.0017397403717041016 max func time 4.455994367599487 total time: 6.180770397186279 best sol: Cost(Infeasibility_Value=116, Objective_Value=0)
+diff = -2
+Generation: 187 tourn time: 1.6736488342285156 cross time: 0.0697782039642334 mut time: 0.0018205642700195312 max func time 4.569758176803589 total time: 6.315093994140625 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 188 tourn time: 1.7116997241973877 cross time: 0.06715703010559082 mut time: 0.020834684371948242 max func time 4.49225115776062 total time: 6.29203987121582 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 189 tourn time: 2.7732555866241455 cross time: 0.12986183166503906 mut time: 0.0010979175567626953 max func time 4.834290504455566 total time: 7.738610029220581 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 190 tourn time: 1.6883950233459473 cross time: 0.06901240348815918 mut time: 0.0020999908447265625 max func time 4.57605504989624 total time: 6.335662603378296 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 191 tourn time: 1.601902723312378 cross time: 0.044045209884643555 mut time: 0.017921924591064453 max func time 4.434453248977661 total time: 6.098408222198486 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 192 tourn time: 1.6539757251739502 cross time: 0.059160709381103516 mut time: 0.027027606964111328 max func time 4.545427560806274 total time: 6.285679340362549 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 193 tourn time: 1.6126463413238525 cross time: 0.06536984443664551 mut time: 0.01798725128173828 max func time 4.467560529708862 total time: 6.163658142089844 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 194 tourn time: 1.6112799644470215 cross time: 0.05717277526855469 mut time: 0.020580530166625977 max func time 4.581887722015381 total time: 6.271021366119385 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 195 tourn time: 1.6518237590789795 cross time: 0.06968283653259277 mut time: 0.0018126964569091797 max func time 4.639391899108887 total time: 6.362809896469116 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 196 tourn time: 1.7164194583892822 cross time: 0.06749463081359863 mut time: 0.002994537353515625 max func time 4.531916856765747 total time: 6.318917274475098 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 197 tourn time: 1.6708877086639404 cross time: 0.05971097946166992 mut time: 0.0016448497772216797 max func time 4.39171028137207 total time: 6.1240458488464355 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 198 tourn time: 1.6170401573181152 cross time: 0.08531928062438965 mut time: 0.0022759437561035156 max func time 4.631807088851929 total time: 6.336533069610596 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 199 tourn time: 1.6820826530456543 cross time: 0.06821012496948242 mut time: 0.0023970603942871094 max func time 4.554882049560547 total time: 6.307660818099976 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 200 tourn time: 1.807420253753662 cross time: 0.06494808197021484 mut time: 0.016890764236450195 max func time 4.432779550552368 total time: 6.322134017944336 best sol: Cost(Infeasibility_Value=115, Objective_Value=0)
+diff = -2
+Generation: 201 tourn time: 1.6887221336364746 cross time: 0.045926570892333984 mut time: 0.01806783676147461 max func time 4.470756530761719 total time: 6.223569869995117 best sol: Cost(Infeasibility_Value=114, Objective_Value=0)
+diff = -2
+Generation: 202 tourn time: 1.6653306484222412 cross time: 0.06673192977905273 mut time: 0.0007977485656738281 max func time 4.49882435798645 total time: 6.231777906417847 best sol: Cost(Infeasibility_Value=114, Objective_Value=0)
+diff = -2
+Generation: 203 tourn time: 1.6706950664520264 cross time: 0.06531548500061035 mut time: 0.003860950469970703 max func time 4.442675352096558 total time: 6.1826417446136475 best sol: Cost(Infeasibility_Value=114, Objective_Value=0)
+diff = -2
+Generation: 204 tourn time: 1.628159999847412 cross time: 0.059957027435302734 mut time: 0.0012292861938476562 max func time 4.476940393447876 total time: 6.166382312774658 best sol: Cost(Infeasibility_Value=114, Objective_Value=0)
+diff = -2
+Generation: 205 tourn time: 3.169365644454956 cross time: 0.0887610912322998 mut time: 0.0019185543060302734 max func time 4.977681636810303 total time: 8.237810611724854 best sol: Cost(Infeasibility_Value=114, Objective_Value=0)
+diff = -2
+Generation: 206 tourn time: 1.6218669414520264 cross time: 0.06471896171569824 mut time: 0.0015511512756347656 max func time 4.36115288734436 total time: 6.049396276473999 best sol: Cost(Infeasibility_Value=113, Objective_Value=0)
+diff = -2
+Generation: 207 tourn time: 1.5812814235687256 cross time: 0.06396102905273438 mut time: 0.0022878646850585938 max func time 4.620024681091309 total time: 6.267656087875366 best sol: Cost(Infeasibility_Value=113, Objective_Value=0)
+diff = -2
+Generation: 208 tourn time: 1.5983428955078125 cross time: 0.057694196701049805 mut time: 0.0006527900695800781 max func time 4.797035455703735 total time: 6.453816652297974 best sol: Cost(Infeasibility_Value=113, Objective_Value=0)
+diff = -2
+Generation: 209 tourn time: 1.6881921291351318 cross time: 0.06640386581420898 mut time: 0.0007519721984863281 max func time 4.465330600738525 total time: 6.220769882202148 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 210 tourn time: 1.6049833297729492 cross time: 0.060765981674194336 mut time: 0.00044226646423339844 max func time 4.416747808456421 total time: 6.083030462265015 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 211 tourn time: 1.6729798316955566 cross time: 0.08458518981933594 mut time: 0.0020751953125 max func time 4.5195136070251465 total time: 6.279242277145386 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 212 tourn time: 1.686263084411621 cross time: 0.04614830017089844 mut time: 0.01996898651123047 max func time 4.424962282180786 total time: 6.177443265914917 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 213 tourn time: 1.7074275016784668 cross time: 0.06397652626037598 mut time: 0.0006346702575683594 max func time 4.189832448959351 total time: 5.961963653564453 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 214 tourn time: 1.6590123176574707 cross time: 0.06447815895080566 mut time: 0.0006859302520751953 max func time 4.56670069694519 total time: 6.290972709655762 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 215 tourn time: 1.5407981872558594 cross time: 0.08740043640136719 mut time: 0.0009589195251464844 max func time 4.546661615371704 total time: 6.175909757614136 best sol: Cost(Infeasibility_Value=112, Objective_Value=0)
+diff = -2
+Generation: 216 tourn time: 1.1978116035461426 cross time: 0.07685685157775879 mut time: 0.0027115345001220703 max func time 3.997694969177246 total time: 5.275162696838379 best sol: Cost(Infeasibility_Value=111, Objective_Value=0)
+diff = -2
+Generation: 217 tourn time: 1.655451774597168 cross time: 0.06648612022399902 mut time: 0.0012402534484863281 max func time 3.7230629920959473 total time: 5.44634485244751 best sol: Cost(Infeasibility_Value=111, Objective_Value=0)
+diff = -2
+Generation: 218 tourn time: 1.74916672706604 cross time: 0.06964516639709473 mut time: 0.0002853870391845703 max func time 4.852173089981079 total time: 6.6713597774505615 best sol: Cost(Infeasibility_Value=111, Objective_Value=0)
+diff = -2
+Generation: 219 tourn time: 1.3731377124786377 cross time: 0.09541749954223633 mut time: 0.002965211868286133 max func time 3.851546287536621 total time: 5.323155164718628 best sol: Cost(Infeasibility_Value=111, Objective_Value=0)
+diff = -2
+Generation: 220 tourn time: 1.5031049251556396 cross time: 0.05806612968444824 mut time: 0.0021970272064208984 max func time 3.736163854598999 total time: 5.299631595611572 best sol: Cost(Infeasibility_Value=111, Objective_Value=0)
+diff = -2
+Generation: 221 tourn time: 2.7788479328155518 cross time: 0.0949106216430664 mut time: 0.00371551513671875 max func time 4.509228706359863 total time: 7.386800289154053 best sol: Cost(Infeasibility_Value=110, Objective_Value=0)
+diff = -2
+Generation: 222 tourn time: 0.8142795562744141 cross time: 0.03410482406616211 mut time: 0.0009138584136962891 max func time 2.713329553604126 total time: 3.5627148151397705 best sol: Cost(Infeasibility_Value=109, Objective_Value=0)
+diff = -2
+Generation: 223 tourn time: 1.1335883140563965 cross time: 0.03205394744873047 mut time: 0.001978635787963867 max func time 3.629650592803955 total time: 4.797361612319946 best sol: Cost(Infeasibility_Value=109, Objective_Value=0)
+diff = -2
+Generation: 224 tourn time: 1.62015962600708 cross time: 0.045290231704711914 mut time: 0.027083635330200195 max func time 4.2473368644714355 total time: 5.939959764480591 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 225 tourn time: 1.3938794136047363 cross time: 0.06481122970581055 mut time: 0.00069427490234375 max func time 4.104250907897949 total time: 5.563710927963257 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 226 tourn time: 1.6012451648712158 cross time: 0.0639808177947998 mut time: 0.018215417861938477 max func time 4.545405864715576 total time: 6.228933095932007 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 227 tourn time: 1.7024493217468262 cross time: 0.0711677074432373 mut time: 0.001840829849243164 max func time 4.5315704345703125 total time: 6.307120323181152 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 228 tourn time: 1.67380952835083 cross time: 0.08184361457824707 mut time: 0.003961086273193359 max func time 4.572690010070801 total time: 6.332393407821655 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 229 tourn time: 1.6667835712432861 cross time: 0.044802188873291016 mut time: 0.030175447463989258 max func time 3.545661687850952 total time: 5.2875075340271 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 230 tourn time: 1.5596110820770264 cross time: 0.06667780876159668 mut time: 0.0020515918731689453 max func time 4.512104034423828 total time: 6.1405439376831055 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 231 tourn time: 1.6964709758758545 cross time: 0.06514501571655273 mut time: 0.002443552017211914 max func time 4.467264175415039 total time: 6.231413125991821 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 232 tourn time: 1.0731887817382812 cross time: 0.06824827194213867 mut time: 0.003838777542114258 max func time 4.401621341705322 total time: 5.546990394592285 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 233 tourn time: 1.7149627208709717 cross time: 0.08075642585754395 mut time: 0.0008118152618408203 max func time 4.4310078620910645 total time: 6.22763991355896 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 234 tourn time: 1.644395112991333 cross time: 0.06001019477844238 mut time: 0.001756429672241211 max func time 4.332409381866455 total time: 6.038656949996948 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 235 tourn time: 1.6968231201171875 cross time: 0.0664510726928711 mut time: 0.02064228057861328 max func time 4.454774856567383 total time: 6.238772630691528 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 236 tourn time: 1.7404367923736572 cross time: 0.057878732681274414 mut time: 0.0026514530181884766 max func time 4.533299207687378 total time: 6.334359645843506 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 237 tourn time: 3.204239845275879 cross time: 0.10725545883178711 mut time: 0.0017986297607421875 max func time 4.999458074569702 total time: 8.312836170196533 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 238 tourn time: 1.7333638668060303 cross time: 0.06798720359802246 mut time: 0.018099546432495117 max func time 4.427292823791504 total time: 6.246837615966797 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 239 tourn time: 1.4817907810211182 cross time: 0.02532649040222168 mut time: 0.0023887157440185547 max func time 3.9972002506256104 total time: 5.506799221038818 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 240 tourn time: 1.243434190750122 cross time: 0.049423933029174805 mut time: 0.002760171890258789 max func time 4.02030611038208 total time: 5.316013813018799 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 241 tourn time: 1.6442599296569824 cross time: 0.06221747398376465 mut time: 0.003015279769897461 max func time 4.48064661026001 total time: 6.1902289390563965 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 242 tourn time: 1.6989715099334717 cross time: 0.06429648399353027 mut time: 0.003605365753173828 max func time 4.538125038146973 total time: 6.305094957351685 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 243 tourn time: 1.6052284240722656 cross time: 0.06286311149597168 mut time: 0.0017473697662353516 max func time 4.4116363525390625 total time: 6.081566572189331 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 244 tourn time: 1.5713238716125488 cross time: 0.06294417381286621 mut time: 0.0008432865142822266 max func time 4.263335704803467 total time: 5.898541688919067 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 245 tourn time: 1.6036593914031982 cross time: 0.030961036682128906 mut time: 0.000985860824584961 max func time 3.688485860824585 total time: 5.324181318283081 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 246 tourn time: 1.197291612625122 cross time: 0.03046870231628418 mut time: 0.0025675296783447266 max func time 4.398888349533081 total time: 5.6293044090271 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 247 tourn time: 1.6688432693481445 cross time: 0.0876162052154541 mut time: 0.0042247772216796875 max func time 4.449998617172241 total time: 6.210785865783691 best sol: Cost(Infeasibility_Value=108, Objective_Value=0)
+diff = -2
+Generation: 248 tourn time: 1.3702023029327393 cross time: 0.05971813201904297 mut time: 0.0022945404052734375 max func time 4.385905742645264 total time: 5.818203449249268 best sol: Cost(Infeasibility_Value=107, Objective_Value=0)
+diff = -2
+Generation: 249 tourn time: 1.6364412307739258 cross time: 0.06113147735595703 mut time: 0.0007109642028808594 max func time 4.161447763442993 total time: 5.8598291873931885 best sol: Cost(Infeasibility_Value=107, Objective_Value=0)
+diff = -2
+Generation: 250 tourn time: 1.3077421188354492 cross time: 0.03263449668884277 mut time: 0.004441261291503906 max func time 3.384002923965454 total time: 4.728911638259888 best sol: Cost(Infeasibility_Value=107, Objective_Value=0)
+diff = -2
+Generation: 251 tourn time: 1.7740776538848877 cross time: 0.06992793083190918 mut time: 0.01704692840576172 max func time 4.082457780838013 total time: 5.943606853485107 best sol: Cost(Infeasibility_Value=107, Objective_Value=0)
+diff = -2
+Generation: 252 tourn time: 1.557713270187378 cross time: 0.10051345825195312 mut time: 0.001905679702758789 max func time 3.8037471771240234 total time: 5.463980197906494 best sol: Cost(Infeasibility_Value=106, Objective_Value=0)
+diff = -2
+Generation: 253 tourn time: 2.8280789852142334 cross time: 0.04292917251586914 mut time: 0.001184701919555664 max func time 4.826131105422974 total time: 7.69840669631958 best sol: Cost(Infeasibility_Value=106, Objective_Value=0)
+diff = -2
+Generation: 254 tourn time: 1.362854242324829 cross time: 0.05719256401062012 mut time: 0.026051044464111328 max func time 3.4334096908569336 total time: 4.879608154296875 best sol: Cost(Infeasibility_Value=106, Objective_Value=0)
+diff = -2
+Generation: 255 tourn time: 1.2559032440185547 cross time: 0.06628966331481934 mut time: 0.01797628402709961 max func time 4.588657855987549 total time: 5.92891001701355 best sol: Cost(Infeasibility_Value=106, Objective_Value=0)
+diff = -2
+Generation: 256 tourn time: 1.4144470691680908 cross time: 0.061888694763183594 mut time: 0.0024378299713134766 max func time 4.563099145889282 total time: 6.041963815689087 best sol: Cost(Infeasibility_Value=106, Objective_Value=0)
+diff = -2
+Generation: 257 tourn time: 1.6541414260864258 cross time: 0.06291532516479492 mut time: 0.031302452087402344 max func time 4.672239065170288 total time: 6.4207024574279785 best sol: Cost(Infeasibility_Value=106, Objective_Value=0)
+diff = -2
+Generation: 258 tourn time: 1.6764321327209473 cross time: 0.08463311195373535 mut time: 0.0021512508392333984 max func time 4.520516395568848 total time: 6.283831834793091 best sol: Cost(Infeasibility_Value=104, Objective_Value=0)
+diff = -2
+Generation: 259 tourn time: 1.741290807723999 cross time: 0.06812334060668945 mut time: 0.0021638870239257812 max func time 4.6242499351501465 total time: 6.4359211921691895 best sol: Cost(Infeasibility_Value=104, Objective_Value=0)
+diff = -2
+Generation: 260 tourn time: 1.791069746017456 cross time: 0.08971881866455078 mut time: 0.0031347274780273438 max func time 4.647642135620117 total time: 6.531667709350586 best sol: Cost(Infeasibility_Value=104, Objective_Value=0)
+diff = -2
+Generation: 261 tourn time: 1.7286272048950195 cross time: 0.0673673152923584 mut time: 0.0019774436950683594 max func time 4.651963472366333 total time: 6.450033664703369 best sol: Cost(Infeasibility_Value=104, Objective_Value=0)
+diff = -2
+Generation: 262 tourn time: 1.6574079990386963 cross time: 0.07743644714355469 mut time: 0.0009191036224365234 max func time 4.5894975662231445 total time: 6.325351238250732 best sol: Cost(Infeasibility_Value=104, Objective_Value=0)
+diff = -2
+Generation: 263 tourn time: 1.658130407333374 cross time: 0.06714510917663574 mut time: 0.003966569900512695 max func time 4.606277942657471 total time: 6.335619926452637 best sol: Cost(Infeasibility_Value=103, Objective_Value=0)
+diff = -2
+Generation: 264 tourn time: 1.7527434825897217 cross time: 0.06877779960632324 mut time: 0.002229928970336914 max func time 4.552384853363037 total time: 6.376225471496582 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 265 tourn time: 1.6461479663848877 cross time: 0.06433677673339844 mut time: 0.01852250099182129 max func time 4.289896726608276 total time: 6.019007682800293 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 266 tourn time: 1.6933646202087402 cross time: 0.06571221351623535 mut time: 0.0006737709045410156 max func time 4.09385871887207 total time: 5.853693962097168 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 267 tourn time: 1.7425694465637207 cross time: 0.0895543098449707 mut time: 0.0019609928131103516 max func time 4.687411308288574 total time: 6.521594762802124 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 268 tourn time: 1.715013027191162 cross time: 0.06651735305786133 mut time: 0.0034456253051757812 max func time 4.114326477050781 total time: 5.899394273757935 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 269 tourn time: 2.304280996322632 cross time: 0.044376373291015625 mut time: 0.0032563209533691406 max func time 3.644160747528076 total time: 5.996172666549683 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 270 tourn time: 1.0969607830047607 cross time: 0.05221056938171387 mut time: 0.00046825408935546875 max func time 3.677593946456909 total time: 4.827316761016846 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 271 tourn time: 1.6324713230133057 cross time: 0.06397628784179688 mut time: 0.0032215118408203125 max func time 4.2159130573272705 total time: 5.915676116943359 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 272 tourn time: 1.665151596069336 cross time: 0.08718132972717285 mut time: 0.005866527557373047 max func time 3.8337066173553467 total time: 5.591991662979126 best sol: Cost(Infeasibility_Value=102, Objective_Value=0)
+diff = -2
+Generation: 273 tourn time: 1.4985897541046143 cross time: 0.06325149536132812 mut time: 0.0022025108337402344 max func time 3.214690685272217 total time: 4.778810024261475 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 274 tourn time: 1.495405673980713 cross time: 0.06416082382202148 mut time: 0.0008611679077148438 max func time 4.444334268569946 total time: 6.00485634803772 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 275 tourn time: 1.543388843536377 cross time: 0.06042003631591797 mut time: 0.0007884502410888672 max func time 4.541714191436768 total time: 6.14640212059021 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 276 tourn time: 1.675239086151123 cross time: 0.06675219535827637 mut time: 0.0019292831420898438 max func time 4.492809772491455 total time: 6.236806869506836 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 277 tourn time: 1.6364130973815918 cross time: 0.07313227653503418 mut time: 0.001943349838256836 max func time 4.4348695278167725 total time: 6.1464502811431885 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 278 tourn time: 1.631873369216919 cross time: 0.06512951850891113 mut time: 0.0005297660827636719 max func time 4.53675103187561 total time: 6.234379291534424 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 279 tourn time: 1.6418571472167969 cross time: 0.0686795711517334 mut time: 0.0035736560821533203 max func time 4.487022399902344 total time: 6.2012248039245605 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 280 tourn time: 1.69126558303833 cross time: 0.04622006416320801 mut time: 0.0005211830139160156 max func time 4.335938215255737 total time: 6.07404351234436 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 281 tourn time: 1.125260353088379 cross time: 0.06921815872192383 mut time: 0.0017924308776855469 max func time 4.498065233230591 total time: 5.694429874420166 best sol: Cost(Infeasibility_Value=101, Objective_Value=0)
+diff = -2
+Generation: 282 tourn time: 1.6291093826293945 cross time: 0.06278562545776367 mut time: 0.0016331672668457031 max func time 4.551003456115723 total time: 6.2446088790893555 best sol: Cost(Infeasibility_Value=99, Objective_Value=0)
+diff = -2
+Generation: 283 tourn time: 1.70458984375 cross time: 0.0682516098022461 mut time: 0.021287202835083008 max func time 4.493119955062866 total time: 6.287353038787842 best sol: Cost(Infeasibility_Value=99, Objective_Value=0)
+diff = -2
+Generation: 284 tourn time: 1.6797072887420654 cross time: 0.06894993782043457 mut time: 0.001981019973754883 max func time 4.015958070755005 total time: 5.766690731048584 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 285 tourn time: 3.209141254425049 cross time: 0.07691001892089844 mut time: 0.0010895729064941406 max func time 5.148343086242676 total time: 8.435590982437134 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 286 tourn time: 1.6457698345184326 cross time: 0.06670832633972168 mut time: 0.0008556842803955078 max func time 4.625073432922363 total time: 6.338502407073975 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 287 tourn time: 1.6594102382659912 cross time: 0.061751365661621094 mut time: 0.0022411346435546875 max func time 4.682737827301025 total time: 6.4062340259552 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 288 tourn time: 1.4447345733642578 cross time: 0.03277897834777832 mut time: 0.0009751319885253906 max func time 4.434206247329712 total time: 5.912784099578857 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 289 tourn time: 1.6625921726226807 cross time: 0.06142830848693848 mut time: 0.024880647659301758 max func time 4.481543302536011 total time: 6.230548620223999 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 290 tourn time: 1.223034381866455 cross time: 0.07598590850830078 mut time: 0.0010001659393310547 max func time 3.631476640701294 total time: 4.931602478027344 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 291 tourn time: 1.7060105800628662 cross time: 0.07081842422485352 mut time: 0.0018677711486816406 max func time 4.420470714569092 total time: 6.1992528438568115 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 292 tourn time: 1.783966302871704 cross time: 0.0629732608795166 mut time: 0.002773761749267578 max func time 4.545889139175415 total time: 6.395697116851807 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 293 tourn time: 1.6710703372955322 cross time: 0.054862260818481445 mut time: 0.0016787052154541016 max func time 4.361388444900513 total time: 6.089076280593872 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 294 tourn time: 1.6899757385253906 cross time: 0.06232714653015137 mut time: 0.0016961097717285156 max func time 4.462829828262329 total time: 6.216919422149658 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 295 tourn time: 1.5735697746276855 cross time: 0.035387277603149414 mut time: 0.0018992424011230469 max func time 3.344707727432251 total time: 4.9556567668914795 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 296 tourn time: 1.4614789485931396 cross time: 0.07416844367980957 mut time: 0.0015780925750732422 max func time 3.7351183891296387 total time: 5.272437810897827 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 297 tourn time: 1.7043211460113525 cross time: 0.03600335121154785 mut time: 0.0035552978515625 max func time 3.4851417541503906 total time: 5.2291271686553955 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 298 tourn time: 1.294754981994629 cross time: 0.06890392303466797 mut time: 0.0005352497100830078 max func time 3.29817533493042 total time: 4.662452697753906 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 299 tourn time: 1.125680685043335 cross time: 0.04647541046142578 mut time: 0.0016236305236816406 max func time 3.551037073135376 total time: 4.724910020828247 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 300 tourn time: 1.6749317646026611 cross time: 0.07864999771118164 mut time: 0.0009348392486572266 max func time 4.214108467102051 total time: 5.9687275886535645 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 301 tourn time: 3.821044683456421 cross time: 0.0925142765045166 mut time: 0.007619380950927734 max func time 5.128524303436279 total time: 9.049800872802734 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 302 tourn time: 1.5683259963989258 cross time: 0.033185482025146484 mut time: 0.0006158351898193359 max func time 3.3260321617126465 total time: 4.928253889083862 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 303 tourn time: 1.0178472995758057 cross time: 0.039388418197631836 mut time: 0.005173921585083008 max func time 3.416188955307007 total time: 4.4786903858184814 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 304 tourn time: 1.0143177509307861 cross time: 0.030447959899902344 mut time: 0.0005998611450195312 max func time 3.7518346309661865 total time: 4.797286510467529 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 305 tourn time: 1.6615021228790283 cross time: 0.06645011901855469 mut time: 0.0020818710327148438 max func time 4.653925657272339 total time: 6.384068489074707 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 306 tourn time: 1.5957493782043457 cross time: 0.06554675102233887 mut time: 0.0006074905395507812 max func time 4.541374921798706 total time: 6.203362703323364 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 307 tourn time: 1.6087040901184082 cross time: 0.0635218620300293 mut time: 0.0018572807312011719 max func time 4.411282777786255 total time: 6.085468769073486 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 308 tourn time: 1.6866073608398438 cross time: 0.06171083450317383 mut time: 0.013061046600341797 max func time 4.5089616775512695 total time: 6.270435094833374 best sol: Cost(Infeasibility_Value=98, Objective_Value=0)
+diff = -2
+Generation: 309 tourn time: 1.7354044914245605 cross time: 0.06696176528930664 mut time: 0.0024929046630859375 max func time 4.4954514503479 total time: 6.300414323806763 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 310 tourn time: 1.6884734630584717 cross time: 0.0849144458770752 mut time: 0.0006618499755859375 max func time 4.109362363815308 total time: 5.8834943771362305 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 311 tourn time: 1.6548573970794678 cross time: 0.06356549263000488 mut time: 0.0021867752075195312 max func time 3.806288957595825 total time: 5.5269858837127686 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 312 tourn time: 1.7364556789398193 cross time: 0.08606553077697754 mut time: 0.0015799999237060547 max func time 4.553151607513428 total time: 6.377342224121094 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 313 tourn time: 1.6996471881866455 cross time: 0.06581735610961914 mut time: 0.0016393661499023438 max func time 4.5175535678863525 total time: 6.284754514694214 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 314 tourn time: 1.7108213901519775 cross time: 0.059130191802978516 mut time: 0.0022864341735839844 max func time 4.549084663391113 total time: 6.321418046951294 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 315 tourn time: 1.6698505878448486 cross time: 0.06431293487548828 mut time: 0.013115882873535156 max func time 4.360799551010132 total time: 6.124225854873657 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 316 tourn time: 1.3248233795166016 cross time: 0.0716252326965332 mut time: 0.0018825531005859375 max func time 4.516432285308838 total time: 5.914853096008301 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 317 tourn time: 3.303218364715576 cross time: 0.09597587585449219 mut time: 0.0019919872283935547 max func time 5.0048394203186035 total time: 8.406111001968384 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 318 tourn time: 1.6532948017120361 cross time: 0.0657813549041748 mut time: 0.0018918514251708984 max func time 4.618670225143433 total time: 6.339730501174927 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 319 tourn time: 1.6559779644012451 cross time: 0.05971670150756836 mut time: 0.0023674964904785156 max func time 4.568266868591309 total time: 6.286422967910767 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 320 tourn time: 1.608168363571167 cross time: 0.06698369979858398 mut time: 0.002518892288208008 max func time 4.573286294937134 total time: 6.251051425933838 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 321 tourn time: 1.5606248378753662 cross time: 0.06509613990783691 mut time: 0.003540515899658203 max func time 3.5001869201660156 total time: 5.12954568862915 best sol: Cost(Infeasibility_Value=96, Objective_Value=0)
+diff = -2
+Generation: 322 tourn time: 1.3652970790863037 cross time: 0.0708320140838623 mut time: 0.000743865966796875 max func time 4.073113679885864 total time: 5.510075807571411 best sol: Cost(Infeasibility_Value=95, Objective_Value=0)
+diff = -2
+Generation: 323 tourn time: 1.077240228652954 cross time: 0.07314801216125488 mut time: 0.0018029212951660156 max func time 3.2767140865325928 total time: 4.4290032386779785 best sol: Cost(Infeasibility_Value=95, Objective_Value=0)
+diff = -2
+Generation: 324 tourn time: 1.3130593299865723 cross time: 0.05193495750427246 mut time: 0.002555370330810547 max func time 3.393383741378784 total time: 4.761014223098755 best sol: Cost(Infeasibility_Value=95, Objective_Value=0)
+diff = -2
+Generation: 325 tourn time: 1.4256386756896973 cross time: 0.06056523323059082 mut time: 0.0030727386474609375 max func time 3.8402082920074463 total time: 5.329571008682251 best sol: Cost(Infeasibility_Value=95, Objective_Value=0)
+diff = -2
+Generation: 326 tourn time: 1.5729713439941406 cross time: 0.08049511909484863 mut time: 0.0005648136138916016 max func time 4.345482349395752 total time: 5.999604225158691 best sol: Cost(Infeasibility_Value=95, Objective_Value=0)
+diff = -2
+Generation: 327 tourn time: 1.488210678100586 cross time: 0.06217670440673828 mut time: 0.0009832382202148438 max func time 3.8806047439575195 total time: 5.432065010070801 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 328 tourn time: 1.6522982120513916 cross time: 0.050501346588134766 mut time: 0.0005469322204589844 max func time 3.3395020961761475 total time: 5.042939186096191 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 329 tourn time: 0.8846774101257324 cross time: 0.031170368194580078 mut time: 0.001058816909790039 max func time 3.6461341381073 total time: 4.563141345977783 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 330 tourn time: 1.709578275680542 cross time: 0.06584978103637695 mut time: 0.020432710647583008 max func time 4.505851984024048 total time: 6.301807641983032 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 331 tourn time: 1.6276681423187256 cross time: 0.06258535385131836 mut time: 0.003915548324584961 max func time 4.523144721984863 total time: 6.2174060344696045 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 332 tourn time: 1.7185454368591309 cross time: 0.04559016227722168 mut time: 0.019346237182617188 max func time 4.516614675521851 total time: 6.3001861572265625 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 333 tourn time: 3.1952617168426514 cross time: 0.09366631507873535 mut time: 0.0017764568328857422 max func time 5.2919299602508545 total time: 8.582727193832397 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 334 tourn time: 1.7137596607208252 cross time: 0.05832314491271973 mut time: 0.0025136470794677734 max func time 4.562076807022095 total time: 6.336767673492432 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 335 tourn time: 1.6101138591766357 cross time: 0.06104397773742676 mut time: 0.0010957717895507812 max func time 4.538201808929443 total time: 6.210550785064697 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 336 tourn time: 1.5679271221160889 cross time: 0.08381104469299316 mut time: 0.0020685195922851562 max func time 4.277820587158203 total time: 5.931729793548584 best sol: Cost(Infeasibility_Value=93, Objective_Value=0)
+diff = -2
+Generation: 337 tourn time: 1.1748270988464355 cross time: 0.06731867790222168 mut time: 0.0018086433410644531 max func time 4.582946062088013 total time: 5.826980113983154 best sol: Cost(Infeasibility_Value=91, Objective_Value=0)
+diff = -2
+Generation: 338 tourn time: 1.641998529434204 cross time: 0.06850695610046387 mut time: 0.0021774768829345703 max func time 4.571969747543335 total time: 6.284749507904053 best sol: Cost(Infeasibility_Value=91, Objective_Value=0)
+diff = -2
+Generation: 339 tourn time: 1.460237979888916 cross time: 0.05549955368041992 mut time: 0.00044465065002441406 max func time 4.427696943283081 total time: 5.943984031677246 best sol: Cost(Infeasibility_Value=91, Objective_Value=0)
+diff = -2
+Generation: 340 tourn time: 1.663884162902832 cross time: 0.06852555274963379 mut time: 0.0007159709930419922 max func time 4.4193501472473145 total time: 6.15257453918457 best sol: Cost(Infeasibility_Value=91, Objective_Value=0)
+diff = -2
+Generation: 341 tourn time: 1.6839334964752197 cross time: 0.061100006103515625 mut time: 0.0016980171203613281 max func time 4.411696910858154 total time: 6.158509254455566 best sol: Cost(Infeasibility_Value=90, Objective_Value=0)
+diff = -2
+Generation: 342 tourn time: 1.885983943939209 cross time: 0.07703042030334473 mut time: 0.0024809837341308594 max func time 4.465564250946045 total time: 6.431148529052734 best sol: Cost(Infeasibility_Value=90, Objective_Value=0)
+diff = -2
+Generation: 343 tourn time: 1.6961100101470947 cross time: 0.04419589042663574 mut time: 0.0285642147064209 max func time 4.395228862762451 total time: 6.164190769195557 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 344 tourn time: 1.6164965629577637 cross time: 0.06688308715820312 mut time: 0.002991199493408203 max func time 4.49077844619751 total time: 6.177235841751099 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 345 tourn time: 1.6969335079193115 cross time: 0.07716679573059082 mut time: 0.0023534297943115234 max func time 4.658199071884155 total time: 6.434744596481323 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 346 tourn time: 1.679973840713501 cross time: 0.06269335746765137 mut time: 0.0031976699829101562 max func time 4.534346580505371 total time: 6.280300140380859 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 347 tourn time: 1.625230312347412 cross time: 0.06536483764648438 mut time: 0.0006678104400634766 max func time 4.471388816833496 total time: 6.162752389907837 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 348 tourn time: 1.6681363582611084 cross time: 0.06298303604125977 mut time: 0.03244161605834961 max func time 4.456249713897705 total time: 6.219905138015747 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 349 tourn time: 3.2344679832458496 cross time: 0.0940556526184082 mut time: 0.0014014244079589844 max func time 5.021334409713745 total time: 8.351354837417603 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 350 tourn time: 1.6944944858551025 cross time: 0.06400656700134277 mut time: 0.021770238876342773 max func time 4.556746006011963 total time: 6.337114334106445 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 351 tourn time: 1.706056833267212 cross time: 0.06274843215942383 mut time: 0.0018236637115478516 max func time 4.280606269836426 total time: 6.0513246059417725 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 352 tourn time: 1.6676766872406006 cross time: 0.07071232795715332 mut time: 0.0008747577667236328 max func time 4.5057971477508545 total time: 6.245163202285767 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 353 tourn time: 1.7052083015441895 cross time: 0.060498952865600586 mut time: 0.011930704116821289 max func time 4.462173700332642 total time: 6.2399139404296875 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 354 tourn time: 1.6282427310943604 cross time: 0.06596517562866211 mut time: 0.0014412403106689453 max func time 4.333938121795654 total time: 6.029667854309082 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 355 tourn time: 1.2857396602630615 cross time: 0.06766748428344727 mut time: 0.0009360313415527344 max func time 4.454741716384888 total time: 5.8091771602630615 best sol: Cost(Infeasibility_Value=89, Objective_Value=0)
+diff = -2
+Generation: 356 tourn time: 1.5815935134887695 cross time: 0.06342673301696777 mut time: 0.0028569698333740234 max func time 4.4365222454071045 total time: 6.0844902992248535 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 357 tourn time: 1.5667712688446045 cross time: 0.0665285587310791 mut time: 0.0023124217987060547 max func time 4.352653980255127 total time: 5.988352298736572 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 358 tourn time: 1.7133989334106445 cross time: 0.06345510482788086 mut time: 0.0018811225891113281 max func time 4.513810634613037 total time: 6.292639493942261 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 359 tourn time: 1.6590018272399902 cross time: 0.052980899810791016 mut time: 0.0009999275207519531 max func time 4.417670965194702 total time: 6.130746364593506 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 360 tourn time: 1.6578154563903809 cross time: 0.06414794921875 mut time: 0.001178741455078125 max func time 4.319984436035156 total time: 6.043216943740845 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 361 tourn time: 1.3763697147369385 cross time: 0.0669093132019043 mut time: 0.003117084503173828 max func time 4.427187204360962 total time: 5.873675346374512 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 362 tourn time: 1.6132893562316895 cross time: 0.07014346122741699 mut time: 0.0008826255798339844 max func time 4.418303966522217 total time: 6.102716445922852 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 363 tourn time: 1.6721951961517334 cross time: 0.06477546691894531 mut time: 0.0006792545318603516 max func time 4.332213878631592 total time: 6.069952726364136 best sol: Cost(Infeasibility_Value=88, Objective_Value=0)
+diff = -2
+Generation: 364 tourn time: 1.6896841526031494 cross time: 0.061980247497558594 mut time: 0.0018870830535888672 max func time 4.402344703674316 total time: 6.1559836864471436 best sol: Cost(Infeasibility_Value=86, Objective_Value=0)
+diff = -2
+Generation: 365 tourn time: 3.4622373580932617 cross time: 0.08931970596313477 mut time: 0.0015926361083984375 max func time 5.046093702316284 total time: 8.599318504333496 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 366 tourn time: 1.622182846069336 cross time: 0.06309080123901367 mut time: 0.003025054931640625 max func time 4.463017702102661 total time: 6.151411056518555 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 367 tourn time: 1.6420598030090332 cross time: 0.04549407958984375 mut time: 0.027167797088623047 max func time 4.430688142776489 total time: 6.145507574081421 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 368 tourn time: 1.5778138637542725 cross time: 0.06261539459228516 mut time: 0.0016489028930664062 max func time 4.414116621017456 total time: 6.056274890899658 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 369 tourn time: 1.5413720607757568 cross time: 0.032186269760131836 mut time: 0.0019221305847167969 max func time 3.9318840503692627 total time: 5.5074591636657715 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 370 tourn time: 1.5994479656219482 cross time: 0.04333901405334473 mut time: 0.0018644332885742188 max func time 4.49772047996521 total time: 6.142467975616455 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 371 tourn time: 1.6620662212371826 cross time: 0.06492066383361816 mut time: 0.0010120868682861328 max func time 4.6991753578186035 total time: 6.427253246307373 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 372 tourn time: 1.7212169170379639 cross time: 0.059892892837524414 mut time: 0.002781391143798828 max func time 4.096420049667358 total time: 5.8804030418396 best sol: Cost(Infeasibility_Value=85, Objective_Value=0)
+diff = -2
+Generation: 373 tourn time: 1.4527692794799805 cross time: 0.062059879302978516 mut time: 0.0016658306121826172 max func time 3.945974826812744 total time: 5.462555408477783 best sol: Cost(Infeasibility_Value=84, Objective_Value=0)
+diff = -2
+Generation: 374 tourn time: 1.0738091468811035 cross time: 0.04083752632141113 mut time: 0.002082347869873047 max func time 4.1299684047698975 total time: 5.246770143508911 best sol: Cost(Infeasibility_Value=84, Objective_Value=0)
+diff = -2
+Generation: 375 tourn time: 1.4581623077392578 cross time: 0.06615257263183594 mut time: 0.0008988380432128906 max func time 3.889186143875122 total time: 5.414486408233643 best sol: Cost(Infeasibility_Value=84, Objective_Value=0)
+diff = -2
+Generation: 376 tourn time: 1.6097431182861328 cross time: 0.0864415168762207 mut time: 0.0019669532775878906 max func time 4.462042331695557 total time: 6.160278797149658 best sol: Cost(Infeasibility_Value=84, Objective_Value=0)
+diff = -2
+Generation: 377 tourn time: 1.6594421863555908 cross time: 0.06138896942138672 mut time: 0.003011465072631836 max func time 3.7480239868164062 total time: 5.471957445144653 best sol: Cost(Infeasibility_Value=84, Objective_Value=0)
+diff = -2
+Generation: 378 tourn time: 1.2451202869415283 cross time: 0.03260207176208496 mut time: 0.0034716129302978516 max func time 3.473480463027954 total time: 4.754755020141602 best sol: Cost(Infeasibility_Value=84, Objective_Value=0)
+diff = -2
+Generation: 379 tourn time: 1.0888488292694092 cross time: 0.06367945671081543 mut time: 0.030600786209106445 max func time 3.8851001262664795 total time: 5.068317413330078 best sol: Cost(Infeasibility_Value=82, Objective_Value=0)
+diff = -2
+Generation: 380 tourn time: 1.2290074825286865 cross time: 0.03231382369995117 mut time: 0.0014736652374267578 max func time 4.089244365692139 total time: 5.352136135101318 best sol: Cost(Infeasibility_Value=82, Objective_Value=0)
+diff = -2
+Generation: 381 tourn time: 2.5432534217834473 cross time: 0.08012747764587402 mut time: 0.019332170486450195 max func time 4.8675477504730225 total time: 7.510361194610596 best sol: Cost(Infeasibility_Value=82, Objective_Value=0)
+diff = -2
+Generation: 382 tourn time: 1.5493755340576172 cross time: 0.06579828262329102 mut time: 0.019875049591064453 max func time 4.570871353149414 total time: 6.206020832061768 best sol: Cost(Infeasibility_Value=81, Objective_Value=0)
+diff = -2
+Generation: 383 tourn time: 1.6296911239624023 cross time: 0.061187744140625 mut time: 0.0029480457305908203 max func time 4.574096918106079 total time: 6.268013000488281 best sol: Cost(Infeasibility_Value=81, Objective_Value=0)
+diff = -2
+Generation: 384 tourn time: 1.6483180522918701 cross time: 0.06120443344116211 mut time: 0.0020325183868408203 max func time 4.64718770980835 total time: 6.3588244915008545 best sol: Cost(Infeasibility_Value=80, Objective_Value=0)
+diff = -2
+Generation: 385 tourn time: 1.5911433696746826 cross time: 0.06288599967956543 mut time: 0.001577615737915039 max func time 4.566373825073242 total time: 6.222069263458252 best sol: Cost(Infeasibility_Value=80, Objective_Value=0)
+diff = -2
+Generation: 386 tourn time: 1.6277742385864258 cross time: 0.05194711685180664 mut time: 0.03280782699584961 max func time 3.564263343811035 total time: 5.276895046234131 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 387 tourn time: 1.089738130569458 cross time: 0.02589726448059082 mut time: 0.002454042434692383 max func time 3.645214557647705 total time: 4.763381242752075 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 388 tourn time: 1.7060573101043701 cross time: 0.08015823364257812 mut time: 0.0029044151306152344 max func time 4.706643342971802 total time: 6.4958624839782715 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 389 tourn time: 1.680985450744629 cross time: 0.06006884574890137 mut time: 0.0034646987915039062 max func time 4.634247303009033 total time: 6.37886118888855 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 390 tourn time: 1.6663100719451904 cross time: 0.06238842010498047 mut time: 0.0007030963897705078 max func time 4.554112434387207 total time: 6.283610820770264 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 391 tourn time: 1.665738582611084 cross time: 0.06971478462219238 mut time: 0.002836465835571289 max func time 4.0569517612457275 total time: 5.811383008956909 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 392 tourn time: 1.598653793334961 cross time: 0.07210040092468262 mut time: 0.002838611602783203 max func time 5.107436895370483 total time: 6.781120538711548 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 393 tourn time: 1.650529384613037 cross time: 0.06601929664611816 mut time: 0.0007843971252441406 max func time 4.64281964302063 total time: 6.360238075256348 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 394 tourn time: 1.683849573135376 cross time: 0.06149172782897949 mut time: 0.0006170272827148438 max func time 4.5106141567230225 total time: 6.256667137145996 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 395 tourn time: 1.6437134742736816 cross time: 0.05753135681152344 mut time: 0.0016202926635742188 max func time 4.408597946166992 total time: 6.111548662185669 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 396 tourn time: 1.7186644077301025 cross time: 0.07293224334716797 mut time: 0.018868684768676758 max func time 4.407577276229858 total time: 6.218148469924927 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 397 tourn time: 3.1816954612731934 cross time: 0.08825397491455078 mut time: 0.0020494461059570312 max func time 5.106161117553711 total time: 8.378248453140259 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 398 tourn time: 1.6933588981628418 cross time: 0.06812691688537598 mut time: 0.02028942108154297 max func time 4.6435322761535645 total time: 6.425410985946655 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 399 tourn time: 1.6633217334747314 cross time: 0.06697344779968262 mut time: 0.03684806823730469 max func time 4.451692819595337 total time: 6.218933582305908 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 400 tourn time: 1.6160740852355957 cross time: 0.0602567195892334 mut time: 0.001943826675415039 max func time 3.9763569831848145 total time: 5.654719591140747 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 401 tourn time: 1.6341326236724854 cross time: 0.06645989418029785 mut time: 0.0007698535919189453 max func time 4.4907472133636475 total time: 6.1922032833099365 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 402 tourn time: 1.9705209732055664 cross time: 0.06907224655151367 mut time: 0.0006937980651855469 max func time 4.2646589279174805 total time: 6.3050377368927 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 403 tourn time: 1.38572359085083 cross time: 0.06575798988342285 mut time: 0.0029637813568115234 max func time 3.1927802562713623 total time: 4.647310018539429 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 404 tourn time: 1.4646804332733154 cross time: 0.0447077751159668 mut time: 0.012288093566894531 max func time 3.725060224533081 total time: 5.24682879447937 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 405 tourn time: 1.5461235046386719 cross time: 0.0702674388885498 mut time: 0.0021033287048339844 max func time 4.561680793762207 total time: 6.180268049240112 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 406 tourn time: 1.5997250080108643 cross time: 0.033769845962524414 mut time: 0.0016624927520751953 max func time 4.073893308639526 total time: 5.709141254425049 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 407 tourn time: 1.3737151622772217 cross time: 0.06528830528259277 mut time: 0.019038677215576172 max func time 4.14434289932251 total time: 5.602486848831177 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 408 tourn time: 1.439225673675537 cross time: 0.068267822265625 mut time: 0.0006761550903320312 max func time 4.383494138717651 total time: 5.891772747039795 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 409 tourn time: 1.3253216743469238 cross time: 0.029278278350830078 mut time: 0.010559797286987305 max func time 4.110612154006958 total time: 5.475861310958862 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 410 tourn time: 1.6505730152130127 cross time: 0.0633690357208252 mut time: 0.0006794929504394531 max func time 3.3113043308258057 total time: 5.026021957397461 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 411 tourn time: 1.6117405891418457 cross time: 0.052913665771484375 mut time: 0.003662109375 max func time 4.487030982971191 total time: 6.155442237854004 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 412 tourn time: 1.4275200366973877 cross time: 0.06427145004272461 mut time: 0.002162933349609375 max func time 4.091857433319092 total time: 5.585909366607666 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 413 tourn time: 2.7594237327575684 cross time: 0.09393978118896484 mut time: 0.00397944450378418 max func time 4.872531175613403 total time: 7.7299644947052 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 414 tourn time: 1.441789150238037 cross time: 0.08760237693786621 mut time: 0.003123760223388672 max func time 4.70646595954895 total time: 6.239082098007202 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 415 tourn time: 1.65171480178833 cross time: 0.06298828125 mut time: 0.018402099609375 max func time 4.157984495162964 total time: 5.891187906265259 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 416 tourn time: 1.5005714893341064 cross time: 0.06761741638183594 mut time: 0.0009701251983642578 max func time 4.4180543422698975 total time: 5.98729395866394 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 417 tourn time: 1.425642728805542 cross time: 0.029699325561523438 mut time: 0.0024607181549072266 max func time 3.841477870941162 total time: 5.299379825592041 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 418 tourn time: 1.5150127410888672 cross time: 0.07414364814758301 mut time: 0.0011715888977050781 max func time 3.169299602508545 total time: 4.759711265563965 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 419 tourn time: 1.0615556240081787 cross time: 0.05785226821899414 mut time: 0.023590564727783203 max func time 4.5761682987213135 total time: 5.71926474571228 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 420 tourn time: 1.6894171237945557 cross time: 0.08013510704040527 mut time: 0.0028722286224365234 max func time 4.5793116092681885 total time: 6.3518218994140625 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 421 tourn time: 1.2969682216644287 cross time: 0.06694555282592773 mut time: 0.0008440017700195312 max func time 3.843841552734375 total time: 5.2086875438690186 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 422 tourn time: 1.6564257144927979 cross time: 0.06467866897583008 mut time: 0.0022308826446533203 max func time 4.545108079910278 total time: 6.2685370445251465 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 423 tourn time: 1.6548488140106201 cross time: 0.06548023223876953 mut time: 0.0005729198455810547 max func time 4.55342960357666 total time: 6.274430751800537 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 424 tourn time: 1.6328601837158203 cross time: 0.0712583065032959 mut time: 0.004189491271972656 max func time 4.391500949859619 total time: 6.099909782409668 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 425 tourn time: 1.7408461570739746 cross time: 0.08005642890930176 mut time: 0.002572774887084961 max func time 4.463972330093384 total time: 6.2875378131866455 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 426 tourn time: 1.650777816772461 cross time: 0.06344962120056152 mut time: 0.0022842884063720703 max func time 4.492666959762573 total time: 6.20926308631897 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 427 tourn time: 1.7023026943206787 cross time: 0.06147360801696777 mut time: 0.029211997985839844 max func time 4.441661357879639 total time: 6.2347447872161865 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 428 tourn time: 1.577892780303955 cross time: 0.0662832260131836 mut time: 0.004150390625 max func time 4.549557447433472 total time: 6.197981119155884 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 429 tourn time: 3.1560428142547607 cross time: 0.09318017959594727 mut time: 0.002735614776611328 max func time 4.812021970748901 total time: 8.064077854156494 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 430 tourn time: 1.3071391582489014 cross time: 0.06256270408630371 mut time: 0.003966808319091797 max func time 4.449321508407593 total time: 5.823076248168945 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 431 tourn time: 1.6519718170166016 cross time: 0.05841422080993652 mut time: 0.0016841888427734375 max func time 4.542962312698364 total time: 6.255122900009155 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 432 tourn time: 1.6456959247589111 cross time: 0.0851895809173584 mut time: 0.0024161338806152344 max func time 4.567960023880005 total time: 6.301358461380005 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 433 tourn time: 1.4461581707000732 cross time: 0.0508875846862793 mut time: 0.003954648971557617 max func time 3.9983937740325928 total time: 5.499491453170776 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 434 tourn time: 1.7153782844543457 cross time: 0.06525588035583496 mut time: 0.004376411437988281 max func time 4.5800018310546875 total time: 6.365109205245972 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 435 tourn time: 1.7010221481323242 cross time: 0.08895707130432129 mut time: 0.004260063171386719 max func time 4.521566390991211 total time: 6.315901041030884 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 436 tourn time: 1.605421543121338 cross time: 0.06059432029724121 mut time: 0.0028595924377441406 max func time 4.535416603088379 total time: 6.2043845653533936 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 437 tourn time: 1.708341360092163 cross time: 0.06562209129333496 mut time: 0.022707700729370117 max func time 4.451435565948486 total time: 6.2482030391693115 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 438 tourn time: 1.685668706893921 cross time: 0.06845712661743164 mut time: 0.004483938217163086 max func time 4.515088081359863 total time: 6.273794412612915 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 439 tourn time: 1.6551470756530762 cross time: 0.06422710418701172 mut time: 0.0008816719055175781 max func time 4.527095794677734 total time: 6.247454643249512 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 440 tourn time: 1.6752557754516602 cross time: 0.06969404220581055 mut time: 0.002748727798461914 max func time 4.463036060333252 total time: 6.210823059082031 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 441 tourn time: 1.6491954326629639 cross time: 0.08977270126342773 mut time: 0.0008349418640136719 max func time 4.57141375541687 total time: 6.31130838394165 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 442 tourn time: 1.6880083084106445 cross time: 0.0667273998260498 mut time: 0.0007884502410888672 max func time 4.545587062835693 total time: 6.301215171813965 best sol: Cost(Infeasibility_Value=79, Objective_Value=0)
+diff = -2
+Generation: 443 tourn time: 1.411741018295288 cross time: 0.13379573822021484 mut time: 0.001443624496459961 max func time 4.695903778076172 total time: 6.242978811264038 best sol: Cost(Infeasibility_Value=78, Objective_Value=0)
+diff = -2
+Generation: 444 tourn time: 1.6483092308044434 cross time: 0.06315803527832031 mut time: 0.0023543834686279297 max func time 4.219277381896973 total time: 5.9331958293914795 best sol: Cost(Infeasibility_Value=78, Objective_Value=0)
+diff = -2
+Generation: 445 tourn time: 2.9368741512298584 cross time: 0.09482979774475098 mut time: 0.0024764537811279297 max func time 4.951584100723267 total time: 7.985854864120483 best sol: Cost(Infeasibility_Value=78, Objective_Value=0)
+diff = -2
+Generation: 446 tourn time: 1.6232397556304932 cross time: 0.06238913536071777 mut time: 0.013219118118286133 max func time 4.630286931991577 total time: 6.329243183135986 best sol: Cost(Infeasibility_Value=77, Objective_Value=0)
+diff = -2
+Generation: 447 tourn time: 1.4868838787078857 cross time: 0.06259703636169434 mut time: 0.002049684524536133 max func time 4.317911386489868 total time: 5.869553804397583 best sol: Cost(Infeasibility_Value=77, Objective_Value=0)
+diff = -2
+Generation: 448 tourn time: 1.5911064147949219 cross time: 0.06477785110473633 mut time: 0.0005891323089599609 max func time 4.573625087738037 total time: 6.230189561843872 best sol: Cost(Infeasibility_Value=77, Objective_Value=0)
+diff = -2
+Generation: 449 tourn time: 1.5701987743377686 cross time: 0.06091904640197754 mut time: 0.0024156570434570312 max func time 4.552823066711426 total time: 6.186445474624634 best sol: Cost(Infeasibility_Value=77, Objective_Value=0)
+diff = -2
+Generation: 450 tourn time: 1.6389849185943604 cross time: 0.06218767166137695 mut time: 0.0004742145538330078 max func time 4.52852201461792 total time: 6.230270624160767 best sol: Cost(Infeasibility_Value=77, Objective_Value=0)
+diff = -2
+Generation: 451 tourn time: 1.6294920444488525 cross time: 0.06293416023254395 mut time: 0.027695894241333008 max func time 4.146509408950806 total time: 5.866716146469116 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 452 tourn time: 1.5000934600830078 cross time: 0.07914018630981445 mut time: 0.0007734298706054688 max func time 4.347064971923828 total time: 5.92716908454895 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 453 tourn time: 1.9657824039459229 cross time: 0.06609487533569336 mut time: 0.0018706321716308594 max func time 4.080513000488281 total time: 6.114367961883545 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 454 tourn time: 1.416604995727539 cross time: 0.031853675842285156 mut time: 0.0029087066650390625 max func time 3.1092567443847656 total time: 4.560702323913574 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 455 tourn time: 1.379216194152832 cross time: 0.05103015899658203 mut time: 0.0013768672943115234 max func time 3.617246627807617 total time: 5.048956632614136 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 456 tourn time: 1.2461762428283691 cross time: 0.04981279373168945 mut time: 0.028728485107421875 max func time 3.3465118408203125 total time: 4.67132830619812 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 457 tourn time: 1.4722094535827637 cross time: 0.03352642059326172 mut time: 0.002018451690673828 max func time 4.171243667602539 total time: 5.679094314575195 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 458 tourn time: 1.689513921737671 cross time: 0.06847333908081055 mut time: 0.018184900283813477 max func time 4.442251443862915 total time: 6.218518495559692 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 459 tourn time: 1.6661436557769775 cross time: 0.06390023231506348 mut time: 0.0010905265808105469 max func time 4.4478394985198975 total time: 6.179074048995972 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 460 tourn time: 1.6633949279785156 cross time: 0.08276009559631348 mut time: 0.0015740394592285156 max func time 4.516979455947876 total time: 6.264790773391724 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 461 tourn time: 3.168341636657715 cross time: 0.08710622787475586 mut time: 0.03664588928222656 max func time 5.087416172027588 total time: 8.379599571228027 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 462 tourn time: 1.6380157470703125 cross time: 0.06596803665161133 mut time: 0.0020966529846191406 max func time 4.521862745285034 total time: 6.228043079376221 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 463 tourn time: 1.7212448120117188 cross time: 0.06678223609924316 mut time: 0.003223419189453125 max func time 4.371948480606079 total time: 6.163292169570923 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 464 tourn time: 1.617401361465454 cross time: 0.06075859069824219 mut time: 0.000640869140625 max func time 4.487179279327393 total time: 6.16607141494751 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 465 tourn time: 1.6723644733428955 cross time: 0.06720232963562012 mut time: 0.002396821975708008 max func time 4.2237184047698975 total time: 5.965779542922974 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 466 tourn time: 1.6238646507263184 cross time: 0.07506084442138672 mut time: 0.0023012161254882812 max func time 3.7810261249542236 total time: 5.4823431968688965 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 467 tourn time: 1.3027596473693848 cross time: 0.04398703575134277 mut time: 0.002591848373413086 max func time 4.541585922241211 total time: 5.891000747680664 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 468 tourn time: 1.687929630279541 cross time: 0.06720209121704102 mut time: 0.002779722213745117 max func time 4.58536434173584 total time: 6.343376874923706 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 469 tourn time: 1.6967549324035645 cross time: 0.0729987621307373 mut time: 0.003069162368774414 max func time 4.153852701187134 total time: 5.926777601242065 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 470 tourn time: 1.691542625427246 cross time: 0.07167887687683105 mut time: 0.0007243156433105469 max func time 4.398728609085083 total time: 6.162778854370117 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 471 tourn time: 1.6669425964355469 cross time: 0.08594369888305664 mut time: 0.003795146942138672 max func time 3.9945027828216553 total time: 5.751277685165405 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 472 tourn time: 1.5283632278442383 cross time: 0.04361915588378906 mut time: 0.01897573471069336 max func time 4.332524299621582 total time: 5.923588991165161 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 473 tourn time: 1.6707696914672852 cross time: 0.06002020835876465 mut time: 0.002434253692626953 max func time 4.874180793762207 total time: 6.607496500015259 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 474 tourn time: 1.6620612144470215 cross time: 0.06917214393615723 mut time: 0.0028808116912841797 max func time 3.7505531311035156 total time: 5.484755039215088 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 475 tourn time: 1.3623778820037842 cross time: 0.06284093856811523 mut time: 0.0013353824615478516 max func time 3.7469522953033447 total time: 5.173588514328003 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 476 tourn time: 1.513146162033081 cross time: 0.06725192070007324 mut time: 0.003185749053955078 max func time 4.507372140884399 total time: 6.091060400009155 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 477 tourn time: 3.176776885986328 cross time: 0.09481287002563477 mut time: 0.0009818077087402344 max func time 5.033829927444458 total time: 8.306493282318115 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 478 tourn time: 1.621767282485962 cross time: 0.04414534568786621 mut time: 0.01885843276977539 max func time 4.571948528289795 total time: 6.256814479827881 best sol: Cost(Infeasibility_Value=76, Objective_Value=0)
+diff = -2
+Generation: 479 tourn time: 1.661552906036377 cross time: 0.06739139556884766 mut time: 0.005181074142456055 max func time 3.70116925239563 total time: 5.435387134552002 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 480 tourn time: 1.5866355895996094 cross time: 0.06668686866760254 mut time: 0.0005035400390625 max func time 3.6284592151641846 total time: 5.282376766204834 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 481 tourn time: 1.4930980205535889 cross time: 0.060961008071899414 mut time: 0.0006344318389892578 max func time 4.125458717346191 total time: 5.6802308559417725 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 482 tourn time: 1.6426928043365479 cross time: 0.08366823196411133 mut time: 0.0029070377349853516 max func time 4.352438688278198 total time: 6.08180046081543 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 483 tourn time: 1.622579574584961 cross time: 0.06152653694152832 mut time: 0.0026831626892089844 max func time 4.749728202819824 total time: 6.436606407165527 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 484 tourn time: 1.6823062896728516 cross time: 0.06496620178222656 mut time: 0.002524852752685547 max func time 4.149439334869385 total time: 5.8993353843688965 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 485 tourn time: 1.263216495513916 cross time: 0.06744217872619629 mut time: 0.002071380615234375 max func time 4.239650011062622 total time: 5.572458028793335 best sol: Cost(Infeasibility_Value=75, Objective_Value=0)
+diff = -2
+Generation: 486 tourn time: 1.2378854751586914 cross time: 0.06623220443725586 mut time: 0.002402067184448242 max func time 3.8591620922088623 total time: 5.165765047073364 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 487 tourn time: 1.6555907726287842 cross time: 0.06932878494262695 mut time: 0.0016937255859375 max func time 4.506947040557861 total time: 6.233649015426636 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 488 tourn time: 1.7210993766784668 cross time: 0.06295251846313477 mut time: 0.0016644001007080078 max func time 4.4746270179748535 total time: 6.260436534881592 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 489 tourn time: 1.7078261375427246 cross time: 0.0689845085144043 mut time: 0.0035469532012939453 max func time 4.565494060516357 total time: 6.3459484577178955 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 490 tourn time: 1.7444822788238525 cross time: 0.06204485893249512 mut time: 0.004730939865112305 max func time 4.462731838226318 total time: 6.274081230163574 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 491 tourn time: 1.713975191116333 cross time: 0.06172657012939453 mut time: 0.003441333770751953 max func time 4.042481184005737 total time: 5.821720123291016 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 492 tourn time: 1.4063184261322021 cross time: 0.04796457290649414 mut time: 0.0007860660552978516 max func time 3.9287447929382324 total time: 5.383902072906494 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 493 tourn time: 3.322444200515747 cross time: 0.09293508529663086 mut time: 0.0008158683776855469 max func time 5.079286098480225 total time: 8.495573043823242 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 494 tourn time: 1.3081777095794678 cross time: 0.07659029960632324 mut time: 0.0021333694458007812 max func time 4.041640281677246 total time: 5.428634166717529 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 495 tourn time: 1.40793776512146 cross time: 0.0655980110168457 mut time: 0.005311489105224609 max func time 3.6651487350463867 total time: 5.144086599349976 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 496 tourn time: 1.4879024028778076 cross time: 0.06795024871826172 mut time: 0.0023365020751953125 max func time 3.439816474914551 total time: 4.998101234436035 best sol: Cost(Infeasibility_Value=74, Objective_Value=0)
+diff = -2
+Generation: 497 tourn time: 1.4526829719543457 cross time: 0.03447842597961426 mut time: 0.0006518363952636719 max func time 4.072676420211792 total time: 5.5605714321136475 best sol: Cost(Infeasibility_Value=72, Objective_Value=0)
+diff = -2
+Generation: 498 tourn time: 1.5849459171295166 cross time: 0.06508016586303711 mut time: 0.00386810302734375 max func time 2.6400632858276367 total time: 4.294043302536011 best sol: Cost(Infeasibility_Value=72, Objective_Value=0)
+diff = -2
+Generation: 499 tourn time: 1.1121909618377686 cross time: 0.03496098518371582 mut time: 0.002795696258544922 max func time 3.6764135360717773 total time: 4.82645320892334 best sol: Cost(Infeasibility_Value=72, Objective_Value=0)
+diff = -2
+Generation: 500 tourn time: 1.6435227394104004 cross time: 0.08379578590393066 mut time: 0.004689693450927734 max func time 4.480841636657715 total time: 6.212931394577026 best sol: Cost(Infeasibility_Value=72, Objective_Value=0)
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  66 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  148 required = True SpreadEventsConstraint
+value =  7900 required = False SpreadEventsConstraint
+value =  380 required = False SpreadEventsConstraint
+value =  655 required = False SpreadEventsConstraint
+value =  40 required = False SpreadEventsConstraint
+value =  30 required = False SpreadEventsConstraint
+value =  300 required = False SpreadEventsConstraint
+value =  10 required = False SpreadEventsConstraint
+value =  6 required = False SpreadEventsConstraint
+value =  1760 required = False SpreadEventsConstraint
+value =  29 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  8100 required = False AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  2500 required = False LimitBusyTimesConstraint
+
+best random:  Cost(Infeasibility_Value=272, Objective_Value=0)
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  34 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  7 required = True SpreadEventsConstraint
+value =  2300 required = False SpreadEventsConstraint
+value =  200 required = False SpreadEventsConstraint
+value =  290 required = False SpreadEventsConstraint
+value =  30 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  150 required = False SpreadEventsConstraint
+value =  5 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  940 required = False SpreadEventsConstraint
+value =  23 required = True AvoidClashesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  9100 required = False AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  200 required = False ClusterBusyTimesConstraint
+value =  200 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+
+---Genetic (Spanish school) Evaluation---
+ Cost(Infeasibility_Value=72, Objective_Value=13815)
+Local Search Iteration: 0 best cost = Cost(Infeasibility_Value=72, Objective_Value=0) -72 -72
+Local Search Iteration: 20 best cost = Cost(Infeasibility_Value=59, Objective_Value=0) -59 -59
+Local Search Iteration: 40 best cost = Cost(Infeasibility_Value=55, Objective_Value=0) -55 -55
+Local Search Iteration: 60 best cost = Cost(Infeasibility_Value=54, Objective_Value=0) -54 -54
+SA Iteration: 0 time taken: 2138.5679545402527 current energy -54 best energy -54 best_cost Cost(Infeasibility_Value=54, Objective_Value=0) time so far 2138.5940165519714
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  34 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  8 required = True SpreadEventsConstraint
+value =  2300 required = False SpreadEventsConstraint
+value =  200 required = False SpreadEventsConstraint
+value =  290 required = False SpreadEventsConstraint
+value =  40 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  160 required = False SpreadEventsConstraint
+value =  5 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  980 required = False SpreadEventsConstraint
+value =  7 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  2 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  1 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  9200 required = False AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  200 required = False ClusterBusyTimesConstraint
+value =  200 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+
+---VNS Evaluation (Spanish school)---
+ Cost(Infeasibility_Value=54, Objective_Value=13975)
+SA Iteration: 1000 time taken: 0.08932042121887207 current energy -49 best energy -49 best_cost Cost(Infeasibility_Value=49, Objective_Value=0) time so far 71.75960183143616
+SA Iteration: 2000 time taken: 0.0697486400604248 current energy -48 best energy -48 best_cost Cost(Infeasibility_Value=48, Objective_Value=0) time so far 138.2791645526886
+SA Iteration: 3000 time taken: 0.09216952323913574 current energy -44 best energy -44 best_cost Cost(Infeasibility_Value=44, Objective_Value=0) time so far 207.57384610176086
+SA Iteration: 4000 time taken: 0.09606194496154785 current energy -40 best energy -40 best_cost Cost(Infeasibility_Value=40, Objective_Value=0) time so far 283.92396664619446
+SA Iteration: 5000 time taken: 0.0801858901977539 current energy -37 best energy -37 best_cost Cost(Infeasibility_Value=37, Objective_Value=0) time so far 353.12475419044495
+SA Iteration: 6000 time taken: 0.06739187240600586 current energy -36 best energy -36 best_cost Cost(Infeasibility_Value=36, Objective_Value=0) time so far 427.34871459007263
+SA Iteration: 7000 time taken: 0.03846168518066406 current energy -35 best energy -35 best_cost Cost(Infeasibility_Value=35, Objective_Value=0) time so far 494.95482563972473
+SA Iteration: 8000 time taken: 0.04036760330200195 current energy -32 best energy -32 best_cost Cost(Infeasibility_Value=32, Objective_Value=0) time so far 565.0726008415222
+SA Iteration: 9000 time taken: 0.06928181648254395 current energy -32 best energy -32 best_cost Cost(Infeasibility_Value=32, Objective_Value=0) time so far 636.4679095745087
+SA Iteration: 10000 time taken: 0.06971168518066406 current energy -28 best energy -28 best_cost Cost(Infeasibility_Value=28, Objective_Value=0) time so far 701.616229057312
+SA Iteration: 11000 time taken: 0.03643393516540527 current energy -28 best energy -28 best_cost Cost(Infeasibility_Value=28, Objective_Value=0) time so far 778.0295944213867
+SA Iteration: 12000 time taken: 0.0710299015045166 current energy -24 best energy -24 best_cost Cost(Infeasibility_Value=24, Objective_Value=0) time so far 852.5480282306671
+SA Iteration: 13000 time taken: 0.07932066917419434 current energy -22 best energy -22 best_cost Cost(Infeasibility_Value=22, Objective_Value=0) time so far 924.0802764892578
+SA Iteration: 14000 time taken: 0.062479496002197266 current energy -17 best energy -17 best_cost Cost(Infeasibility_Value=17, Objective_Value=0) time so far 1002.5981786251068
+SA Iteration: 15000 time taken: 0.0900421142578125 current energy -16 best energy -16 best_cost Cost(Infeasibility_Value=16, Objective_Value=0) time so far 1073.4985473155975
+SA Iteration: 16000 time taken: 0.05998063087463379 current energy -15 best energy -15 best_cost Cost(Infeasibility_Value=15, Objective_Value=0) time so far 1149.1560292243958
+SA Iteration: 17000 time taken: 0.09587383270263672 current energy -14 best energy -14 best_cost Cost(Infeasibility_Value=14, Objective_Value=0) time so far 1217.1925961971283
+SA Iteration: 18000 time taken: 0.07715654373168945 current energy -14 best energy -14 best_cost Cost(Infeasibility_Value=14, Objective_Value=0) time so far 1293.1649284362793
+SA Iteration: 19000 time taken: 0.03779172897338867 current energy -12 best energy -12 best_cost Cost(Infeasibility_Value=12, Objective_Value=0) time so far 1363.2683591842651
+SA Iteration: 20000 time taken: 0.08601522445678711 current energy -11 best energy -11 best_cost Cost(Infeasibility_Value=11, Objective_Value=0) time so far 1437.4061501026154
+SA Iteration: 21000 time taken: 0.03702664375305176 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 1505.8875708580017
+SA Iteration: 22000 time taken: 0.09589552879333496 current energy -10 best energy -10 best_cost Cost(Infeasibility_Value=10, Objective_Value=0) time so far 1578.0310032367706
+SA Iteration: 23000 time taken: 0.07276320457458496 current energy -9 best energy -9 best_cost Cost(Infeasibility_Value=9, Objective_Value=0) time so far 1650.2934565544128
+SA Iteration: 24000 time taken: 0.11393904685974121 current energy -9 best energy -9 best_cost Cost(Infeasibility_Value=9, Objective_Value=0) time so far 1752.9821412563324
+SA Iteration: 25000 time taken: 0.10015678405761719 current energy -9 best energy -9 best_cost Cost(Infeasibility_Value=9, Objective_Value=0) time so far 1851.1872344017029
+SA Iteration: 26000 time taken: 0.08920502662658691 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 1947.0940651893616
+SA Iteration: 27000 time taken: 0.11063051223754883 current energy -6 best energy -6 best_cost Cost(Infeasibility_Value=6, Objective_Value=0) time so far 2048.7024750709534
+SA Iteration: 28000 time taken: 0.09277629852294922 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 2146.8444006443024
+SA Iteration: 29000 time taken: 0.13484787940979004 current energy -5 best energy -5 best_cost Cost(Infeasibility_Value=5, Objective_Value=0) time so far 2247.5053753852844
+SA Iteration: 30000 time taken: 0.11849498748779297 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2345.2733359336853
+SA Iteration: 31000 time taken: 0.08816909790039062 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2442.280206680298
+SA Iteration: 32000 time taken: 0.10622262954711914 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2539.0406742095947
+SA Iteration: 33000 time taken: 0.09730839729309082 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2631.681478023529
+SA Iteration: 34000 time taken: 0.10018324851989746 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2728.2208631038666
+SA Iteration: 35000 time taken: 0.09362435340881348 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2827.1028809547424
+SA Iteration: 36000 time taken: 0.09511947631835938 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 2921.5715188980103
+SA Iteration: 37000 time taken: 0.10648536682128906 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3015.2091319561005
+SA Iteration: 38000 time taken: 0.10198426246643066 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3112.4370431900024
+SA Iteration: 39000 time taken: 0.11419439315795898 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3207.4784774780273
+SA Iteration: 40000 time taken: 0.037084341049194336 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3304.6928374767303
+SA Iteration: 41000 time taken: 0.08183145523071289 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3398.3432807922363
+SA Iteration: 42000 time taken: 0.08978796005249023 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3496.325389146805
+SA Iteration: 43000 time taken: 0.07429957389831543 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3595.1981778144836
+SA Iteration: 44000 time taken: 0.07027387619018555 current energy -3 best energy -3 best_cost Cost(Infeasibility_Value=3, Objective_Value=0) time so far 3689.3125908374786
+SA Iteration: 45000 time taken: 0.11835336685180664 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 3785.6829113960266
+SA Iteration: 46000 time taken: 0.11586189270019531 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 3883.5023295879364
+SA Iteration: 47000 time taken: 0.0722956657409668 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 3978.903039455414
+SA Iteration: 48000 time taken: 0.10698080062866211 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 4075.9223141670227
+SA Iteration: 49000 time taken: 0.08101081848144531 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 4171.59911108017
+SA Iteration: 50000 time taken: 0.12691187858581543 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 4269.0663805007935
+SA Iteration: 51000 time taken: 0.09721612930297852 current energy -2 best energy -2 best_cost Cost(Infeasibility_Value=2, Objective_Value=0) time so far 4367.595792531967
+SA Iteration: 52000 time taken: 0.12220525741577148 current energy -1 best energy -1 best_cost Cost(Infeasibility_Value=1, Objective_Value=0) time so far 4464.790768623352
+SA Iteration: 53000 time taken: 0.09405207633972168 current energy -1 best energy -1 best_cost Cost(Infeasibility_Value=1, Objective_Value=0) time so far 4559.658984184265
+SA Iteration: 54000 time taken: 0.1310889720916748 current energy -1 best energy -1 best_cost Cost(Infeasibility_Value=1, Objective_Value=0) time so far 4656.843011140823
+SA Iteration: 55000 time taken: 0.08825421333312988 current energy -1 best energy -1 best_cost Cost(Infeasibility_Value=1, Objective_Value=0) time so far 4756.033674240112
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  1800 required = False SpreadEventsConstraint
+value =  160 required = False SpreadEventsConstraint
+value =  260 required = False SpreadEventsConstraint
+value =  30 required = False SpreadEventsConstraint
+value =  10 required = False SpreadEventsConstraint
+value =  120 required = False SpreadEventsConstraint
+value =  5 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  900 required = False SpreadEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  9300 required = False AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  200 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+SA Iteration: 56000 time taken: 0.19826745986938477 current energy -13279 best energy -13279 best_cost Cost(Infeasibility_Value=0, Objective_Value=13279) time so far 4897.585458517075
+SA Iteration: 57000 time taken: 0.2587392330169678 current energy -12325 best energy -12325 best_cost Cost(Infeasibility_Value=0, Objective_Value=12325) time so far 5141.164429187775
+SA Iteration: 58000 time taken: 0.27878522872924805 current energy -11970 best energy -11970 best_cost Cost(Infeasibility_Value=0, Objective_Value=11970) time so far 5383.809044837952
+SA Iteration: 59000 time taken: 0.28940534591674805 current energy -11185 best energy -11185 best_cost Cost(Infeasibility_Value=0, Objective_Value=11185) time so far 5626.121519327164
+SA Iteration: 60000 time taken: 0.23585891723632812 current energy -10965 best energy -10965 best_cost Cost(Infeasibility_Value=0, Objective_Value=10965) time so far 5869.24250459671
+SA Iteration: 61000 time taken: 0.22511577606201172 current energy -10564 best energy -10564 best_cost Cost(Infeasibility_Value=0, Objective_Value=10564) time so far 6116.5163197517395
+SA Iteration: 62000 time taken: 0.23485708236694336 current energy -10449 best energy -10449 best_cost Cost(Infeasibility_Value=0, Objective_Value=10449) time so far 6355.480712890625
+SA Iteration: 63000 time taken: 0.24556827545166016 current energy -10317 best energy -10317 best_cost Cost(Infeasibility_Value=0, Objective_Value=10317) time so far 6598.228635311127
+SA Iteration: 64000 time taken: 0.2105576992034912 current energy -10095 best energy -10095 best_cost Cost(Infeasibility_Value=0, Objective_Value=10095) time so far 6842.645183801651
+SA Iteration: 65000 time taken: 0.21169209480285645 current energy -9880 best energy -9880 best_cost Cost(Infeasibility_Value=0, Objective_Value=9880) time so far 7086.115837812424
+SA Iteration: 66000 time taken: 0.263716459274292 current energy -9330 best energy -9330 best_cost Cost(Infeasibility_Value=0, Objective_Value=9330) time so far 7329.557544231415
+SA Iteration: 67000 time taken: 0.21200203895568848 current energy -9125 best energy -9125 best_cost Cost(Infeasibility_Value=0, Objective_Value=9125) time so far 7570.471711158752
+SA Iteration: 68000 time taken: 0.26463961601257324 current energy -9010 best energy -9010 best_cost Cost(Infeasibility_Value=0, Objective_Value=9010) time so far 7810.784646034241
+SA Iteration: 69000 time taken: 0.2438952922821045 current energy -8850 best energy -8850 best_cost Cost(Infeasibility_Value=0, Objective_Value=8850) time so far 8051.553467035294
+SA Iteration: 70000 time taken: 0.2065277099609375 current energy -8795 best energy -8795 best_cost Cost(Infeasibility_Value=0, Objective_Value=8795) time so far 8296.089629888535
+SA Iteration: 71000 time taken: 0.2147824764251709 current energy -8710 best energy -8710 best_cost Cost(Infeasibility_Value=0, Objective_Value=8710) time so far 8534.82139134407
+SA Iteration: 72000 time taken: 0.22074556350708008 current energy -8405 best energy -8405 best_cost Cost(Infeasibility_Value=0, Objective_Value=8405) time so far 8775.677114248276
+SA Iteration: 73000 time taken: 0.22989892959594727 current energy -8405 best energy -8405 best_cost Cost(Infeasibility_Value=0, Objective_Value=8405) time so far 9012.568274021149
+SA Iteration: 74000 time taken: 0.2517428398132324 current energy -8300 best energy -8300 best_cost Cost(Infeasibility_Value=0, Objective_Value=8300) time so far 9254.73663520813
+SA Iteration: 75000 time taken: 0.19130611419677734 current energy -8000 best energy -8000 best_cost Cost(Infeasibility_Value=0, Objective_Value=8000) time so far 9497.662453651428
+SA Iteration: 76000 time taken: 0.2935352325439453 current energy -7790 best energy -7790 best_cost Cost(Infeasibility_Value=0, Objective_Value=7790) time so far 9736.43426322937
+SA Iteration: 77000 time taken: 0.21534943580627441 current energy -7775 best energy -7775 best_cost Cost(Infeasibility_Value=0, Objective_Value=7775) time so far 9979.37155532837
+SA Iteration: 78000 time taken: 0.21932268142700195 current energy -7675 best energy -7675 best_cost Cost(Infeasibility_Value=0, Objective_Value=7675) time so far 10222.30705332756
+SA Iteration: 79000 time taken: 0.26810216903686523 current energy -7485 best energy -7485 best_cost Cost(Infeasibility_Value=0, Objective_Value=7485) time so far 10466.675498485565
+SA Iteration: 80000 time taken: 0.21472454071044922 current energy -7385 best energy -7385 best_cost Cost(Infeasibility_Value=0, Objective_Value=7385) time so far 10705.899142980576
+SA Iteration: 81000 time taken: 0.26406025886535645 current energy -7365 best energy -7365 best_cost Cost(Infeasibility_Value=0, Objective_Value=7365) time so far 10946.467853546143
+SA Iteration: 82000 time taken: 0.1995556354522705 current energy -7275 best energy -7275 best_cost Cost(Infeasibility_Value=0, Objective_Value=7275) time so far 11193.185620546341
+SA Iteration: 83000 time taken: 0.26637911796569824 current energy -7155 best energy -7155 best_cost Cost(Infeasibility_Value=0, Objective_Value=7155) time so far 11433.311091423035
+SA Iteration: 84000 time taken: 0.21117782592773438 current energy -7155 best energy -7155 best_cost Cost(Infeasibility_Value=0, Objective_Value=7155) time so far 11676.075350046158
+SA Iteration: 85000 time taken: 0.21977853775024414 current energy -7145 best energy -7145 best_cost Cost(Infeasibility_Value=0, Objective_Value=7145) time so far 11921.387013435364
+SA Iteration: 86000 time taken: 0.20585179328918457 current energy -7135 best energy -7135 best_cost Cost(Infeasibility_Value=0, Objective_Value=7135) time so far 12166.0055103302
+SA Iteration: 87000 time taken: 0.28951287269592285 current energy -7130 best energy -7130 best_cost Cost(Infeasibility_Value=0, Objective_Value=7130) time so far 12412.518049240112
+SA Iteration: 88000 time taken: 0.23372387886047363 current energy -7130 best energy -7130 best_cost Cost(Infeasibility_Value=0, Objective_Value=7130) time so far 12650.411638498306
+SA Iteration: 89000 time taken: 0.19667744636535645 current energy -6930 best energy -6930 best_cost Cost(Infeasibility_Value=0, Objective_Value=6930) time so far 12894.39841222763
+SA Iteration: 90000 time taken: 0.2763693332672119 current energy -6750 best energy -6750 best_cost Cost(Infeasibility_Value=0, Objective_Value=6750) time so far 13134.416669845581
+SA Iteration: 91000 time taken: 0.22129273414611816 current energy -6720 best energy -6720 best_cost Cost(Infeasibility_Value=0, Objective_Value=6720) time so far 13376.734165668488
+SA Iteration: 92000 time taken: 0.19910097122192383 current energy -6715 best energy -6715 best_cost Cost(Infeasibility_Value=0, Objective_Value=6715) time so far 13619.843552350998
+SA Iteration: 93000 time taken: 0.2757992744445801 current energy -6715 best energy -6715 best_cost Cost(Infeasibility_Value=0, Objective_Value=6715) time so far 13858.23004603386
+SA Iteration: 94000 time taken: 0.22453522682189941 current energy -6715 best energy -6715 best_cost Cost(Infeasibility_Value=0, Objective_Value=6715) time so far 14103.245456695557
+SA Iteration: 95000 time taken: 0.27873826026916504 current energy -6620 best energy -6620 best_cost Cost(Infeasibility_Value=0, Objective_Value=6620) time so far 14344.231059789658
+SA Iteration: 96000 time taken: 0.21337032318115234 current energy -6610 best energy -6610 best_cost Cost(Infeasibility_Value=0, Objective_Value=6610) time so far 14590.27256655693
+SA Iteration: 97000 time taken: 0.24066162109375 current energy -6605 best energy -6605 best_cost Cost(Infeasibility_Value=0, Objective_Value=6605) time so far 14830.124086856842
+SA Iteration: 98000 time taken: 0.24896812438964844 current energy -6595 best energy -6595 best_cost Cost(Infeasibility_Value=0, Objective_Value=6595) time so far 15072.477903366089
+SA Iteration: 99000 time taken: 0.26929450035095215 current energy -6485 best energy -6485 best_cost Cost(Infeasibility_Value=0, Objective_Value=6485) time so far 15312.446638345718
+SA Iteration: 100000 time taken: 0.2897670269012451 current energy -6485 best energy -6485 best_cost Cost(Infeasibility_Value=0, Objective_Value=6485) time so far 15552.22418665886
+SA Iteration: 101000 time taken: 0.23949742317199707 current energy -6472 best energy -6472 best_cost Cost(Infeasibility_Value=0, Objective_Value=6472) time so far 15796.11364531517
+SA Iteration: 102000 time taken: 0.24290084838867188 current energy -6462 best energy -6462 best_cost Cost(Infeasibility_Value=0, Objective_Value=6462) time so far 16030.215974092484
+SA Iteration: 103000 time taken: 0.2157607078552246 current energy -6432 best energy -6432 best_cost Cost(Infeasibility_Value=0, Objective_Value=6432) time so far 16258.45372581482
+SA Iteration: 104000 time taken: 0.22974371910095215 current energy -6412 best energy -6412 best_cost Cost(Infeasibility_Value=0, Objective_Value=6412) time so far 16476.246447324753
+SA Iteration: 105000 time taken: 0.18897581100463867 current energy -6407 best energy -6407 best_cost Cost(Infeasibility_Value=0, Objective_Value=6407) time so far 16682.481597185135
+SA Iteration: 106000 time taken: 0.20252275466918945 current energy -6407 best energy -6407 best_cost Cost(Infeasibility_Value=0, Objective_Value=6407) time so far 16875.088478326797
+SA Iteration: 107000 time taken: 0.09801006317138672 current energy -6407 best energy -6407 best_cost Cost(Infeasibility_Value=0, Objective_Value=6407) time so far 17058.513127088547
+SA Iteration: 108000 time taken: 0.09354066848754883 current energy -6402 best energy -6402 best_cost Cost(Infeasibility_Value=0, Objective_Value=6402) time so far 17235.400054216385
+SA Iteration: 109000 time taken: 0.22142815589904785 current energy -6302 best energy -6302 best_cost Cost(Infeasibility_Value=0, Objective_Value=6302) time so far 17409.6881172657
+SA Iteration: 110000 time taken: 0.21585869789123535 current energy -6302 best energy -6302 best_cost Cost(Infeasibility_Value=0, Objective_Value=6302) time so far 17585.434015750885
+SA Iteration: 111000 time taken: 0.10291838645935059 current energy -6207 best energy -6207 best_cost Cost(Infeasibility_Value=0, Objective_Value=6207) time so far 17747.621450424194
+SA Iteration: 112000 time taken: 0.11291360855102539 current energy -6142 best energy -6142 best_cost Cost(Infeasibility_Value=0, Objective_Value=6142) time so far 17906.957625627518
+SA Iteration: 113000 time taken: 0.10094881057739258 current energy -6142 best energy -6142 best_cost Cost(Infeasibility_Value=0, Objective_Value=6142) time so far 18065.882766485214
+SA Iteration: 114000 time taken: 0.15133905410766602 current energy -6042 best energy -6042 best_cost Cost(Infeasibility_Value=0, Objective_Value=6042) time so far 18218.52183032036
+SA Iteration: 115000 time taken: 0.23516249656677246 current energy -6022 best energy -6022 best_cost Cost(Infeasibility_Value=0, Objective_Value=6022) time so far 18367.43899989128
+SA Iteration: 116000 time taken: 0.15849065780639648 current energy -5997 best energy -5997 best_cost Cost(Infeasibility_Value=0, Objective_Value=5997) time so far 18510.3151140213
+SA Iteration: 117000 time taken: 0.33777880668640137 current energy -5972 best energy -5972 best_cost Cost(Infeasibility_Value=0, Objective_Value=5972) time so far 18648.772251844406
+SA Iteration: 118000 time taken: 0.14667415618896484 current energy -5967 best energy -5967 best_cost Cost(Infeasibility_Value=0, Objective_Value=5967) time so far 18777.30512404442
+SA Iteration: 119000 time taken: 0.17496347427368164 current energy -5967 best energy -5967 best_cost Cost(Infeasibility_Value=0, Objective_Value=5967) time so far 18908.73330307007
+SA Iteration: 120000 time taken: 0.10386872291564941 current energy -5957 best energy -5957 best_cost Cost(Infeasibility_Value=0, Objective_Value=5957) time so far 19038.95089530945
+SA Iteration: 121000 time taken: 0.1000831127166748 current energy -5882 best energy -5882 best_cost Cost(Infeasibility_Value=0, Objective_Value=5882) time so far 19167.384074687958
+SA Iteration: 122000 time taken: 0.0964670181274414 current energy -5785 best energy -5785 best_cost Cost(Infeasibility_Value=0, Objective_Value=5785) time so far 19299.85049390793
+SA Iteration: 123000 time taken: 0.09443402290344238 current energy -5785 best energy -5785 best_cost Cost(Infeasibility_Value=0, Objective_Value=5785) time so far 19430.351167440414
+SA Iteration: 124000 time taken: 0.11304473876953125 current energy -5775 best energy -5775 best_cost Cost(Infeasibility_Value=0, Objective_Value=5775) time so far 19562.39710879326
+SA Iteration: 125000 time taken: 0.11594629287719727 current energy -5775 best energy -5775 best_cost Cost(Infeasibility_Value=0, Objective_Value=5775) time so far 19693.650141000748
+SA Iteration: 126000 time taken: 0.09779238700866699 current energy -5774 best energy -5774 best_cost Cost(Infeasibility_Value=0, Objective_Value=5774) time so far 19817.64545249939
+SA Iteration: 127000 time taken: 0.10281729698181152 current energy -5774 best energy -5774 best_cost Cost(Infeasibility_Value=0, Objective_Value=5774) time so far 19938.378597021103
+SA Iteration: 128000 time taken: 0.13173246383666992 current energy -5774 best energy -5774 best_cost Cost(Infeasibility_Value=0, Objective_Value=5774) time so far 20059.78441309929
+number of Simulated Annealing iterations = 128085
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignResourceConstraint
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SplitEventsConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  0 required = True PreferResourcesConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  140 required = False SpreadEventsConstraint
+value =  225 required = False SpreadEventsConstraint
+value =  30 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  45 required = False SpreadEventsConstraint
+value =  4 required = False SpreadEventsConstraint
+value =  0 required = False SpreadEventsConstraint
+value =  430 required = False SpreadEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  4400 required = False AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  200 required = False ClusterBusyTimesConstraint
+value =  0 required = False ClusterBusyTimesConstraint
+value =  100 required = False ClusterBusyTimesConstraint
+value =  0 required = False LimitBusyTimesConstraint
+
+---Simulated Annealing Benchmark (Spanish school) Evaluation ---
+ Cost(Infeasibility_Value=0, Objective_Value=5774) 
+
+Spanish school finished in 25340.24814605713 seconds.

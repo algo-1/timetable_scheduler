@@ -1,0 +1,61 @@
+-----GreeceHighSchool1   9 constraints-----
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True LinkEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+
+---KHE Solution (GreeceHighSchool1) Evaluation---
+ Cost(Infeasibility_Value=0, Objective_Value=0)
+-- 0 0 epoch: 1
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True LinkEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+-- 0 0 epoch: 2
+number of Tabu Search iterations = 2
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True LinkEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+
+---Tabu Search Evaluation (GreeceHighSchool1)---
+ Cost(Infeasibility_Value=0, Objective_Value=0)
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True LinkEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+number of Simulated Annealing iterations = 2
+value =  0 required = True AssignTimeConstraint
+value =  0 required = True SpreadEventsConstraint
+value =  0 required = True LinkEventsConstraint
+value =  0 required = True AvoidClashesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+value =  0 required = True AvoidUnavailableTimesConstraint
+
+---Simulated Annealing Benchmark (GreeceHighSchool1) Evaluation ---
+ Cost(Infeasibility_Value=0, Objective_Value=0) 
+
+GreeceHighSchool1 finished in 83.96375179290771 seconds.
