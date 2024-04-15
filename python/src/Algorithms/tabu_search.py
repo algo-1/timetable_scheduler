@@ -245,7 +245,7 @@ if __name__ == "__main__":
         # finland_college,
         western_greece_university_instance_4,
     ):  # dataset_abramson15, dataset_brazil3):
-        random.seed(42)
+        # random.seed(42)
 
         instance = dataset.get_instance(index=0)
 

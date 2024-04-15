@@ -1,4 +1,4 @@
-# the parameters actually make it such that worse solutions are not accepted so this is just steepest descent!
+# the parameters actually make it such that worse solutions are not accepted so this is just hill climbing with first improvememnt heuristic but can be modified to make it simulkated annealing :)
 
 from copy import deepcopy
 import random
