@@ -5,7 +5,7 @@ import time
 
 import numpy as np
 from Algorithms.random_algorithm import random_solution
-from Algorithms.utils import Solution, mutate, swap
+from Algorithms.utils import Mode, Solution, mutate, swap
 from XHSTTS.utils import Cost
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
@@ -16,32 +16,34 @@ def crossover(
     # random.shuffle(sol1.sol_events)
     # random.shuffle(sol2.sol_events)
 
-    if random.random() < uniform_percentage:
-        # uniform crossover
-        offspring1 = deepcopy(sol1)
-        offspring2 = deepcopy(sol2)
+    # uniform crossover
+    offspring1_events = []
+    offspring2_events = []
 
-        for idx in range(len(offspring1.sol_events)):
-            if random.random() < 0.5:
-                offspring1.sol_events[idx], offspring2.sol_events[idx] = (
-                    offspring2.sol_events[idx],
-                    offspring1.sol_events[idx],
-                )
+    for ref in sol1.original_events:
+        sol1_idxs = sol1.original_events[ref]
+        sol2_idxs = sol2.original_events[ref]
+        if random.random() < 0.5:
+            # swap
+            for index in sol2_idxs:
+                offspring1_events.append(sol2.sol_events[index])
 
-        return offspring1, offspring2
-    else:
-        # Randomly select a crossover point.
-        crossover_point = random.randint(0, len(sol1.sol_events) - 1)
+            for index in sol1_idxs:
+                offspring2_events.append(sol1.sol_events[index])
 
-        # Create two new offspring solutions.
-        offspring1 = Solution(
-            sol1.sol_events[:crossover_point] + sol2.sol_events[crossover_point:]
-        )
-        offspring2 = Solution(
-            sol2.sol_events[:crossover_point] + sol1.sol_events[crossover_point:]
-        )
+        else:
+            for index in sol1_idxs:
+                offspring1_events.append(sol1.sol_events[index])
 
-        return offspring1, offspring2
+            for index in sol2_idxs:
+                offspring2_events.append(sol2.sol_events[index])
+
+    new_sol1 = Solution(offspring1_events)
+    new_sol1.mode = sol1.mode
+    new_sol2 = Solution(offspring2_events)
+    new_sol2.mode = sol2.mode
+
+    return new_sol1, new_sol2
 
 
 def tournament_selection(
@@ -70,17 +72,18 @@ def tournament_selection(
 
 
 def genetic_algorithm(
-    instance,
+    instance: XHSTTSInstance,
     tournament_size: int = None,
     num_selected_for_crossover: int = None,
     mutation_rate: float = 0.2,
     input_solution: list[XHSTTSInstance.SolutionEvent] = [],
     input_population: list[list[XHSTTSInstance.SolutionEvent]] = [],
     crossover_uniform_percentage: float = 0.5,
-    POPULATION_SIZE: int = 100,
-    NGEN: int = 40,
+    POPULATION_SIZE: int = 150,
+    NGEN: int = 500,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     # Create a population of solutions.
+    sol_changes_made = False
 
     if tournament_size:
         assert (
@@ -193,6 +196,14 @@ def genetic_algorithm(
                 instance.evaluate_solution(best_random_solution.sol_events, debug=True)
                 print("\nbest random: ", best_random_solution.cost)
             return best_solution.sol_events
+
+        if best_solution.is_feasible() and not sol_changes_made:
+            instance.evaluate_solution(best_solution.sol_events, debug=True)
+            print("\nbest feasible  solution so far")
+            for sol in population:
+                sol.mode = Mode.Soft
+                sol.needs_eval_update = True
+            sol_changes_made = True
 
         end_time = time.time()
         elapsed_time = end_time - start_time

@@ -7,9 +7,9 @@ import time
 from Algorithms.random_algorithm import random_solution
 from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.simulated_annealing import simulated_annealing
-from Algorithms.utils import Solution, mutate, swap
+from Algorithms.utils import Solution, mutate, neighbor, swap
 from XHSTTS.xhstts import XHSTTS, Constraint, XHSTTSInstance
-from XHSTTS.utils import Cost
+from XHSTTS.utils import Cost, Mode
 from copy import deepcopy
 import concurrent.futures
 from pathlib import Path
@@ -23,6 +23,7 @@ def local_search(
     num_neighbours: int = 10,
     max_no_improvement: int = 5,
     max_restart_count: int = 3,
+    neighbourhood=None,
 ) -> list[XHSTTSInstance.SolutionEvent]:
     best_random_solution = None
     if sol_events:
@@ -37,19 +38,19 @@ def local_search(
     current_solution.evaluate(instance)
 
     no_improvement = 0
+    sol_changes_made = False
 
     for iteration in range(max_iterations):
         # Generate neighbors by performing small changes to the current solution
-        neighbors = [
-            Solution(deepcopy(current_solution.sol_events))
-            for _ in range(num_neighbours)
-        ]
-        for neighbor in neighbors:
-            mutate(neighbor, instance)
 
-        # Evaluate the neighbors
-        for neighbor in neighbors:
-            neighbor.evaluate(instance)
+        if not neighbourhood:
+            neighbors = [
+                neighbor(current_solution, instance) for _ in range(num_neighbours)
+            ]
+        else:
+            neighbors = [
+                neighbourhood(current_solution, instance) for _ in range(num_neighbours)
+            ]
 
         # Select the best neighbor
         best_neighbor = max(neighbors, key=lambda x: x.evaluate(instance))
@@ -60,7 +61,7 @@ def local_search(
             current_solution = deepcopy(best_neighbor)
             no_improvement = 0  # reset the no improvements
         else:
-            # No improvement for 5 iterations, terminate the search
+            # No improvement for n iterations, terminate the search
             no_improvement += 1
             # print(f"no consecutive improvements {no_improvement}")
             if no_improvement > max_no_improvement - 1:  # TODO make constant
@@ -82,9 +83,22 @@ def local_search(
                 else:
                     break
 
+        if current_solution.is_feasible() and not sol_changes_made:
+            instance.evaluate_solution(current_solution.sol_events, debug=True)
+            current_solution.mode = Mode.Soft
+            current_solution.needs_eval_update = True
+            current_solution.mode = Mode.Soft
+            current_solution.needs_eval_update = True
+            sol_changes_made = True
+
         # Check if a satisfactory solution has been found.
         if current_solution.is_feasible_and_solves_objectives():
             return current_solution.sol_events
+
+        if iteration % 20 == 0:
+            print(
+                f"Local Search Iteration: {iteration} best cost = {current_solution.cost} {best_neighbor.evaluate(instance)} {current_solution.evaluate(instance)}"
+            )
 
     if not sol_events:
         instance.evaluate_solution(best_random_solution.sol_events, debug=True)

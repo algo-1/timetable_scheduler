@@ -13,6 +13,7 @@ from abc import ABC, ABCMeta, abstractmethod
 from XHSTTS.utils import (
     Cost,
     Cost_Function_Type,
+    Mode,
     cost,
     cost_function_to_enum,
 )
@@ -53,6 +54,7 @@ class Constraint(ABC):  # class Constraint(metaclass=TimerMeta):
         instance_time_groups,
         instance_events,
         instance_time_refs_indices: dict[str, int],
+        instance_linked_events: list[set[str]],
     ):
         self.name: str = XMLConstraint.find("Name").text
         self.required: bool = XMLConstraint.find("Required").text == "true"
@@ -72,6 +74,7 @@ class Constraint(ABC):  # class Constraint(metaclass=TimerMeta):
         self.instance_time_refs_indices_list = list(
             self.instance_time_refs_indices.items()
         )
+        self.instance_linked_events = instance_linked_events
         self.event_group_refs: dict[str, set[str]] = defaultdict(set)
         self._parse_applies_to(XMLConstraint.find("AppliesTo"))
 
@@ -296,6 +299,7 @@ class SplitEventsConstraint(Constraint):
         self.max_amount = int(XMLConstraint.find("MaximumAmount").text)
 
         # update instance events split attributes
+        # if self.is_required():
         for event in self.events:
             new_min_duration = max(event.SplitMinDuration, self.min_duration)
 
@@ -311,6 +315,14 @@ class SplitEventsConstraint(Constraint):
                 SplitMinAmount=new_min_amount,
                 SplitMaxAmount=new_max_amount,
             )
+
+        # update event groups
+        self.instance_event_groups = defaultdict(list)
+        for _, event in self.instance_events.items():
+            for ref in event.EventGroupReferences:
+                self.instance_event_groups[ref].append(event)
+            if event.CourseReference:
+                self.instance_event_groups[event.CourseReference].append(event)
 
     def evaluate(self, solution):
         total_cost = 0
@@ -371,12 +383,27 @@ class PreferTimesConstraint(Constraint):
         self.preferred_times = set()
         self._parse_preferred_times(XMLConstraint)
 
+        if self.is_required():
+            for event in self.events:
+                new_event = event._replace(PreferredTimes=self.preferred_times)
+                self.instance_events[event.Reference] = new_event
+
+        # update event groups
+        self.instance_event_groups = defaultdict(list)
+        for _, event in self.instance_events.items():
+            for ref in event.EventGroupReferences:
+                self.instance_event_groups[ref].append(event)
+            if event.CourseReference:
+                self.instance_event_groups[event.CourseReference].append(event)
+
     def evaluate(self, solution):
         total_cost = 0
         for event in self.events:
             deviation = 0
             for solution_event in solution:
-                if solution_event.InstanceEventReference == event.Reference:
+                if (not event.PreAssignedTimeReference) and (
+                    solution_event.InstanceEventReference == event.Reference
+                ):
                     if (
                         solution_event.TimeReference
                         and solution_event.TimeReference not in self.preferred_times
@@ -652,6 +679,9 @@ class AvoidSplitAssignmentsConstraint(Constraint):
 class LinkEventsConstraint(Constraint):
     def __init__(self, XMLConstraint: ET.Element, *args):
         super().__init__(XMLConstraint, *args)
+        if self.is_required:
+            for ref, event_refs in self.event_group_refs.items():
+                self.instance_linked_events.append(event_refs)
 
     def evaluate(self, solution):
         total_cost = 0
@@ -812,6 +842,7 @@ class XHSTTSInstance:
         SplitMaxDuration: int
         SplitMinAmount: int
         SplitMaxAmount: int
+        PreferredTimes: set
 
     class SolutionEventResource(NamedTuple):
         Reference: str
@@ -826,6 +857,8 @@ class XHSTTSInstance:
         SplitMaxDuration: int
         SplitMinAmount: int
         SplitMaxAmount: int
+        IsOriginal: bool
+        PreferredTimes: set
 
     def __init__(self, XMLInstance: ET.Element, XMLSolutions: list[ET.Element]):
         """
@@ -840,8 +873,9 @@ class XHSTTSInstance:
         self.ResourceTypes = {}
         self.ResourceGroups = {}
         self.Resources = {}
-        self.Events = {}
+        self.Events: dict[str, XHSTTSInstance.Event] = {}
         self.EventGroups = {}
+        self.linked_events = []
         self.instance_event_groups = defaultdict(
             list
         )  # {group_id : list of events that reference this group}
@@ -854,6 +888,7 @@ class XHSTTSInstance:
         self.instance_time_refs_indices = (
             {}
         )  # the chronological position of the time refs
+        self.instance_time_refs_indices_list = []
         self.Constraints: list[Constraint] = []
         self.Solutions = []
         self._parse_times(XMLInstance.find("Times"))
@@ -870,6 +905,16 @@ class XHSTTSInstance:
         self.partitioned_resources_refs = defaultdict(list)
         for ref, resource in self.Resources.items():
             self.partitioned_resources_refs[resource.ResourceTypeReference].append(ref)
+
+        # store mapping from resource type to events that contain non-preassigned resources with those types
+        self.resource_swap_partition = defaultdict(set)
+        for ref, event in self.Events.items():
+            for resource in event.Resources:
+                # is not pre-assigned
+                if not resource.Reference:
+                    self.resource_swap_partition[resource.ResourceTypeReference].add(
+                        ref
+                    )
 
     def get_events(self):
         return self.Events
@@ -918,6 +963,10 @@ class XHSTTSInstance:
         for time_ref, _ in self.Times.items():
             self.instance_time_refs_indices[time_ref] = idx
             idx += 1
+
+        self.instance_time_refs_indices_list = list(
+            self.instance_time_refs_indices.items()
+        )
 
     def _parse_TimeGroups(self, XMLTimeGroups: ET.Element):
         return {
@@ -1051,6 +1100,7 @@ class XHSTTSInstance:
                 SplitMaxDuration=float("inf"),
                 SplitMinAmount=0,
                 SplitMaxAmount=float("inf"),
+                PreferredTimes=set(),
             )
             for XMLEvent in XMLEvents.findall("Event")
         }
@@ -1080,6 +1130,7 @@ class XHSTTSInstance:
                 self.instance_time_groups,
                 self.Events,
                 self.instance_time_refs_indices,
+                self.linked_events,
             )
             self.Constraints.append(constraint_instance)
 
@@ -1158,6 +1209,8 @@ class XHSTTSInstance:
                         SplitMaxDuration=float("inf"),
                         SplitMinAmount=0,
                         SplitMaxAmount=float("inf"),
+                        IsOriginal=True,
+                        PreferredTimes=set(),
                     )
                     for XMLSolutionEvent in solution_events
                 ]
@@ -1176,6 +1229,8 @@ class XHSTTSInstance:
                         SplitMaxDuration=float("inf"),
                         SplitMinAmount=0,
                         SplitMaxAmount=float("inf"),
+                        IsOriginal=True,
+                        PreferredTimes=set(),
                     )
                     for instance_solution_event in missing_events
                 ]
@@ -1202,10 +1257,15 @@ class XHSTTSInstance:
         return constraint.evaluate(solution)
 
     # @timer
-    def evaluate_solution(self, solution: list[SolutionEvent], debug=False):
+    def evaluate_solution(
+        self, solution: list[SolutionEvent], mode: Mode = Mode.Soft, debug=False
+    ):
         cost = Cost(Infeasibility_Value=0, Objective_Value=0)
 
         for constraint in self.Constraints:
+            if mode == Mode.Hard and not constraint.is_required():
+                continue
+
             value = self.get_cost(solution, constraint)
             if debug:
                 print(
@@ -1267,6 +1327,8 @@ class XHSTTSInstance:
             SplitMaxDuration=event.SplitMaxDuration,
             SplitMinAmount=event.SplitMinAmount,
             SplitMaxAmount=event.SplitMaxAmount,
+            PreferredTimes=event.PreferredTimes,
+            IsOriginal=True,
         )
 
     @staticmethod
@@ -1382,4 +1444,20 @@ if __name__ == "__main__":
 
     print(
         first_instance.evaluate_solution(first_instance.get_solutions()[2], debug=True)
+    )
+
+    western_greece_instance = XHSTTS(
+        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/GreeceWesternGreeceUniversityInstance4.xml"
+    ).get_first_instance()
+
+    path = "/Users/harry/tcd/fyp/timetabling_solver/report_results/final_benchmark_solutions/danu2_solution_WesternGreeceUniversityInstance4_genetic_annealing.xml"
+
+    XMLsolutions = [ET.parse(path).getroot()]
+
+    western_greece_instance._parse_solutions(XMLsolutions)
+
+    print(
+        western_greece_instance.evaluate_solution(
+            western_greece_instance.Solutions[-1], debug=True
+        )
     )
