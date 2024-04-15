@@ -10,7 +10,8 @@ from Algorithms.genetic2 import genetic_algorithm
 from Algorithms.local_search import local_search
 from Algorithms.random_algorithm import random_solution
 from Algorithms.simulated_annealing import simulated_annealing
-from Algorithms.tabu_search import tabu_search
+from Algorithms.tabu_search import ils_tabu, tabu_search
+from Algorithms.vns import variable_neighborhood_search
 from XHSTTS.xhstts import XHSTTS, XHSTTSInstance
 
 root_dir = Path(__file__).parent.parent.parent.parent
@@ -75,16 +76,26 @@ def process_instance(instance: XHSTTSInstance):
 
         print(f"\n---Genetic ({instance.name}) Evaluation---\n", evaluation)
 
-        tabu_search_result = tabu_search(instance, genetic_result).sol_events
-        evaluation = instance.evaluate_solution(tabu_search_result, debug=True)
+        vns_res = (
+            variable_neighborhood_search(instance, genetic_result)
+            if instance.name != "Spanish school"
+            else variable_neighborhood_search(
+                instance, genetic_result, assign_resources=True
+            )
+        )
 
-        print(f"\n---Tabu Search ({instance.name}) Evaluation ---\n", evaluation, "\n")
+        evaluation = instance.evaluate_solution(vns_res, debug=True)
 
-        annealing_result = simulated_annealing(instance, genetic_result)
+        print(
+            f"\n---VNS Evaluation ({instance.name})---\n",
+            evaluation,
+        )
+
+        annealing_result = simulated_annealing(instance, vns_res)
         evaluation = instance.evaluate_solution(annealing_result, debug=True)
 
         print(
-            f"\n---Simulated Annealing ({instance.name})  Evaluation ---\n",
+            f"\n---Simulated Annealing Benchmark ({instance.name}) Evaluation ---\n",
             evaluation,
             "\n",
         )
@@ -94,19 +105,15 @@ def process_instance(instance: XHSTTSInstance):
         print(f"{instance.name} finished in {elapsed_time} seconds.")
 
         # Write the output and solution XML to files
-        output_path = solutions_dir.joinpath(
-            Path(f"danu2_output_{instance.name}_genetic_annealing.txt")
-        )
-        xml_path = solutions_dir.joinpath(
-            Path(f"danu2_solution_{instance.name}_genetic_annealing.xml")
-        )
+        output_path = solutions_dir.joinpath(Path(f"danu4_output_{instance.name}.txt"))
+        xml_path = solutions_dir.joinpath(Path(f"danu4_solution_{instance.name}.xml"))
 
         with open(output_path, "w") as output_file:
             output_file.write(buffer.getvalue())
 
         XHSTTSInstance.sol_events_to_xml(annealing_result, instance, xml_path)
 
-    return f"{instance.name} finished"  # annealing_result
+    return f"{instance.name} finished"
 
 
 if __name__ == "__main__":

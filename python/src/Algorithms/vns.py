@@ -261,7 +261,8 @@ def variable_neighborhood_search(
     best_solution = deepcopy(Solution(input_solution_events))
 
     # Main loop
-    for iteration in range(max_iterations) and time.time() - start_time < 600:
+    iteration = 0
+    while iteration < max_iterations and time.time() - start_time < 600:
         iter_start_time = time.time()
 
         # Select neighborhood
@@ -297,6 +298,8 @@ def variable_neighborhood_search(
         # Termination condition
         if best_solution.is_feasible_and_solves_objectives():
             break
+
+        iteration += 1
 
     return best_solution.sol_events
 
