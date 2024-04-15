@@ -239,11 +239,11 @@ if __name__ == "__main__":
         # hdtt7,
         # hdtt8,
         # dataset_abramson15,
-        spainschool,
+        # spainschool,
         # greece_high_1,
         # greece_third_patras,
         # finland_college,
-        # western_greece_university_instance_4,
+        western_greece_university_instance_4,
     ):  # dataset_abramson15, dataset_brazil3):
         random.seed(42)
 

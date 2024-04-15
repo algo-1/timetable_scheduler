@@ -317,6 +317,7 @@ class SplitEventsConstraint(Constraint):
             )
 
         # update event groups
+        self.instance_event_groups = defaultdict(list)
         for _, event in self.instance_events.items():
             for ref in event.EventGroupReferences:
                 self.instance_event_groups[ref].append(event)
@@ -387,12 +388,13 @@ class PreferTimesConstraint(Constraint):
                 new_event = event._replace(PreferredTimes=self.preferred_times)
                 self.instance_events[event.Reference] = new_event
 
-            # update event groups
-            for _, event in self.instance_events.items():
-                for ref in event.EventGroupReferences:
-                    self.instance_event_groups[ref].append(event)
-                if event.CourseReference:
-                    self.instance_event_groups[event.CourseReference].append(event)
+        # update event groups
+        self.instance_event_groups = defaultdict(list)
+        for _, event in self.instance_events.items():
+            for ref in event.EventGroupReferences:
+                self.instance_event_groups[ref].append(event)
+            if event.CourseReference:
+                self.instance_event_groups[event.CourseReference].append(event)
 
     def evaluate(self, solution):
         total_cost = 0
@@ -1442,4 +1444,20 @@ if __name__ == "__main__":
 
     print(
         first_instance.evaluate_solution(first_instance.get_solutions()[2], debug=True)
+    )
+
+    western_greece_instance = XHSTTS(
+        "/Users/harry/tcd/fyp/timetabling_solver/data/ALL_INSTANCES/GreeceWesternGreeceUniversityInstance4.xml"
+    ).get_first_instance()
+
+    path = "/Users/harry/tcd/fyp/timetabling_solver/report_results/final_benchmark_solutions/danu2_solution_WesternGreeceUniversityInstance4_genetic_annealing.xml"
+
+    XMLsolutions = [ET.parse(path).getroot()]
+
+    western_greece_instance._parse_solutions(XMLsolutions)
+
+    print(
+        western_greece_instance.evaluate_solution(
+            western_greece_instance.Solutions[-1], debug=True
+        )
     )
